@@ -1,26 +1,10 @@
+import Link from "next/link";
 import Navbar from "./Navbar";
-export default function ShopFilter() {
+export default function ShopFilter({ productsList, setProductsList }: any) {
   return (
     <section>
       <h1>Product Categories</h1>
-      <ul>
-        <li>
-          <span>Accessories</span>
-          <span>(3)</span>
-        </li>
-        <li>
-          <span>Accessories</span>
-          <span>(3)</span>
-        </li>
-        <li>
-          <span>Accessories</span>
-          <span>(3)</span>
-        </li>
-        <li>
-          <span>Accessories</span>
-          <span>(3)</span>
-        </li>
-      </ul>
+      <ul>test</ul>
 
       <h1>Filter by Price</h1>
       <div>

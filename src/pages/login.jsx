@@ -11,7 +11,6 @@ export default function Login() {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth.user);
 
-  console.log(auth);
   const formSchema = yup.object().shape({
     email: yup
       .string()

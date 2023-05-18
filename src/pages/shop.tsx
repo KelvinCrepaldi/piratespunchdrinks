@@ -8,12 +8,14 @@ import type {} from "redux-thunk/extend-redux";
 
 export default function Shop() {
   const [showMenu, setShowMenu] = useState(false);
+  const [productsList, setProductsList] = useState([]);
   const dispatch = useDispatch();
-  const productList = useSelector((state: any) => state.products.products);
+  const products = useSelector((state: any) => state.products.products);
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, [dispatch]);
+    setProductsList(products);
+  }, [dispatch, products]);
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu);
@@ -41,10 +43,13 @@ export default function Shop() {
             showMenu === false ? "-left-full" : "left-0"
           } md:static max-w-xs w-full border border-black transition-all`}
         >
-          <ShopFilter />
+          <ShopFilter
+            productsList={productsList}
+            setProductsList={setProductsList}
+          />
         </section>
         <main className="flex flex-wrap justify-center">
-          {productList?.map((product: any) => (
+          {productsList?.map((product: any) => (
             <div key={product.id}>{product?.name}</div>
           ))}
         </main>
