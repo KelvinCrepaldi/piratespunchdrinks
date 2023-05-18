@@ -9,7 +9,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "eerie-black": "#181818",
+        "pirates-red": "#6D0000",
+        "pirates-gold": "#D8A932",
+        "pirates-silver": "#b2b2b2",
+        "pirates-black": "#111111",
+        "pirates-white": "#FFFFFF",
+      },
+      fontFamily: {
+        fredericka: ["Fredericka the Great", "sans-serif"],
+        pirata: ["Pirata One", "sans-serif"],
+        imfell: ["IM Fell DW Pica SC", "sans-serif"],
       },
     },
   },

@@ -28,12 +28,11 @@ export default function ShopFilter() {
       </div>
 
       <h1>Best Seller</h1>
-      <div>Product </div>
-      <div>Product </div>
-      <div>Product </div>
-      <div>Product </div>
-      <div>Product </div>
-      <div>Product </div>
+      <div className="w-44 h-60 bg-black m-5">Item</div>
+      <div className="w-44 h-60 bg-black m-5">Item</div>
+      <div className="w-44 h-60 bg-black m-5">Item</div>
+      <div className="w-44 h-60 bg-black m-5">Item</div>
+      <div className="w-44 h-60 bg-black m-5">Item</div>
     </section>
   );
 }

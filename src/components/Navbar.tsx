@@ -11,7 +11,7 @@ import {
 export default function Navbar() {
   return (
     <nav className="w-100 md:max-w-5xl m-auto">
-      <div className="flex border-b justify-between ">
+      <div className="flex justify-between ">
         <div className="flex items-center mx-1 mr-3">
           {" "}
           <Image
@@ -23,7 +23,7 @@ export default function Navbar() {
           <h1 className="hidden md:inline">Pirate{"'"}s Punch</h1>
         </div>
         <div className="flex items-center w-full max-w-xs space-x-3 justify-end">
-          <div className="flex h-8 w-full max-w-xs bg-transparent border rounded items-center">
+          <div className="flex h-9 w-full max-w-xs bg-transparent border rounded items-center">
             <input
               placeholder="Buscar..."
               className="w-full bg-transparent"
@@ -35,7 +35,7 @@ export default function Navbar() {
           <div className=" md:hidden">
             <FontAwesomeIcon
               icon={faBars}
-              className="w-10 text-3xl"
+              className="w-10 mr-3 text-3xl"
             ></FontAwesomeIcon>
           </div>
           <div className="hidden md:flex">
@@ -43,25 +43,35 @@ export default function Navbar() {
               icon={faCartShopping}
               className="w-10 text-3xl"
             ></FontAwesomeIcon>
-            <FontAwesomeIcon
-              icon={faUser}
-              className="w-10 text-3xl"
-            ></FontAwesomeIcon>
+            <Link href={"/login"}>
+              <FontAwesomeIcon
+                icon={faUser}
+                className="w-10 text-3xl"
+              ></FontAwesomeIcon>
+            </Link>
           </div>
         </div>
       </div>
-      <ul className="flex m-2 space-x-3 justify-end mr-10 text-lg">
+      <ul className="flex m-2 space-x-3 justify-end mr-10 text-2xl">
         <li>
-          <Link href="/">Home</Link>
+          <Link href="/" className="font-imfell">
+            Home
+          </Link>
         </li>
         <li>
-          <Link href="/shop">Shop</Link>
+          <Link href="/shop" className="font-imfell">
+            Shop
+          </Link>
         </li>
         <li>
-          <Link href="/about">About</Link>
+          <Link href="/about" className="font-imfell">
+            About
+          </Link>
         </li>
         <li>
-          <Link href="/contact">Contact</Link>
+          <Link href="/contact" className="font-imfell">
+            Contact
+          </Link>
         </li>
       </ul>
     </nav>

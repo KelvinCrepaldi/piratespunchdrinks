@@ -2,18 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --pirates-red: #8f1f1f;
+  --pirates-gold: #d8a932;
+  --pirates-silver: #b2b2b2;
+  --pirates-black: #111111;
+  --pirates-white: #ffffff;
+}
+
 body {
   background: #111111;
   color: rgb(211, 211, 211);
 }
+div {
+  border-color: var(--pirates-red);
+}
 h1 {
-  font-size: 1.5rem;
+  color: var(--pirates-gold);
+  font-size: 2rem;
+  font-family: "Fredericka the Great", "sans-serif";
 }
 h2 {
-  font-size: 1.3rem;
+  color: var(--pirates-red);
+  font-size: 1.8rem;
+  font-family: "Pirata One", "sans-serif";
 }
 h3 {
+  color: var(--pirates-red);
+  font-family: "Pirata One", "sans-serif";
+  font-size: 1.5rem;
+}
+p {
+  color: var(--pirates-siver);
   font-size: 1.3rem;
+  font-family: "IM Fell DW Pica SC", "sans-serif";
 }
 
 li.pagenoactive {

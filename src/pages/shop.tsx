@@ -1,21 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ShopFilter from "@/components/ShopFilter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBars,
-  faMagnifyingGlass,
-  faUser,
-  faSliders,
-} from "@fortawesome/free-solid-svg-icons";
+import { faSliders } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "@/store/actions";
+import type {} from "redux-thunk/extend-redux";
+
 export default function Shop() {
   const [showMenu, setShowMenu] = useState(false);
+  const dispatch = useDispatch();
+  const productList = useSelector((state: any) => state.products.products);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu);
   };
 
   return (
-    <div className="w-100 m-auto p-5 md:p-16">
+    <div className="w-100 mx-auto md:p-16">
       <div className="flex flex-col md:flex-row-reverse ">
         <div className="flex-col items-center text-center mb-5 w-full">
           <h1>Shop</h1>
@@ -39,32 +44,9 @@ export default function Shop() {
           <ShopFilter />
         </section>
         <main className="flex flex-wrap justify-center">
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
-          <div className="w-44 h-60 bg-black m-5">Item</div>
+          {productList?.map((product: any) => (
+            <div key={product.id}>{product?.name}</div>
+          ))}
         </main>
       </div>
     </div>

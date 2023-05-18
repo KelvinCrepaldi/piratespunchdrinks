@@ -2,12 +2,17 @@ import Image from "next/image";
 import piratepunchlogo from "/public/images/piratepunch.png";
 export default function About() {
   return (
-    <main className="w-100 md:max-w-5xl m-auto p-5 md:p-16">
-      <div className="flex">
-        <div className="w-full flex flex-col justify-center items-center max-w-lg ">
-          <h1>About</h1>
-          <h2>Pirate{"'"}s Punch</h2>
-          <p className="text-center ">
+    <main className="w-100 md:max-w-5xl m-auto p-5 md:p-16 space-y-16">
+      <div className="flex flex-col md:flex-row justify-center items-center">
+        <div className=" flex flex-col justify-center items-center  m-auto">
+          <div className=" text-center">
+            <h1 className="inline-block border-b-2 px-5 border-pirates-red text-6xl font-fredericka">
+              About
+            </h1>
+            <h2 className="mb-4 text-3xl">Pirate{"'"}s Punch</h2>
+          </div>
+
+          <p className="text-center text-pirates-gold">
             Bem-vindo a bordo, marujos, à Pirate{"'"}s Punch, a loja de bebidas
             mais pirata-tástica de Tortuga! Preparem-se para uma aventura de
             sabor e diversão enquanto navegamos pelos mares agitados da bebida
@@ -16,7 +21,7 @@ export default function About() {
         </div>
         <Image src={piratepunchlogo} alt="pirate punch logo" width={200} />
       </div>
-      <div className="flex items-center">
+      <div className="flex flex-col md:flex-row items-center">
         <p>
           Na Pirate{"'"}s Punch, reunimos uma tripulação de especialistas em
           licores que já enfrentaram os mais perigosos tesouros líquidos de
@@ -28,7 +33,7 @@ export default function About() {
         </p>
         <Image src={piratepunchlogo} alt="pirate punch logo" width={250} />
       </div>
-      <div className="flex flex-row-reverse items-center">
+      <div className="flex flex-col md:flex-row-reverse items-center">
         <p>
           Nossa loja é decorada com um toque divertido e cheio de tesouros
           piratas. Penduradas nas paredes, você encontrará mapas do tesouro,
@@ -39,7 +44,7 @@ export default function About() {
         </p>
         <Image src={piratepunchlogo} alt="pirate punch logo" width={250} />
       </div>
-      <div className="flex items-center">
+      <div className="flex flex-col md:flex-row items-center">
         <p>
           Ahoy, marinheiros! Estamos aqui para satisfazer todas as suas
           necessidades etílicas, não importa se você é um capitão experiente em
@@ -53,14 +58,14 @@ export default function About() {
         <Image src={piratepunchlogo} alt="pirate punch logo" width={250} />
       </div>
       <div className="flex flex-col space-y-3">
-        <p className="text-center">
+        <p className="text-center text-pirates-gold">
           E não se esqueça dos eventos especiais que organizamos! Toda semana,
           realizamos competições de bebedeira de arrepiar a espinha, onde os
           mais intrépidos piratas podem mostrar suas habilidades de beber e
           ganhar prêmios exclusivos. Se você sobreviver à competição, pode até
           ser coroado como o Rei dos Bêbados!
         </p>
-        <p className="text-center">
+        <p className="text-center text-pirates-gold">
           Então, prepare-se para zarpar em uma jornada épica de sabor e diversão
           na Pirate{"'"}s Punch. Estamos abertos todos os dias, das primeiras
           horas da manhã até a última baderna da noite. Lembre-se, marujos, em
