@@ -5,9 +5,15 @@ import thunk from "redux-thunk";
 import authReducer from "./reducers/authReducer";
 import productsReducer from "./reducers/productsReducer";
 import cartReducer from "./reducers/cartReducer";
+import categoriesReducer from "./reducers/categoriesReducer";
 
 const store = configureStore({
-  reducer: { auth: authReducer, products: productsReducer, cart: cartReducer },
+  reducer: {
+    auth: authReducer,
+    products: productsReducer,
+    cart: cartReducer,
+    categories: categoriesReducer,
+  },
   middleware: [thunk],
 });
 

@@ -11,7 +11,8 @@
 }
 
 body {
-  background: #111111;
+  background-color: #111111;
+  background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
   color: rgb(211, 211, 211);
 }
 div {

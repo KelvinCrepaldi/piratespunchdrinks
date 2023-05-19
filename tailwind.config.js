@@ -14,6 +14,7 @@ module.exports = {
         "pirates-silver": "#b2b2b2",
         "pirates-black": "#111111",
         "pirates-white": "#FFFFFF",
+        "pirates-black-hover": "#070707",
       },
       fontFamily: {
         fredericka: ["Fredericka the Great", "sans-serif"],
