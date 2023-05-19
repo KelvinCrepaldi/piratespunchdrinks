@@ -11,11 +11,12 @@ export default function Home() {
           <h1 className="inline-block border-b-2 px-5 border-pirates-red text-6xl font-fredericka">
             Pirate{"'"}s Punch
           </h1>
-          <h2 className="mb-4 text-3xl">Drinks</h2>
+          <h2 className="mb-4 text-3xl">
+            Se prepare para o {"'"}soco{"'"} mais intenso dos sete mares!
+          </h2>
           <p className="text-xl md:px-3 inline-block font-fredericka">
-            Se prepare para o {"'"}soco{"'"} mais intenso dos sete mares! No
-            Pirate{"'"}s Punch, nossas bebidas vão te deixar {"'"}atordoado de
-            sabor{"'"}, navegando por uma tempestade de sabores piratas
+            No Pirate{"'"}s Punch, nossas bebidas vão te deixar {"'"}atordoado
+            de sabor{"'"}, navegando por uma tempestade de sabores piratas
             irresistíveis.
           </p>
           <Link

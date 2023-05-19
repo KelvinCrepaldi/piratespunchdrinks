@@ -4,18 +4,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSliders } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "@/store/actions";
+import ProductCard from "@/components/ProductCard";
 import type {} from "redux-thunk/extend-redux";
 
 export default function Shop() {
   const [showMenu, setShowMenu] = useState(false);
-  const [productsList, setProductsList] = useState([]);
+
   const dispatch = useDispatch();
   const products = useSelector((state: any) => state.products.products);
 
   useEffect(() => {
     dispatch(fetchProducts());
-    setProductsList(products);
-  }, [dispatch, products]);
+    window.addEventListener("beforeunload", () => {
+      dispatch(fetchProducts());
+    });
+  }, []);
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu);
@@ -23,17 +26,24 @@ export default function Shop() {
 
   return (
     <div className="w-100 mx-auto md:p-16">
-      <div className="flex flex-col md:flex-row-reverse ">
-        <div className="flex-col items-center text-center mb-5 w-full">
-          <h1>Shop</h1>
-          <h2>Home page {">"} Products</h2>
-        </div>
-        <div className="flex w-full md:max-w-xs md:items-end">
+      <div className="flex-col items-center text-center w-full">
+        <h1>Shop</h1>
+        <h2>Home page {">"} Products</h2>
+      </div>
+      <div className="flex flex-col ">
+        <div className="flex w-full md:max-w-xs px-5 py-2">
           <button className="text-3xl mr-2 md:hidden" onClick={handleShowMenu}>
             <FontAwesomeIcon icon={faSliders}></FontAwesomeIcon>
           </button>
-          <select className="w-full h-10 bg-transparent ">
-            <option>Sort by</option>
+          <select className="w-52 h-10 bg-transparent font-imfell rounded border border-pirates-silver">
+            <option className="bg-pirates-black">Sort by newest</option>
+            <option className="bg-pirates-black">Sort by oldest</option>
+            <option className="bg-pirates-black">
+              Sort by ascending price
+            </option>
+            <option className="bg-pirates-black">
+              Sort by descending price
+            </option>
           </select>
         </div>
       </div>
@@ -41,16 +51,13 @@ export default function Shop() {
         <section
           className={`absolute ${
             showMenu === false ? "-left-full" : "left-0"
-          } md:static max-w-xs w-full border border-black transition-all`}
+          } md:relative md:left-0 transition-all`}
         >
-          <ShopFilter
-            productsList={productsList}
-            setProductsList={setProductsList}
-          />
+          <ShopFilter />
         </section>
-        <main className="flex flex-wrap justify-center">
-          {productsList?.map((product: any) => (
-            <div key={product.id}>{product?.name}</div>
+        <main className="flex flex-wrap content-start px-5 ">
+          {products?.map((product: any) => (
+            <ProductCard key={product.id} product={product} type="big" />
           ))}
         </main>
       </div>
