@@ -19,6 +19,8 @@ export interface IProduct {
   price: string;
   apresentation: string;
   active: boolean;
+  amount: string;
+  img_url: string;
   category: IProductCategory | null;
   characteristic?: IproductCharacteristic[];
   additional_info?: IProductAditionalInfo[];

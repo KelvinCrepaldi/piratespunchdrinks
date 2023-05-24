@@ -38,6 +38,7 @@ export default function Login() {
     <>
       <div className="w-100 md:max-w-5xl m-auto p-5 md:p-16">
         <div>{auth?.email}</div>
+
         <form
           className="flex flex-col space-y-4 items-center"
           onSubmit={handleSubmit(handleLogin)}
@@ -48,7 +49,6 @@ export default function Login() {
             {...register("email")}
           ></input>
           {errors.email?.message && <span className="error-message">{}</span>}
-
           <input
             className="bg-transparent text-red-500 border w-60 p-1"
             type="password"
@@ -60,6 +60,10 @@ export default function Login() {
           )}
           <button type="submit">Login</button>
         </form>
+
+        <Link className="text-center" href={"/signup"}>
+          <p>Criar uma conta!</p>
+        </Link>
       </div>
     </>
   );
