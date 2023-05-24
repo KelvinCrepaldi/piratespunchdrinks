@@ -39,10 +39,13 @@ export default function Navbar() {
             ></FontAwesomeIcon>
           </div>
           <div className="hidden md:flex">
-            <FontAwesomeIcon
-              icon={faCartShopping}
-              className="w-10 text-3xl"
-            ></FontAwesomeIcon>
+            <Link href={"/cart"}>
+              <FontAwesomeIcon
+                icon={faCartShopping}
+                className="w-10 text-3xl"
+              ></FontAwesomeIcon>
+            </Link>
+
             <Link href={"/login"}>
               <FontAwesomeIcon
                 icon={faUser}

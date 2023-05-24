@@ -18,9 +18,7 @@ export default function ProductCard({ product, type }: IProductCard) {
       {" "}
       <div className={containerType()}>
         <Image
-          src={
-            "https://s2.glbimg.com/ZimrgKXbmSFbw8L1pYAfTbag3Cw=/0x0:620x803/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_d72fd4bf0af74c0c89d27a5a226dbbf8/internal_photos/bs/2023/P/l/owl46DSkGzNbN798Lglw/2016-10-21-receita-drink-laranja-blue.jpeg"
-          }
+          src={product.img_url}
           alt="drink"
           width={type === "small" ? 100 : 200}
           height={200}
@@ -32,12 +30,12 @@ export default function ProductCard({ product, type }: IProductCard) {
             <div className="flex">
               <div className="w-full border-b-2 border-pirates-red m-3" />
               <span className="text-pirates-red font-imfell text-xl">
-                {product.category?.name}
+                {product.amount}
               </span>
               <div className="w-full border-b-2 border-pirates-red m-3" />
             </div>
             <span className="text-pirates-silver font-fredericka text-xl">
-              {product.price}
+              R$: {product.price}
             </span>
           </div>
         </div>
