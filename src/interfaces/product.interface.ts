@@ -3,7 +3,7 @@ export interface IProductCategory {
   name: string;
 }
 
-export interface IproductCharacteristic {
+export interface IProductCharacteristic {
   id: string;
   text: string;
 }
@@ -22,7 +22,7 @@ export interface IProduct {
   amount: string;
   img_url: string;
   category: IProductCategory | null;
-  characteristic?: IproductCharacteristic[];
+  characteristic?: IProductCharacteristic[];
   additional_info?: IProductAditionalInfo[];
 }
 
