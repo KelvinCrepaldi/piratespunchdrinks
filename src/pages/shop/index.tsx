@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "@/store/actions";
 import ProductCard from "@/components/ProductCard";
 import type {} from "redux-thunk/extend-redux";
+import ProductsDetailModal from "@/components/ProductsDetailModal";
 
 export default function Shop() {
   const [showMenu, setShowMenu] = useState(false);
