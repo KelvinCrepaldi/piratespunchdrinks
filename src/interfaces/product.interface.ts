@@ -24,7 +24,7 @@ export interface IProduct {
   category: IProductCategory | null;
   characteristic?: IProductCharacteristic[];
   additional_info?: IProductAditionalInfo[];
-  qtd?: number;
+  qtd: number;
 }
 
 export interface IProductCard {
