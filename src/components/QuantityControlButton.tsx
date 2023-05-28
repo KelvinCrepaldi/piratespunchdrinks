@@ -17,10 +17,22 @@ export default function QuantityControlButton({
   };
 
   return (
-    <div>
-      <button onClick={handleAddToCart}>+</button>
-      <div>{findProduct?.qtd}</div>
-      <button onClick={handleRemoveItemToCart}>-</button>
+    <div className="flex bg-pirates-red w-28 rounded justify-between">
+      <button
+        className="px-3 text-center hover:text-pirates-gold"
+        onClick={handleAddToCart}
+      >
+        +
+      </button>
+      <div className="w-12 h-7 m-1 bg-pirates-silver text-center text-pirates-black font-pirata text-xl">
+        {findProduct?.qtd}
+      </div>
+      <button
+        className="px-3 text-center hover:text-pirates-gold"
+        onClick={handleRemoveItemToCart}
+      >
+        -
+      </button>
     </div>
   );
 }

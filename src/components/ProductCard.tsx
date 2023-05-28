@@ -30,7 +30,7 @@ export default function ProductCard({ product, type }: IProductCard) {
           alt="drink"
           width={type === "small" ? 100 : 200}
           height={0}
-          className="rounded"
+          className="rounded m-auto"
         ></Image>
         <div className="flex flex-col  text-center  w-full">
           <div className="flex flex-col">
@@ -48,7 +48,6 @@ export default function ProductCard({ product, type }: IProductCard) {
           </div>
         </div>
       </div>
-      <QuantityControlButton product={product}></QuantityControlButton>
     </ProductsDetailModal>
   );
 }
