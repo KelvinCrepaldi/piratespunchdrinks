@@ -57,7 +57,7 @@ export default function Shop() {
         >
           <ShopFilter />
         </section>
-        <main className="flex flex-wrap content-start px-5  w-full max-w-5xl">
+        <main className="flex flex-wrap content-start px-5  w-full ">
           {products?.map((product: any) => (
             <ProductCard key={product.id} product={product} type="big" />
           ))}
