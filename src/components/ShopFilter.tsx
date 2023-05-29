@@ -26,7 +26,7 @@ export default function ShopFilter() {
   };
 
   return (
-    <section className=" bg-pirates-black md:bg-transparent py-5 px-5 md:px-0 md:w-56 border-r-2 md:border-0 border-pirates-red">
+    <div className=" bg-pirates-black md:bg-transparent py-5 px-5 md:px-0 md:w-56 border-r-2 md:border-0 border-pirates-red">
       <h1 className="text-xl m-2 p-1 border-b border-pirates-silver text-pirates-gold ">
         Product Categories
       </h1>
@@ -68,6 +68,6 @@ export default function ShopFilter() {
           type="small"
         ></ProductCard>
       ))}
-    </section>
+    </div>
   );
 }
