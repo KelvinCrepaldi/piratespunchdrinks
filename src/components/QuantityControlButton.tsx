@@ -5,23 +5,34 @@ import { addItemToCart, removeItemToCart } from "@/store/reducers/cartReducer";
 export default function QuantityControlButton({
   product,
 }: QuantityControlButtonProps) {
-  const { id }: IProduct = product;
-
   const dispatch = useDispatch();
-  const cart = useSelector((state: any) => state.cart);
-  console.log(cart);
+  const cartList: IProduct[] = useSelector((state: any) => state.cart.cartList);
+  const findProduct = cartList.find((e: IProduct) => e.id === product.id);
 
   const handleAddToCart = () => {
-    dispatch(addItemToCart({ cartList: [product, ...cart.cartList] }));
+    dispatch(addItemToCart({ product }));
   };
-  const removeItemToCart = () => {
-    const cart = dispatch(addItemToCart({ cartList: product }));
+  const handleRemoveItemToCart = () => {
+    dispatch(removeItemToCart({ product }));
   };
 
   return (
-    <div>
-      <button onClick={handleAddToCart}>+</button>
-      <button>-</button>
+    <div className="flex bg-pirates-red w-28 rounded justify-between">
+      <button
+        className="px-3 text-center hover:text-pirates-gold"
+        onClick={handleAddToCart}
+      >
+        +
+      </button>
+      <div className="w-12 h-7 m-1 bg-pirates-silver text-center text-pirates-black font-pirata text-xl">
+        {findProduct?.qtd}
+      </div>
+      <button
+        className="px-3 text-center hover:text-pirates-gold"
+        onClick={handleRemoveItemToCart}
+      >
+        -
+      </button>
     </div>
   );
 }

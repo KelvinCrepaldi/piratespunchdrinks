@@ -10,6 +10,39 @@
   --pirates-white: #ffffff;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-button {
+  width: 100px;
+  height: 100px;
+}
+::-webkit-scrollbar-thumb {
+  background: #242424;
+  border: 8px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4a4a4a;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+::-webkit-scrollbar-track {
+  background: #111111;
+  border: 85px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
 body {
   background-color: #111111;
   background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
@@ -44,4 +77,8 @@ li.pagenoactive {
 }
 li.pageactive {
   border-bottom: 1px solid red;
+}
+
+.modal-height {
+  height: calc(100% - 60px);
 }

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "@/store/actions";
 import ProductCard from "@/components/ProductCard";
 import type {} from "redux-thunk/extend-redux";
+import ProductsDetailModal from "@/components/ProductsDetailModal";
 
 export default function Shop() {
   const [showMenu, setShowMenu] = useState(false);
@@ -56,7 +57,7 @@ export default function Shop() {
         >
           <ShopFilter />
         </section>
-        <main className="flex flex-wrap content-start px-5  w-full max-w-5xl">
+        <main className="flex flex-wrap content-start px-5  w-full ">
           {products?.map((product: any) => (
             <ProductCard key={product.id} product={product} type="big" />
           ))}
