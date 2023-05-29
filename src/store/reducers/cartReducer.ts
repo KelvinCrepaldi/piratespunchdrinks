@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+import { IProduct } from "@/interfaces/product.interface";
+export interface IInitialstateCartSlice {
+  cartList: IProduct[];
+  cartCount: number;
+}
+
+const initialState: IInitialstateCartSlice = {
   cartList: [],
   cartCount: 0,
 };
@@ -10,12 +16,33 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItemToCart(state, action) {
-      state.cartCount += 1;
-      state.cartList = action.payload.cartList;
+      const productIndex = state.cartList.findIndex(
+        (e) => e.id === action.payload.product.id
+      );
+
+      if (productIndex !== -1) {
+        state.cartList[productIndex].qtd += 1;
+      } else {
+        const newProduct = { ...action.payload.product, qtd: 1 };
+        state.cartList.push(newProduct);
+        state.cartCount += 1;
+      }
     },
     removeItemToCart(state, action) {
-      state.cartCount -= 1;
-      state.cartList = action.payload.cartList;
+      const productIndex = state.cartList.findIndex(
+        (e) => e.id === action.payload.product.id
+      );
+
+      if (productIndex !== -1) {
+        if (state.cartList[productIndex].qtd === 1) {
+          state.cartList = state.cartList.filter(
+            (e) => e.id !== action.payload.product.id
+          );
+          state.cartCount -= 1;
+          return;
+        }
+        state.cartList[productIndex].qtd -= 1;
+      }
     },
   },
 });
