@@ -17,18 +17,18 @@ export default function QuantityControlButton({
   };
 
   return (
-    <div className="flex bg-pirates-red w-28 rounded justify-between">
+    <div className="flex  items-center">
       <button
-        className="px-3 text-center hover:text-pirates-gold"
+        className=" p-2 w-12 bg-pirates-red border-r border-pirates-black px-3 rounded-l-lg"
         onClick={handleAddToCart}
       >
         +
       </button>
-      <div className="w-12 h-7 m-1 bg-pirates-silver text-center text-pirates-black font-pirata text-xl">
-        {findProduct?.qtd}
+      <div className="bg-pirates-silver w-12 p-2 px-3 text-center font-pirata text-pirates-black">
+        {findProduct?.qtd ? findProduct?.qtd : "0"}
       </div>
       <button
-        className="px-3 text-center hover:text-pirates-gold"
+        className=" p-2 w-12 bg-pirates-red border-l px-3 border-pirates-black rounded-r-lg"
         onClick={handleRemoveItemToCart}
       >
         -

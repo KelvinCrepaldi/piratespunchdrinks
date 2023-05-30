@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authenticate } from "@/store/actions";
+import ActionBtn from "@/components/ActionBtn";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -58,12 +59,13 @@ export default function Login() {
           {errors.password?.message && (
             <span className="error-message">{}</span>
           )}
-          <button type="submit">Login</button>
+          <Link className="text-center" href={"/signup"}>
+            <p>Criar uma conta?</p>
+          </Link>
+          <ActionBtn type="submit" style="secondary">
+            Login
+          </ActionBtn>
         </form>
-
-        <Link className="text-center" href={"/signup"}>
-          <p>Criar uma conta!</p>
-        </Link>
       </div>
     </>
   );

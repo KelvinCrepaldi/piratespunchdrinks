@@ -14,9 +14,14 @@ import SidebarCart from "./SidebarCart";
 
 export default function Navbar() {
   const [showCart, setShowCart] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(false);
 
   const handleShowCart = () => {
     setShowCart(!showCart);
+  };
+
+  const handleShowNavbar = () => {
+    setShowNavbar(!showNavbar);
   };
 
   return (
@@ -45,27 +50,27 @@ export default function Navbar() {
           <div className="flex items-center w-full max-w-xs space-x-3 justify-end">
             <div className="flex h-9 w-full max-w-xs bg-transparent border rounded items-center">
               <input
-                placeholder="Buscar..."
-                className="w-full bg-transparent"
+                placeholder="Find..."
+                className="w-full bg-transparent pl-4"
               ></input>
               <button className="text-xl mr-2">
                 <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
               </button>
             </div>
-            <div className=" md:hidden">
+
+            <button onClick={handleShowCart}>
+              <FontAwesomeIcon
+                icon={faCartShopping}
+                className="w-10 text-3xl"
+              ></FontAwesomeIcon>
+            </button>
+            <button className=" md:hidden" onClick={handleShowNavbar}>
               <FontAwesomeIcon
                 icon={faBars}
                 className="w-10 mr-3 text-3xl"
               ></FontAwesomeIcon>
-            </div>
+            </button>
             <div className="hidden md:flex">
-              <button onClick={handleShowCart}>
-                <FontAwesomeIcon
-                  icon={faCartShopping}
-                  className="w-10 text-3xl"
-                ></FontAwesomeIcon>
-              </button>
-
               <Link href={"/login"}>
                 <FontAwesomeIcon
                   icon={faUser}
@@ -75,7 +80,11 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-        <ul className="flex m-2 space-x-3 justify-end mr-10 text-2xl">
+        <ul
+          className={`flex flex-col md:flex-row m-2 space-x-3 justify-end mr-10 text-2xl fixed md:relative  ${
+            showNavbar ? "right-0" : "-right-80"
+          } md:right-auto text-center`}
+        >
           <li>
             <Link href="/" className="font-imfell">
               Home
