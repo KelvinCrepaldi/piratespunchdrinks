@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Image from "next/image";
 import { IProduct } from "@/interfaces/product.interface";
 import QuantityControlButton from "./QuantityControlButton";
+import ActionBtn from "./ActionBtn";
 
 export default function SidebarCart({ setShowCart, showCart }: any) {
   const cart: IProduct[] = useSelector((state: any) => state.cart.cartList);
@@ -53,7 +54,7 @@ export default function SidebarCart({ setShowCart, showCart }: any) {
 
           <div className="m-4 mb-20">
             <Link href="/cart" onClick={handleShowCart} className="m-4">
-              Checkout
+              <ActionBtn>Checkout</ActionBtn>
             </Link>
           </div>
         </div>

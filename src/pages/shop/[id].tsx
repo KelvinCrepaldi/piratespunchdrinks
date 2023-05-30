@@ -9,7 +9,6 @@ export default function Product() {
   const product: IProduct = products.find(
     (product: IProduct) => product.id === id
   );
-  console.log(product);
 
   return (
     <main className="w-100 md:max-w-5xl m-auto p-5 md:p-16 space-y-16">
