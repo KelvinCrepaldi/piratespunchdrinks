@@ -3,6 +3,8 @@ import { IProduct } from "@/interfaces/product.interface";
 import { useState } from "react";
 import Image from "next/image";
 import QuantityControlButton from "./QuantityControlButton";
+import ActionBtn from "./ActionBtn";
+import Link from "next/link";
 
 export default function ProductsDetailModal({
   product,
@@ -62,12 +64,14 @@ export default function ProductsDetailModal({
                     <span className="text-3xl font-fredericka text-pirates-silver">
                       Adicionar ao carrinho:
                     </span>
-                    <QuantityControlButton
-                      product={product}
-                    ></QuantityControlButton>
-                    <button className="text-2xl font-pirata text-pirates-black bg-pirates-gold px-4 my-6 py-1 rounded">
-                      Ir para o carrinho
-                    </button>
+                    <div className="flex">
+                      <QuantityControlButton
+                        product={product}
+                      ></QuantityControlButton>
+                      <Link href="/cart">
+                        <ActionBtn>Ir para o carrinho</ActionBtn>
+                      </Link>
+                    </div>
                   </div>
                 </div>
 

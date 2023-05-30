@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import piratespunch from "/public/images/piratepunch.png";
 import DisplayProducts from "@/components/Display";
+import ActionBtn from "@/components/ActionBtn";
 
 export default function Home() {
   return (
@@ -19,13 +20,10 @@ export default function Home() {
             de sabor{"'"}, navegando por uma tempestade de sabores piratas
             irresistíveis.
           </p>
-          <Link
-            className="inline-block bg-pirates-gold text-pirates-black font-pirata  py-2 px-10 text-2xl rounded-xl m-4 mb-20"
-            href={"/shop"}
-          >
-            Compre aqui!
+          <Link href={"/shop"}>
+            <ActionBtn>Compre aqui!</ActionBtn>
           </Link>
-        </div>{" "}
+        </div>
         <Image
           src={piratespunch}
           width={300}
@@ -36,10 +34,9 @@ export default function Home() {
       <DisplayProducts title="Em promoção..." />
       <div>
         <p>
-          {" "}
           AHOY, MARUJO! Descobrimos o tesouro da diversão na Pirate{"'"}s Punch!
           De 20h às 22h, aproveite 20% de desconto em todas as cervejas! Venha
-          curtir a festa com os melhores sabores piratas! ️
+          curtir a festa com os melhores sabores piratas!
         </p>
       </div>
       <DisplayProducts title="Mais pedidas..." />
