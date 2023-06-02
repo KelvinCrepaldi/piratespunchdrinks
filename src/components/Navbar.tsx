@@ -30,7 +30,7 @@ export default function Navbar() {
         className={`fixed w-80 h-screen ${showCart ? "right-0" : "-right-80"}`}
       >
         <SidebarCart
-          setShowCart={setShowCart}
+          handleShowCart={handleShowCart}
           showCart={showCart}
         ></SidebarCart>
       </div>

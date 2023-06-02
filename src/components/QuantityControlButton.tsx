@@ -2,6 +2,7 @@ import { QuantityControlButtonProps } from "@/interfaces/QuantityControlButton";
 import { IProduct } from "@/interfaces/product.interface";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart, removeItemToCart } from "@/store/reducers/cartReducer";
+
 export default function QuantityControlButton({
   product,
 }: QuantityControlButtonProps) {
