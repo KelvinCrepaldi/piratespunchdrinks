@@ -16,9 +16,6 @@ export default function ProductsDetailModal({
     setIsOpen(!isOpen);
   };
 
-  const aditionalInfo = product.additional_info;
-  console.log(product.additional_info);
-
   return (
     <>
       {isOpen ? (
@@ -89,11 +86,6 @@ export default function ProductsDetailModal({
                   <h1 className="border-b-2 border-pirates-red font-imfell text-pirates-silver">
                     Additional Information
                   </h1>
-                  <ul>
-                    {aditionalInfo?.map((char, index) => (
-                      <p key={char.id}>{char.text}</p>
-                    ))}
-                  </ul>
                 </div>
               </div>
             </div>
