@@ -4,13 +4,13 @@ import Image from "next/image";
 import { IProduct } from "@/interfaces/product.interface";
 import QuantityControlButton from "./QuantityControlButton";
 import ActionBtn from "./ActionBtn";
+import { ISidebarCart } from "@/interfaces/sidebarCart.interface";
 
-export default function SidebarCart({ setShowCart, showCart }: any) {
+export default function SidebarCart({
+  handleShowCart,
+  showCart,
+}: ISidebarCart) {
   const cart: IProduct[] = useSelector((state: any) => state.cart.cartList);
-
-  const handleShowCart = () => {
-    setShowCart(!showCart);
-  };
 
   return (
     <>
