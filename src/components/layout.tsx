@@ -1,5 +1,6 @@
 import Navbar from "./Navbar";
-export default function Layout({ children }: any) {
+import { ILayout } from "@/interfaces/layout.interface";
+export default function Layout({ children }: ILayout) {
   return (
     <>
       <Navbar />
