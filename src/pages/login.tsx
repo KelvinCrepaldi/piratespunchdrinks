@@ -2,15 +2,18 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
-
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authenticate } from "@/store/actions";
 import ActionBtn from "@/components/ActionBtn";
+import { IAuthenticate } from "@/interfaces/authenticate.interface";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth.user);
+  const auth = useSelector((state: any) => state.auth);
+  const { user, token, isAuthenticated } = auth;
+  const router = useRouter();
 
   const formSchema = yup.object().shape({
     email: yup
@@ -28,36 +31,43 @@ export default function Login() {
     handleSubmit,
     formState: { errors },
     resetField,
-  } = useForm({ resolver: yupResolver(formSchema) });
+  } = useForm<IAuthenticate>({ resolver: yupResolver(formSchema) });
 
-  const handleLogin = (e) => {
+  const handleLogin = (e: IAuthenticate): void => {
     const { email, password } = e;
     dispatch(authenticate({ email, password }));
+    router.push("/");
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push("/user");
+    }
+  }, [isAuthenticated, router]);
 
   return (
     <>
       <div className="w-100 md:max-w-5xl m-auto p-5 md:p-16">
-        <div>{auth?.email}</div>
-
         <form
           className="flex flex-col space-y-4 items-center"
           onSubmit={handleSubmit(handleLogin)}
         >
           <input
-            className="bg-transparent text-red-500 border w-60 p-1"
+            className="bg-transparent text-yellow-500 border w-60 p-1"
             placeholder="Email"
             {...register("email")}
           ></input>
-          {errors.email?.message && <span className="error-message">{}</span>}
+          {errors.email?.message && (
+            <span className="text-red-400">{errors.email?.message}</span>
+          )}
           <input
-            className="bg-transparent text-red-500 border w-60 p-1"
+            className="bg-transparent text-yellow-500 border w-60 p-1"
             type="password"
             placeholder="Senha"
             {...register("password")}
           ></input>
           {errors.password?.message && (
-            <span className="error-message">{}</span>
+            <span className="text-red-400">{errors.password?.message}</span>
           )}
           <Link className="text-center" href={"/signup"}>
             <p>Criar uma conta?</p>

@@ -11,6 +11,7 @@ export default function SidebarCart({
   showCart,
 }: ISidebarCart) {
   const cart: IProduct[] = useSelector((state: any) => state.cart.cartList);
+  const { user, isAuthenticated } = useSelector((state: any) => state.auth);
 
   return (
     <>
@@ -28,6 +29,22 @@ export default function SidebarCart({
         </div>
         <div className="flex flex-col text-center max-h-full">
           <h1>Shopping cart</h1>
+          {!isAuthenticated ? (
+            <h4 className="text-red-300">
+              User not connected, please{" "}
+              <Link
+                href={"/login"}
+                onClick={handleShowCart}
+                className="text-blue-500"
+              >
+                log in?
+              </Link>
+            </h4>
+          ) : (
+            <h4>
+              User <span className="text-green-200">{user.name}</span>
+            </h4>
+          )}
 
           <ul className="overflow-y-auto max-h-full">
             {cart.map((product: IProduct) => (
