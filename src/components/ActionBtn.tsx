@@ -1,6 +1,10 @@
 import { IActionBtn } from "@/interfaces/ActionBtn.interface";
 
-export default function ActionBtn({ children, style = "primary" }: IActionBtn) {
+export default function ActionBtn({
+  children,
+  style = "primary",
+  ...props
+}: any) {
   return (
     <button
       className={`m-1 py-1 px-10  ${
