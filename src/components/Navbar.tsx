@@ -9,10 +9,12 @@ import {
   faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import SidebarCart from "./SidebarCart";
 
 export default function Navbar() {
+  const { isAuthenticated } = useSelector((state: any) => state.auth);
   const [showCart, setShowCart] = useState(false);
   const [showNavbar, setShowNavbar] = useState(false);
 
@@ -70,8 +72,12 @@ export default function Navbar() {
                 className="w-10 mr-3 text-3xl"
               ></FontAwesomeIcon>
             </button>
-            <div className="hidden md:flex">
-              <Link href={"/login"}>
+            <div
+              className={`hidden md:flex ${
+                isAuthenticated ? "text-green-300" : "text-red-300"
+              }`}
+            >
+              <Link href={isAuthenticated ? "/user" : "/login"}>
                 <FontAwesomeIcon
                   icon={faUser}
                   className="w-10 text-3xl"
