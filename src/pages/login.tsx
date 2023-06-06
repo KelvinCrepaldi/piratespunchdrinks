@@ -6,14 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { authenticate } from "@/store/actions";
 import ActionBtn from "@/components/ActionBtn";
 import { IAuthenticate } from "@/interfaces/authenticate.interface";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { login } from "@/store/reducers/authReducer";
 
 export default function Login() {
   const dispatch = useDispatch();
-  const auth = useSelector((state: any) => state.auth);
-  const { user, token, isAuthenticated } = auth;
   const router = useRouter();
+
+  const { isAuthenticated } = useSelector((state: any) => state.auth);
 
   const formSchema = yup.object().shape({
     email: yup
