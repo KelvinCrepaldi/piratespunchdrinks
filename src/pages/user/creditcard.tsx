@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-export default function User() {
+export default function CreditCard() {
   const router = useRouter();
   const { isAuthenticated } = useSelector((state: any) => state.auth);
 
@@ -11,5 +11,5 @@ export default function User() {
     }
   }, [isAuthenticated, router]);
 
-  return <h1>{isAuthenticated && <div>User page</div>}</h1>;
+  return <h1>{isAuthenticated && <div>creditCard page</div>}</h1>;
 }
