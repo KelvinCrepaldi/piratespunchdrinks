@@ -25,6 +25,9 @@ export const authenticate = createAsyncThunk(
       const { token, user } = response.data;
       // Retorne os dados para atualizar o estado de autenticação
       dispatch(login({ token, user }));
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", user);
     } catch (error) {
       // Trate erros de autenticação, se houver
       console.log("Erro de autenticação:", error);
