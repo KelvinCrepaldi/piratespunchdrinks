@@ -1,4 +1,3 @@
-
 import {
   fetchProductsStart,
   fetchProductsFailure,
@@ -11,7 +10,6 @@ import {
   fetchCategoriesFailure,
   fetchCategoriesSuccess,
 } from "../reducers/categoriesReducer";
-
 
 export const fetchProducts = () => {
   return async (dispatch: any) => {
@@ -31,6 +29,28 @@ export const fetchProducts = () => {
     }
   };
 };
+
+export const fetchProductsByFilter = (filter: string) => {
+  return async (dispatch: any) => {
+    try {
+      const stringToFilter = filter.toLowerCase();
+
+      dispatch(fetchProductsStart());
+
+      const response = await axios.get(`http://localhost:3001/product/`);
+      const products = response.data;
+      const filterProducts = products.filter((product: any) => {
+        const name = product.name.toLowerCase();
+        return name.includes(stringToFilter);
+      });
+
+      dispatch(fetchProductsSuccess(filterProducts));
+    } catch (error) {
+      dispatch(fetchProductsFailure("Erro ao buscar produtos"));
+    }
+  };
+};
+
 export const fetchProductsByCategory = (category: string) => {
   return async (dispatch: any) => {
     try {
@@ -66,4 +86,3 @@ export const fetchCategories = () => {
     }
   };
 };
-
