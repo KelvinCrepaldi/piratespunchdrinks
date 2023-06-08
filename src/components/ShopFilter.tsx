@@ -6,7 +6,7 @@ import {
   fetchCategories,
   fetchProducts,
   fetchProductsByCategory,
-} from "@/store/actions";
+} from "@/store/actions/products";
 import { ICategory } from "@/interfaces/category.interface";
 import ProductCard from "./ProductCard";
 import type {} from "redux-thunk/extend-redux";
