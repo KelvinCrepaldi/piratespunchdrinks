@@ -3,12 +3,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { authenticate } from "@/store/actions";
-import ActionBtn from "@/components/ActionBtn";
 import { IAuthenticate } from "@/interfaces/authenticate.interface";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { login } from "@/store/reducers/authReducer";
+
+import { authenticate } from "@/store/actions/user";
+import ActionBtn from "@/components/ActionBtn";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -31,13 +31,13 @@ export default function Login() {
     register,
     handleSubmit,
     formState: { errors },
-    resetField,
+    reset,
   } = useForm<IAuthenticate>({ resolver: yupResolver(formSchema) });
 
   const handleLogin = (e: IAuthenticate): void => {
     const { email, password } = e;
     dispatch(authenticate({ email, password }));
-    router.push("/");
+    reset();
   };
 
   useEffect(() => {

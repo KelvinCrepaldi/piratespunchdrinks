@@ -4,9 +4,8 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import ActionBtn from "@/components/ActionBtn";
 
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { authenticate } from "@/store/actions";
+import { authenticate } from "@/store/actions/user";
 
 export default function Signup() {
   const dispatch = useDispatch();

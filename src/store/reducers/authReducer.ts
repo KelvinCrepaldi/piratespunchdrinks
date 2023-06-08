@@ -1,10 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { stringify } from "querystring";
 
-const initialState = {
+let initialState: any = {
   token: null,
   isAuthenticated: false,
   user: null,
 };
+
+if (typeof window !== "undefined") {
+  const tokenLocalStorage = localStorage.getItem("token");
+  const userLocalStorage = localStorage.getItem("user");
+
+  initialState = {
+    token: tokenLocalStorage,
+    isAuthenticated: !!tokenLocalStorage,
+    user: userLocalStorage ? JSON.parse(userLocalStorage) : null,
+  };
+}
 
 const authSlice = createSlice({
   name: "auth",
