@@ -14,15 +14,22 @@ import { logout } from "@/store/reducers/authReducer";
 
 import SidebarCart from "./SidebarCart";
 import { useRouter } from "next/router";
+import { fetchProductsByFilter } from "@/store/actions/products";
 
 export default function Navbar() {
   const dispatch = useDispatch();
   const router = useRouter();
 
+  const [filter, setFilter] = useState("");
   const { isAuthenticated } = useSelector((state: any) => state.auth);
   const [showNavbar, setShowNavbar] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
+
+  const handleFilter = () => {
+    dispatch(fetchProductsByFilter(filter));
+    router.push("/shop");
+  };
 
   useEffect(() => {
     setIsAuth(isAuthenticated);
@@ -71,8 +78,10 @@ export default function Navbar() {
               <input
                 placeholder="Find..."
                 className="w-full bg-transparent pl-4"
+                value={filter}
+                onChange={(e) => setFilter(e.target.value)}
               ></input>
-              <button className="text-xl mr-2">
+              <button className="text-xl mr-2" onClick={handleFilter}>
                 <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
               </button>
             </div>
