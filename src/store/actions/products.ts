@@ -1,41 +1,18 @@
-import { login, logout } from "../reducers/authReducer";
+
 import {
   fetchProductsStart,
   fetchProductsFailure,
   fetchProductsSuccess,
 } from "../reducers/productsReducer";
 import axios from "axios";
-import { IAuthenticate } from "@/interfaces/authenticate.interface";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+
 import {
   fetchCategoriesStart,
   fetchCategoriesFailure,
   fetchCategoriesSuccess,
 } from "../reducers/categoriesReducer";
 
-export const authenticate = createAsyncThunk(
-  "auth/authenticate",
-  async (credentials: { email: string; password: string }, { dispatch }) => {
-    try {
-      // Faça uma requisição para a API de autenticação
-      const response = await axios.post(
-        "http://localhost:3001/login",
-        credentials
-      );
-      const { token, user } = response.data;
-      // Retorne os dados para atualizar o estado de autenticação
-      dispatch(login({ token, user }));
 
-      localStorage.setItem("token", token);
-      localStorage.setItem("user", user);
-    } catch (error) {
-      // Trate erros de autenticação, se houver
-      console.log("Erro de autenticação:", error);
-      // Você também pode lançar um erro para ser tratado pelo createAsyncThunk
-      throw new Error("Erro de autenticação");
-    }
-  }
-);
 export const fetchProducts = () => {
   return async (dispatch: any) => {
     try {
@@ -90,9 +67,3 @@ export const fetchCategories = () => {
   };
 };
 
-export const logoutUser = () => {
-  return (dispatch: any) => {
-    // Limpe o estado de autenticação ao fazer logout
-    dispatch(logout());
-  };
-};
