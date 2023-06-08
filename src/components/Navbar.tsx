@@ -8,15 +8,25 @@ import {
   faUser,
   faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "@/store/reducers/authReducer";
 
 import SidebarCart from "./SidebarCart";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
+  const dispatch = useDispatch();
+  const router = useRouter();
+
   const { isAuthenticated } = useSelector((state: any) => state.auth);
-  const [showCart, setShowCart] = useState(false);
   const [showNavbar, setShowNavbar] = useState(false);
+  const [showCart, setShowCart] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
+
+  useEffect(() => {
+    setIsAuth(isAuthenticated);
+  }, [isAuthenticated]);
 
   const handleShowCart = () => {
     setShowCart(!showCart);
@@ -24,6 +34,13 @@ export default function Navbar() {
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
+  };
+
+  const handleLogOut = () => {
+    dispatch(logout());
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    router.push("/login");
   };
 
   return (
@@ -74,15 +91,16 @@ export default function Navbar() {
             </button>
             <div
               className={`hidden md:flex ${
-                isAuthenticated ? "text-green-300" : "text-red-300"
+                isAuth ? "text-green-300" : "text-red-300"
               }`}
             >
-              <Link href={isAuthenticated ? "/user" : "/login"}>
+              <Link href={isAuth ? "/user" : "/login"}>
                 <FontAwesomeIcon
                   icon={faUser}
                   className="w-10 text-3xl"
                 ></FontAwesomeIcon>
               </Link>
+              {isAuth && <button onClick={handleLogOut}>logout</button>}
             </div>
           </div>
         </div>

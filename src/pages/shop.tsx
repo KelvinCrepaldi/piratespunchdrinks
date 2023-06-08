@@ -3,7 +3,7 @@ import ShopFilter from "@/components/ShopFilter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSliders } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "@/store/actions";
+import { fetchProducts } from "@/store/actions/products";
 import ProductCard from "@/components/ProductCard";
 import type {} from "redux-thunk/extend-redux";
 import ProductsDetailModal from "@/components/ProductsDetailModal";
@@ -14,13 +14,13 @@ export default function Shop() {
   const dispatch = useDispatch();
   const products = useSelector((state: any) => state.products.products);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     dispatch(fetchProducts());
     window.addEventListener("beforeunload", () => {
       dispatch(fetchProducts());
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, []); */
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu);

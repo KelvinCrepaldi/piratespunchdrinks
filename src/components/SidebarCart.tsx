@@ -1,4 +1,6 @@
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import NextLink from "next/link";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import { IProduct } from "@/interfaces/product.interface";
@@ -12,6 +14,14 @@ export default function SidebarCart({
 }: ISidebarCart) {
   const cart: IProduct[] = useSelector((state: any) => state.cart.cartList);
   const { user, isAuthenticated } = useSelector((state: any) => state.auth);
+
+  // Use o estado local para controlar a exibição do conteúdo do usuário
+  const [showUserContent, setShowUserContent] = useState(false);
+
+  // Verifique a autenticação do usuário no lado do cliente
+  useEffect(() => {
+    setShowUserContent(isAuthenticated);
+  }, [isAuthenticated]);
 
   return (
     <>
@@ -29,8 +39,8 @@ export default function SidebarCart({
         </div>
         <div className="flex flex-col text-center max-h-full">
           <h1>Shopping cart</h1>
-          {!isAuthenticated ? (
-            <h4 className="text-red-300">
+          {!showUserContent ? (
+            <div className="text-red-300">
               User not connected, please{" "}
               <Link
                 href={"/login"}
@@ -39,10 +49,10 @@ export default function SidebarCart({
               >
                 log in?
               </Link>
-            </h4>
+            </div>
           ) : (
             <h4>
-              User <span className="text-green-200">{user.name}</span>
+              User <span className="text-green-200">{user?.name}</span>
             </h4>
           )}
 

@@ -1,15 +1,9 @@
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
+import ProtectedRoute from "@/components/ProtectedRoute";
+
 export default function PurchaseHistory() {
-  const router = useRouter();
-  const { isAuthenticated } = useSelector((state: any) => state.auth);
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      router.push("/login");
-    }
-  }, [isAuthenticated, router]);
-
-  return <h1>{isAuthenticated && <div>creditCard page</div>}</h1>;
+  return (
+    <ProtectedRoute>
+      <h1>History cart page</h1>
+    </ProtectedRoute>
+  );
 }
