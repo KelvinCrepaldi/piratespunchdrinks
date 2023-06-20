@@ -20,6 +20,7 @@ module.exports = {
         fredericka: ["Fredericka the Great", "sans-serif"],
         pirata: ["Pirata One", "sans-serif"],
         imfell: ["IM Fell DW Pica SC", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
     },
   },
