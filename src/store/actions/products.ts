@@ -46,6 +46,7 @@ export const fetchProductsByFilter = (filter: string) => {
 
       dispatch(fetchProductsSuccess(filterProducts));
     } catch (error) {
+      console.log(error);
       dispatch(fetchProductsFailure("Erro ao buscar produtos"));
     }
   };
