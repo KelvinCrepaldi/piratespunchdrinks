@@ -25,6 +25,8 @@ export const authenticate = createAsyncThunk(
 
 export const logoutUser = () => {
   return (dispatch: any) => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     dispatch(logout());
   };
 };
