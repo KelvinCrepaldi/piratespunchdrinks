@@ -12,7 +12,7 @@ if (typeof window !== "undefined") {
   const userLocalStorage = localStorage.getItem("user");
 
   initialState = {
-    token: tokenLocalStorage,
+    token: tokenLocalStorage ? JSON.parse(tokenLocalStorage) : null,
     isAuthenticated: !!tokenLocalStorage,
     user: userLocalStorage ? JSON.parse(userLocalStorage) : null,
   };
