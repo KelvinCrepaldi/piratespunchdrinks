@@ -8,6 +8,7 @@ import cartReducer from "./reducers/cartReducer";
 import categoriesReducer from "./reducers/categoriesReducer";
 import ordersReducer from "./reducers/ordersReducer";
 import addressesReducer from "./reducers/addressesReducer";
+import creditCardsReducer from "./reducers/creditCardsReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -26,6 +27,7 @@ const store = configureStore({
     categories: categoriesReducer,
     orders: ordersReducer,
     addresses: addressesReducer,
+    creditCards: creditCardsReducer,
   },
   middleware: [thunk],
 });
