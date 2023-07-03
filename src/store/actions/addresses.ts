@@ -46,3 +46,23 @@ export const deleteAddress = ({ token, addressId }: any) => {
     }
   };
 };
+
+export const createAddress = ({ token, body }: any) => {
+  return async (dispatch: any) => {
+    try {
+      const jsonBody = JSON.stringify(body);
+      console.log(jsonBody);
+
+      const request = await axios.post(
+        `http://localhost:3001/address`,
+        JSON.parse(JSON.stringify(body)),
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      dispatch(fetchAddresses(token));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
