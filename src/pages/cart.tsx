@@ -73,14 +73,39 @@ export default function Cart() {
           <div className="flex flex-col w-96 m-2">
             <h3>Address:</h3>
             {getAdressList.map((address: IAddress) => (
-              <div key={address.id} className="bg-pirates-black-hover p-4">
+              <div key={address.id} className="bg-pirates-black-hover p-4 mt-4">
                 <ul>
-                  <li>{address.address}</li>
-                  <li>{address.number}</li>
-                  <li>{address.complement}</li>
-                  <li>{address.city}</li>
-                  <li>{address.country}</li>
-                  <li>{address.cep}</li>
+                  <li className="space-x-5">
+                    <span>
+                      <span className="text-pirates-gold">Address: </span>
+                      {address.address},<span>{address.number}</span>
+                    </span>
+
+                    <span>
+                      <span className="text-pirates-gold">Complement: </span>
+                      {address.complement}
+                    </span>
+                  </li>
+                  <li className="flex space-x-5">
+                    <span>
+                      <span className="text-pirates-gold">Country: </span>
+                      {address.country}
+                    </span>
+                    <span>
+                      <span className="text-pirates-gold">City: </span>
+                      {address.city}
+                    </span>
+                    <span>
+                      <span className="text-pirates-gold">State: </span>
+                      {address.state}
+                    </span>
+                  </li>
+                  <div>
+                    <span>
+                      <span className="text-pirates-gold">CEP: </span>
+                      {address.cep}
+                    </span>
+                  </div>
                 </ul>
               </div>
             ))}
