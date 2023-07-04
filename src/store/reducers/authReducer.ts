@@ -1,7 +1,7 @@
+import { IAuthInitialState } from "@/interfaces/initialStateSlices.interface";
 import { createSlice } from "@reduxjs/toolkit";
-import { stringify } from "querystring";
 
-let initialState: any = {
+let initialState: IAuthInitialState = {
   token: null,
   isAuthenticated: false,
   user: null,

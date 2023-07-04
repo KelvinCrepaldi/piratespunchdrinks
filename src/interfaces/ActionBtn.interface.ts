@@ -1,6 +1,5 @@
-import { ReactNode } from "react";
+import React from "react";
 
-export interface IActionBtn {
-  children: ReactNode;
-  style?: "primary" | "secondary";
+export interface IActionBtnProps extends React.HTMLProps<HTMLButtonElement> {
+  colorStyle?: "primary" | "secondary";
 }

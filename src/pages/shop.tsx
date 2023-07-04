@@ -27,7 +27,7 @@ export default function Shop() {
   };
 
   return (
-    <div className="w-100 md:max-w-8xl p-5 md:p-16">
+    <div className="w-100 md:max-w-8xl p-5 md:p-16 ">
       <div className="flex-col items-center text-center w-full">
         <h1>Shop</h1>
         <h2>Home page {">"} Products</h2>
@@ -49,15 +49,15 @@ export default function Shop() {
           </select>
         </div>
       </div>
-      <div className="flex justify-center">
+      <div className="flex">
         <section
-          className={`absolute ${
+          className={`absolute bg-pirates-black ${
             showMenu === false ? "-left-full" : "left-0"
           } lg:relative lg:left-0 transition-all`}
         >
           <ShopFilter />
         </section>
-        <main className="flex flex-wrap content-start px-5  w-full ">
+        <main className="flex flex-wrap content-start justify-center px-5  w-full">
           {products?.map((product: any) => (
             <ProductCard key={product.id} product={product} type="big" />
           ))}
