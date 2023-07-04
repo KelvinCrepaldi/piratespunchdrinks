@@ -10,8 +10,6 @@ export default function PanelCartHistory() {
   const { token } = useSelector((state: any) => state.auth);
   const { orders } = useSelector((state: any) => state.orders.orders);
 
-  console.log(orders);
-
   useEffect(() => {
     if (token) {
       dispatch(fetchOrders(token));
