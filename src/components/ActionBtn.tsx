@@ -1,14 +1,14 @@
-import { IActionBtn } from "@/interfaces/ActionBtn.interface";
+import { IActionBtnProps } from "@/interfaces/actionBtn.interface";
 
 export default function ActionBtn({
   children,
-  style = "primary",
+  colorStyle = "primary",
   ...props
-}: any) {
+}: IActionBtnProps) {
   return (
     <button
       className={`m-1 py-1 px-10  ${
-        style === "primary"
+        colorStyle === "primary"
           ? "bg-pirates-gold text-pirates-black"
           : "bg-pirates-red text-pirates-silver"
       } font-pirata text-2xl rounded-lg`}

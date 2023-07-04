@@ -73,7 +73,7 @@ export default function Login() {
           <Link className="text-center" href={"/signup"}>
             <p>Criar uma conta?</p>
           </Link>
-          <ActionBtn type="submit" style="secondary">
+          <ActionBtn type="submit" colorStyle="secondary">
             Login
           </ActionBtn>
         </form>

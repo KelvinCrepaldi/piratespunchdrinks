@@ -63,7 +63,7 @@ export default function Navbar() {
 
       <nav className="w-100 md:max-w-5xl m-auto">
         <div className="flex justify-between ">
-          <div className="flex items-center mx-1 mr-3">
+          <Link href="/" className="flex items-center mx-1 mr-3">
             {" "}
             <Image
               src={piratepunchlogo}
@@ -72,7 +72,7 @@ export default function Navbar() {
               alt="piratepunch logo"
             />
             <h1 className="hidden md:inline">Pirate{"'"}s Punch</h1>
-          </div>
+          </Link>
           <div className="flex items-center w-full max-w-xs space-x-3 justify-end">
             <div className="flex h-9 w-full max-w-xs bg-transparent border rounded items-center">
               <input

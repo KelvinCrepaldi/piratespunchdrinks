@@ -31,7 +31,7 @@ export default function SidebarCart({
         } fixed top-0 left-0 w-full h-screen bg-black opacity-60 z-0 behind-main`}
         onClick={handleShowCart}
       ></div>
-      <div className="w-full h-full max-h-full bg-slate-700 z-10 relative">
+      <div className="w-full h-full max-h-full bg-pirates-black z-10 relative">
         <div className="flex justify-end">
           <button onClick={handleShowCart} className="m-1 p-2">
             X
