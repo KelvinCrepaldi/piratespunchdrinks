@@ -26,12 +26,25 @@ export const fetchCreditCards = (token: string) => {
 export const createCreditCard = ({ token, body }: any) => {
   return async (dispatch: any) => {
     try {
-      const jsonBody = JSON.stringify(body);
-      console.log(jsonBody);
-
       const request = await axios.post(
         `http://localhost:3001/creditcard`,
         JSON.parse(JSON.stringify(body)),
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      dispatch(fetchCreditCards(token));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const deleteCreditCard = ({ token, id }: any) => {
+  return async (dispatch: any) => {
+    try {
+      const request = await axios.delete(
+        `http://localhost:3001/creditcard/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

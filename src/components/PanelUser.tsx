@@ -23,7 +23,7 @@ export default function PanelUser() {
     <div className="font-inter ">
       <div className="">
         <h1 className="border-b font-inter">User</h1>
-        <ul className="flex flex-col m-2 p-3 bg-neutral-900">
+        <ul className="flex flex-col m-2 p-3 bg-neutral-900 rounded">
           <li className="flex justify-between">
             <span>
               Name: <input defaultValue={user?.name}></input>
