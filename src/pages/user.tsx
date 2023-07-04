@@ -34,28 +34,28 @@ export default function User(): ReactNode {
     <>
       <ProtectedRoute>
         <div className="flex max-w-5xl m-auto min-h-screen ">
-          <div className="flex flex-col items-end  border-r color p-2">
+          <div className="flex flex-col items-end  border-r color p-2 min-w-max">
             <button
-              className="m-1 text-xl md:text-xl font-inter"
+              className="m-1 text-xl md:text-xl font-inter whitespace-no-wrap"
               onClick={() => handleOptionPage("user")}
             >
               User
             </button>
             <button
-              className="m-1 text-xl md:text-xl  font-inter"
+              className="m-1 text-xl md:text-xl  font-inter whitespace-no-wrap"
               onClick={() => handleOptionPage("addresses")}
             >
               Addresses
             </button>
             <button
-              className="m-1 text-xl md:text-xl  font-inter w-"
+              className="m-1 text-xl md:text-xl  font-inter whitespace-no-wrap"
               onClick={() => handleOptionPage("creditCards")}
             >
               Credit Cards
             </button>
 
             <button
-              className="m-1 text-xl md:text-xl  font-inter"
+              className="m-1 text-xl md:text-xl  font-inter whitespace-no-wrap"
               onClick={() => handleOptionPage("history")}
             >
               Purchases
