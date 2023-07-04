@@ -40,23 +40,88 @@ const FormCreateAddress = ({ isOpen = false, setIsOpen }: any) => {
   };
 
   return isOpen ? (
-    <div>
-      <h1 className="text-xl">New Address:</h1>
-      <form onSubmit={handleSubmit(handleCreateAddress)}>
-        <input
-          className="bg-transparent border border-pirates-silver rounded"
-          placeholder="Address"
-          {...register("address")}
-        />
-        <input placeholder="Cep" {...register("cep")} />
-        <input placeholder="Number" {...register("number")} />
-        <input placeholder="Complement" {...register("complement")} />
-        <input placeholder="City" {...register("city")} />
-        <input placeholder="State" {...register("state")} />
-        <input placeholder="Country" {...register("country")} />
-        <div className="flex justify-end">
-          <button type="submit">Create</button>{" "}
-          <button onClick={handleIsOpen}>Cancel</button>
+    <div className="border rounded p-2 m-1">
+      <p className="text-xl">New address</p>
+      <form
+        className="flex flex-wrap space-y-2 space-x-1"
+        onSubmit={handleSubmit(handleCreateAddress)}
+      >
+        <div className="ml-1 mt-2">
+          <span className="text-pirates-gold">Address: </span>
+          <input
+            className="bg-transparent border border-black rounded px-1"
+            placeholder="Address"
+            {...register("address")}
+          />
+        </div>
+        <div>
+          <span className="text-pirates-gold"> Number: </span>
+          <input
+            className="bg-transparent border border-black rounded px-1"
+            placeholder="Number"
+            type="number"
+            {...register("number")}
+          />
+        </div>
+        <div>
+          <span className="text-pirates-gold">Complement: </span>
+          <input
+            className="bg-transparent border border-black rounded px-1"
+            placeholder="Complement"
+            {...register("complement")}
+          />{" "}
+        </div>
+        <div>
+          <span className="text-pirates-gold"> CEP: </span>
+
+          <input
+            className="bg-transparent border border-black rounded px-1"
+            placeholder="Cep"
+            type="number"
+            {...register("cep")}
+          />
+        </div>
+
+        <div>
+          <span className="text-pirates-gold">City: </span>
+          <input
+            className="bg-transparent border border-black rounded px-1"
+            placeholder="City"
+            {...register("city")}
+          />
+        </div>
+        <div>
+          <span className="text-pirates-gold">State: </span>
+          <input
+            className="bg-transparent border border-black rounded px-1"
+            placeholder="State"
+            {...register("state")}
+          />
+        </div>
+
+        <div>
+          <span className="text-pirates-gold">Country: </span>
+          <input
+            className="bg-transparent border border-black rounded px-1"
+            placeholder="Country"
+            {...register("country")}
+          />
+        </div>
+
+        <div className="flex justify-end w-full">
+          <button
+            className="border border-black rounded px-1 mx-1 cursor-pointer hover:text-green-400"
+            type="submit"
+          >
+            Create
+          </button>{" "}
+          <button
+            className="border border-black rounded px-1 mx-1 cursor-pointer hover:text-red-400"
+            type="button"
+            onClick={handleIsOpen}
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>

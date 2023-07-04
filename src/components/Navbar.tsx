@@ -98,18 +98,25 @@ export default function Navbar() {
                 className="w-10 mr-3 text-3xl"
               ></FontAwesomeIcon>
             </button>
-            <div
-              className={`hidden md:flex ${
-                isAuth ? "text-green-300" : "text-red-300"
-              }`}
-            >
+            <div className="hidden md:flex ">
               <Link href={isAuth ? "/user" : "/login"}>
                 <FontAwesomeIcon
                   icon={faUser}
-                  className="w-10 text-3xl"
+                  className={`hidden md:flex text-3xl ${
+                    isAuth
+                      ? "text-green-300 hover:text-green-600"
+                      : "text-red-300"
+                  }`}
                 ></FontAwesomeIcon>
               </Link>
-              {isAuth && <button onClick={handleLogOut}>logout</button>}
+              {isAuth && (
+                <button
+                  className="mx-1 cursor-pointer text-white hover:text-red-400"
+                  onClick={handleLogOut}
+                >
+                  logout
+                </button>
+              )}
             </div>
           </div>
         </div>
