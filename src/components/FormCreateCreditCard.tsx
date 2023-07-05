@@ -1,15 +1,13 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
-import { createAddress } from "@/store/actions/addresses";
-import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "@/store/store";
 import { createCreditCard } from "@/store/actions/creditCards";
-import { stringify } from "querystring";
 
 const FormCreateCreditCard = ({ isOpen = false, setIsOpen }: any) => {
   const { token } = useSelector((state: any) => state.auth);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const creditCardSchema = yup.object().shape({
     name: yup.string().required(),

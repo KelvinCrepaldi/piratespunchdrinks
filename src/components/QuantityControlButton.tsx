@@ -1,12 +1,13 @@
 import { QuantityControlButtonProps } from "@/interfaces/QuantityControlButton";
 import { IProduct } from "@/interfaces/product.interface";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "@/store/store";
 import { addItemToCart, removeItemToCart } from "@/store/reducers/cartReducer";
 
 export default function QuantityControlButton({
   product,
 }: QuantityControlButtonProps) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const cartList: IProduct[] = useSelector((state: any) => state.cart.cartList);
   const findProduct = cartList.find((e: IProduct) => e.id === product.id);
 

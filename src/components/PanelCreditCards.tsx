@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   deleteCreditCard,
   fetchCreditCards,
 } from "@/store/actions/creditCards";
 import FormCreateCreditCard from "./FormCreateCreditCard";
+import { useAppDispatch } from "@/store/store";
 
 const PanelCreditCards = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [isOpen, setIsOpen] = useState(false);
   const [creditCardsList, setCreditCardsList] = useState([]);

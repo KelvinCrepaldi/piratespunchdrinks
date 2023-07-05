@@ -9,15 +9,16 @@ import {
   faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { logout } from "@/store/reducers/authReducer";
+import { useAppDispatch } from "@/store/store";
 
 import SidebarCart from "./SidebarCart";
 import { useRouter } from "next/router";
 import { fetchProductsByFilter } from "@/store/actions/products";
 
 export default function Navbar() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const router = useRouter();
 
   const [filter, setFilter] = useState("");

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import FormCreateAddress from "./FormCreateAddress";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { deleteAddress, fetchAddresses } from "@/store/actions/addresses";
+import { useAppDispatch } from "@/store/store";
 
 const PanelAddresses = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [isOpen, setIsOpen] = useState(false);
   const [addressList, setAddressList] = useState([]);

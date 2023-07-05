@@ -1,9 +1,6 @@
 import Image from "next/image";
-import Navbar from "./Navbar";
-import Link from "next/link";
 import { useState } from "react";
 import { IProductCard } from "@/interfaces/product.interface";
-import QuantityControlButton from "./QuantityControlButton";
 import ProductsDetailModal from "./ProductsDetailModal";
 
 export default function ProductCard({ product, type }: IProductCard) {

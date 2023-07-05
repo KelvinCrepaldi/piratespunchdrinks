@@ -2,11 +2,11 @@ import { fetchOrders } from "@/store/actions/orders";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import PurchaseList from "./PurchaseList";
+import { useAppDispatch } from "@/store/store";
 
 export default function PanelCartHistory() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { token } = useSelector((state: any) => state.auth);
   const { orders } = useSelector((state: any) => state.orders.orders);
 

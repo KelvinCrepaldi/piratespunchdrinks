@@ -1,5 +1,4 @@
 import { IProductDetailModal } from "@/interfaces/ProductDetailModal.interface";
-import { IProduct } from "@/interfaces/product.interface";
 import { useState } from "react";
 import Image from "next/image";
 import QuantityControlButton from "./QuantityControlButton";
