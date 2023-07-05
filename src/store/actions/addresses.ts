@@ -4,9 +4,10 @@ import {
   fetchAddressesSuccess,
   fetchAddressesFailure,
 } from "../reducers/addressesReducer";
+import { Dispatch } from "redux";
 
 export const fetchAddresses = (token: string) => {
-  return async (dispatch: any) => {
+  return async (dispatch: Dispatch) => {
     try {
       dispatch(fetchAddressesStart());
 
@@ -25,7 +26,7 @@ export const fetchAddresses = (token: string) => {
 };
 
 export const deleteAddress = ({ token, addressId }: any) => {
-  return async (dispatch: any) => {
+  return async (dispatch: Dispatch) => {
     try {
       await axios.delete(`http://localhost:3001/address/${addressId}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -48,18 +49,19 @@ export const deleteAddress = ({ token, addressId }: any) => {
 };
 
 export const createAddress = ({ token, body }: any) => {
-  return async (dispatch: any) => {
+  return async (dispatch: Dispatch) => {
     try {
       const jsonBody = JSON.stringify(body);
       console.log(jsonBody);
 
-      const request = await axios.post(
+      await axios.post(
         `http://localhost:3001/address`,
         JSON.parse(JSON.stringify(body)),
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
+
       dispatch(fetchAddresses(token));
     } catch (error) {
       console.log(error);
