@@ -17,6 +17,7 @@ const rootReducer = combineReducers({
   categories: categoriesReducer,
   orders: ordersReducer,
   addresses: addressesReducer,
+  creditCards: creditCardsReducer,
 });
 
 const store = configureStore({

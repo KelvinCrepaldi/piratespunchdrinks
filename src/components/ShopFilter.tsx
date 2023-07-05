@@ -1,10 +1,8 @@
-import Link from "next/link";
-import Navbar from "./Navbar";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "@/store/store";
 import {
   fetchCategories,
-  fetchProducts,
   fetchProductsByCategory,
 } from "@/store/actions/products";
 import { ICategory } from "@/interfaces/category.interface";
@@ -12,7 +10,7 @@ import ProductCard from "./ProductCard";
 import type {} from "redux-thunk/extend-redux";
 
 export default function ShopFilter() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const categories = useSelector((state: any) => state.categories.categories);
   const products = useSelector((state: any) => state.products.products);
 

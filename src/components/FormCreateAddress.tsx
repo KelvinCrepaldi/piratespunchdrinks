@@ -1,13 +1,13 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { createAddress } from "@/store/actions/addresses";
-import { useState } from "react";
+import { useAppDispatch } from "@/store/store";
 
 const FormCreateAddress = ({ isOpen = false, setIsOpen }: any) => {
   const { token } = useSelector((state: any) => state.auth);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const addressSchema = yup.object().shape({
     address: yup.string().required(),

@@ -1,8 +1,5 @@
-import { deleteAddress, fetchAddresses } from "@/store/actions/addresses";
-import { fetchCreditCards } from "@/store/actions/creditCards";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import FormCreateAddress from "./FormCreateAddress";
+import { useSelector } from "react-redux";
 
 export default function PanelUser() {
   const [user, setUser] = useState<any>(null);
@@ -13,7 +10,6 @@ export default function PanelUser() {
   const getcreditCardsList = useSelector(
     (state: any) => state.creditCards.creditCards
   );
-  const dispatch = useDispatch();
 
   useEffect(() => {
     setUser(getUser);

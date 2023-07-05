@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import NextLink from "next/link";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import { IProduct } from "@/interfaces/product.interface";
