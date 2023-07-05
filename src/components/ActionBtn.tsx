@@ -1,10 +1,10 @@
 import { IActionBtnProps } from "@/interfaces/actionBtn.interface";
 
-export default function ActionBtn({
+const ActionBtn: React.FC<IActionBtnProps> = ({
   children,
   colorStyle = "primary",
   ...props
-}: IActionBtnProps) {
+}) => {
   return (
     <button
       className={`m-1 py-1 px-10  ${
@@ -16,4 +16,6 @@ export default function ActionBtn({
       {children}
     </button>
   );
-}
+};
+
+export default ActionBtn;

@@ -10,13 +10,13 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Cart() {
+  const dispatch = useDispatch();
   const token = useSelector((state: any) => state.auth.token);
   const cartList = useSelector((state: any) => state.cart.cartList);
   const getAdressList = useSelector((state: any) => state.addresses.addresses);
   const getcreditCardsList = useSelector(
     (state: any) => state.creditCards.creditCards
   );
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAddresses(token));

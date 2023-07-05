@@ -16,6 +16,12 @@ export default function Login() {
 
   const { isAuthenticated } = useSelector((state: any) => state.auth);
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push("/user");
+    }
+  }, [isAuthenticated, router]);
+
   const formSchema = yup.object().shape({
     email: yup
       .string()
@@ -39,12 +45,6 @@ export default function Login() {
     dispatch(authenticate({ email, password }));
     reset();
   };
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      router.push("/user");
-    }
-  }, [isAuthenticated, router]);
 
   return (
     <>
