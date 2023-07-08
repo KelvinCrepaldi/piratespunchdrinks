@@ -1,4 +1,4 @@
-import { IProductDetailModal } from "@/interfaces/ProductDetailModal.interface";
+import { IProductDetailModalProps } from "@/interfaces/ProductDetailModal.interface";
 import { useState } from "react";
 import Image from "next/image";
 import QuantityControlButton from "./QuantityControlButton";
@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function ProductsDetailModal({
   product,
   children,
-}: IProductDetailModal) {
+}: IProductDetailModalProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleIsOpen = () => {
@@ -42,9 +42,16 @@ export default function ProductsDetailModal({
                     alt="product image"
                     width={0}
                     height={0}
-                    sizes="50vw"
-                    style={{ width: "90%", height: "auto", maxWidth: "500px" }} // optional
+                    sizes="50%"
+                    style={{
+                      width: "90%",
+                      height: "auto",
+                      maxWidth: "500px",
+                    }} // optional
+                    priority
+                    loading="eager"
                   ></Image>
+
                   <div className="m-2 md:m-10">
                     <h1 className="border-b-2 border-pirates-red">
                       {product.name}
@@ -71,20 +78,27 @@ export default function ProductsDetailModal({
                   </div>
                 </div>
 
-                <div>
-                  <h1 className="border-b-2 border-pirates-red font-imfell text-pirates-silver">
+                <div className="w-full">
+                  <h1 className="border-b-2 border-pirates-red font-imfell text-pirates-silver w-full">
                     Characteristic{"'"}s
                   </h1>
-                  <ul>
+                  <ul className="list-disc list-inside">
                     {product.characteristic?.map((char) => (
-                      <li key={char.id}>
-                        <p>{char.text}</p>
+                      <li key={char.id} className="my-1">
+                        <span>{char.text}</span>
                       </li>
                     ))}
                   </ul>
                   <h1 className="border-b-2 border-pirates-red font-imfell text-pirates-silver">
                     Additional Information
                   </h1>
+                  <ul className="list-disc list-inside">
+                    {product.aditional_info?.map((char: any) => (
+                      <li key={char.id} className="my-1">
+                        <span>{char.text}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>

@@ -7,7 +7,7 @@ import axios from "axios";
 import { logoutUser } from "./user";
 import { logout } from "../reducers/authReducer";
 
-export const fetchOrders = (token: string) => {
+export const fetchOrders = ({ token }: any) => {
   return async (dispatch: any) => {
     try {
       dispatch(fetchOrderStart());
