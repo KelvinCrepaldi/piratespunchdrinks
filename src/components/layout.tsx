@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import Navbar from "./Navbar";
-import { ILayout } from "@/interfaces/layout.interface";
+import { ILayoutProps } from "@/interfaces/layout.interface";
 import { Footer } from "./Footer";
 
 import { useAppDispatch } from "@/store/store";
 import { fetchProducts } from "@/store/actions/products";
 
-export default function Layout({ children }: ILayout) {
+export default function Layout({ children }: ILayoutProps) {
   const dispatch = useAppDispatch();
 
   useEffect(() => {

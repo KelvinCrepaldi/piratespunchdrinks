@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "@/store/store";
 import {
   fetchCategories,
+  fetchProducts,
   fetchProductsByCategory,
 } from "@/store/actions/products";
 import { ICategory } from "@/interfaces/category.interface";
@@ -23,6 +24,10 @@ export default function ShopFilter() {
     dispatch(fetchProductsByCategory(category));
   };
 
+  const handleFetchAllProducts = () => {
+    dispatch(fetchProducts());
+  };
+
   return (
     <div className=" md:bg-transparent py-5 px-5 md:px-0 md:w-64  ">
       <h1 className="text-xl m-2 p-1 border-b border-pirates-silver text-pirates-gold ">
@@ -30,6 +35,20 @@ export default function ShopFilter() {
       </h1>
 
       <ul>
+        <li
+          key={"fetch-all"}
+          className="flex mx-6 justify-between font-fredericka  cursor-pointer my-1 hover:text-pirates-gold "
+          onClick={() => handleFetchAllProducts()}
+        >
+          <span className="">All products</span>
+          <div className="flex-grow border-b border-dashed border-pirates-silver"></div>
+
+          <span>
+            {"("}
+            all
+            {")"}
+          </span>
+        </li>
         {categories.map((category: ICategory) => (
           <li
             key={category.id}

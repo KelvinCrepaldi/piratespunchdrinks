@@ -22,8 +22,8 @@ export interface IProduct {
   amount: string;
   img_url: string;
   category: IProductCategory | null;
-  characteristic?: IProductCharacteristic[];
-  additional_info?: IProductAditionalInfo[];
+  characteristic: IProductCharacteristic[];
+  aditional_info: IProductAditionalInfo[];
   qtd: number;
 }
 

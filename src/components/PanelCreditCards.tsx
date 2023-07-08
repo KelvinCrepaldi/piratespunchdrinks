@@ -11,19 +11,16 @@ const PanelCreditCards = () => {
   const dispatch = useAppDispatch();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [creditCardsList, setCreditCardsList] = useState([]);
 
   const token = useSelector((state: any) => state.auth.token);
-  const getcreditCardsList = useSelector(
+  const creditCards = useSelector(
     (state: any) => state.creditCards.creditCards
   );
 
   useEffect(() => {
-    setCreditCardsList(getcreditCardsList);
-  }, [getcreditCardsList]);
-
-  useEffect(() => {
-    dispatch(fetchCreditCards(token));
+    if (token) {
+      dispatch(fetchCreditCards(token));
+    }
   }, [dispatch, token]);
 
   const handleOpenForm = () => {
@@ -46,7 +43,7 @@ const PanelCreditCards = () => {
       </div>
       <FormCreateCreditCard isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className="">
-        {creditCardsList.map((creditCard: any) => (
+        {creditCards.map((creditCard: any) => (
           <div
             key={creditCard.id}
             className="flex flex-col m-2 p-3 bg-neutral-900 rounded"
