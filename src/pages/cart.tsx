@@ -6,6 +6,7 @@ import { ICreditCard } from "@/interfaces/creditCards.interface";
 import { IProduct } from "@/interfaces/product.interface";
 import { fetchAddresses } from "@/store/actions/addresses";
 import { fetchCreditCards } from "@/store/actions/creditCards";
+import { createOrder } from "@/store/actions/orders";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -19,10 +20,15 @@ export default function Cart() {
   const getcreditCardsList = useSelector(
     (state: any) => state.creditCards.creditCards
   );
-  const [selectedAddress, setSelectAddress] = useState<IAddress | undefined>();
+  const [selectedAddress, setSelectAddress] = useState<IAddress | false>(false);
   const [selectedCreditCard, setSelectedCreditCard] = useState<
-    ICreditCard | undefined
-  >();
+    ICreditCard | false
+  >(false);
+
+  const handleCheckout = () => {
+    console.log(selectedCreditCard);
+    dispatch(createOrder(token, cartList, getAdressList, getcreditCardsList));
+  };
 
   const handleSelectAddress = (e: IAddress) => {
     setSelectAddress(e);
@@ -36,7 +42,6 @@ export default function Cart() {
     dispatch(fetchAddresses(token));
     dispatch(fetchCreditCards(token));
   }, [dispatch, token]);
-  console.log(cartList.length);
 
   return (
     <ProtectedRoute>
@@ -90,7 +95,7 @@ export default function Cart() {
             <div className="flex flex-col w-96">
               <h3>Address:</h3>
               {getAdressList.map((address: IAddress) => (
-                <label key={address.id}>
+                <label key={address.id} className="">
                   <div
                     className={`flex  bg-pirates-black-hover p-3 mt-1 border-l ${
                       selectedAddress && selectedAddress.id === address.id
@@ -99,7 +104,7 @@ export default function Cart() {
                     }`}
                   >
                     <input
-                      className="mr-4"
+                      className="mr-4 accent-green-600 bg-black text-red-500"
                       type="checkbox"
                       checked={
                         selectedAddress && selectedAddress.id === address.id
@@ -158,7 +163,7 @@ export default function Cart() {
                   }`}
                 >
                   <input
-                    className="mr-4"
+                    className="mr-4 accent-green-600"
                     type="checkbox"
                     onChange={() => handleSelectCard(creditCard)}
                     checked={
@@ -191,7 +196,18 @@ export default function Cart() {
                 <h3>TOTAL:</h3>
                 <p> R$: XXX.XX </p>
               </div>
-              <ActionBtn>Checkout</ActionBtn>
+              <button
+                onClick={() =>
+                  handleCheckout({
+                    token,
+                    cartList,
+                    getAdressList,
+                    getcreditCardsList,
+                  })
+                }
+              >
+                Checkout
+              </button>
             </div>
           </div>
         ) : (
