@@ -1,6 +1,7 @@
+import { IInitialStateCategoriesSlice } from "@/interfaces/category.interface";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+const initialState: IInitialStateCategoriesSlice = {
   loading: false,
   error: null,
   categories: [],

@@ -2,23 +2,22 @@ import { useEffect, useState } from "react";
 import FormCreateAddress from "./FormCreateAddress";
 import { useSelector } from "react-redux";
 import { deleteAddress, fetchAddresses } from "@/store/actions/addresses";
-import { useAppDispatch } from "@/store/store";
+import { RootState, useAppDispatch } from "@/store/store";
 
 const PanelAddresses = () => {
   const dispatch = useAppDispatch();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [addressList, setAddressList] = useState([]);
 
-  const token = useSelector((state: any) => state.auth.token);
-  const getAdressList = useSelector((state: any) => state.addresses.addresses);
-
-  useEffect(() => {
-    setAddressList(getAdressList);
-  }, [getAdressList]);
+  const token = useSelector((state: RootState) => state.auth.token);
+  const addresses = useSelector(
+    (state: RootState) => state.addresses.addresses
+  );
 
   useEffect(() => {
-    dispatch(fetchAddresses(token));
+    if (token) {
+      dispatch(fetchAddresses(token));
+    }
   }, [dispatch, token]);
 
   const handleDeleteAddress = (id: string) => {
@@ -41,7 +40,7 @@ const PanelAddresses = () => {
       </div>
       <FormCreateAddress isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className=" ">
-        {addressList.map((address: any) => (
+        {addresses.map((address: any) => (
           <div
             key={address.id}
             className="flex flex-col m-2 p-3 bg-neutral-900 rounded"

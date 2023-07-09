@@ -3,10 +3,10 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { createAddress } from "@/store/actions/addresses";
-import { useAppDispatch } from "@/store/store";
+import { RootState, useAppDispatch } from "@/store/store";
 
 const FormCreateAddress = ({ isOpen = false, setIsOpen }: any) => {
-  const { token } = useSelector((state: any) => state.auth);
+  const { token } = useSelector((state: RootState) => state.auth);
   const dispatch = useAppDispatch();
 
   const addressSchema = yup.object().shape({

@@ -1,6 +1,7 @@
+import { IInitialStateOrdersSlice } from "@/interfaces/order.interface";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+const initialState: IInitialStateOrdersSlice = {
   loading: false,
   error: false,
   orders: [],
