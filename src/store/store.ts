@@ -20,6 +20,16 @@ const rootReducer = combineReducers({
   creditCards: creditCardsReducer,
 });
 
+export interface RootState {
+  auth: ReturnType<typeof authReducer>;
+  products: ReturnType<typeof productsReducer>;
+  cart: ReturnType<typeof cartReducer>;
+  categories: ReturnType<typeof categoriesReducer>;
+  orders: ReturnType<typeof ordersReducer>;
+  addresses: ReturnType<typeof addressesReducer>;
+  creditCards: ReturnType<typeof creditCardsReducer>;
+}
+
 const store = configureStore({
   reducer: {
     auth: authReducer,

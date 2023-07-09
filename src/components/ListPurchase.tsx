@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-const PurchaseList = ({ products }: any) => {
+const ListPurchase = ({ products }: any) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleIsOpen = () => {
@@ -40,6 +40,6 @@ const PurchaseList = ({ products }: any) => {
   );
 };
 
-export default PurchaseList;
+export default ListPurchase;
 
 /*  */

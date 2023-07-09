@@ -1,6 +1,7 @@
-import { Slice, createSlice } from "@reduxjs/toolkit";
+import { IInitialStateCreditCardsSlice } from "@/interfaces/creditCards.interface";
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+const initialState: IInitialStateCreditCardsSlice = {
   loading: false,
   error: null,
   creditCards: [],

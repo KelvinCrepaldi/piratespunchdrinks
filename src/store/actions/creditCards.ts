@@ -4,6 +4,7 @@ import {
   fetchCreditCardsStart,
   fetchCreditCardsSuccess,
 } from "../reducers/creditCardsReducer";
+import { logoutUser } from "./user";
 
 export const fetchCreditCards = (token: string) => {
   return async (dispatch: any) => {
@@ -18,6 +19,7 @@ export const fetchCreditCards = (token: string) => {
 
       dispatch(fetchCreditCardsSuccess(creditCards));
     } catch (err) {
+      dispatch(logoutUser());
       dispatch(fetchCreditCardsFailure(err));
     }
   };

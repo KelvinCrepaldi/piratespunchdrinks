@@ -1,7 +1,7 @@
-import { IAuthInitialState } from "@/interfaces/initialStateSlices.interface";
+import { IInitialStateAuthSlice } from "@/interfaces/user.interface";
 import { createSlice } from "@reduxjs/toolkit";
 
-let initialState: IAuthInitialState = {
+let initialState: IInitialStateAuthSlice = {
   token: null,
   isAuthenticated: false,
   user: null,

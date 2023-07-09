@@ -2,13 +2,14 @@ import { fetchOrders } from "@/store/actions/orders";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import PurchaseList from "./PurchaseList";
-import { useAppDispatch } from "@/store/store";
+import ListPurchase from "./ListPurchase";
+import { RootState, useAppDispatch } from "@/store/store";
+import { IOrder } from "@/interfaces/order.interface";
 
 export default function PanelCartHistory() {
   const dispatch = useAppDispatch();
-  const { token } = useSelector((state: any) => state.auth);
-  const { orders } = useSelector((state: any) => state.orders.orders);
+  const token = useSelector((state: RootState) => state.auth);
+  const orders = useSelector((state: RootState) => state.orders.orders);
 
   useEffect(() => {
     if (token) {
@@ -21,14 +22,14 @@ export default function PanelCartHistory() {
         <h1 className="border-b font-inter ">Purchases</h1>
         <div className=" bg-slate-500"></div>
 
-        {orders?.map((order: any) => (
+        {orders.map((order: IOrder) => (
           <div
             key={order.id}
             className="flex flex-col m-1 p-4 bg-neutral-900 rounded"
           >
             <div className="flex flex-col  pb-3">
               <div className="flex justify-between mb-3 border-b border-pirates-red">
-                <span>Date: {order?.created_at}</span>
+                <span>Date: {order.created_at.toString()}</span>
                 <span>id: {order?.id}</span>
               </div>
 
@@ -45,7 +46,7 @@ export default function PanelCartHistory() {
               <span>Total: {order?.total}</span>
             </div>
 
-            <PurchaseList key={order.id} products={order.orderProducts} />
+            <ListPurchase key={order.id} products={order.orderProducts} />
           </div>
         ))}
       </div>

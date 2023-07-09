@@ -8,7 +8,7 @@ import PanelUser from "@/components/PanelUser";
 import PanelAddresses from "@/components/PanelAddresses";
 import PanelCreditCards from "@/components/PanelCreditCards";
 import PanelCartHistory from "@/components/PanelCartHistory";
-import { IUserPages } from "@/interfaces/userPage";
+import { IUserPages } from "@/interfaces/userPage.interface";
 
 export default function User(): ReactNode {
   const [page, setPage] = useState<string>("user");

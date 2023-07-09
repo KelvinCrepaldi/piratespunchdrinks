@@ -4,7 +4,7 @@ import { IProductCard } from "@/interfaces/product.interface";
 import ProductsDetailModal from "./ProductsDetailModal";
 
 export default function ProductCard({ product, type }: IProductCard) {
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   const handleOpenModal = () => {
     setOpenModal(!openModal);
@@ -20,10 +20,11 @@ export default function ProductCard({ product, type }: IProductCard) {
           <Image
             src={product.img_url}
             alt="drink"
-            width={type === "small" ? 100 : 200}
-            height={0}
+            width={200}
+            height={200}
             className="rounded m-auto"
           ></Image>
+
           <div className="flex flex-col  text-center  w-full">
             <div className="flex flex-col">
               <h1 className="text-base w-full">{product.name.toUpperCase()}</h1>

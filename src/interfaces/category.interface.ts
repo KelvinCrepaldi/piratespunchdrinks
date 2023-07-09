@@ -3,3 +3,9 @@ export interface ICategory {
   name: string;
   productCount: number;
 }
+
+export interface IInitialStateCategoriesSlice {
+  loading: boolean;
+  error: null | Error;
+  categories: ICategory[];
+}

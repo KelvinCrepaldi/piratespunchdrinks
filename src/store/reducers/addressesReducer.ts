@@ -1,7 +1,7 @@
-import { IAddressesInitialState } from "@/interfaces/initialStateSlices.interface";
+import { IInitialStateAddressesSlice } from "@/interfaces/address.interface";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: IAddressesInitialState = {
+const initialState: IInitialStateAddressesSlice = {
   loading: false,
   error: false,
   addresses: [],
