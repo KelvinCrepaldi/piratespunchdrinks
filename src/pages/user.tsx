@@ -42,7 +42,7 @@ export default function User(): ReactNode {
   return (
     <>
       <ProtectedRoute>
-        <main className="flex max-w-5xl m-auto min-h-screen ">
+        <main className="flex max-w-5xl m-auto min-h-screen font-inter">
           <div className="flex flex-col items-end  border-r color p-2 min-w-max">
             <button
               className="m-1 text-xl md:text-xl font-inter whitespace-no-wrap"

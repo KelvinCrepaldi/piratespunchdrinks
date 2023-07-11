@@ -33,8 +33,8 @@ const PanelCreditCards = () => {
 
   return (
     <div>
-      <div className="border-b font-inter flex justify-between">
-        <h1>Credit Cards</h1>
+      <div className="border-b-2 font-inter border-pirates-red  flex justify-between">
+        <h1 className="font-inter">Credit Cards</h1>
         {!isOpen && (
           <button className="text-green-200" onClick={handleOpenForm}>
             + Add new credit card

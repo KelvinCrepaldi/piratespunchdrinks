@@ -26,12 +26,17 @@ export default function Shop() {
   };
 
   return (
-    <div className="w-100 p-5 ">
-      <div className="flex-col items-center text-center w-full">
-        <h1>Shop</h1>
+    <div className="w-100  ">
+      <div className="flex flex-col text-center items-center">
+        <h1 className="px-4 text-5xl border-b-2 border-pirates-red">
+          Drinks for You!
+        </h1>
+        <p className="text-pirates-red">
+          Sail the high seas for delightful drinks!
+        </p>
       </div>
       <div className="flex flex-col items-center">
-        <div className="flex w-full md:max-w-xs px-5 py-2">
+        <div className="flex w-full md:max-w-xs  py-2">
           <button className="text-3xl mr-2 lg:hidden" onClick={handleShowMenu}>
             <FontAwesomeIcon icon={faSliders}></FontAwesomeIcon>
           </button>
@@ -46,7 +51,7 @@ export default function Shop() {
           <SidebarFilter />
         </section>
 
-        <main className="flex flex-wrap content-start justify-center px-5  w-full">
+        <main className="flex flex-wrap content-start justify-center w-full bg-neutral-950 p-2 m-3 rounded-2xl">
           {products?.map((product: any) => (
             <ProductCard key={product.id} product={product} type="big" />
           ))}

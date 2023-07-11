@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
+import formatReal from "@/utils/formatReal";
 
 const ListPurchase = ({ products }: any) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,6 +8,8 @@ const ListPurchase = ({ products }: any) => {
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
   };
+
+  console.log(products);
 
   return (
     <div className="">
@@ -27,14 +30,14 @@ const ListPurchase = ({ products }: any) => {
                 width={90}
                 height={100}
               ></Image>
-              <div className="flex flex-col ml-3">
-                <span className="text-pirates-gold border-b border-pirates-black">
+              <div className="flex flex-col ml-3 w-full">
+                <span className="text-pirates-gold border-b border-pirates-black ">
                   {item.product.name}
                 </span>
                 <span className="text-pirates-gold">
                   Price by unity:{" "}
                   <span className="text-pirates-silver">
-                    {item.product.price}
+                    {formatReal(parseFloat(item.product.price))}
                   </span>
                 </span>
                 <span className="text-pirates-gold">
@@ -43,7 +46,9 @@ const ListPurchase = ({ products }: any) => {
                 </span>
                 <span className="text-pirates-gold">
                   Total:{" "}
-                  <span className="text-pirates-silver">{totalValue}</span>
+                  <span className="text-pirates-silver">
+                    {formatReal(totalValue)}
+                  </span>
                 </span>
               </div>
             </div>

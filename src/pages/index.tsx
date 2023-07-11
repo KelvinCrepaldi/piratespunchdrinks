@@ -2,12 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import piratespunch from "/public/images/piratepunch.png";
 import HighlightsProducts from "@/components/HighlightsProducts";
-import ActionBtn from "@/components/ActionBtn";
 
 export default function Home() {
   return (
     <main className="w-100 md:max-w-5xl m-auto p-5 md:p-16">
-      <div className="flex flex-col-reverse md:flex-row md:items-start items-center justify-center ">
+      <div className="flex flex-col-reverse md:flex-row md:items-start items-center justify-center my-10">
         <div className=" text-center">
           <h1 className="inline-block border-b-2 px-5 border-pirates-red text-6xl font-fredericka">
             Pirate{"'"}s Punch
@@ -15,14 +14,19 @@ export default function Home() {
           <h2 className="mb-4 text-3xl">
             Se prepare para o {"'"}soco{"'"} mais intenso dos sete mares!
           </h2>
-          <p className="text-xl md:px-3 inline-block font-fredericka">
+          <p className="text-xl md:px-3 font-fredericka">
             No Pirate{"'"}s Punch, nossas bebidas vão te deixar {"'"}atordoado
             de sabor{"'"}, navegando por uma tempestade de sabores piratas
             irresistíveis.
           </p>
-          <Link href={"/shop"}>
-            <ActionBtn>Compre aqui!</ActionBtn>
-          </Link>
+          <div className=" m-5 ">
+            <Link
+              className="bg-pirates-gold text-pirates-black font-pirata text-3xl p-2 rounded cursor-pointer hover:bg-yellow-600"
+              href={"/shop"}
+            >
+              Compre agora!
+            </Link>
+          </div>
         </div>
 
         <Image
@@ -34,19 +38,23 @@ export default function Home() {
       </div>
 
       <HighlightsProducts title="Em promoção..." />
-
-      <div>
+      <div className="m-6 text-center p-10 rounded-lg bg-neutral-950">
+        <h1>AHOY, MARUJO!</h1>
+        <h2>Beba como um Corsário no Pirate{"'"}s Punch!</h2>
         <p>
-          AHOY, MARUJO! Descobrimos o tesouro da diversão na Pirate{"'"}s Punch!
-          De 20h às 22h, aproveite 20% de desconto em todas as cervejas! Venha
-          curtir a festa com os melhores sabores piratas!
+          Descobrimos o tesouro da diversão na Pirate{"'"}s Punch! De 20h às
+          22h, aproveite 20% de desconto em todas as cervejas! Venha curtir a
+          festa com os melhores sabores piratas!
         </p>
+      </div>
+      <div>
+        <p></p>
       </div>
 
       <HighlightsProducts title="Mais pedidas..." />
       <HighlightsProducts />
-      <div className="m-6 text-center border p-10 rounded-lg">
-        <h1>Evento Pirata</h1>
+      <div className="m-6 text-center p-10 rounded-lg bg-neutral-950">
+        <h1>Evento Pirate{"'"}s Punch!</h1>
         <h2>Beba como um Corsário no Pirate{"'"}s Punch!</h2>
         <p>
           Desconto exclusivo para piratas! Aventure-se no Bar do Capitão e ganhe
