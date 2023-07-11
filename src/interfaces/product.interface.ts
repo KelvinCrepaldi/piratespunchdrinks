@@ -16,7 +16,7 @@ export interface IProductAditionalInfo {
 export interface IProduct {
   id: string;
   name: string;
-  price: string;
+  price: number;
   apresentation: string;
   active: boolean;
   amount: string;

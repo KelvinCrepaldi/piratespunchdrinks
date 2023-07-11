@@ -16,6 +16,20 @@ export default function PanelCartHistory() {
       dispatch(fetchOrders(token));
     }
   }, [token, dispatch]);
+
+  const showPaymetType = (status: string) => {
+    if (status === "PENDING") {
+      return "text-yellow-700";
+    }
+    if (status === "AUTHORIZED") {
+      return "text-green-400";
+    }
+    if (status === "CANCELLED") {
+      return "text-red-400";
+    }
+  };
+
+  console.log(orders);
   return (
     <>
       <div>
@@ -29,18 +43,24 @@ export default function PanelCartHistory() {
           >
             <div className="flex flex-col  pb-3">
               <div className="flex justify-between mb-3 border-b border-pirates-red">
-                <span>Date: {order.created_at.toString()}</span>
+                <span>Date: {order.createdAt.toString()}</span>
                 <span>id: {order?.id}</span>
               </div>
 
               <span>
-                Payment:{" "}
-                <span
-                  className={`${
-                    order?.payment_status ? "text-green-400" : "text-red-400"
-                  }`}
-                >
-                  {order?.payment_status ? "Approved" : "Denied"}{" "}
+                Payment status:{" "}
+                <span className={showPaymetType(order.paymentStatus)}>
+                  {order.paymentStatus}
+                </span>
+              </span>
+              <span>
+                Credit Card: <span>{order.creditCard?.number}</span>
+              </span>
+              <span>
+                Address:
+                <span>
+                  {order.address.address}, {order.address.number}, cep:
+                  {order.address.cep}
                 </span>
               </span>
               <span>Total: {order?.total}</span>
