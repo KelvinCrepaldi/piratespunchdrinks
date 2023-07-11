@@ -20,7 +20,7 @@ export default function Layout({ children }: ILayoutProps) {
   return (
     <>
       <Navbar />
-      {children}
+      <div className="min-h-[80vh]">{children}</div>
       <Footer />
     </>
   );

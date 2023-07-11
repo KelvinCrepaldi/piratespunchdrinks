@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
-import ShopFilter from "@/components/ShopFilter";
+import { useState } from "react";
+import SidebarFilter from "@/components/SidebarFilter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSliders } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "@/store/actions/products";
+
 import ProductCard from "@/components/ProductCard";
 import type {} from "redux-thunk/extend-redux";
-import ProductsDetailModal from "@/components/ProductsDetailModal";
 
 export default function Shop() {
   const [showMenu, setShowMenu] = useState(false);
@@ -44,8 +43,9 @@ export default function Shop() {
             showMenu === false ? "-left-full" : "left-0"
           } lg:relative lg:left-0 transition-all`}
         >
-          <ShopFilter />
+          <SidebarFilter />
         </section>
+
         <main className="flex flex-wrap content-start justify-center px-5  w-full">
           {products?.map((product: any) => (
             <ProductCard key={product.id} product={product} type="big" />

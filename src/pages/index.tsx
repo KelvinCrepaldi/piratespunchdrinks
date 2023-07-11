@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import piratespunch from "/public/images/piratepunch.png";
-import DisplayProducts from "@/components/Display";
+import HighlightsProducts from "@/components/HighlightsProducts";
 import ActionBtn from "@/components/ActionBtn";
 
 export default function Home() {
@@ -24,6 +24,7 @@ export default function Home() {
             <ActionBtn>Compre aqui!</ActionBtn>
           </Link>
         </div>
+
         <Image
           src={piratespunch}
           width={300}
@@ -31,7 +32,9 @@ export default function Home() {
           className="inline-block"
         />
       </div>
-      <DisplayProducts title="Em promoção..." />
+
+      <HighlightsProducts title="Em promoção..." />
+
       <div>
         <p>
           AHOY, MARUJO! Descobrimos o tesouro da diversão na Pirate{"'"}s Punch!
@@ -39,8 +42,20 @@ export default function Home() {
           curtir a festa com os melhores sabores piratas!
         </p>
       </div>
-      <DisplayProducts title="Mais pedidas..." />
-      <DisplayProducts title="Melhores avaliados..." />
+
+      <HighlightsProducts title="Mais pedidas..." />
+      <HighlightsProducts />
+      <div className="m-6 text-center border p-10 rounded-lg">
+        <h1>Evento Pirata</h1>
+        <h2>Beba como um Corsário no Pirate{"'"}s Punch!</h2>
+        <p>
+          Desconto exclusivo para piratas! Aventure-se no Bar do Capitão e ganhe
+          desconto nas bebidas ao comparecer vestido de pirata. Não perca essa
+          chance! Aproveite agora!
+        </p>
+      </div>
+      <HighlightsProducts title="Melhores avaliados..." />
+      <HighlightsProducts />
     </main>
   );
 }
