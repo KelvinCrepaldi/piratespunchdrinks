@@ -1,4 +1,4 @@
-export default function DisplayProducts({ products, title }: any) {
+export default function HighlightsProducts({ products, title }: any) {
   return (
     <div className="flex flex-col">
       <h2 className="text-center">{title}</h2>

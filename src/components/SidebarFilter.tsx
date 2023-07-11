@@ -10,7 +10,7 @@ import { ICategory } from "@/interfaces/category.interface";
 import ProductCard from "./ProductCard";
 import type {} from "redux-thunk/extend-redux";
 
-export default function ShopFilter() {
+export default function SidebarFilter() {
   const dispatch = useAppDispatch();
   const categories = useSelector((state: any) => state.categories.categories);
   const products = useSelector((state: any) => state.products.products);

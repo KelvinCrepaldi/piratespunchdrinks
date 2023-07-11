@@ -28,12 +28,7 @@ export const fetchOrders = ({ token }: any) => {
   };
 };
 
-export const createOrder = (
-  token: any,
-  products: any,
-  address: any,
-  creditCard: any
-) => {
+export const createOrder = ({ token, products, address, creditCard }: any) => {
   return async (dispatch: Dispatch) => {
     const productsListData = products?.map((product: IProduct) => {
       return { productId: product.id, quantity: product.qtd };
@@ -41,8 +36,8 @@ export const createOrder = (
 
     const bodyRequest = {
       products: productsListData,
-      addressId: address,
-      creditCardId: creditCard,
+      addressId: address.id,
+      creditCardId: creditCard.id,
     };
 
     try {
@@ -53,8 +48,6 @@ export const createOrder = (
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-
-      console.log(response);
 
       fetchOrders(token);
     } catch (err) {
