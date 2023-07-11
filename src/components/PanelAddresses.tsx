@@ -30,8 +30,8 @@ const PanelAddresses = () => {
 
   return (
     <div>
-      <div className="border-b font-inter flex justify-between">
-        <h1>Addresses</h1>
+      <div className="border-b-2  border-pirates-red  flex justify-between">
+        <h1 className="font-inter">Addresses</h1>
         {!isOpen && (
           <button className="text-green-200" onClick={handleOpenForm}>
             + Add new address

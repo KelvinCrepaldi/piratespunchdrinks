@@ -18,7 +18,7 @@ export default function PanelUser() {
   return (
     <div className="font-inter ">
       <div className="">
-        <h1 className="border-b font-inter">User</h1>
+        <h1 className="border-b-2 font-inter border-pirates-red">User</h1>
         <ul className="flex flex-col m-2 p-3 bg-neutral-900 rounded">
           <li className="flex justify-between">
             <span>

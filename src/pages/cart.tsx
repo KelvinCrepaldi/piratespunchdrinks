@@ -56,7 +56,7 @@ export default function Cart() {
         </div>
 
         {cartList.length > 0 ? (
-          <div className="flex">
+          <div className="flex ">
             <div className="w-full ">
               {cartList.map((product: IProduct) => (
                 <div

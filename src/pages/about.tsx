@@ -7,7 +7,7 @@ export default function About() {
         <div className=" flex flex-col justify-center items-center  m-auto">
           <div className=" text-center">
             <h1 className="inline-block border-b-2 px-5 border-pirates-red text-6xl font-fredericka">
-              About
+              About Us
             </h1>
             <h2 className="mb-4 text-3xl">Pirate{"'"}s Punch</h2>
           </div>
