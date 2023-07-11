@@ -26,8 +26,13 @@ export default function Cart() {
   >(false);
 
   const handleCheckout = () => {
-    console.log(selectedCreditCard);
-    dispatch(createOrder(token, cartList, getAdressList, getcreditCardsList));
+    const data = {
+      token,
+      products: cartList,
+      address: selectedAddress,
+      creditCard: selectedCreditCard,
+    };
+    dispatch(createOrder(data));
   };
 
   const handleSelectAddress = (e: IAddress) => {
@@ -45,7 +50,7 @@ export default function Cart() {
 
   return (
     <ProtectedRoute>
-      <div className="flex flex-col max-w-5xl m-auto min-h-screen ">
+      <main className="flex flex-col max-w-5xl m-auto min-h-screen ">
         <div className="border-b border-pirates-red w-full">
           <h1 className="font-fredericka">Cart</h1>
         </div>
@@ -94,6 +99,7 @@ export default function Cart() {
             </div>
             <div className="flex flex-col w-96">
               <h3>Address:</h3>
+              <Link href={"/user?option=addresses"}>Go to your Addresses</Link>
               {getAdressList.map((address: IAddress) => (
                 <label key={address.id} className="">
                   <div
@@ -152,6 +158,9 @@ export default function Cart() {
                 </label>
               ))}
               <h3>Payment method:</h3>
+              <Link href={"/user?option=creditcards"}>
+                Go to your credit cards
+              </Link>
               {getcreditCardsList.map((creditCard: ICreditCard) => (
                 <label
                   key={creditCard.id}
@@ -196,18 +205,8 @@ export default function Cart() {
                 <h3>TOTAL:</h3>
                 <p> R$: XXX.XX </p>
               </div>
-              <button
-                onClick={() =>
-                  handleCheckout({
-                    token,
-                    cartList,
-                    getAdressList,
-                    getcreditCardsList,
-                  })
-                }
-              >
-                Checkout
-              </button>
+              <button onClick={handleCheckout}>Checkout</button>
+              <Link href={"/user?option=orders"}>Go to Purchases History</Link>
             </div>
           </div>
         ) : (
@@ -218,7 +217,7 @@ export default function Cart() {
             </Link>
           </div>
         )}
-      </div>
+      </main>
     </ProtectedRoute>
   );
 }
