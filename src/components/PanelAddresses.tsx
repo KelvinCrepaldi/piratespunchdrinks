@@ -65,7 +65,7 @@ const PanelAddresses = () => {
                 {address.complement}
               </span>
             </div>
-            <div className="flex space-x-5">
+            <div className="flex flex-wrap space-x-5">
               <span>
                 <span className="text-pirates-gold">Country: </span>
                 {address.country}

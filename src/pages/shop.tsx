@@ -27,7 +27,7 @@ export default function Shop() {
 
   return (
     <div className="w-100  ">
-      <div className="flex flex-col text-center items-center">
+      <div className="flex flex-col text-center items-center my-10">
         <h1 className="px-4 text-5xl border-b-2 border-pirates-red">
           Drinks for You!
         </h1>
@@ -36,15 +36,18 @@ export default function Shop() {
         </p>
       </div>
       <div className="flex flex-col items-center">
-        <div className="flex w-full md:max-w-xs  py-2">
-          <button className="text-3xl mr-2 lg:hidden" onClick={handleShowMenu}>
+        <div className="flex w-full   py-2">
+          <button
+            className="text-3xl mr-2 lg:hidden ml-4"
+            onClick={handleShowMenu}
+          >
             <FontAwesomeIcon icon={faSliders}></FontAwesomeIcon>
           </button>
         </div>
       </div>
       <div className="flex">
         <section
-          className={`absolute bg-pirates-black ${
+          className={`absolute  ${
             showMenu === false ? "-left-full" : "left-0"
           } lg:relative lg:left-0 transition-all`}
         >

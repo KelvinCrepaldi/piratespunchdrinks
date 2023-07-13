@@ -3,7 +3,11 @@ import { useState } from "react";
 import { IProductCard } from "@/interfaces/product.interface";
 import ProductsDetailModal from "./ProductsDetailModal";
 
-export default function ProductCard({ product, type }: IProductCard) {
+export default function ProductCard({
+  product,
+  type,
+  ...props
+}: IProductCard): JSX.Element {
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   const handleOpenModal = () => {

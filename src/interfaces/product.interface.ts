@@ -27,7 +27,8 @@ export interface IProduct {
   qtd: number;
 }
 
-export interface IProductCard {
+export interface IProductCard extends React.HTMLProps<HTMLDivElement> {
+  key: any;
   product: IProduct;
-  type: "big" | "small";
+  type?: string;
 }

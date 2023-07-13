@@ -2,8 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import piratespunch from "/public/images/piratepunch.png";
 import HighlightsProducts from "@/components/HighlightsProducts";
+import { useSelector } from "react-redux";
+import ProductCard from "@/components/ProductCard";
+import { IProduct } from "@/interfaces/product.interface";
 
-export default function Home() {
+export default function Home(): JSX.Element {
+  const products = useSelector((state: any) => state.products.products);
+
   return (
     <main className="w-100 md:max-w-5xl m-auto p-5 md:p-16">
       <div className="flex flex-col-reverse md:flex-row md:items-start items-center justify-center my-10">
@@ -38,7 +43,7 @@ export default function Home() {
       </div>
 
       <HighlightsProducts title="Em promoção..." />
-      <div className="m-6 text-center p-10 rounded-lg bg-neutral-950">
+      <div className="m-6 text-center p-10 rounded-lg bg-pirates-black-transparent">
         <h1>AHOY, MARUJO!</h1>
         <h2>Beba como um Corsário no Pirate{"'"}s Punch!</h2>
         <p>
@@ -53,7 +58,7 @@ export default function Home() {
 
       <HighlightsProducts title="Mais pedidas..." />
       <HighlightsProducts />
-      <div className="m-6 text-center p-10 rounded-lg bg-neutral-950">
+      <div className="m-6 text-center p-10 rounded-lg bg-pirates-black-transparent">
         <h1>Evento Pirate{"'"}s Punch!</h1>
         <h2>Beba como um Corsário no Pirate{"'"}s Punch!</h2>
         <p>
@@ -64,6 +69,11 @@ export default function Home() {
       </div>
       <HighlightsProducts title="Melhores avaliados..." />
       <HighlightsProducts />
+      <div className="flex flex-wrap">
+        {products.map((product: IProduct) => (
+          <ProductCard key={product.id} product={product}></ProductCard>
+        ))}
+      </div>
     </main>
   );
 }
