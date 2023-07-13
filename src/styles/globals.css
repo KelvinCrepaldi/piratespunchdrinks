@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --pirates-red: #8f1f1f;
-  --pirates-gold: #d8a932;
+  --pirates-red: #c51c1c;
+  --pirates-gold: #ffb700;
   --pirates-silver: #b2b2b2;
   --pirates-black: #111111;
   --pirates-white: #ffffff;
@@ -44,9 +44,15 @@
   background: transparent;
 }
 body {
-  background-color: #111111;
+  background-image: url("/images/background.png");
+  background-size: cover;
+  background-attachment: fixed;
+  backdrop-filter: blur(2px) brightness(20%) contrast(105%) saturate(140%);
   color: rgb(211, 211, 211);
+
+  overflow-x: hidden;
 }
+
 div {
   border-color: var(--pirates-red);
 }

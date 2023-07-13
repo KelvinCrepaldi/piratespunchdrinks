@@ -7,11 +7,12 @@ import {
   faMagnifyingGlass,
   faUser,
   faCartShopping,
+  faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { logout } from "@/store/reducers/authReducer";
-import { useAppDispatch } from "@/store/store";
+import { RootState, useAppDispatch } from "@/store/store";
 
 import SidebarCart from "./SidebarCart";
 import { useRouter } from "next/router";
@@ -22,7 +23,9 @@ export default function Navbar() {
   const router = useRouter();
 
   const [filter, setFilter] = useState("");
-  const { isAuthenticated } = useSelector((state: any) => state.auth);
+  const { isAuthenticated, user } = useSelector(
+    (state: RootState) => state.auth
+  );
   const [showNavbar, setShowNavbar] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
@@ -110,39 +113,63 @@ export default function Navbar() {
                   }`}
                 ></FontAwesomeIcon>
               </Link>
+
               {isAuth && (
                 <button
                   className="mx-1 cursor-pointer text-white hover:text-red-400"
                   onClick={handleLogOut}
                 >
-                  logout
+                  <FontAwesomeIcon
+                    className="text-3xl mx-3"
+                    icon={faRightFromBracket}
+                  ></FontAwesomeIcon>
                 </button>
               )}
             </div>
           </div>
         </div>
+
         <ul
-          className={`flex flex-col md:flex-row m-2 space-x-3 justify-end mr-10 text-2xl fixed md:relative  ${
+          className={`flex flex-col transition-all rounded-xl border border-black md:border-transparent bg-neutral-950 md:bg-transparent md:flex-row p-10 md:p-0 justify-center md:justify-end text-2xl fixed md:relative  ${
             showNavbar ? "right-0" : "-right-80"
           } md:right-auto text-center`}
+          onClick={handleShowNavbar}
         >
+          <div className="flex justify-center  border-b pb-5  md:hidden ">
+            {isAuth ? (
+              <div>
+                <li className="text-green-400 mb-5">
+                  <span>{user?.name.toUpperCase()}</span>
+                </li>
+                <li className="font-imfell px-3">
+                  <Link href={"/user"}>User page</Link>
+                </li>
+                <li className="font-imfell px-3">
+                  <button onClick={handleLogOut}> Logout</button>
+                </li>
+              </div>
+            ) : (
+              <Link href={"/login"}>Login</Link>
+            )}
+            <div></div>
+          </div>
           <li>
-            <Link href="/" className="font-imfell">
+            <Link href="/" className="font-imfell px-3">
               Home
             </Link>
           </li>
           <li>
-            <Link href="/shop" className="font-imfell">
+            <Link href="/shop" className="font-imfell px-3">
               Shop
             </Link>
           </li>
           <li>
-            <Link href="/about" className="font-imfell">
+            <Link href="/about" className="font-imfell px-3">
               About
             </Link>
           </li>
           <li>
-            <Link href="/contact" className="font-imfell">
+            <Link href="/contact" className="font-imfell px-3">
               Contact
             </Link>
           </li>

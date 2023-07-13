@@ -9,12 +9,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "pirates-red": "#6D0000",
-        "pirates-gold": "#D8A932",
-        "pirates-silver": "#b2b2b2",
+        "pirates-red": "#c51c1c",
+        "pirates-gold": "#ffb700",
+        "pirates-silver": "#fffff",
         "pirates-black": "#111111",
         "pirates-white": "#FFFFFF",
         "pirates-black-hover": "#070707",
+        "pirates-black-transparent": "rgb(0,0,0,0.7)",
       },
       fontFamily: {
         fredericka: ["Fredericka the Great", "sans-serif"],

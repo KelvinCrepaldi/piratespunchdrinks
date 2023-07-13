@@ -29,7 +29,7 @@ export default function SidebarFilter() {
   };
 
   return (
-    <div className="  py-5 px-5 md:px-0 md:w-64 bg-neutral-950 p-2 m-3 rounded-2xl ">
+    <div className="  py-5 px-5 md:px-0 md:w-64 border border-black lg:border-transparent bg-neutral-950 p-2 m-3 rounded-2xl ">
       <h1 className="text-xl m-2 p-1 border-b border-pirates-silver text-pirates-gold ">
         Product Categories
       </h1>
