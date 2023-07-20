@@ -9,6 +9,7 @@ import categoriesReducer from "./reducers/categoriesReducer";
 import ordersReducer from "./reducers/ordersReducer";
 import addressesReducer from "./reducers/addressesReducer";
 import creditCardsReducer from "./reducers/creditCardsReducer";
+import highlightsReducer from "./reducers/highlightsReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   orders: ordersReducer,
   addresses: addressesReducer,
   creditCards: creditCardsReducer,
+  highlights: highlightsReducer,
 });
 
 export interface RootState {
@@ -28,6 +30,7 @@ export interface RootState {
   orders: ReturnType<typeof ordersReducer>;
   addresses: ReturnType<typeof addressesReducer>;
   creditCards: ReturnType<typeof creditCardsReducer>;
+  highlights: ReturnType<typeof highlightsReducer>;
 }
 
 const store = configureStore({
@@ -39,6 +42,7 @@ const store = configureStore({
     orders: ordersReducer,
     addresses: addressesReducer,
     creditCards: creditCardsReducer,
+    highlights: highlightsReducer,
   },
   middleware: [thunk],
 });

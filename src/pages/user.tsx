@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ReactNode, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -9,12 +9,14 @@ import PanelAddresses from "@/components/PanelAddresses";
 import PanelCreditCards from "@/components/PanelCreditCards";
 import PanelCartHistory from "@/components/PanelCartHistory";
 import { IUserPages } from "@/interfaces/userPage.interface";
+import { deleteAccount } from "@/store/actions/user";
 
 export default function User(): ReactNode {
   const router = useRouter();
   const [page, setPage] = useState<string>("user");
   const { isAuthenticated } = useSelector((state: any) => state.auth);
   const [isAuth, setIsAuth] = useState<boolean>(false);
+  const dispatch = useDispatch();
 
   const pages: IUserPages = {
     user: <PanelUser />,
@@ -37,6 +39,10 @@ export default function User(): ReactNode {
 
   const handleOptionPage = (pageName: string): void => {
     setPage(pageName);
+  };
+
+  const handleDeleteAccount = () => {
+    dispatch(deleteAccount());
   };
 
   return (
@@ -68,6 +74,13 @@ export default function User(): ReactNode {
               onClick={() => handleOptionPage("orders")}
             >
               Purchases
+            </button>
+
+            <button
+              className="m-1 text-xl md:text-xl  font-inter whitespace-no-wrap border-t"
+              onClick={handleDeleteAccount}
+            >
+              Delete Account
             </button>
           </div>
 

@@ -2,12 +2,27 @@ import Image from "next/image";
 import Link from "next/link";
 import piratespunch from "/public/images/piratepunch.png";
 import HighlightsProducts from "@/components/HighlightsProducts";
+import CardHighlightProduct from "@/components/CardHighlightProduct";
 import { useSelector } from "react-redux";
 import ProductCard from "@/components/ProductCard";
 import { IProduct } from "@/interfaces/product.interface";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { fetchProducts } from "@/store/actions/products";
+import { RootState } from "@/store/store";
+import { fetchHighlights } from "@/store/actions/highlights";
+import { IPromotion } from "@/interfaces/highlights.interface";
 
 export default function Home(): JSX.Element {
-  const products = useSelector((state: any) => state.products.products);
+  const dispatch = useDispatch();
+  const promotions: IPromotion[] = useSelector(
+    (state: RootState) => state.highlights.promotion
+  );
+  console.log(promotions);
+
+  useEffect(() => {
+    dispatch(fetchHighlights());
+  }, [dispatch]);
 
   return (
     <main className="w-100 md:max-w-5xl m-auto p-5 md:p-16">
@@ -41,8 +56,18 @@ export default function Home(): JSX.Element {
           className="inline-block"
         />
       </div>
+      <h1 className="border-b-2 border-pirates-red mb-4 font-imfell text-center text-pirates-red">
+        Novos produtos...<div>{promotions[0].finalDate.toString()}</div>
+      </h1>
+      <div className="flex flex-wrap justify-between">
+        {promotions[0].products.slice(0, 8).map((product: IProduct) => (
+          <CardHighlightProduct
+            key={product.id}
+            product={product}
+          ></CardHighlightProduct>
+        ))}
+      </div>
 
-      <HighlightsProducts title="Em promoção..." />
       <div className="m-6 text-center p-10 rounded-lg bg-pirates-black-transparent">
         <h1>AHOY, MARUJO!</h1>
         <h2>Beba como um Corsário no Pirate{"'"}s Punch!</h2>
@@ -52,12 +77,6 @@ export default function Home(): JSX.Element {
           festa com os melhores sabores piratas!
         </p>
       </div>
-      <div>
-        <p></p>
-      </div>
-
-      <HighlightsProducts title="Mais pedidas..." />
-      <HighlightsProducts />
       <div className="m-6 text-center p-10 rounded-lg bg-pirates-black-transparent">
         <h1>Evento Pirate{"'"}s Punch!</h1>
         <h2>Beba como um Corsário no Pirate{"'"}s Punch!</h2>
@@ -66,13 +85,6 @@ export default function Home(): JSX.Element {
           desconto nas bebidas ao comparecer vestido de pirata. Não perca essa
           chance! Aproveite agora!
         </p>
-      </div>
-      <HighlightsProducts title="Melhores avaliados..." />
-      <HighlightsProducts />
-      <div className="flex flex-wrap">
-        {products.map((product: IProduct) => (
-          <ProductCard key={product.id} product={product}></ProductCard>
-        ))}
       </div>
     </main>
   );

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import ProductCard from "@/components/ProductCard";
 import type {} from "redux-thunk/extend-redux";
+import CardHighlightProduct from "@/components/CardHighlightProduct";
 
 export default function Shop() {
   const [showMenu, setShowMenu] = useState(false);
@@ -54,9 +55,9 @@ export default function Shop() {
           <SidebarFilter />
         </section>
 
-        <main className="flex flex-wrap content-start justify-center w-full bg-neutral-950 p-2 m-3 rounded-2xl">
+        <main className="flex flex-wrap justify-center">
           {products?.map((product: any) => (
-            <ProductCard key={product.id} product={product} type="big" />
+            <CardHighlightProduct key={product.id} product={product} />
           ))}
         </main>
       </div>

@@ -1,14 +1,18 @@
 import { IProductDetailModalProps } from "@/interfaces/ProductDetailModal.interface";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import Image from "next/image";
 import QuantityControlButton from "./QuantityControlButton";
 import ActionBtn from "./ActionBtn";
 import Link from "next/link";
+import { IProduct } from "@/interfaces/product.interface";
 
 export default function ProductsDetailModal({
   product,
   children,
-}: IProductDetailModalProps) {
+}: {
+  product: IProduct;
+  children: ReactNode;
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleIsOpen = () => {
