@@ -18,7 +18,6 @@ export default function Home(): JSX.Element {
   const promotions: IPromotion[] = useSelector(
     (state: RootState) => state.highlights.promotion
   );
-  console.log(promotions);
 
   useEffect(() => {
     dispatch(fetchHighlights());
@@ -57,10 +56,10 @@ export default function Home(): JSX.Element {
         />
       </div>
       <h1 className="border-b-2 border-pirates-red mb-4 font-imfell text-center text-pirates-red">
-        Novos produtos...<div>{promotions[0].finalDate.toString()}</div>
+        Novos produtos...<div>{promotions[0]?.finalDate.toString()}</div>
       </h1>
       <div className="flex flex-wrap justify-between">
-        {promotions[0].products.slice(0, 8).map((product: IProduct) => (
+        {promotions[0]?.products.slice(0, 8).map((product: IProduct) => (
           <CardHighlightProduct
             key={product.id}
             product={product}
@@ -76,6 +75,18 @@ export default function Home(): JSX.Element {
           22h, aproveite 20% de desconto em todas as cervejas! Venha curtir a
           festa com os melhores sabores piratas!
         </p>
+      </div>
+
+      <h1 className="border-b-2 border-pirates-red mb-4 font-imfell text-center text-pirates-red">
+        Novos produtos...<div>{promotions[0]?.finalDate.toString()}</div>
+      </h1>
+      <div className="flex flex-wrap justify-between">
+        {promotions[0]?.products.slice(0, 8).map((product: IProduct) => (
+          <CardHighlightProduct
+            key={product.id}
+            product={product}
+          ></CardHighlightProduct>
+        ))}
       </div>
       <div className="m-6 text-center p-10 rounded-lg bg-pirates-black-transparent">
         <h1>Evento Pirate{"'"}s Punch!</h1>

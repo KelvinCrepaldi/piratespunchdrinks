@@ -44,10 +44,11 @@
   background: transparent;
 }
 body {
-  background-image: url("/images/background.png");
+  background-color: #111111;
+  background-image: url("");
   background-size: cover;
   background-attachment: fixed;
-  backdrop-filter: blur(2px) brightness(20%) contrast(105%) saturate(140%);
+
   color: rgb(211, 211, 211);
 
   overflow-x: hidden;

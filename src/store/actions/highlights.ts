@@ -11,6 +11,7 @@ export const fetchHighlights = () => {
       dispatch(fetchPromotionsStart);
       const response = await axios.get("http://localhost:3001/promotion");
       const promotions = response.data;
+      console.log(promotions);
 
       dispatch(fetchPromotionsSucces(promotions));
     } catch (error) {

@@ -20,8 +20,7 @@ const ListPurchase = ({ products }: any) => {
       >
         {products.map((item: any) => {
           const totalValue = item.quantity * parseFloat(item.product.price);
-          console.log(item.quantity);
-          console.log(item.price);
+
           return (
             <div key={item.id} className="flex m-1 p-2 bg-neutral-800 ">
               <Image

@@ -40,9 +40,15 @@ const cartSlice = createSlice({
         state.cartList[productIndex].qtd -= 1;
       }
     },
+    deleteItemToCard(state, action) {
+      state.cartList = state.cartList.filter(
+        (product: IProduct) => product.id !== action.payload.product.id
+      );
+    },
   },
 });
 
-export const { addItemToCart, removeItemToCart } = cartSlice.actions;
+export const { addItemToCart, removeItemToCart, deleteItemToCard } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;

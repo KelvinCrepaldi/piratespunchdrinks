@@ -130,46 +130,69 @@ export default function Navbar() {
         </div>
 
         <ul
-          className={`flex flex-col transition-all rounded-xl border border-black md:border-transparent bg-neutral-950 md:bg-transparent md:flex-row p-10 md:p-0 justify-center md:justify-end text-2xl fixed md:relative  ${
+          className={`flex flex-col transition-all rounded-xl border border-black md:border-transparent bg-neutral-950 md:bg-transparent md:flex-row p-10 md:p-0 justify-center md:justify-end text-2xl fixed md:relative -z-0  ${
             showNavbar ? "right-0" : "-right-80"
           } md:right-auto text-center`}
           onClick={handleShowNavbar}
         >
-          <div className="flex justify-center  border-b pb-5  md:hidden ">
+          <div className="flex justify-center  border-b pb-5 z-0  md:hidden ">
             {isAuth ? (
               <div>
                 <li className="text-green-400 mb-5">
                   <span>{user?.name.toUpperCase()}</span>
                 </li>
-                <li className="font-imfell px-3">
-                  <Link href={"/user"}>User page</Link>
+                <li className="font-imfell px-3 hover:text-pirates-gold">
+                  <Link href={"/user"}>
+                    <FontAwesomeIcon
+                      icon={faUser}
+                      className={`text-xl mr-1`}
+                    ></FontAwesomeIcon>
+                    User page
+                  </Link>
                 </li>
-                <li className="font-imfell px-3">
-                  <button onClick={handleLogOut}> Logout</button>
+                <li className="font-imfell px-3 hover:text-pirates-gold">
+                  <button onClick={handleLogOut}>
+                    <FontAwesomeIcon
+                      icon={faRightFromBracket}
+                      className={`text-xl mr-1`}
+                    ></FontAwesomeIcon>{" "}
+                    Logout
+                  </button>
                 </li>
               </div>
             ) : (
-              <Link href={"/login"}>Login</Link>
+              <Link className="hover:text-pirates-gold" href={"/login"}>
+                Login
+              </Link>
             )}
             <div></div>
           </div>
           <li>
-            <Link href="/" className="font-imfell px-3">
+            <Link href="/" className="font-imfell px-3 hover:text-pirates-gold">
               Home
             </Link>
           </li>
           <li>
-            <Link href="/shop" className="font-imfell px-3">
+            <Link
+              href="/shop"
+              className="font-imfell px-3 hover:text-pirates-gold"
+            >
               Shop
             </Link>
           </li>
           <li>
-            <Link href="/about" className="font-imfell px-3">
+            <Link
+              href="/about"
+              className="font-imfell px-3 hover:text-pirates-gold"
+            >
               About
             </Link>
           </li>
           <li>
-            <Link href="/contact" className="font-imfell px-3">
+            <Link
+              href="/contact"
+              className="font-imfell px-3 hover:text-pirates-gold"
+            >
               Contact
             </Link>
           </li>
