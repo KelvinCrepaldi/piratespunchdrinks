@@ -11,6 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import formatReal from "@/utils/formatReal";
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -58,44 +59,50 @@ export default function Cart() {
         {cartList.length > 0 ? (
           <div className="flex ">
             <div className="w-full ">
-              {cartList.map((product: IProduct) => (
-                <div
-                  className="flex m-3 p-4 bg-pirates-black-hover justify-between"
-                  key={product.id}
-                >
-                  <div className="flex">
-                    <div>
-                      <h3 className="text-center">Item</h3>
-                      <Image
-                        src={product.img_url}
-                        width={100}
-                        height={100}
-                        alt="product representation image"
-                      />
-                    </div>
-                    <div>
-                      <div className="ml-5">
-                        <ul className="flex flex-col m-3">
-                          <li className="text-xl text-pirates-gold">
-                            {product.name}
-                          </li>
-                          <li className="text-pirates-red">{product.amount}</li>
-                          <li>{product.category?.name}</li>
-                          <li>{product.price}</li>
-                        </ul>
+              {cartList.map((product: IProduct) => {
+                const totalValue = product.qtd * parseFloat(product.price);
+
+                return (
+                  <div
+                    className="flex m-3 p-4 bg-pirates-black-hover justify-between"
+                    key={product.id}
+                  >
+                    <div className="flex">
+                      <div>
+                        <h3 className="text-center">Item</h3>
+                        <Image
+                          src={product.img_url}
+                          width={100}
+                          height={100}
+                          alt="product representation image"
+                        />
+                      </div>
+                      <div>
+                        <div className="ml-5">
+                          <ul className="flex flex-col m-3">
+                            <li className="text-xl text-pirates-gold">
+                              {product.name}
+                            </li>
+                            <li className="text-pirates-red">
+                              {product.amount}
+                            </li>
+                            <li>{product.category?.name}</li>
+                            <li>{product.price}</li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div>
-                    <h3 className="text-center">Quantity</h3>
-                    <QuantityControlButton
-                      product={product}
-                    ></QuantityControlButton>
-                    <span>total: xxx</span>
+                    <div>
+                      <h3 className="text-center">Quantity</h3>
+                      <QuantityControlButton
+                        product={product}
+                      ></QuantityControlButton>
+                      <span>total: {formatReal(totalValue)}</span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
             <div className="flex flex-col w-96">
               <h3>Address:</h3>

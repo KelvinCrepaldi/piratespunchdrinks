@@ -24,12 +24,12 @@ export default function ProductsDetailModal({
       {isOpen ? (
         <>
           <div
-            className="fixed top-0 left-0 w-full h-screen bg-black opacity-60"
+            className="fixed top-0 left-0 w-full h-full bg-black opacity-70"
             onClick={handleIsOpen}
           ></div>
 
-          <div className="fixed inset-0 flex items-center justify-center">
-            <div className="bg-pirates-black p-4 m-10 max-w-5xl w-full relative modal-height ">
+          <div className="absolute top-0 left-0 w-full">
+            <div className="bg-pirates-black p-4 mx-auto my-5   max-w-5xl">
               <div className="w-full flex justify-end">
                 <button
                   className="text-2xl font-fredericka"
@@ -38,25 +38,20 @@ export default function ProductsDetailModal({
                   X
                 </button>
               </div>
-              <div className="flex flex-wrap overflow-y-scroll m-2   max-w-5xl w-full relative modal-height">
+              <div className="flex flex-wrap overflow-y-scroll m-2   max-w-5xl w-full relative ">
                 <div className="flex flex-col  md:flex-row">
                   <Image
-                    className="md:m-auto md:w-7"
+                    className="md:m-auto  w-full md:w-1/2"
                     src={product.img_url}
                     alt="product image"
                     width={0}
                     height={0}
-                    sizes="50%"
-                    style={{
-                      width: "90%",
-                      height: "auto",
-                      maxWidth: "500px",
-                    }} // optional
+                    sizes="100%"
                     priority
                     loading="eager"
                   ></Image>
 
-                  <div className="m-2 md:m-10">
+                  <div className="m-2 md:m-10 md:w-1/2">
                     <h1 className="border-b-2 border-pirates-red">
                       {product.name}
                     </h1>
