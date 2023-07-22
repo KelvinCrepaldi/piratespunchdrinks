@@ -7,7 +7,6 @@ import {
   fetchProductsByCategory,
 } from "@/store/actions/products";
 import { ICategory } from "@/interfaces/category.interface";
-import ProductCard from "./ProductCard";
 import type {} from "redux-thunk/extend-redux";
 
 export default function SidebarFilter() {

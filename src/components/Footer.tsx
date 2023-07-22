@@ -3,8 +3,8 @@ import Link from "next/link";
 export const Footer = () => {
   return (
     <footer className="w-full flex flex-col items-center bg-black  py-10">
-      <div className=" max-w-5xl flex">
-        <div className="w-1/3 space-y-4 flex flex-col text-center  border-r p-4">
+      <div className=" max-w-5xl flex flex-col md:flex-row">
+        <div className="md:w-1/3 space-y-4 flex flex-col text-center  border-t md:border-r md:border-t-0 p-4 m-5">
           <ul>
             <li>
               <Link className="hover:text-blue-300" href={"/"}>
@@ -33,7 +33,7 @@ export const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="w-1/3 space-y-4 flex flex-col text-center border-l border-r p-4">
+        <div className="md:w-1/3 space-y-4 flex flex-col text-center border-t  md:border-t-0 p-4 m-5">
           <p className="font-inter text-sm">
             PiratesPunch - Este site é puramente fictício e os produtos listados
             são apenas para fins de demonstração. Não vendemos bebidas
@@ -55,7 +55,7 @@ export const Footer = () => {
             reais.
           </p>
         </div>
-        <div className="w-1/3 space-y-4 flex flex-col text-center border-l  p-4">
+        <div className="md:w-1/3 space-y-4 flex flex-col text-center border-t md:border-l md:border-t-0  p-4 m-5">
           <p className="font-inter text-sm">
             Endereço da Loja: Pirate{"'"}s Punch - Sede dos Piratas Sedentos!
             Ilha Tortuga, Mar do Caribe

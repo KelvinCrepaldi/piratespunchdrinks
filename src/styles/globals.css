@@ -44,8 +44,12 @@
   background: transparent;
 }
 body {
-  background-color: #111111;
-  background-image: url("");
+  background: rgb(29, 31, 68);
+  background: linear-gradient(
+    0deg,
+    rgba(29, 31, 68, 1) 0%,
+    rgba(117, 82, 0, 1) 100%
+  );
   background-size: cover;
   background-attachment: fixed;
 

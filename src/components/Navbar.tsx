@@ -55,7 +55,7 @@ export default function Navbar() {
   };
 
   return (
-    <>
+    <div className="bg-pirates-black-transparent">
       <div
         className={`fixed w-80 h-screen ${showCart ? "right-0" : "-right-80"}`}
       >
@@ -68,10 +68,9 @@ export default function Navbar() {
       <nav className="w-100 md:max-w-5xl m-auto">
         <div className="flex justify-between ">
           <Link href="/" className="flex items-center mx-1 mr-3">
-            {" "}
             <Image
               src={piratepunchlogo}
-              className="m-1"
+              className="m-1 lg:my-4"
               width={55}
               alt="piratepunch logo"
             />
@@ -198,6 +197,6 @@ export default function Navbar() {
           </li>
         </ul>
       </nav>
-    </>
+    </div>
   );
 }
