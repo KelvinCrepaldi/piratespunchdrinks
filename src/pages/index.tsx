@@ -12,6 +12,7 @@ import { fetchProducts } from "@/store/actions/products";
 import { RootState } from "@/store/store";
 import { fetchHighlights } from "@/store/actions/highlights";
 import { IPromotion } from "@/interfaces/highlights.interface";
+import ContainerEventPromo from "@/components/ContainerEventPromo";
 
 export default function Home(): JSX.Element {
   const dispatch = useDispatch();
@@ -67,7 +68,7 @@ export default function Home(): JSX.Element {
         ))}
       </div>
 
-      <div className="m-6 text-center p-10 rounded-lg bg-pirates-black-transparent">
+      <ContainerEventPromo>
         <h1>AHOY, MARUJO!</h1>
         <h2>Beba como um Corsário no Pirate{"'"}s Punch!</h2>
         <p>
@@ -75,7 +76,7 @@ export default function Home(): JSX.Element {
           22h, aproveite 20% de desconto em todas as cervejas! Venha curtir a
           festa com os melhores sabores piratas!
         </p>
-      </div>
+      </ContainerEventPromo>
 
       <h1 className="border-b-2 border-pirates-red mb-4 font-imfell text-center text-pirates-red">
         Novos produtos...<div>{promotions[0]?.finalDate.toString()}</div>
@@ -88,7 +89,7 @@ export default function Home(): JSX.Element {
           ></CardHighlightProduct>
         ))}
       </div>
-      <div className="m-6 text-center p-10 rounded-lg bg-pirates-black-transparent">
+      <ContainerEventPromo>
         <h1>Evento Pirate{"'"}s Punch!</h1>
         <h2>Beba como um Corsário no Pirate{"'"}s Punch!</h2>
         <p>
@@ -96,7 +97,7 @@ export default function Home(): JSX.Element {
           desconto nas bebidas ao comparecer vestido de pirata. Não perca essa
           chance! Aproveite agora!
         </p>
-      </div>
+      </ContainerEventPromo>
     </main>
   );
 }

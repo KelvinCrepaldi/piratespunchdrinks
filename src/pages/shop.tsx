@@ -28,7 +28,7 @@ export default function Shop() {
 
   return (
     <div className="w-100  ">
-      <div className="flex flex-col text-center items-center my-10">
+      <div className="flex flex-col text-center items-center py-10">
         <h1 className="px-4 text-5xl border-b-2 border-pirates-red">
           Drinks for You!
         </h1>
