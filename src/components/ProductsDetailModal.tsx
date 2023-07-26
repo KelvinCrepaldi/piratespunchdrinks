@@ -24,11 +24,11 @@ export default function ProductsDetailModal({
       {isOpen ? (
         <>
           <div
-            className="fixed top-0 left-0 w-full h-full bg-black opacity-70"
+            className="fixed z-20 top-0 left-0 w-full h-full bg-black opacity-70"
             onClick={handleIsOpen}
           ></div>
 
-          <div className="absolute top-0 left-0 w-full">
+          <div className="absolute top-0 left-0 w-full z-20">
             <div className="bg-pirates-black p-4 mx-auto my-5   max-w-5xl">
               <div className="w-full flex justify-end">
                 <button

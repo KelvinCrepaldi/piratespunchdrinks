@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "@/store/store";
-import { logout } from "@/store/reducers/authReducer";
+import { logout } from "@/store/reducers/userReducer";
 
 export default function ProtectedRoute({ children }: { children: any }) {
   const dispatch = useAppDispatch();

@@ -50,12 +50,15 @@ body {
     rgba(29, 31, 68, 1) 0%,
     rgba(117, 82, 0, 1) 100%
   );
+  background: url("/background.webp");
   background-size: cover;
+  background-position: center;
   background-attachment: fixed;
 
   color: rgb(211, 211, 211);
 
   overflow-x: hidden;
+  backdrop-filter: blur(3px) brightness(0.3);
 }
 
 div {

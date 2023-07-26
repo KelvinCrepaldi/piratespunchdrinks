@@ -1,32 +1,85 @@
-import { IInitialStateOrdersSlice } from "@/interfaces/order.interface";
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import { RootState } from "../store";
+import { IOrder } from "@/interfaces/order.interface";
+import { IProduct } from "@/interfaces/product.interface";
+
+export interface IInitialStateOrdersSlice {
+  loading: boolean;
+  error: null | string;
+  orders: IOrder[];
+}
 
 const initialState: IInitialStateOrdersSlice = {
   loading: false,
-  error: false,
+  error: null,
   orders: [],
 };
+
+export const fetchOrders = createAsyncThunk(
+  "orders/fetch",
+  async (_, { getState }) => {
+    const state = getState() as RootState;
+    const response = await axios.get("http://localhost:3001/order/", {
+      headers: { Authorization: `Bearer ${state.auth.token}` },
+    });
+    const orders = response.data;
+
+    return orders;
+  }
+);
+
+export const createOrder = createAsyncThunk(
+  "orders/create",
+  async ({ products, address, creditCard }: any, { getState }) => {
+    const state = getState() as RootState;
+    const token = state.auth.token;
+    console.log("token");
+
+    const productsListData = products?.map((product: IProduct) => {
+      return { productId: product.id, quantity: product.qtd };
+    });
+
+    const bodyRequest = {
+      products: productsListData,
+      addressId: address.id,
+      creditCardId: creditCard.id,
+    };
+
+    const response = await axios.post(
+      `http://localhost:3001/order/`,
+      bodyRequest,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+
+    const orders = response.data;
+
+    return orders;
+  }
+);
 
 const ordersSlice = createSlice({
   name: "orders",
   initialState,
-  reducers: {
-    fetchOrderStart(state) {
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchOrders.pending, (state, action) => {
       state.loading = true;
-      state.error = false;
-    },
-    fetchOrderSuccess(state, action) {
-      state.loading = false;
+      state.error = null;
+    });
+    builder.addCase(fetchOrders.fulfilled, (state, action) => {
       state.orders = action.payload;
-    },
-    fetchOrderFailure(state, action) {
       state.loading = false;
-      state.error = action.payload;
-    },
+    });
+    builder.addCase(fetchOrders.rejected, (state, action) => {
+      action.error && (state.error = "Houve um erro no servidor");
+      state.loading = false;
+    });
   },
 });
 
-export const { fetchOrderStart, fetchOrderSuccess, fetchOrderFailure } =
-  ordersSlice.actions;
+export const {} = ordersSlice.actions;
 
 export default ordersSlice.reducer;

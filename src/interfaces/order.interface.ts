@@ -20,9 +20,3 @@ export interface IOrder {
   creditCard?: ICreditCard;
   address: IAddress;
 }
-
-export interface IInitialStateOrdersSlice {
-  loading: boolean;
-  error: boolean;
-  orders: IOrder[];
-}

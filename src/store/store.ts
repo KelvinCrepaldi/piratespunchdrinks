@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import thunk from "redux-thunk";
 
-import authReducer from "./reducers/authReducer";
+import authReducer from "./reducers/userReducer";
 import productsReducer from "./reducers/productsReducer";
 import cartReducer from "./reducers/cartReducer";
 import categoriesReducer from "./reducers/categoriesReducer";
