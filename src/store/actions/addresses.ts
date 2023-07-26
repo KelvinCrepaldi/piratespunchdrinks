@@ -5,7 +5,7 @@ import {
   fetchAddressesFailure,
 } from "../reducers/addressesReducer";
 import { Dispatch } from "redux";
-import { logoutUser } from "./user";
+import { logout } from "../reducers/userReducer";
 
 export const fetchAddresses = (token: string) => {
   return async (dispatch: Dispatch) => {
@@ -21,7 +21,7 @@ export const fetchAddresses = (token: string) => {
       dispatch(fetchAddressesSuccess(address));
     } catch (err) {
       console.log(err);
-      dispatch(logoutUser());
+      dispatch(logout());
       dispatch(fetchAddressesFailure("Erro ao buscar endereços"));
     }
   };

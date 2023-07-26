@@ -1,4 +1,4 @@
-import { fetchOrders } from "@/store/actions/orders";
+import { fetchOrders } from "@/store/reducers/ordersReducer";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -14,7 +14,7 @@ export default function PanelCartHistory() {
 
   useEffect(() => {
     if (token) {
-      dispatch(fetchOrders(token));
+      dispatch(fetchOrders());
     }
   }, [token, dispatch]);
 

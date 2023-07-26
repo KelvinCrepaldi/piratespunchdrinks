@@ -1,6 +1,6 @@
 import { IAuthenticate } from "@/interfaces/authenticate.interface";
-import { authenticate } from "@/store/actions/user";
-import { useAppDispatch } from "@/store/store";
+import { authenticate } from "@/store/reducers/userReducer";
+import { RootState, useAppDispatch } from "@/store/store";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -10,6 +10,7 @@ import * as yup from "yup";
 import ActionBtn from "./ActionBtn";
 
 const FormLogin = () => {
+  const { error } = useSelector((state: RootState) => state.auth);
   const dispatch = useAppDispatch();
   const router = useRouter();
 
@@ -39,8 +40,8 @@ const FormLogin = () => {
     reset,
   } = useForm<IAuthenticate>({ resolver: yupResolver(formSchema) });
 
-  const handleLogin = (e: IAuthenticate): void => {
-    dispatch(authenticate(e));
+  const handleLogin = (form: IAuthenticate): void => {
+    dispatch(authenticate(form));
     reset();
   };
 
@@ -66,6 +67,7 @@ const FormLogin = () => {
       {errors.password?.message && (
         <span className="text-red-400">{errors.password?.message}</span>
       )}
+      {error && <span className="text-red-400">{error}</span>}
 
       <ActionBtn type="submit" colorStyle="secondary">
         Login

@@ -11,12 +11,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { logout } from "@/store/reducers/authReducer";
+import { logout } from "@/store/reducers/userReducer";
 import { RootState, useAppDispatch } from "@/store/store";
 
 import SidebarCart from "./SidebarCart";
 import { useRouter } from "next/router";
-import { fetchProductsByFilter } from "@/store/actions/products";
 
 export default function Navbar() {
   const dispatch = useAppDispatch();
@@ -31,7 +30,6 @@ export default function Navbar() {
   const [isAuth, setIsAuth] = useState(false);
 
   const handleFilter = () => {
-    dispatch(fetchProductsByFilter(filter));
     router.push("/shop");
   };
 
@@ -47,6 +45,10 @@ export default function Navbar() {
     setShowNavbar(!showNavbar);
   };
 
+  const handleCloseNavbar = () => {
+    setShowNavbar(false);
+  };
+
   const handleLogOut = () => {
     dispatch(logout());
     localStorage.removeItem("token");
@@ -55,7 +57,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="bg-pirates-black-transparent">
+    <div className="bg-pirates-black-transparent relative z-10">
       <div
         className={`fixed w-80 h-screen ${showCart ? "right-0" : "-right-80"}`}
       >
@@ -101,7 +103,7 @@ export default function Navbar() {
                 className="w-10 mr-3 text-3xl"
               ></FontAwesomeIcon>
             </button>
-            <div className="hidden md:flex ">
+            <div className="hidden md:flex pr-4">
               <Link href={isAuth ? "/user" : "/login"}>
                 <FontAwesomeIcon
                   icon={faUser}
@@ -129,14 +131,14 @@ export default function Navbar() {
         </div>
 
         <ul
-          className={`flex flex-col transition-all rounded-xl border border-black md:border-transparent bg-neutral-950 md:bg-transparent md:flex-row p-10 md:p-0 justify-center md:justify-end text-2xl fixed md:relative -z-0  ${
+          className={`flex flex-col transition-all rounded-bl-md md:border-transparent bg-pirates-black-transparent md:bg-transparent md:flex-row p-10 md:p-0 justify-center md:justify-end text-2xl absolute md:static   ${
             showNavbar ? "right-0" : "-right-80"
           } md:right-auto text-center`}
-          onClick={handleShowNavbar}
+          onClick={handleCloseNavbar}
         >
-          <div className="flex justify-center  border-b pb-5 z-0  md:hidden ">
+          <div className="flex justify-center  border-b pb-5 relative  md:hidden ">
             {isAuth ? (
-              <div>
+              <div className="z-10">
                 <li className="text-green-400 mb-5">
                   <span>{user?.name.toUpperCase()}</span>
                 </li>
@@ -144,7 +146,7 @@ export default function Navbar() {
                   <Link href={"/user"}>
                     <FontAwesomeIcon
                       icon={faUser}
-                      className={`text-xl mr-1`}
+                      className={`text-xl mr-1 `}
                     ></FontAwesomeIcon>
                     User page
                   </Link>

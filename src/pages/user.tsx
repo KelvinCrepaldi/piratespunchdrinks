@@ -9,7 +9,8 @@ import PanelAddresses from "@/components/PanelAddresses";
 import PanelCreditCards from "@/components/PanelCreditCards";
 import PanelCartHistory from "@/components/PanelCartHistory";
 import { IUserPages } from "@/interfaces/userPage.interface";
-import { deleteAccount } from "@/store/actions/user";
+import { deleteAccount } from "@/store/reducers/userReducer";
+import Head from "next/head";
 
 export default function User(): ReactNode {
   const router = useRouter();
@@ -47,37 +48,42 @@ export default function User(): ReactNode {
 
   return (
     <>
+      <Head>
+        <title>User - Pirates Punch Drinks</title>
+        <meta name="description" content="Pirates Punch Drinks" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <ProtectedRoute>
         <main className="flex flex-col md:flex-row max-w-5xl m-auto min-h-screen font-inter">
-          <div className="flex flex-row flex-wrap md:flex-col items-end  border-r-2 color p-2 md:min-w-max ">
+          <div className="flex flex-row flex-wrap md:flex-col items-end  border-r-2 color p-2 md:min-w-max">
             <button
-              className="m-1 text-xl md:text-xl font-inter whitespace-no-wrap"
+              className="m-1 py-1 px-4 md:px-1 rounded md:rounded-none bg-pirates-black-transparent md:bg-transparent text-xl md:text-xl font-inter whitespace-no-wrap"
               onClick={() => handleOptionPage("user")}
             >
               User
             </button>
             <button
-              className="m-1 text-xl md:text-xl  font-inter whitespace-no-wrap"
+              className="m-1 py-1 px-4 md:px-1 rounded md:rounded-none bg-pirates-black-transparent md:bg-transparent text-xl md:text-xl font-inter whitespace-no-wrap"
               onClick={() => handleOptionPage("addresses")}
             >
               Addresses
             </button>
             <button
-              className="m-1 text-xl md:text-xl  font-inter whitespace-no-wrap"
+              className="m-1 py-1 px-4 md:px-1 rounded md:rounded-none bg-pirates-black-transparent md:bg-transparent text-xl md:text-xl font-inter whitespace-no-wrap"
               onClick={() => handleOptionPage("creditcards")}
             >
               Credit Cards
             </button>
 
             <button
-              className="m-1 text-xl md:text-xl  font-inter whitespace-no-wrap"
+              className="m-1 py-1 px-4 md:px-1 rounded md:rounded-none bg-pirates-black-transparent md:bg-transparent text-xl md:text-xl font-inter whitespace-no-wrap"
               onClick={() => handleOptionPage("orders")}
             >
               Purchases
             </button>
 
             <button
-              className="m-1 text-xl md:text-xl  font-inter whitespace-no-wrap border-t"
+              className="m-1 py-1 px-4 md:px-1 rounded md:rounded-none md:border-t bg-pirates-black-transparent text-red-500 md:bg-transparent text-xl md:text-xl font-inter whitespace-no-wrap"
               onClick={handleDeleteAccount}
             >
               Delete Account

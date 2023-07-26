@@ -1,5 +1,12 @@
-import { IInitialStateCategoriesSlice } from "@/interfaces/category.interface";
-import { createSlice } from "@reduxjs/toolkit";
+import { ICategory } from "@/interfaces/category.interface";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+export interface IInitialStateCategoriesSlice {
+  loading: boolean;
+  error: null | string;
+  categories: ICategory[];
+}
 
 const initialState: IInitialStateCategoriesSlice = {
   loading: false,
@@ -7,28 +14,36 @@ const initialState: IInitialStateCategoriesSlice = {
   categories: [],
 };
 
+export const fetchCategories = createAsyncThunk(
+  "categories/fetch",
+  async (_) => {
+    const response = await axios.get("http://localhost:3001/category");
+    const categories = response.data;
+    return categories;
+  }
+);
+
 const categoriesSlice = createSlice({
   name: "categories",
   initialState,
-  reducers: {
-    fetchCategoriesStart(state) {
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchCategories.pending, (state, action) => {
       state.loading = true;
       state.error = null;
-    },
-    fetchCategoriesSuccess(state, action) {
+    });
+    builder.addCase(fetchCategories.fulfilled, (state, action) => {
       state.loading = false;
       state.categories = action.payload;
-    },
-    fetchCategoriesFailure(state, action) {
+    });
+    builder.addCase(fetchCategories.rejected, (state, action) => {
+      action.error &&
+        (state.error =
+          "Houve um erro no servidor, tente novamente mais tarde!");
       state.loading = false;
-      state.error = action.payload;
-    },
+    });
   },
 });
 
-export const {
-  fetchCategoriesStart,
-  fetchCategoriesSuccess,
-  fetchCategoriesFailure,
-} = categoriesSlice.actions;
+export const {} = categoriesSlice.actions;
 export default categoriesSlice.reducer;

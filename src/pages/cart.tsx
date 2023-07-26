@@ -6,7 +6,7 @@ import { ICreditCard } from "@/interfaces/creditCards.interface";
 import { IProduct } from "@/interfaces/product.interface";
 import { fetchAddresses } from "@/store/actions/addresses";
 import { fetchCreditCards } from "@/store/actions/creditCards";
-import { createOrder } from "@/store/actions/orders";
+import { createOrder } from "@/store/reducers/ordersReducer";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -28,7 +28,6 @@ export default function Cart() {
 
   const handleCheckout = () => {
     const data = {
-      token,
       products: cartList,
       address: selectedAddress,
       creditCard: selectedCreditCard,
