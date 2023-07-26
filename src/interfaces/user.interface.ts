@@ -11,9 +11,3 @@ export interface IUser {
   address: any;
   credit_card: any;
 }
-
-export interface IInitialStateAuthSlice {
-  token: null | string;
-  isAuthenticated: boolean;
-  user: null | IUser;
-}
