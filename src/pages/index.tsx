@@ -35,7 +35,7 @@ export default function Home(): JSX.Element {
             <h1 className="inline-block border-b-2 px-5 border-pirates-red text-6xl font-fredericka">
               Pirate{"'"}s Punch
             </h1>
-            <h2 className="mb-4 text-3xl">
+            <h2 className="mb-4 text-3xl font-pirata">
               Se prepare para o {"'"}soco{"'"} mais intenso dos sete mares!
             </h2>
             <p className="text-xl md:px-3 font-fredericka">
@@ -63,7 +63,7 @@ export default function Home(): JSX.Element {
         </div>
         <div>
           <div className="flex justify-between border-b-2 border-pirates-red mb-1">
-            <h1 className="text-pirates-gold">Promoção!!!</h1>
+            <h1 className="text-pirates-gold font-fredericka">Promoção!!!</h1>
             <Countdown endDate={promotions[0]?.finalDate.toString()} />
           </div>
 
@@ -78,31 +78,39 @@ export default function Home(): JSX.Element {
         </div>
 
         <ContainerEventPromo>
-          <h1>AHOY, MARUJO!</h1>
-          <h2>Beba como um Corsário no Pirate{"'"}s Punch!</h2>
-          <p>
+          <h1 className="font-fredericka">AHOY, MARUJO!</h1>
+          <h2 className="font-pirata">
+            Beba como um Corsário no Pirate{"'"}s Punch!
+          </h2>
+          <p className="font-imfell">
             Descobrimos o tesouro da diversão na Pirate{"'"}s Punch! De 20h às
             22h, aproveite 20% de desconto em todas as cervejas! Venha curtir a
             festa com os melhores sabores piratas!
           </p>
         </ContainerEventPromo>
 
-        <h1 className="border-b-2 border-pirates-red mb-4 font-imfell text-center text-pirates-red">
-          Novos produtos...
-          <Countdown endDate={promotions[0]?.finalDate.toString()} />
-        </h1>
-        <div className="flex flex-wrap justify-between">
-          {promotions[0]?.products.slice(0, 8).map((product: IProduct) => (
-            <CardHighlightProduct
-              key={product.id}
-              product={product}
-            ></CardHighlightProduct>
-          ))}
+        <div>
+          <div className="flex justify-between border-b-2 border-pirates-red mb-1">
+            <h1 className="text-pirates-gold font-fredericka">
+              Novos Produtos!
+            </h1>
+          </div>
+
+          <div className="flex flex-wrap justify-between">
+            {promotions[0]?.products.slice(0, 8).map((product: IProduct) => (
+              <CardHighlightProduct
+                key={product.id}
+                product={product}
+              ></CardHighlightProduct>
+            ))}
+          </div>
         </div>
         <ContainerEventPromo>
-          <h1>Evento Pirate{"'"}s Punch!</h1>
-          <h2>Beba como um Corsário no Pirate{"'"}s Punch!</h2>
-          <p>
+          <h1 className="font-fredericka">Evento Pirate{"'"}s Punch!</h1>
+          <h2 className="font-pirata">
+            Beba como um Corsário no Pirate{"'"}s Punch!
+          </h2>
+          <p className="font-imfell">
             Desconto exclusivo para piratas! Aventure-se no Bar do Capitão e
             ganhe desconto nas bebidas ao comparecer vestido de pirata. Não
             perca essa chance! Aproveite agora!

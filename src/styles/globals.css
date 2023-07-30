@@ -67,22 +67,18 @@ div {
 h1 {
   color: var(--pirates-gold);
   font-size: 2rem;
-  font-family: "Fredericka the Great", "sans-serif";
 }
 h2 {
   color: var(--pirates-red);
   font-size: 1.8rem;
-  font-family: "Pirata One", "sans-serif";
 }
 h3 {
   color: var(--pirates-red);
-  font-family: "Pirata One", "sans-serif";
   font-size: 1.5rem;
 }
 p {
   color: var(--pirates-siver);
   font-size: 1.3rem;
-  font-family: "IM Fell DW Pica SC", "sans-serif";
 }
 
 li.pagenoactive {
