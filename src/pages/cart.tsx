@@ -5,7 +5,7 @@ import { IAddress } from "@/interfaces/address.interface";
 import { ICreditCard } from "@/interfaces/creditCards.interface";
 import { IProduct } from "@/interfaces/product.interface";
 import { fetchAddresses } from "@/store/actions/addresses";
-import { fetchCreditCards } from "@/store/actions/creditCards";
+import { fetchCreditCards } from "@/store/reducers/creditCardsReducer";
 import { createOrder } from "@/store/reducers/ordersReducer";
 import Image from "next/image";
 import Link from "next/link";
@@ -45,7 +45,7 @@ export default function Cart() {
 
   useEffect(() => {
     dispatch(fetchAddresses(token));
-    dispatch(fetchCreditCards(token));
+    dispatch(fetchCreditCards());
   }, [dispatch, token]);
 
   return (
