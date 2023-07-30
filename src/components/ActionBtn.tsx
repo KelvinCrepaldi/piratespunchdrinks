@@ -1,4 +1,6 @@
-import { IActionBtnProps } from "@/interfaces/actionBtn.interface";
+interface IActionBtnProps extends React.HTMLProps<HTMLButtonElement> {
+  colorStyle?: "primary" | "secondary";
+}
 
 const ActionBtn: React.FC<IActionBtnProps> = ({
   children,
