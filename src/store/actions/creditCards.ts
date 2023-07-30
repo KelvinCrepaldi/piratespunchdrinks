@@ -1,9 +1,3 @@
-import {
-  fetchCreditCardsFailure,
-  fetchCreditCardsStart,
-  fetchCreditCardsSuccess,
-} from "../reducers/creditCardsReducer";
-import { logout } from "../reducers/userReducer";
 import api from "@/services";
 
 export const createCreditCard = ({ token, body }: any) => {
