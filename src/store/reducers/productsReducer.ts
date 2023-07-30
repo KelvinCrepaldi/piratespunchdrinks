@@ -17,13 +17,13 @@ const initialState: IInitialStateProductsSlice = {
 export const fetchProducts = createAsyncThunk(
   "products/fetch",
   async (_, thunkAPI) => {
-    const response = await api
-      .get("http://localhost:3001/product")
-      .then((response) => {
-        return response.data;
-      });
-
-    return response;
+    try {
+      const response = await api.get("/product");
+      return response.data;
+    } catch (error) {
+      // Aqui você pode tratar erros, se necessário.
+      throw error;
+    }
   }
 );
 
