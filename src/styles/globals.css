@@ -56,9 +56,6 @@ body {
   background-attachment: fixed;
 
   color: rgb(211, 211, 211);
-
-  overflow-x: hidden;
-  backdrop-filter: blur(3px) brightness(0.3);
 }
 
 div {

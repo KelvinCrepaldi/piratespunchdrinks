@@ -17,7 +17,7 @@ import { RootState, useAppDispatch } from "@/store/store";
 import SidebarCart from "./SidebarCart";
 import { useRouter } from "next/router";
 
-export default function Navbar() {
+export default function Navbar({ handleShowCart }: any) {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
@@ -26,7 +26,7 @@ export default function Navbar() {
     (state: RootState) => state.auth
   );
   const [showNavbar, setShowNavbar] = useState(false);
-  const [showCart, setShowCart] = useState(false);
+
   const [isAuth, setIsAuth] = useState(false);
 
   const handleFilter = () => {
@@ -36,10 +36,6 @@ export default function Navbar() {
   useEffect(() => {
     setIsAuth(isAuthenticated);
   }, [isAuthenticated]);
-
-  const handleShowCart = () => {
-    setShowCart(!showCart);
-  };
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
@@ -57,150 +53,148 @@ export default function Navbar() {
   };
 
   return (
-    <div className="bg-pirates-black-transparent relative z-10 ">
-      <SidebarCart
-        handleShowCart={handleShowCart}
-        showCart={showCart}
-      ></SidebarCart>
-      <nav className="w-100 md:max-w-5xl m-auto">
-        <div className="flex justify-between ">
-          <Link href="/" className="flex items-center mx-1 mr-3">
-            <Image
-              src={piratepunchlogo}
-              className="m-1 lg:my-4"
-              width={55}
-              alt="piratepunch logo"
-            />
-            <h1 className="hidden md:inline">Pirate{"'"}s Punch</h1>
-          </Link>
-          <div className="flex items-center w-full max-w-xs space-x-3 justify-end">
-            <div className="flex h-9 w-full max-w-xs bg-transparent border rounded items-center">
-              <input
-                placeholder="Find..."
-                className="w-full bg-transparent pl-4"
-                value={filter}
-                onChange={(e) => setFilter(e.target.value)}
-              ></input>
-              <button className="text-xl mr-2" onClick={handleFilter}>
-                <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
-              </button>
-            </div>
-
-            <button onClick={handleShowCart}>
-              <FontAwesomeIcon
-                icon={faCartShopping}
-                className="w-10 text-3xl"
-              ></FontAwesomeIcon>
-            </button>
-            <button className=" md:hidden" onClick={handleShowNavbar}>
-              <FontAwesomeIcon
-                icon={faBars}
-                className="w-10 mr-3 text-3xl"
-              ></FontAwesomeIcon>
-            </button>
-            <div className="hidden md:flex pr-4">
-              <Link href={isAuth ? "/user" : "/login"}>
-                <FontAwesomeIcon
-                  icon={faUser}
-                  className={`hidden md:flex text-3xl ${
-                    isAuth
-                      ? "text-green-300 hover:text-green-600"
-                      : "text-red-300"
-                  }`}
-                ></FontAwesomeIcon>
-              </Link>
-
-              {isAuth && (
-                <button
-                  className="mx-1 cursor-pointer text-white hover:text-red-400"
-                  onClick={handleLogOut}
-                >
-                  <FontAwesomeIcon
-                    className="text-3xl mx-3"
-                    icon={faRightFromBracket}
-                  ></FontAwesomeIcon>
+    <>
+      <div className="bg-pirates-black-transparent relative z-10 ">
+        <nav className="w-100 md:max-w-5xl m-auto">
+          <div className="flex justify-between ">
+            <Link href="/" className="flex items-center mx-1 mr-3">
+              <Image
+                src={piratepunchlogo}
+                className="m-1 lg:my-4"
+                width={55}
+                alt="piratepunch logo"
+              />
+              <h1 className="hidden md:inline font-fredericka">
+                Pirate{"'"}s Punch
+              </h1>
+            </Link>
+            <div className="flex items-center w-full max-w-xs space-x-3 justify-end">
+              <div className="flex h-9 w-full max-w-xs bg-transparent border rounded items-center">
+                <input
+                  placeholder="Find..."
+                  className="w-full bg-transparent pl-4"
+                  value={filter}
+                  onChange={(e) => setFilter(e.target.value)}
+                ></input>
+                <button className="text-xl mr-2" onClick={handleFilter}>
+                  <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
                 </button>
-              )}
+              </div>
+
+              <button onClick={handleShowCart}>
+                <FontAwesomeIcon
+                  icon={faCartShopping}
+                  className="w-10 text-3xl"
+                ></FontAwesomeIcon>
+              </button>
+              <button className=" md:hidden" onClick={handleShowNavbar}>
+                <FontAwesomeIcon
+                  icon={faBars}
+                  className="w-10 mr-3 text-3xl"
+                ></FontAwesomeIcon>
+              </button>
+              <div className="hidden md:flex pr-4">
+                <Link href={isAuth ? "/user" : "/login"}>
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    className={`hidden md:flex text-3xl ${
+                      isAuth
+                        ? "text-green-300 hover:text-green-600"
+                        : "text-red-300"
+                    }`}
+                  ></FontAwesomeIcon>
+                </Link>
+
+                {isAuth && (
+                  <button
+                    className="mx-1 cursor-pointer text-white hover:text-red-400"
+                    onClick={handleLogOut}
+                  >
+                    <FontAwesomeIcon
+                      className="text-3xl mx-3"
+                      icon={faRightFromBracket}
+                    ></FontAwesomeIcon>
+                  </button>
+                )}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div>
-          <ul
-            className={`${
-              !showNavbar && "hidden"
-            } flex flex-col transition-all rounded-bl-md md:border-transparent bg-pirates-black-transparent md:bg-transparent md:flex-row p-10 md:p-0 justify-center md:justify-end text-2xl absolute md:static md:right-auto text-center right-0`}
-            onClick={handleCloseNavbar}
-          >
-            <div
-              className={`flex justify-center  border-b pb-5 relative  md:hidden `}
+          <div className={` ${!showNavbar && "hidden"} `}>
+            <ul
+              className={`  flex flex-col transition-all rounded-bl-md md:border-transparent bg-pirates-black-transparent md:bg-transparent md:flex-row p-10 md:p-0 justify-center md:justify-end text-2xl absolute md:static md:right-auto text-center right-0`}
+              onClick={handleCloseNavbar}
             >
-              {isAuth ? (
-                <div className="z-10">
-                  <li className="text-green-400 mb-5">
-                    <span>{user?.name.toUpperCase()}</span>
-                  </li>
-                  <li className="font-imfell px-3 hover:text-pirates-gold">
-                    <Link href={"/user"}>
-                      <FontAwesomeIcon
-                        icon={faUser}
-                        className={`text-xl mr-1 `}
-                      ></FontAwesomeIcon>
-                      User page
-                    </Link>
-                  </li>
-                  <li className="font-imfell px-3 hover:text-pirates-gold">
-                    <button onClick={handleLogOut}>
-                      <FontAwesomeIcon
-                        icon={faRightFromBracket}
-                        className={`text-xl mr-1`}
-                      ></FontAwesomeIcon>{" "}
-                      Logout
-                    </button>
-                  </li>
-                </div>
-              ) : (
-                <Link className="hover:text-pirates-gold" href={"/login"}>
-                  Login
+              <div
+                className={`flex justify-center  border-b pb-5 relative  md:hidden`}
+              >
+                {isAuth ? (
+                  <div className="z-10">
+                    <li className="text-green-400 mb-5">
+                      <span>{user?.name.toUpperCase()}</span>
+                    </li>
+                    <li className="font-imfell px-3 hover:text-pirates-gold">
+                      <Link href={"/user"}>
+                        <FontAwesomeIcon
+                          icon={faUser}
+                          className={`text-xl mr-1 `}
+                        ></FontAwesomeIcon>
+                        User page
+                      </Link>
+                    </li>
+                    <li className="font-imfell px-3 hover:text-pirates-gold">
+                      <button onClick={handleLogOut}>
+                        <FontAwesomeIcon
+                          icon={faRightFromBracket}
+                          className={`text-xl mr-1`}
+                        ></FontAwesomeIcon>{" "}
+                        Logout
+                      </button>
+                    </li>
+                  </div>
+                ) : (
+                  <Link className="hover:text-pirates-gold" href={"/login"}>
+                    Login
+                  </Link>
+                )}
+                <div></div>
+              </div>
+              <li>
+                <Link
+                  href="/"
+                  className="font-imfell px-3 hover:text-pirates-gold"
+                >
+                  Home
                 </Link>
-              )}
-              <div></div>
-            </div>
-            <li>
-              <Link
-                href="/"
-                className="font-imfell px-3 hover:text-pirates-gold"
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/shop"
-                className="font-imfell px-3 hover:text-pirates-gold"
-              >
-                Shop
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/about"
-                className="font-imfell px-3 hover:text-pirates-gold"
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact"
-                className="font-imfell px-3 hover:text-pirates-gold"
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+              </li>
+              <li>
+                <Link
+                  href="/shop"
+                  className="font-imfell px-3 hover:text-pirates-gold"
+                >
+                  Shop
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="font-imfell px-3 hover:text-pirates-gold"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="font-imfell px-3 hover:text-pirates-gold"
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </>
   );
 }

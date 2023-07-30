@@ -9,7 +9,7 @@ import { ISidebarCart } from "@/interfaces/sidebarCart.interface";
 import formatReal from "@/utils/formatReal";
 import { RootState } from "@/store/store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { faCartPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export default function SidebarCart({
   handleShowCart,
@@ -29,39 +29,39 @@ export default function SidebarCart({
   }, [isAuthenticated]);
 
   return (
-    <div className={`${showCart ? "fixed" : "hidden"}`}>
+    <div
+      className={`${
+        !showCart && "hidden"
+      } w-full h-screen fixed top-0 right-0 bg-pirates-black-transparent z-20`}
+    >
       <div
-        className={`${
-          showCart ? "fixed" : "hidden"
-        } fixed top-0 left-0 w-full h-screen bg-black opacity-60 behind-main z-20`}
-        onClick={handleShowCart}
-      ></div>
-      <div className={`h-full w-80 bg-pirates-black fixed z-20 right-0`}>
+        className={` fixed w-80 bg-pirates-black top-0 right-0 z-20 h-screen pr-2 pl-2`}
+      >
         <div className="flex justify-end">
-          <button onClick={handleShowCart} className="m-1 p-2">
-            X
+          <button onClick={handleShowCart} className="m-1 px-4 pt-2 text-2xl">
+            <FontAwesomeIcon icon={faXmark} />
           </button>
         </div>
-        <div className="flex flex-col text-center max-h-full">
-          <h1>Shopping cart</h1>
+        <div className="flex flex-col text-center max-h-full sticky">
+          <h1>Carrinho de compras</h1>
           {!showUserContent ? (
             <div className="text-red-300">
-              User not connected, please{" "}
+              Usuário não conectado, por favor{" "}
               <Link
                 href={"/login"}
                 onClick={handleShowCart}
                 className="text-blue-500"
               >
-                log in?
+                faça login?
               </Link>
             </div>
           ) : (
             <h4>
-              User <span className="text-green-200">{user?.name}</span>
+              Usuário <span className="text-green-200">{user?.name}</span>
             </h4>
           )}
 
-          <ul className="overflow-y-auto max-h-full">
+          <ul className=" max-h-full overflow-y-scroll">
             {cart.length ? (
               cart.map((product: IProduct) => {
                 const totalValue = product.qtd * parseFloat(product.price);
@@ -71,13 +71,11 @@ export default function SidebarCart({
                     className="p-2 m-2 border-black border-t"
                   >
                     <div className="flex">
-                      <Image
-                        src={product.img_url}
-                        alt={product.name}
-                        width={100}
-                        height={100}
-                      />
-                      <div className="px-2 text-left">
+                      <div className="relative aspect-square w-1/2">
+                        <Image src={product.img_url} alt={product.name} fill />
+                      </div>
+
+                      <div className="px-2 text-left w-1/2">
                         <h1 className="text-lg">{product.name}</h1>
                         <p className="font-inter text-base">{product.amount}</p>
                         <p className="font-inter text-base">
@@ -101,7 +99,8 @@ export default function SidebarCart({
                   onClick={handleShowCart}
                   href={"/shop"}
                 >
-                  Cart empty, Go to shop! <FontAwesomeIcon icon={faCartPlus} />
+                  Carrinho vazio, vá para a loja!{" "}
+                  <FontAwesomeIcon icon={faCartPlus} />
                 </Link>
               </div>
             )}
@@ -109,7 +108,7 @@ export default function SidebarCart({
 
           <div className="m-4 mb-20">
             <Link href="/cart" onClick={handleShowCart} className="m-4">
-              <ActionBtn>Checkout</ActionBtn>
+              <ActionBtn>Finalizar Compra</ActionBtn>
             </Link>
           </div>
         </div>
