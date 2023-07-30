@@ -18,10 +18,13 @@ const initialState: IHighlightsInitialState = {
 
 export const fetchPromotions = createAsyncThunk(
   "highlights/fetch",
-  async (_, {}) => {
-    const response = await api.get("promotion/");
-    const promotions = response.data;
-    return promotions;
+  async (_, thunkAPI) => {
+    try {
+      const response = await api.get("promotion/");
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
   }
 );
 

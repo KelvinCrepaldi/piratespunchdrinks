@@ -29,14 +29,14 @@ export default function SidebarCart({
   }, [isAuthenticated]);
 
   return (
-    <>
+    <div className={`${showCart ? "fixed" : "hidden"}`}>
       <div
         className={`${
-          showCart ? "" : "hidden"
+          showCart ? "fixed" : "hidden"
         } fixed top-0 left-0 w-full h-screen bg-black opacity-60 behind-main z-20`}
         onClick={handleShowCart}
       ></div>
-      <div className="w-full h-full max-h-full bg-pirates-black absolute z-20">
+      <div className={`h-full w-80 bg-pirates-black fixed z-20 right-0`}>
         <div className="flex justify-end">
           <button onClick={handleShowCart} className="m-1 p-2">
             X
@@ -114,6 +114,6 @@ export default function SidebarCart({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

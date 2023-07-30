@@ -18,10 +18,9 @@ export const fetchProducts = createAsyncThunk(
   "products/fetch",
   async (_, thunkAPI) => {
     try {
-      const response = await api.get("/product");
+      const response = await api.get("/product/");
       return response.data;
     } catch (error) {
-      // Aqui você pode tratar erros, se necessário.
       throw error;
     }
   }

@@ -57,16 +57,11 @@ export default function Navbar() {
   };
 
   return (
-    <div className="bg-pirates-black-transparent relative z-10">
-      <div
-        className={`fixed w-80 h-screen ${showCart ? "right-0" : "-right-80"}`}
-      >
-        <SidebarCart
-          handleShowCart={handleShowCart}
-          showCart={showCart}
-        ></SidebarCart>
-      </div>
-
+    <div className="bg-pirates-black-transparent relative z-10 ">
+      <SidebarCart
+        handleShowCart={handleShowCart}
+        showCart={showCart}
+      ></SidebarCart>
       <nav className="w-100 md:max-w-5xl m-auto">
         <div className="flex justify-between ">
           <Link href="/" className="flex items-center mx-1 mr-3">
@@ -130,74 +125,81 @@ export default function Navbar() {
           </div>
         </div>
 
-        <ul
-          className={`flex flex-col transition-all rounded-bl-md md:border-transparent bg-pirates-black-transparent md:bg-transparent md:flex-row p-10 md:p-0 justify-center md:justify-end text-2xl absolute md:static   ${
-            showNavbar ? "right-0" : "-right-80"
-          } md:right-auto text-center`}
-          onClick={handleCloseNavbar}
-        >
-          <div className="flex justify-center  border-b pb-5 relative  md:hidden ">
-            {isAuth ? (
-              <div className="z-10">
-                <li className="text-green-400 mb-5">
-                  <span>{user?.name.toUpperCase()}</span>
-                </li>
-                <li className="font-imfell px-3 hover:text-pirates-gold">
-                  <Link href={"/user"}>
-                    <FontAwesomeIcon
-                      icon={faUser}
-                      className={`text-xl mr-1 `}
-                    ></FontAwesomeIcon>
-                    User page
-                  </Link>
-                </li>
-                <li className="font-imfell px-3 hover:text-pirates-gold">
-                  <button onClick={handleLogOut}>
-                    <FontAwesomeIcon
-                      icon={faRightFromBracket}
-                      className={`text-xl mr-1`}
-                    ></FontAwesomeIcon>{" "}
-                    Logout
-                  </button>
-                </li>
-              </div>
-            ) : (
-              <Link className="hover:text-pirates-gold" href={"/login"}>
-                Login
+        <div>
+          <ul
+            className={`${
+              !showNavbar && "hidden"
+            } flex flex-col transition-all rounded-bl-md md:border-transparent bg-pirates-black-transparent md:bg-transparent md:flex-row p-10 md:p-0 justify-center md:justify-end text-2xl absolute md:static md:right-auto text-center right-0`}
+            onClick={handleCloseNavbar}
+          >
+            <div
+              className={`flex justify-center  border-b pb-5 relative  md:hidden `}
+            >
+              {isAuth ? (
+                <div className="z-10">
+                  <li className="text-green-400 mb-5">
+                    <span>{user?.name.toUpperCase()}</span>
+                  </li>
+                  <li className="font-imfell px-3 hover:text-pirates-gold">
+                    <Link href={"/user"}>
+                      <FontAwesomeIcon
+                        icon={faUser}
+                        className={`text-xl mr-1 `}
+                      ></FontAwesomeIcon>
+                      User page
+                    </Link>
+                  </li>
+                  <li className="font-imfell px-3 hover:text-pirates-gold">
+                    <button onClick={handleLogOut}>
+                      <FontAwesomeIcon
+                        icon={faRightFromBracket}
+                        className={`text-xl mr-1`}
+                      ></FontAwesomeIcon>{" "}
+                      Logout
+                    </button>
+                  </li>
+                </div>
+              ) : (
+                <Link className="hover:text-pirates-gold" href={"/login"}>
+                  Login
+                </Link>
+              )}
+              <div></div>
+            </div>
+            <li>
+              <Link
+                href="/"
+                className="font-imfell px-3 hover:text-pirates-gold"
+              >
+                Home
               </Link>
-            )}
-            <div></div>
-          </div>
-          <li>
-            <Link href="/" className="font-imfell px-3 hover:text-pirates-gold">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/shop"
-              className="font-imfell px-3 hover:text-pirates-gold"
-            >
-              Shop
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/about"
-              className="font-imfell px-3 hover:text-pirates-gold"
-            >
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/contact"
-              className="font-imfell px-3 hover:text-pirates-gold"
-            >
-              Contact
-            </Link>
-          </li>
-        </ul>
+            </li>
+            <li>
+              <Link
+                href="/shop"
+                className="font-imfell px-3 hover:text-pirates-gold"
+              >
+                Shop
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/about"
+                className="font-imfell px-3 hover:text-pirates-gold"
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contact"
+                className="font-imfell px-3 hover:text-pirates-gold"
+              >
+                Contact
+              </Link>
+            </li>
+          </ul>
+        </div>
       </nav>
     </div>
   );
