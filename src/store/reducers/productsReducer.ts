@@ -17,9 +17,13 @@ const initialState: IInitialStateProductsSlice = {
 export const fetchProducts = createAsyncThunk(
   "products/fetch",
   async (_, thunkAPI) => {
-    const response = await api.get("http://localhost:3001/product");
-    const products = response.data;
-    return products;
+    const response = await api
+      .get("http://localhost:3001/product")
+      .then((response) => {
+        return response.data;
+      });
+
+    return response;
   }
 );
 
