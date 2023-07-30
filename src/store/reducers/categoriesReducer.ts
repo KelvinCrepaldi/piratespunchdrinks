@@ -1,6 +1,6 @@
 import { ICategory } from "@/interfaces/category.interface";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import api from "@/services";
 
 export interface IInitialStateCategoriesSlice {
   loading: boolean;
@@ -17,7 +17,7 @@ const initialState: IInitialStateCategoriesSlice = {
 export const fetchCategories = createAsyncThunk(
   "categories/fetch",
   async (_) => {
-    const response = await axios.get("http://localhost:3001/category");
+    const response = await api.get("category/");
     const categories = response.data;
     return categories;
   }
@@ -37,9 +37,8 @@ const categoriesSlice = createSlice({
       state.categories = action.payload;
     });
     builder.addCase(fetchCategories.rejected, (state, action) => {
-      action.error &&
-        (state.error =
-          "Houve um erro no servidor, tente novamente mais tarde!");
+      state.error =
+        "Houve um erro ao tentar conectar com o servidor, tente novamente mais tarde!";
       state.loading = false;
     });
   },

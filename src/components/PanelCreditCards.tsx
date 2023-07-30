@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import {
-  deleteCreditCard,
-  fetchCreditCards,
-} from "@/store/actions/creditCards";
+import { deleteCreditCard } from "@/store/actions/creditCards";
+import { fetchCreditCards } from "@/store/reducers/creditCardsReducer";
 import FormCreateCreditCard from "./FormCreateCreditCard";
 import { useAppDispatch } from "@/store/store";
 
@@ -19,7 +17,7 @@ const PanelCreditCards = () => {
 
   useEffect(() => {
     if (token) {
-      dispatch(fetchCreditCards(token));
+      dispatch(fetchCreditCards());
     }
   }, [dispatch, token]);
 
