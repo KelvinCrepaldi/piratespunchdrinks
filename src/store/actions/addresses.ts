@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   fetchAddressesStart,
   fetchAddressesSuccess,
@@ -6,13 +5,14 @@ import {
 } from "../reducers/addressesReducer";
 import { Dispatch } from "redux";
 import { logout } from "../reducers/userReducer";
+import api from "../../services/index";
 
 export const fetchAddresses = (token: string) => {
   return async (dispatch: Dispatch) => {
     try {
       dispatch(fetchAddressesStart());
 
-      const response = await axios.get(`http://localhost:3001/address/`, {
+      const response = await api.get(`address/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -30,13 +30,13 @@ export const fetchAddresses = (token: string) => {
 export const deleteAddress = ({ token, addressId }: any) => {
   return async (dispatch: Dispatch) => {
     try {
-      await axios.delete(`http://localhost:3001/address/${addressId}`, {
+      await api.delete(`address/${addressId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
       dispatch(fetchAddressesStart());
 
-      const response = await axios.get(`http://localhost:3001/address/`, {
+      const response = await api.get(`address/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -56,13 +56,9 @@ export const createAddress = ({ token, body }: any) => {
       const jsonBody = JSON.stringify(body);
       console.log(jsonBody);
 
-      await axios.post(
-        `http://localhost:3001/address`,
-        JSON.parse(JSON.stringify(body)),
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      await api.post(`address`, JSON.parse(JSON.stringify(body)), {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
       dispatch(fetchAddresses(token));
     } catch (error) {

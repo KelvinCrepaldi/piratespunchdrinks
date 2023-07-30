@@ -1,7 +1,6 @@
 import { IPromotion } from "@/interfaces/highlights.interface";
-import { IProduct } from "@/interfaces/product.interface";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import api from "@/services";
 
 interface IHighlightsInitialState {
   loading: boolean;
@@ -20,7 +19,7 @@ const initialState: IHighlightsInitialState = {
 export const fetchPromotions = createAsyncThunk(
   "highlights/fetch",
   async (_, {}) => {
-    const response = await axios.get("http://localhost:3001/promotion");
+    const response = await api.get("promotion/");
     const promotions = response.data;
     return promotions;
   }
@@ -42,7 +41,7 @@ const highlightSlice = createSlice({
     builder.addCase(fetchPromotions.rejected, (state, action) => {
       action.error &&
         (state.error =
-          "Houve um erro no servidor, tente novamente mais tarde!");
+          "Houve um erro ao tentar conectar com o servidor, tente novamente mais tarde!");
       state.loading = false;
     });
   },

@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import { RootState } from "../store";
 import { IOrder } from "@/interfaces/order.interface";
 import { IProduct } from "@/interfaces/product.interface";
+import api from "@/services";
 
 export interface IInitialStateOrdersSlice {
   loading: boolean;
@@ -20,7 +20,7 @@ export const fetchOrders = createAsyncThunk(
   "orders/fetch",
   async (_, { getState }) => {
     const state = getState() as RootState;
-    const response = await axios.get("http://localhost:3001/order/", {
+    const response = await api.get("order/", {
       headers: { Authorization: `Bearer ${state.auth.token}` },
     });
     const orders = response.data;
@@ -34,7 +34,6 @@ export const createOrder = createAsyncThunk(
   async ({ products, address, creditCard }: any, { getState }) => {
     const state = getState() as RootState;
     const token = state.auth.token;
-    console.log("token");
 
     const productsListData = products?.map((product: IProduct) => {
       return { productId: product.id, quantity: product.qtd };
@@ -46,13 +45,9 @@ export const createOrder = createAsyncThunk(
       creditCardId: creditCard.id,
     };
 
-    const response = await axios.post(
-      `http://localhost:3001/order/`,
-      bodyRequest,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
+    const response = await api.post(`order/`, bodyRequest, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
 
     const orders = response.data;
 

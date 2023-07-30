@@ -1,6 +1,6 @@
 import { IProduct } from "@/interfaces/product.interface";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import api from "@/services";
 
 interface IInitialStateProductsSlice {
   loading: boolean;
@@ -17,7 +17,7 @@ const initialState: IInitialStateProductsSlice = {
 export const fetchProducts = createAsyncThunk(
   "products/fetch",
   async (_, thunkAPI) => {
-    const response = await axios.get("http://localhost:3001/product");
+    const response = await api.get("http://localhost:3001/product");
     const products = response.data;
     return products;
   }
@@ -33,15 +33,15 @@ const productsSlice = createSlice({
       state.loading = true;
       state.error = null;
     });
+
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       state.loading = false;
       state.products = action.payload;
     });
-    builder.addCase(fetchProducts.rejected, (state, action) => {
-      action.error &&
-        (state.error =
-          "Houve um erro no servidor, tente novamente mais tarde!");
 
+    builder.addCase(fetchProducts.rejected, (state, action) => {
+      state.error =
+        "Houve um erro ao tentar conectar com o servidor, tente novamente mais tarde!";
       state.loading = false;
     });
   },

@@ -1,10 +1,8 @@
 import { IAuthenticate } from "@/interfaces/authenticate.interface";
 import { IUser } from "@/interfaces/user.interface";
-import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import { RootProps } from "postcss";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { headers } from "next/dist/client/components/headers";
+import api from "@/services";
 
 export interface IInitialStateAuthSlice {
   token: null | string;
@@ -35,10 +33,7 @@ if (typeof window !== "undefined") {
 export const authenticate = createAsyncThunk(
   "user/authenticate",
   async (credentials: IAuthenticate) => {
-    const response = await axios.post(
-      "http://localhost:3001/login",
-      credentials
-    );
+    const response = await api.post("login/", credentials);
     return response.data;
   }
 );
@@ -49,7 +44,7 @@ export const deleteAccount = createAsyncThunk(
     const state = getState() as RootState;
 
     const token = state.auth.token;
-    const response = await axios.delete("http://localhost:3001/users", {
+    const response = await api.delete("users/", {
       headers: { Authorization: `Bearer ${token}` },
     });
 
