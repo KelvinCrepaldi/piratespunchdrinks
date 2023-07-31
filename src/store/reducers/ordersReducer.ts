@@ -19,39 +19,43 @@ const initialState: IInitialStateOrdersSlice = {
 export const fetchOrders = createAsyncThunk(
   "orders/fetch",
   async (_, { getState }) => {
-    const state = getState() as RootState;
-    const response = await api.get("order/", {
-      headers: { Authorization: `Bearer ${state.auth.token}` },
-    });
-    const orders = response.data;
+    try {
+      const state = getState() as RootState;
+      const response = await api.get("/order/", {
+        headers: { Authorization: `Bearer ${state.auth.token}` },
+      });
+      const orders = response.data;
 
-    return orders;
+      return orders;
+    } catch (error) {
+      throw error;
+    }
   }
 );
 
 export const createOrder = createAsyncThunk(
   "orders/create",
   async ({ products, address, creditCard }: any, { getState }) => {
-    const state = getState() as RootState;
-    const token = state.auth.token;
+    try {
+      const state = getState() as RootState;
+      const token = state.auth.token;
 
-    const productsListData = products?.map((product: IProduct) => {
-      return { productId: product.id, quantity: product.qtd };
-    });
+      const productsListData = products?.map((product: IProduct) => {
+        return { productId: product.id, quantity: product.qtd };
+      });
 
-    const bodyRequest = {
-      products: productsListData,
-      addressId: address.id,
-      creditCardId: creditCard.id,
-    };
+      const bodyRequest = {
+        products: productsListData,
+        addressId: address.id,
+        creditCardId: creditCard.id,
+      };
 
-    const response = await api.post(`order/`, bodyRequest, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    const orders = response.data;
-
-    return orders;
+      const response = await api.post(`/order/`, bodyRequest, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    } catch (error) {
+      throw error;
+    }
   }
 );
 

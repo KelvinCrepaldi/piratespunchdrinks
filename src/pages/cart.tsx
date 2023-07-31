@@ -32,7 +32,7 @@ export default function Cart() {
       address: selectedAddress,
       creditCard: selectedCreditCard,
     };
-    dispatch(createOrder(data));
+    dispatch(createOrder({ ...data }));
   };
 
   const handleSelectAddress = (e: IAddress) => {

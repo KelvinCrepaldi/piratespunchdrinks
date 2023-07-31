@@ -15,15 +15,3 @@ export const createCreditCard = ({ token, body }: any) => {
     }
   };
 };
-
-export const deleteCreditCard = ({ token, id }: any) => {
-  return async (dispatch: any) => {
-    try {
-      const request = await api.delete(`creditcard/${id}/`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};

@@ -120,7 +120,7 @@ export default function Navbar({ handleShowCart }: any) {
             </div>
           </div>
 
-          <div className={` ${!showNavbar && "hidden"} `}>
+          <div className={` ${!showNavbar && "hidden"} md:flex md:justify-end`}>
             <ul
               className={`  flex flex-col transition-all rounded-bl-md md:border-transparent bg-pirates-black-transparent md:bg-transparent md:flex-row p-10 md:p-0 justify-center md:justify-end text-2xl absolute md:static md:right-auto text-center right-0`}
               onClick={handleCloseNavbar}
