@@ -38,6 +38,28 @@ export const authenticate = createAsyncThunk(
   }
 );
 
+interface ICreateAccountBody {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export const createAccount = createAsyncThunk(
+  "user/signup",
+  async ({ name, email, password }: ICreateAccountBody, thunkAPI) => {
+    const body = { name, email, password };
+    try {
+      const response = await api.post("/users/", body);
+      if (response.status === 200) {
+        console.log("user created");
+      }
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
 export const deleteAccount = createAsyncThunk(
   "user/logout",
   async (_, { getState, dispatch }) => {
@@ -88,6 +110,7 @@ const authSlice = createSlice({
           "Erro ao fazer login no servidor, tente novamente mais tarde.";
       }
     });
+    builder.addCase(createAccount.fulfilled, (state, action) => {});
   },
 });
 

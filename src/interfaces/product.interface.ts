@@ -15,6 +15,7 @@ export interface IProductAditionalInfo {
 
 export interface IProduct {
   id: string;
+  code: string;
   name: string;
   price: string;
   apresentation: string;

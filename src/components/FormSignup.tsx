@@ -2,8 +2,12 @@ import { useForm } from "react-hook-form";
 import ActionBtn from "./ActionBtn";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useDispatch } from "react-redux";
+import { createAccount } from "@/store/reducers/userReducer";
 
 const FormSignup = () => {
+  const dispatch = useDispatch();
+
   const formSchema = yup.object().shape({
     name: yup.string().required(),
     email: yup
@@ -25,8 +29,8 @@ const FormSignup = () => {
   } = useForm({ resolver: yupResolver(formSchema) });
 
   const handleSignup = (e: any) => {
-    const { email, password } = e;
-    // criar logica de criação de conta
+    const { name, email, password } = e;
+    dispatch(createAccount({ name, email, password }));
   };
 
   return (
@@ -68,7 +72,7 @@ const FormSignup = () => {
           className="bg-transparent text-red-500 border w-60 p-1"
           type="password"
           placeholder="Confirm Password"
-          {...register("password")}
+          {...register("confirmPassword")}
         ></input>
         {errors.confirmPassword?.message && (
           <span className="">{String(errors.confirmPassword?.message)}</span>

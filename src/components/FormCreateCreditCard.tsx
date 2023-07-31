@@ -3,8 +3,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "@/store/store";
-import { createCreditCard } from "@/store/actions/creditCards";
-
+import { createCreditCards } from "@/store/reducers/creditCardsReducer";
 const FormCreateCreditCard = ({ isOpen = false, setIsOpen }: any) => {
   const { token } = useSelector((state: any) => state.auth);
   const dispatch = useAppDispatch();
@@ -17,7 +16,7 @@ const FormCreateCreditCard = ({ isOpen = false, setIsOpen }: any) => {
       .test("len", "Must be exactly 16 numbers", (val) => {
         return val.toString().length === 16;
       }),
-    expiration_date: yup
+    expirationDate: yup
       .string()
       .matches(/^(0[1-9]|1[0-2])\/\d{2}$/, "Invalid date format (MM/YY)")
       .required("Expiration date is required")
@@ -36,9 +35,9 @@ const FormCreateCreditCard = ({ isOpen = false, setIsOpen }: any) => {
   });
 
   const handleCreateCreditCard = (e: any) => {
-    const body = e;
-    console.log(e);
-    dispatch(createCreditCard({ token, body }));
+    const { name, number, expirationDate } = e;
+    console.log(name);
+    dispatch(createCreditCards({ name, number, expirationDate }));
 
     setIsOpen(!isOpen);
   };
@@ -55,7 +54,6 @@ const FormCreateCreditCard = ({ isOpen = false, setIsOpen }: any) => {
         className="flex flex-wrap space-y-2 space-x-1"
         onSubmit={handleSubmit(handleCreateCreditCard)}
       >
-        <div></div>
         <div>
           <span className="text-pirates-gold">Name: </span>
           <input
@@ -63,6 +61,7 @@ const FormCreateCreditCard = ({ isOpen = false, setIsOpen }: any) => {
             placeholder="Name"
             {...register("name")}
           />
+          {errors.name?.message && <span>{String(errors.name?.message)}</span>}
         </div>
         <div>
           <span className="text-pirates-gold">Number: </span>
@@ -72,6 +71,9 @@ const FormCreateCreditCard = ({ isOpen = false, setIsOpen }: any) => {
             type="number"
             {...register("number")}
           />
+          {errors.number?.message && (
+            <span>{String(errors.number?.message)}</span>
+          )}
         </div>
         <div>
           <span className="text-pirates-gold">Expiration Date: </span>
@@ -80,8 +82,11 @@ const FormCreateCreditCard = ({ isOpen = false, setIsOpen }: any) => {
             type="text"
             pattern="^(0[1-9]|1[0-2])\/\d{2}$"
             placeholder="MM/YY"
-            {...register("expiration_date")}
+            {...register("expirationDate")}
           />
+          {errors.expirationDate?.message && (
+            <span>{String(errors.expirationDate?.message)}</span>
+          )}
         </div>
         <div className="flex justify-end w-full">
           <button

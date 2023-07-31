@@ -18,36 +18,81 @@ const initialState: IInitialStateCreditCardsSlice = {
 export const fetchCreditCards = createAsyncThunk(
   "creditCards/fetch",
   async (_, { getState }) => {
-    const state = getState() as RootState;
-    const token = state.auth.token;
+    try {
+      const state = getState() as RootState;
+      const token = state.auth.token;
 
-    const response = await api.get("creditcard/", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+      const response = await api.get("creditcard/", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
-    const creditCards = response.data;
+      const creditCards = response.data;
 
-    return creditCards;
+      return creditCards;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+);
+
+interface ICreateCreditCardsBody {
+  name: string;
+  number: number;
+  expirationDate: string;
+}
+
+export const createCreditCards = createAsyncThunk(
+  "creditCards/create",
+  async (
+    { name, number, expirationDate }: ICreateCreditCardsBody,
+    { getState, dispatch }
+  ) => {
+    try {
+      console.log(name);
+      const state = getState() as RootState;
+      const token = state.auth.token;
+
+      const body = { name, number, expiration_date: expirationDate };
+
+      await api.post("creditcard/", body, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      dispatch(fetchCreditCards());
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+);
+
+interface IDeleteCreditCardBody {
+  id: string;
+}
+
+export const deleteCreditCard = createAsyncThunk(
+  "creditCards/delete",
+  async ({ id }: IDeleteCreditCardBody, { getState, dispatch }) => {
+    try {
+      const state = getState() as RootState;
+      const token = state.auth.token;
+
+      await api.delete(`creditcard/${id}/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      dispatch(fetchCreditCards());
+    } catch (error) {
+      throw error;
+    }
   }
 );
 
 const creditCardsSlice = createSlice({
   name: "creditCards",
   initialState,
-  reducers: {
-    fetchCreditCardsStart(state) {
-      state.loading = true;
-      state.error = null;
-    },
-    fetchCreditCardsSuccess(state, action) {
-      state.loading = false;
-      state.creditCards = action.payload;
-    },
-    fetchCreditCardsFailure(state, action) {
-      state.loading = false;
-      state.error = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchCreditCards.pending, (state, action) => {
       state.loading = true;
@@ -67,8 +112,4 @@ const creditCardsSlice = createSlice({
 
 export default creditCardsSlice.reducer;
 
-export const {
-  fetchCreditCardsStart,
-  fetchCreditCardsSuccess,
-  fetchCreditCardsFailure,
-} = creditCardsSlice.actions;
+export const {} = creditCardsSlice.actions;
