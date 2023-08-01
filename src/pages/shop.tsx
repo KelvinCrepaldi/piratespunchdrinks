@@ -31,7 +31,7 @@ export default function Shop() {
         <meta name="description" content="Pirates Punch Drinks" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="w-100  ">
+      <main className="">
         <div className="flex flex-col text-center items-center py-10">
           <h1 className="px-4 text-5xl border-b-2 border-pirates-red">
             Drinks for You!
@@ -71,7 +71,7 @@ export default function Shop() {
             </main>
           </div>
         </div>
-      </div>
+      </main>
     </>
   );
 }

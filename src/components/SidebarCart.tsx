@@ -35,7 +35,7 @@ export default function SidebarCart({
       } w-full h-screen fixed top-0 right-0 bg-pirates-black-transparent z-20`}
     >
       <div
-        className={` fixed w-80 bg-pirates-black top-0 right-0 z-20 h-screen pr-2 pl-2`}
+        className={` fixed w-80 bg-pirates-black-transparent top-0 right-0 z-20 h-screen pr-2 pl-2 backdrop-blur`}
       >
         <div className="flex justify-end">
           <button onClick={handleShowCart} className="m-1 px-4 pt-2 text-2xl">
@@ -43,7 +43,7 @@ export default function SidebarCart({
           </button>
         </div>
         <div className="flex flex-col text-center max-h-full sticky">
-          <h1>Carrinho de compras</h1>
+          <h1>Carrinho</h1>
           {!showUserContent ? (
             <div className="text-red-300">
               Usuário não conectado, por favor{" "}

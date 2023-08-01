@@ -1,10 +1,11 @@
 import Image from "next/image";
 
 import piratepunchlogo from "/public/images/piratepunch.png";
+import tortuga from "/public/images/tortuga.jpg";
 
 export default function Contact() {
   return (
-    <main className="w-100 md:max-w-5xl m-auto p-5 md:p-16 space-y-10">
+    <main className="md:max-w-5xl m-auto p-5 md:p-16 space-y-10">
       <div className="flex flex-col md:flex-row justify-center items-center">
         <div className=" flex flex-col justify-center items-center  m-auto">
           <div className=" text-center">
@@ -58,6 +59,16 @@ export default function Contact() {
           </p>
         </li>
       </ul>
+      <div className="relative w-full aspect-video max-w-lg mx-auto">
+        <Image
+          className=" rounded xl border-4 border-pirates-black-transparent "
+          src={tortuga}
+          alt="pirate punch logo"
+          fill
+          style={{ objectFit: "cover" }}
+        />
+      </div>
+
       <p className="text-center text-pirates-gold">
         Para qualquer pergunta, sugestão ou histórias de aventuras piratas,
         sinta-se à vontade para nos contatar por telefone ou e-mail. Nossa

@@ -1,5 +1,8 @@
 import Image from "next/image";
 import piratepunchlogo from "/public/images/piratepunch.png";
+import manPhoto from "/public/images/man.webp";
+import barPhoto from "/public/images/barPhoto.webp";
+import drinkPhoto from "/public/images/drink.webp";
 export default function About() {
   return (
     <main className="w-100 md:max-w-5xl m-auto p-5 md:p-16 space-y-16">
@@ -31,7 +34,12 @@ export default function About() {
           procurando um lugar para encontrar a bebida perfeita para matar a
           sede, você veio ao lugar certo!
         </p>
-        <Image src={piratepunchlogo} alt="pirate punch logo" width={250} />
+        <Image
+          className="mx-5 rounded xl border-4 border-pirates-black-transparent"
+          src={manPhoto}
+          alt="pirate punch logo"
+          width={250}
+        />
       </div>
       <div className="flex flex-col md:flex-row-reverse items-center">
         <p>
@@ -42,7 +50,12 @@ export default function About() {
           sobre bebidas. E não se preocupe com as teias de aranha - são apenas
           parte da nossa decoração temática!
         </p>
-        <Image src={piratepunchlogo} alt="pirate punch logo" width={250} />
+        <Image
+          className="mx-5 rounded xl border-4 border-pirates-black-transparent"
+          src={barPhoto}
+          alt="pirate punch logo"
+          width={250}
+        />
       </div>
       <div className="flex flex-col md:flex-row items-center">
         <p>
@@ -55,7 +68,12 @@ export default function About() {
           artesanais aos coquetéis temáticos, temos tudo o que um corsário
           ousado poderia desejar!
         </p>
-        <Image src={piratepunchlogo} alt="pirate punch logo" width={250} />
+        <Image
+          className="mx-5 rounded xl border-4 border-pirates-black-transparent"
+          src={drinkPhoto}
+          alt="pirate punch logo"
+          width={250}
+        />
       </div>
       <div className="flex flex-col space-y-3">
         <p className="text-center text-pirates-gold">
