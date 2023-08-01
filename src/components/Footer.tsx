@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <footer className="w-full flex flex-col items-center bg-black  py-10">
       <div className=" max-w-5xl flex flex-col md:flex-row">
-        <div className="md:w-1/3 space-y-4 flex flex-col text-center  border-t md:border-r md:border-t-0 p-4 m-5">
+        <nav className="md:w-1/3 space-y-4 flex flex-col text-center  border-t md:border-r md:border-t-0 p-4 m-5">
           <ul>
             <li>
               <Link className="hover:text-blue-300" href={"/"}>
@@ -32,7 +32,7 @@ export const Footer = () => {
               </Link>
             </li>
           </ul>
-        </div>
+        </nav>
         <div className="md:w-1/3 space-y-4 flex flex-col text-center border-t  md:border-t-0 p-4 m-5">
           <p className="font-inter text-sm">
             PiratesPunch - Este site é puramente fictício e os produtos listados

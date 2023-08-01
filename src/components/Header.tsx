@@ -17,7 +17,7 @@ import { RootState, useAppDispatch } from "@/store/store";
 import SidebarCart from "./SidebarCart";
 import { useRouter } from "next/router";
 
-export default function Navbar({ handleShowCart }: any) {
+export default function Header({ handleShowCart }: any) {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
@@ -54,21 +54,21 @@ export default function Navbar({ handleShowCart }: any) {
 
   return (
     <>
-      <div className="bg-pirates-black-transparent relative z-10 ">
-        <nav className="w-100 md:max-w-5xl m-auto">
+      <header className="bg-pirates-black-transparent-strong relative z-10 backdrop-blur border-b-2 border-pirates-black">
+        <div className="w-100 md:max-w-5xl m-auto">
           <div className="flex justify-between ">
             <Link href="/" className="flex items-center mx-1 mr-3">
               <Image
                 src={piratepunchlogo}
-                className="m-1 lg:my-4"
-                width={55}
+                className="my-1"
+                width={50}
                 alt="piratepunch logo"
               />
               <h1 className="hidden md:inline font-fredericka">
                 Pirate{"'"}s Punch
               </h1>
             </Link>
-            <div className="flex items-center w-full max-w-xs space-x-3 justify-end">
+            <div className="flex items-center space-x-3 justify-end flex-grow">
               <div className="flex h-9 w-full max-w-xs bg-transparent border rounded items-center">
                 <input
                   placeholder="Find..."
@@ -120,7 +120,9 @@ export default function Navbar({ handleShowCart }: any) {
             </div>
           </div>
 
-          <div className={` ${!showNavbar && "hidden"} md:flex md:justify-end`}>
+          <nav
+            className={` ${!showNavbar && "hidden"} md:flex md:justify-start`}
+          >
             <ul
               className={`  flex flex-col transition-all rounded-bl-md md:border-transparent bg-pirates-black-transparent md:bg-transparent md:flex-row p-10 md:p-0 justify-center md:justify-end text-2xl absolute md:static md:right-auto text-center right-0`}
               onClick={handleCloseNavbar}
@@ -172,7 +174,7 @@ export default function Navbar({ handleShowCart }: any) {
                   href="/shop"
                   className="font-imfell px-3 hover:text-pirates-gold"
                 >
-                  Shop
+                  Bebidas
                 </Link>
               </li>
               <li>
@@ -180,7 +182,7 @@ export default function Navbar({ handleShowCart }: any) {
                   href="/about"
                   className="font-imfell px-3 hover:text-pirates-gold"
                 >
-                  About
+                  Sobre
                 </Link>
               </li>
               <li>
@@ -188,13 +190,13 @@ export default function Navbar({ handleShowCart }: any) {
                   href="/contact"
                   className="font-imfell px-3 hover:text-pirates-gold"
                 >
-                  Contact
+                  Contato
                 </Link>
               </li>
             </ul>
-          </div>
-        </nav>
-      </div>
+          </nav>
+        </div>
+      </header>
     </>
   );
 }

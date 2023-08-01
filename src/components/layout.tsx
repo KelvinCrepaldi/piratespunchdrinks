@@ -1,4 +1,4 @@
-import Navbar from "./Navbar";
+import Header from "./Header";
 import { ILayoutProps } from "@/interfaces/layout.interface";
 import { Footer } from "./Footer";
 import SidebarCart from "./SidebarCart";
@@ -12,8 +12,8 @@ export default function Layout({ children }: ILayoutProps) {
   return (
     <div>
       <SidebarCart handleShowCart={handleShowCart} showCart={showCart} />
-      <Navbar handleShowCart={handleShowCart} />
-      {children}
+      <Header handleShowCart={handleShowCart} />
+      <div className="bg-pirates-black-transparent">{children}</div>
       <Footer />
     </div>
   );
