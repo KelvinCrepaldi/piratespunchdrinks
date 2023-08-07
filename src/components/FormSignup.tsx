@@ -2,11 +2,16 @@ import { useForm } from "react-hook-form";
 import ActionBtn from "./ActionBtn";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createAccount } from "@/store/reducers/userReducer";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { RootState } from "@/store/store";
+import LoadingSpinner from "./loadingSpinner";
 
 const FormSignup = () => {
   const dispatch = useDispatch();
+  const { signupStatus } = useSelector((state: RootState) => state.auth);
 
   const formSchema = yup.object().shape({
     name: yup.string().required(),
@@ -78,7 +83,11 @@ const FormSignup = () => {
           <span className="">{String(errors.confirmPassword?.message)}</span>
         )}
       </div>
-      <ActionBtn type="submit">Criar conta</ActionBtn>
+      {signupStatus.loading ? (
+        <LoadingSpinner />
+      ) : (
+        <ActionBtn type="submit">Criar conta</ActionBtn>
+      )}
     </form>
   );
 };

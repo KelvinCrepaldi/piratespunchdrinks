@@ -73,7 +73,9 @@ const ordersSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(fetchOrders.rejected, (state, action) => {
-      action.error && (state.error = "Houve um erro no servidor");
+      action.error &&
+        (state.error =
+          "Houve um erro ao tentar conectar com o servidor, tente novamente mais tarde!");
       state.loading = false;
     });
   },

@@ -8,19 +8,12 @@ import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import ActionBtn from "./ActionBtn";
+import LoadingSpinner from "./loadingSpinner";
 
 const FormLogin = () => {
-  const { error } = useSelector((state: RootState) => state.auth);
   const dispatch = useAppDispatch();
-  const router = useRouter();
 
-  const { isAuthenticated } = useSelector((state: any) => state.auth);
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      router.push("/user");
-    }
-  }, [isAuthenticated, router]);
+  const { loginStatus } = useSelector((state: RootState) => state.auth);
 
   const formSchema = yup.object().shape({
     email: yup
@@ -67,11 +60,14 @@ const FormLogin = () => {
       {errors.password?.message && (
         <span className="text-red-400">{errors.password?.message}</span>
       )}
-      {error && <span className="text-red-400">{error}</span>}
 
-      <ActionBtn type="submit" colorStyle="secondary">
-        Login
-      </ActionBtn>
+      {loginStatus.loading ? (
+        <LoadingSpinner />
+      ) : (
+        <ActionBtn type="submit" colorStyle="secondary">
+          Login
+        </ActionBtn>
+      )}
     </form>
   );
 };
