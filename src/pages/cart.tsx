@@ -50,13 +50,13 @@ export default function Cart() {
 
   return (
     <ProtectedRoute>
-      <main className="flex flex-col max-w-5xl m-auto min-h-screen ">
+      <main className="flex flex-col max-w-5xl m-auto min-h-screen">
         <div className="border-b border-pirates-red w-full">
           <h1 className="font-fredericka">Cart</h1>
         </div>
 
         {cartList.length > 0 ? (
-          <div className="flex ">
+          <div className="flex flex-col md:flex-row m-3">
             <div className="w-full ">
               {cartList.map((product: IProduct) => {
                 const totalValue = product.qtd * parseFloat(product.price);
@@ -103,13 +103,35 @@ export default function Cart() {
                 );
               })}
             </div>
-            <div className="flex flex-col w-96">
-              <h3>Address:</h3>
-              <Link href={"/user?option=addresses"}>Go to your Addresses</Link>
+
+            <div className="flex flex-col w-full md:w-1/3 bg-pirates-black-transparent p-2 m-3">
+              <h3>Endereço:</h3>
+
+              {getAdressList.length === 0 ? (
+                <>
+                  <span className="text-pirates-red p-1 rounded">
+                    Nenhum endereço cadastrado!
+                  </span>
+                  <Link
+                    className="bg-pirates-gold hover:bg-pirates-red text-pirates-black px-1 my-1 rounded"
+                    href={"/user?option=addresses"}
+                  >
+                    Criar novo endereço
+                  </Link>
+                </>
+              ) : (
+                <Link
+                  className="bg-pirates-gold hover:bg-pirates-red text-pirates-black px-1 my-1 rounded"
+                  href={"/user?option=addresses"}
+                >
+                  Gerenciar endereços
+                </Link>
+              )}
+
               {getAdressList.map((address: IAddress) => (
                 <label key={address.id} className="">
                   <div
-                    className={`flex  bg-pirates-black-hover p-3 mt-1 border-l ${
+                    className={`flex  bg-pirates-black-hover rounded p-3 mt-1 border-l ${
                       selectedAddress && selectedAddress.id === address.id
                         ? "border-green-400"
                         : "border-transparent"
@@ -163,14 +185,32 @@ export default function Cart() {
                   </div>
                 </label>
               ))}
-              <h3>Payment method:</h3>
-              <Link href={"/user?option=creditcards"}>
-                Go to your credit cards
-              </Link>
+              <h3>método de pagamento:</h3>
+              {getAdressList.length === 0 ? (
+                <>
+                  <span className="text-pirates-red p-1 rounded">
+                    Nenhum endereço cadastrado!
+                  </span>
+                  <Link
+                    className="bg-pirates-gold hover:bg-pirates-red text-pirates-black px-1 my-1 rounded"
+                    href={"/user?option=creditcards"}
+                  >
+                    Cadastrar cartão de crédito
+                  </Link>
+                </>
+              ) : (
+                <Link
+                  className="bg-pirates-gold hover:bg-pirates-red text-pirates-black px-1 my-1 rounded"
+                  href={"/user?option=creditcards"}
+                >
+                  Ver cartões de crédito
+                </Link>
+              )}
+
               {getcreditCardsList.map((creditCard: ICreditCard) => (
                 <label
                   key={creditCard.id}
-                  className={`flex bg-pirates-black-hover p-4 mt-4 border-l ${
+                  className={`flex bg-pirates-black-hover rounded p-4 mt-4 border-l ${
                     selectedCreditCard &&
                     selectedCreditCard.id === creditCard.id
                       ? "border-green-400"
