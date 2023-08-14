@@ -25,9 +25,9 @@ export default function Login() {
 
   return (
     <>
-      <main className="max-w-7xl md:max-w-5xl m-auto p-5 md:p-16">
+      <main className="w-100 md:max-w-5xl m-auto p-5 md:p-16 flex flex-col items-center">
         <FormLogin />
-        <div className="text-center my-5">
+        <div className="text-center">
           {loginStatus.error && (
             <span className="text-red-400">{loginStatus.error}</span>
           )}

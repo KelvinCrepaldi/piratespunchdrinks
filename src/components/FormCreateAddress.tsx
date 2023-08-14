@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { createAddress } from "@/store/actions/addresses";
 import { RootState, useAppDispatch } from "@/store/store";
+import InputText from "./InputText";
 
 const FormCreateAddress = ({ isOpen = false, setIsOpen }: any) => {
   const { token } = useSelector((state: RootState) => state.auth);
@@ -19,12 +20,22 @@ const FormCreateAddress = ({ isOpen = false, setIsOpen }: any) => {
     country: yup.string().required(),
   });
 
+  interface IAddresSchema {
+    address: string;
+    cep: string;
+    number: number;
+    complement: string;
+    city: string;
+    state: string;
+    country: string;
+  }
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({
+  } = useForm<IAddresSchema>({
     resolver: yupResolver(addressSchema),
   });
 
@@ -40,75 +51,50 @@ const FormCreateAddress = ({ isOpen = false, setIsOpen }: any) => {
   };
 
   return isOpen ? (
-    <div className="border rounded p-2 m-1">
+    <div className="border-b-2 p-2 m-1">
       <p className="text-xl">New address</p>
       <form
-        className="flex flex-wrap space-y-2 space-x-1"
+        className="flex flex-wrap "
         onSubmit={handleSubmit(handleCreateAddress)}
       >
-        <div className="ml-1 mt-2">
-          <span className="text-pirates-gold">Address: </span>
-          <input
-            className="bg-transparent border border-black rounded px-1"
-            placeholder="Address"
-            {...register("address")}
-          />
-        </div>
-        <div>
-          <span className="text-pirates-gold"> Number: </span>
-          <input
-            className="bg-transparent border border-black rounded px-1"
-            placeholder="Number"
-            type="number"
-            {...register("number")}
-          />
-        </div>
-        <div>
-          <span className="text-pirates-gold">Complement: </span>
-          <input
-            className="bg-transparent border border-black rounded px-1"
-            placeholder="Complement"
-            {...register("complement")}
-          />{" "}
-        </div>
-        <div>
-          <span className="text-pirates-gold"> CEP: </span>
-
-          <input
-            className="bg-transparent border border-black rounded px-1"
-            placeholder="Cep"
-            type="number"
-            {...register("cep")}
-          />
-        </div>
-
-        <div>
-          <span className="text-pirates-gold">City: </span>
-          <input
-            className="bg-transparent border border-black rounded px-1"
-            placeholder="City"
-            {...register("city")}
-          />
-        </div>
-        <div>
-          <span className="text-pirates-gold">State: </span>
-          <input
-            className="bg-transparent border border-black rounded px-1"
-            placeholder="State"
-            {...register("state")}
-          />
-        </div>
-
-        <div>
-          <span className="text-pirates-gold">Country: </span>
-          <input
-            className="bg-transparent border border-black rounded px-1"
-            placeholder="Country"
-            {...register("country")}
-          />
-        </div>
-
-        <div className="flex justify-end w-full">
+        <InputText
+          labelText="Address:"
+          error={errors.address?.message}
+          {...register("address")}
+        />
+        <InputText
+          labelText="Number:"
+          error={errors.number?.message}
+          type="number"
+          {...register("number")}
+        />
+        <InputText
+          labelText="Complement:"
+          error={errors.complement?.message}
+          {...register("complement")}
+        />{" "}
+        <InputText
+          labelText="CEP:"
+          error={errors.cep?.message}
+          type="number"
+          {...register("cep")}
+        />
+        <InputText
+          labelText="City:"
+          error={errors.city?.message}
+          {...register("city")}
+        />
+        <InputText
+          labelText="State:"
+          error={errors.state?.message}
+          {...register("state")}
+        />
+        <InputText
+          labelText="Country:"
+          error={errors.country?.message}
+          {...register("country")}
+        />
+        <div className="flex justify-end w-full mt-2">
           <button
             className="border border-black rounded px-1 mx-1 cursor-pointer hover:text-green-400"
             type="submit"
