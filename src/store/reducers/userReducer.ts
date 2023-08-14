@@ -142,13 +142,13 @@ const authSlice = createSlice({
     });
     builder.addCase(createAccount.fulfilled, (state, action) => {
       state.signupStatus.loading = false;
-      state.isAuthenticated = true;
       state.token = action.payload.token;
       state.user = action.payload.user;
       state.loginStatus.error = null;
       state.loginStatus.loading = false;
       localStorage.setItem("PirateAPItoken", JSON.stringify(state.token));
       localStorage.setItem("PirateAPIuser", JSON.stringify(state.user));
+      state.isAuthenticated = true;
     });
     builder.addCase(createAccount.rejected, (state, action) => {
       state.signupStatus.loading = false;
