@@ -13,7 +13,9 @@ export default function Layout({ children }: ILayoutProps) {
     <div>
       <SidebarCart handleShowCart={handleShowCart} showCart={showCart} />
       <Header handleShowCart={handleShowCart} />
-      <div className="bg-pirates-black-transparent">{children}</div>
+      <div className="bg-pirates-black-transparent min-h-[80vh]">
+        {children}
+      </div>
       <Footer />
     </div>
   );

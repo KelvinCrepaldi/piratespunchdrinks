@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import ActionBtn from "./ActionBtn";
 import LoadingSpinner from "./loadingSpinner";
+import InputText from "./InputText";
 
 const FormLogin = () => {
   const dispatch = useAppDispatch();
@@ -40,26 +41,24 @@ const FormLogin = () => {
 
   return (
     <form
-      className="flex flex-col space-y-4 items-center"
+      className="flex flex-col space-y-4 items-center max-w-[400px] m-auto"
       onSubmit={handleSubmit(handleLogin)}
     >
-      <input
-        className="bg-transparent text-yellow-500 border w-60 p-1"
+      <InputText
+        labelText="Email"
         placeholder="Email"
+        error={errors.email?.message}
         {...register("email")}
-      ></input>
-      {errors.email?.message && (
-        <span className="text-red-400">{errors.email?.message}</span>
-      )}
-      <input
-        className="bg-transparent text-yellow-500 border w-60 p-1"
+      ></InputText>
+
+      <InputText
+        error={errors.password?.message}
+        className=""
+        labelText="Password"
         type="password"
         placeholder="Senha"
         {...register("password")}
-      ></input>
-      {errors.password?.message && (
-        <span className="text-red-400">{errors.password?.message}</span>
-      )}
+      ></InputText>
 
       {loginStatus.loading ? (
         <LoadingSpinner />

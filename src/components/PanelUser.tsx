@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import InputText from "./InputText";
 
 export default function PanelUser() {
   const [user, setUser] = useState<any>(null);
@@ -21,9 +22,7 @@ export default function PanelUser() {
         <h1 className="border-b-2 font-inter border-pirates-red">User</h1>
         <ul className="flex flex-col m-2 p-3 bg-neutral-900 rounded">
           <li className="flex justify-between">
-            <span>
-              Name: <input defaultValue={user?.name}></input>
-            </span>
+            <InputText labelText="Name:" defaultValue={user?.name}></InputText>
           </li>
           <li className="flex justify-between">
             <span></span>
