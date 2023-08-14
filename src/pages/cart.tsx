@@ -97,7 +97,7 @@ export default function Cart() {
                       <QuantityControlButton
                         product={product}
                       ></QuantityControlButton>
-                      <span>total: {formatReal(totalValue)}</span>
+                      <span>Total: {formatReal(totalValue)}</span>
                     </div>
                   </div>
                 );
@@ -185,7 +185,7 @@ export default function Cart() {
                   </div>
                 </label>
               ))}
-              <h3>método de pagamento:</h3>
+              <h3>Método de pagamento:</h3>
               {getAdressList.length === 0 ? (
                 <>
                   <span className="text-pirates-red p-1 rounded">

@@ -41,32 +41,31 @@ const FormLogin = () => {
 
   return (
     <form
-      className="flex flex-col space-y-4 items-center max-w-[400px] m-auto"
+      className="flex flex-col items-center m-auto max-w-[350px] w-full"
       onSubmit={handleSubmit(handleLogin)}
     >
+      <h1>Fazer login</h1>
       <InputText
         labelText="Email"
-        placeholder="Email"
         error={errors.email?.message}
         {...register("email")}
       ></InputText>
 
       <InputText
         error={errors.password?.message}
-        className=""
         labelText="Password"
         type="password"
-        placeholder="Senha"
         {...register("password")}
       ></InputText>
-
-      {loginStatus.loading ? (
-        <LoadingSpinner />
-      ) : (
-        <ActionBtn type="submit" colorStyle="secondary">
-          Login
-        </ActionBtn>
-      )}
+      <div className="mt-5">
+        {loginStatus.loading ? (
+          <LoadingSpinner />
+        ) : (
+          <ActionBtn type="submit" colorStyle="secondary">
+            Login
+          </ActionBtn>
+        )}
+      </div>
     </form>
   );
 };

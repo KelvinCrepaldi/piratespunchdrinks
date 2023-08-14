@@ -8,30 +8,37 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { RootState } from "@/store/store";
 import LoadingSpinner from "./loadingSpinner";
+import InputText from "./InputText";
 
 const FormSignup = () => {
   const dispatch = useDispatch();
   const { signupStatus } = useSelector((state: RootState) => state.auth);
 
   const formSchema = yup.object().shape({
-    name: yup.string().required(),
+    name: yup.string().required("Escreva um nome."),
     email: yup
       .string()
-      .required("Por favor escreva seu email.")
+      .required("Escreva seu email.")
       .email("Formato de e-mail inválido."),
     password: yup
       .string()
-      .required("Por favor escreva uma senha.")
+      .required("Escreva uma senha.")
       .min(6, "Senha precisa ter no minimo 6 caracteres."),
-    confirmPassword: yup.string().required(),
+    confirmPassword: yup.string().required("Confirme a senha."),
   });
 
+  interface ISignupForm {
+    name: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+  }
   const {
     register,
     handleSubmit,
     formState: { errors },
     resetField,
-  } = useForm({ resolver: yupResolver(formSchema) });
+  } = useForm<ISignupForm>({ resolver: yupResolver(formSchema) });
 
   const handleSignup = (e: any) => {
     const { name, email, password } = e;
@@ -40,54 +47,42 @@ const FormSignup = () => {
 
   return (
     <form
-      className="flex flex-col items-center"
+      className="flex flex-col items-center m-auto max-w-[350px] w-full"
       onSubmit={handleSubmit(handleSignup)}
     >
-      <div className="flex flex-col space-y-1 items-center mb-5">
-        <h1>Criar nova conta</h1>
-        <input
-          className="bg-transparent text-red-500 border w-60 p-1"
-          placeholder="Name"
-          {...register("name")}
-        ></input>
-        {errors.name?.message && (
-          <span className="">{String(errors.name?.message)}</span>
-        )}
+      <h1>Criar nova conta</h1>
+      <InputText
+        labelText="Nome"
+        error={errors.name?.message}
+        {...register("name")}
+      ></InputText>
 
-        <input
-          className="bg-transparent text-red-500 border w-60 p-1"
-          placeholder="Email"
-          {...register("email")}
-        ></input>
-        {errors.email?.message && (
-          <span className="">{String(errors.email?.message)}</span>
-        )}
+      <InputText
+        labelText="Email"
+        error={errors.email?.message}
+        {...register("email")}
+      ></InputText>
 
-        <input
-          className="bg-transparent text-red-500 border w-60 p-1"
-          type="password"
-          placeholder="Password"
-          {...register("password")}
-        ></input>
-        {errors.password?.message && (
-          <span className="">{String(errors.password?.message)}</span>
-        )}
+      <InputText
+        type="password"
+        labelText="Senha"
+        error={errors.password?.message}
+        {...register("password")}
+      ></InputText>
 
-        <input
-          className="bg-transparent text-red-500 border w-60 p-1"
-          type="password"
-          placeholder="Confirm Password"
-          {...register("confirmPassword")}
-        ></input>
-        {errors.confirmPassword?.message && (
-          <span className="">{String(errors.confirmPassword?.message)}</span>
+      <InputText
+        type="password"
+        labelText="Confirmar senha"
+        error={errors.password?.message}
+        {...register("confirmPassword")}
+      ></InputText>
+      <div className="mt-5">
+        {signupStatus.loading ? (
+          <LoadingSpinner />
+        ) : (
+          <ActionBtn type="submit">Criar conta</ActionBtn>
         )}
       </div>
-      {signupStatus.loading ? (
-        <LoadingSpinner />
-      ) : (
-        <ActionBtn type="submit">Criar conta</ActionBtn>
-      )}
     </form>
   );
 };

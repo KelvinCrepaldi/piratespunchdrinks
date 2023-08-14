@@ -21,13 +21,12 @@ export default function Header({ handleShowCart }: any) {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
+  const [showNavbar, setShowNavbar] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
   const [filter, setFilter] = useState("");
   const { isAuthenticated, user } = useSelector(
     (state: RootState) => state.auth
   );
-  const [showNavbar, setShowNavbar] = useState(false);
-
-  const [isAuth, setIsAuth] = useState(false);
 
   const handleFilter = () => {
     router.push("/shop");
@@ -54,7 +53,7 @@ export default function Header({ handleShowCart }: any) {
 
   return (
     <>
-      <header className="bg-pirates-black-transparent-strong relative z-10 backdrop-blur border-b-2 border-pirates-black">
+      <header className="bg-pirates-black-transparent-strong relative z-10 backdrop-blur border-b-2 border-pirates-black pb-2">
         <div className="w-100 md:max-w-5xl m-auto">
           <div className="flex justify-between ">
             <Link href="/" className="flex items-center mx-1 mr-3">
@@ -69,10 +68,14 @@ export default function Header({ handleShowCart }: any) {
               </h1>
             </Link>
             <div className="flex items-center space-x-3 justify-end flex-grow">
-              <div className="flex h-9 w-full max-w-xs bg-transparent border rounded items-center">
+              <div
+                className="rounded p-2 pl-3 
+              w-full hover:border-neutral-300 focus:border-pirates-red border 
+            border-neutral-500 text-pirates-gold flex h-9  max-w-xs  items-center "
+              >
                 <input
                   placeholder="Find..."
-                  className="w-full bg-transparent pl-4"
+                  className="w-full bg-transparent pl-4 focus:outline-none"
                   value={filter}
                   onChange={(e) => setFilter(e.target.value)}
                 ></input>
