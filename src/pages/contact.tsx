@@ -3,7 +3,7 @@ import Image from "next/image";
 import piratepunchlogo from "/public/images/piratepunch.png";
 import tortuga from "/public/images/tortuga.jpg";
 
-export default function Contact() {
+export default function Contact(): JSX.Element {
   return (
     <main className="md:max-w-5xl m-auto p-5 md:p-16 space-y-10">
       <div className="flex flex-col md:flex-row justify-center items-center">

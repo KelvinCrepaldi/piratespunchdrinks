@@ -1,12 +1,12 @@
 import Link from "next/link";
-import FormSignup from "@/components/FormSignup";
+import FormSignup from "@/components/signup/FormSignup/FormSignup";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { useEffect } from "react";
 import { resetErrorMessages } from "@/store/reducers/userReducer";
 import { useRouter } from "next/router";
 
-export default function Signup() {
+export default function Signup(): JSX.Element {
   const dispatch = useDispatch();
   const router = useRouter();
   const { signupStatus, isAuthenticated } = useSelector(
@@ -15,7 +15,7 @@ export default function Signup() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      router.push("/user");
+      router.push("/profile");
     }
   }, [isAuthenticated, router]);
 

@@ -1,12 +1,12 @@
 import Link from "next/link";
-
-import FormLogin from "@/components/FormLogin";
+import { FormLogin } from "@/components/login/FormLogin";
 import { RootState } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { resetErrorMessages } from "@/store/reducers/userReducer";
 import { useRouter } from "next/router";
-export default function Login() {
+
+export default function Login(): JSX.Element {
   const dispatch = useDispatch();
   const router = useRouter();
   const { loginStatus, isAuthenticated } = useSelector(

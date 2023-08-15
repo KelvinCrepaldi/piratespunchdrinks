@@ -1,0 +1,1 @@
+export { CardHighlightProduct } from "./CardHighlightProduct";

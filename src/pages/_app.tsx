@@ -2,7 +2,7 @@ import "@/styles/globals.css";
 import "@/styles/google-fonts.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import type { AppProps } from "next/app";
-import Layout from "@/components/layout";
+import { Layout } from "@/templates/layout";
 import store from "@/store/store";
 import { Provider } from "react-redux";
 
