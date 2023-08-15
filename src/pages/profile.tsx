@@ -53,7 +53,7 @@ export default function Profile(): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ProtectedRoute>
-        <main className="flex flex-col md:flex-row max-w-5xl m-auto min-h-screen font-inter">
+        <main className="flex flex-col md:flex-row max-w-5xl m-auto min-h-screen font-inter ">
           <div className="flex flex-row flex-wrap md:flex-col items-end  border-r-2 color p-2 md:min-w-max">
             <button
               className="m-1 py-1 px-4 md:px-1 rounded md:rounded-none bg-pirates-black-transparent md:bg-transparent text-xl md:text-xl font-inter whitespace-no-wrap"
@@ -89,7 +89,9 @@ export default function Profile(): JSX.Element {
             </button>
           </div>
 
-          <div className=" w-full px-5 md:px-10   py-5 ">{pages[page]}</div>
+          <div className=" w-full m-3 rounded px-5 md:px-10   py-5 bg-pirates-black-transparent-strong rounded">
+            {pages[page]}
+          </div>
         </main>
       </ProtectedRoute>
     </>
