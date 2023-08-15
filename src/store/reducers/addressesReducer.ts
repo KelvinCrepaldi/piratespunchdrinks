@@ -30,7 +30,7 @@ export const fetchAddresses = createAsyncThunk(
 
 export const deleteAddress = createAsyncThunk(
   "address/delete",
-  async (id: string, { getState }) => {
+  async (id: string, { getState, dispatch }) => {
     try {
       const state = getState() as RootState;
 
@@ -39,6 +39,8 @@ export const deleteAddress = createAsyncThunk(
       });
 
       const address = response.data;
+
+      dispatch(fetchAddresses());
       return address;
     } catch (error) {
       console.log(error);
@@ -48,7 +50,7 @@ export const deleteAddress = createAsyncThunk(
 
 export const createAddress = createAsyncThunk(
   "address/create",
-  async (body: IAddress, { getState }) => {
+  async (body: IAddress, { getState, dispatch }) => {
     try {
       const state = getState() as RootState;
 
@@ -56,11 +58,13 @@ export const createAddress = createAsyncThunk(
         `address`,
         JSON.parse(JSON.stringify(body)),
         {
-          headers: { Authorization: `Bearer ${state}` },
+          headers: { Authorization: `Bearer ${state.auth.token}` },
         }
       );
 
       const address = response.data;
+
+      dispatch(fetchAddresses());
 
       return address;
     } catch (error) {

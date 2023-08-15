@@ -15,7 +15,6 @@ export const FormCreateAddress = ({
   isOpen = false,
   setIsOpen,
 }: IFormCreateAddressProps): JSX.Element => {
-  const { token } = useSelector((state: RootState) => state.auth);
   const dispatch = useAppDispatch();
 
   const addressSchema = yup.object().shape({
@@ -49,7 +48,7 @@ export const FormCreateAddress = ({
 
   const handleCreateAddress = (e: any) => {
     const body = e;
-    dispatch(createAddress());
+    dispatch(createAddress(body));
 
     setIsOpen(!isOpen);
   };
