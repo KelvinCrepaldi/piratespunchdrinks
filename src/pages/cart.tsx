@@ -1,10 +1,10 @@
-import ActionBtn from "@/components/ActionBtn";
-import ProtectedRoute from "@/components/ProtectedRoute";
-import QuantityControlButton from "@/components/QuantityControlButton";
+import { ActionBtn } from "@/components/_ui/ActionBtn";
+import { ProtectedRoute } from "@/components/layout/ProtectedRoute/ProtectedRoute";
+import { QuantityControlButton } from "@/components/_ui/QuantityControlButton";
 import { IAddress } from "@/interfaces/address.interface";
 import { ICreditCard } from "@/interfaces/creditCards.interface";
 import { IProduct } from "@/interfaces/product.interface";
-import { fetchAddresses } from "@/store/actions/addresses";
+import { fetchAddresses } from "@/store/reducers/addressesReducer";
 import { fetchCreditCards } from "@/store/reducers/creditCardsReducer";
 import { createOrder } from "@/store/reducers/ordersReducer";
 import Image from "next/image";
@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import formatReal from "@/utils/formatReal";
 
-export default function Cart() {
+export default function Cart(): JSX.Element {
   const dispatch = useDispatch();
   const token = useSelector((state: any) => state.auth.token);
   const cartList = useSelector((state: any) => state.cart.cartList);
@@ -44,7 +44,7 @@ export default function Cart() {
   };
 
   useEffect(() => {
-    dispatch(fetchAddresses(token));
+    dispatch(fetchAddresses());
     dispatch(fetchCreditCards());
   }, [dispatch, token]);
 

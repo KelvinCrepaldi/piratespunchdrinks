@@ -9,9 +9,3 @@ export interface IAddress {
   country: string;
   user: any;
 }
-
-export interface IInitialStateAddressesSlice {
-  loading: boolean;
-  error: boolean | Error;
-  addresses: IAddress[];
-}

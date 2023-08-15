@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import SidebarFilter from "@/components/SidebarFilter";
+import { SidebarFilter } from "@/components/shop/SidebarFilter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSliders } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "@/store/reducers/productsReducer";
-import CardHighlightProduct from "@/components/CardHighlightProduct";
+import { CardHighlightProduct } from "@/components/_ui/CardHighlightProduct";
 import { RootState } from "@/store/store";
 import Head from "next/head";
 
-export default function Shop() {
+export default function Shop(): JSX.Element {
   const [showMenu, setShowMenu] = useState(false);
 
   const dispatch = useDispatch();

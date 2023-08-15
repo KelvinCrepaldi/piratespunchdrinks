@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 import piratespunch from "/public/images/piratepunch.png";
-import CardHighlightProduct from "@/components/CardHighlightProduct";
+import { CardHighlightProduct } from "@/components/_ui/CardHighlightProduct";
 import { useSelector } from "react-redux";
 import { IProduct } from "@/interfaces/product.interface";
 import { useEffect } from "react";
@@ -10,8 +10,8 @@ import { useDispatch } from "react-redux";
 import { RootState } from "@/store/store";
 import { fetchPromotions } from "@/store/reducers/highlightsReducer";
 import { IPromotion } from "@/interfaces/highlights.interface";
-import ContainerEventPromo from "@/components/ContainerEventPromo";
-import Countdown from "@/components/Countdown";
+import { ContainerEventPromo } from "@/components/home/ContainerEventPromo";
+import { Countdown } from "@/components/_ui/Countdown";
 
 export default function Home(): JSX.Element {
   const dispatch = useDispatch();

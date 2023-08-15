@@ -1,0 +1,1 @@
+export { ContainerEventPromo } from "./ContainerEventPromo";
