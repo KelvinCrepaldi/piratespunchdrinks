@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { createAccount } from "@/store/reducers/userReducer";
 import { RootState } from "@/store/store";
-import LoadingSpinner from "@/components/_ui/LoadingSpinner";
+import { LoadingSpinner } from "@/components/_ui/LoadingSpinner";
 import { InputText } from "../../_ui/InputText";
 import { CardHighlightProduct } from "@/components/_ui/CardHighlightProduct";
 
