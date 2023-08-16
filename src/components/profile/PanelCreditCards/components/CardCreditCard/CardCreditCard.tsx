@@ -19,7 +19,7 @@ interface ICardCreditCard {
 }
 export const CardCreditCard = ({ card }: ICardCreditCard): JSX.Element => {
   const dispatch = useDispatch();
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState<boolean>(true);
 
   const creditCardSchema = yup.object().shape({
     name: yup.string().required().default(card.name),
@@ -78,7 +78,7 @@ export const CardCreditCard = ({ card }: ICardCreditCard): JSX.Element => {
   return (
     <form
       key={card.id}
-      className="flex flex-col m-2 p-3 bg-neutral-900 rounded border border-zinc-700"
+      className="flex flex-col m-2 p-3 bg-neutral-900 rounded border border-zinc-700 shadow-pirates-card"
       onSubmit={handleSubmit(handleUpdateCreditCard)}
     >
       <div className="flex justify-between border-b border-zinc-700 text-sm mb-4">

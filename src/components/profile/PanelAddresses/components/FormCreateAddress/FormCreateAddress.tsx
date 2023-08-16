@@ -59,48 +59,67 @@ export const FormCreateAddress = ({
 
   return isOpen ? (
     <div className="border-b-2 p-2 m-1">
-      <p className="text-xl">New address</p>
+      <p className="text-xl">Novo endereço:</p>
       <form
         className="flex flex-wrap "
         onSubmit={handleSubmit(handleCreateAddress)}
       >
-        <InputText
-          labelText="Address:"
-          error={errors.address?.message}
-          {...register("address")}
-        />
-        <InputText
-          labelText="Number:"
-          error={errors.number?.message}
-          type="number"
-          {...register("number")}
-        />
-        <InputText
-          labelText="Complement:"
-          error={errors.complement?.message}
-          {...register("complement")}
-        />{" "}
-        <InputText
-          labelText="CEP:"
-          error={errors.cep?.message}
-          type="number"
-          {...register("cep")}
-        />
-        <InputText
-          labelText="City:"
-          error={errors.city?.message}
-          {...register("city")}
-        />
-        <InputText
-          labelText="State:"
-          error={errors.state?.message}
-          {...register("state")}
-        />
-        <InputText
-          labelText="Country:"
-          error={errors.country?.message}
-          {...register("country")}
-        />
+        <div className="flex space-x-2">
+          <InputText
+            labelText="Endereço:"
+            error={errors.address?.message}
+            {...register("address")}
+          />
+          <div className="w-1/4">
+            <InputText
+              labelText="Número:"
+              error={errors.number?.message}
+              type="number"
+              {...register("number")}
+            />
+          </div>
+          <div className="w-1/4">
+            <InputText
+              labelText="Complemento:"
+              error={errors.complement?.message}
+              {...register("complement")}
+            />
+          </div>
+        </div>
+        <div className="flex space-x-2">
+          <div className="w-1/3">
+            <InputText
+              labelText="CEP:"
+              error={errors.cep?.message}
+              type="number"
+              {...register("cep")}
+            />
+          </div>
+          <div className="">
+            <InputText
+              labelText="Cidade:"
+              error={errors.city?.message}
+              {...register("city")}
+            />
+          </div>
+          <div className="w-1/12">
+            {" "}
+            <InputText
+              labelText="Estado:"
+              error={errors.state?.message}
+              {...register("state")}
+            />
+          </div>
+          <div className="w-1/4">
+            {" "}
+            <InputText
+              labelText="País:"
+              error={errors.country?.message}
+              {...register("country")}
+            />
+          </div>
+        </div>
+
         <div className="flex justify-end w-full mt-2">
           <button
             className="border border-black rounded px-1 mx-1 cursor-pointer hover:text-green-400"
