@@ -25,6 +25,9 @@ module.exports = {
         imfell: ["IM Fell DW Pica SC", "sans-serif"],
         inter: ["Inter", "sans-serif"],
       },
+      boxShadow: {
+        "pirates-card": "1px 4px 15px 2px rgba(0, 0, 0, 0.3)",
+      },
     },
   },
   plugins: [],

@@ -3,9 +3,9 @@ import { ICreditCard } from "./creditCards.interface";
 import { IProduct } from "./product.interface";
 
 enum PaymentStatus {
-  PENDING = "PENDING",
-  AUTHORIZED = "AUTHORIZED",
-  CANCELLED = "CANCELLED",
+  Pending = "Pending",
+  Authorized = "Authorized",
+  Cancelled = "Cancelled",
 }
 
 export interface IOrder {
