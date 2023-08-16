@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "@/store/store";
 import { createCreditCards } from "@/store/reducers/creditCardsReducer";
-import { InputText } from "../../_ui/InputText";
+import { InputText } from "../../../../_ui/InputText";
 
 interface IFormCreateCreditCardProps {
   isOpen: boolean;
@@ -62,26 +62,27 @@ export const FormCreateCreditCard = ({ isOpen = false, setIsOpen }: any) => {
 
   return isOpen ? (
     <div className="border-b-2 p-2 m-1">
-      <p className="text-xl">New credit card</p>
-      <form
-        className="flex flex-wrap"
-        onSubmit={handleSubmit(handleCreateCreditCard)}
-      >
-        <InputText
-          labelText="Name:"
-          error={errors.name?.message}
-          {...register("name")}
-        />
-        <InputText
-          labelText="Number:"
-          error={errors.number?.message}
-          {...register("number")}
-        />
-        <InputText
-          labelText="Expiration date:"
-          error={errors.expirationDate?.message}
-          {...register("expirationDate")}
-        />
+      <p className="text-xl">Novo cartão de crédito:</p>
+      <form className="" onSubmit={handleSubmit(handleCreateCreditCard)}>
+        <div>
+          <InputText
+            labelText="Nome:"
+            error={errors.name?.message}
+            {...register("name")}
+          />
+        </div>
+        <div className="flex space-x-2">
+          <InputText
+            labelText="Numero:"
+            error={errors.number?.message}
+            {...register("number")}
+          />
+          <InputText
+            labelText="Expiração:"
+            error={errors.expirationDate?.message}
+            {...register("expirationDate")}
+          />
+        </div>
 
         <div className="flex justify-end w-full mt-2">
           <button

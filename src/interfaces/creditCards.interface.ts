@@ -3,4 +3,5 @@ export interface ICreditCard {
   name: string;
   number: string;
   expiration_date: string;
+  reference: string;
 }

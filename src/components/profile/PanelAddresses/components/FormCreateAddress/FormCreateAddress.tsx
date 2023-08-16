@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { createAddress } from "@/store/reducers/addressesReducer";
 import { RootState, useAppDispatch } from "@/store/store";
-import { InputText } from "../../_ui/InputText";
+import { InputText } from "../../../../_ui/InputText";
 
 interface IFormCreateAddressProps {
   isOpen: boolean;
