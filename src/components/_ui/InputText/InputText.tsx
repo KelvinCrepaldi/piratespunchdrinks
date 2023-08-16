@@ -16,9 +16,9 @@ export const InputText = forwardRef<HTMLInputElement, IInputTextProps>(
             {labelText}
           </label>
           <input
-            className="bg-pirates-black rounded p-2 pl-3 focus:outline-none
+            className="bg-pirates-black rounded px-2 py-1 pl-2 focus:outline-none
               w-full hover:border-neutral-300 focus:border-pirates-red border 
-            border-neutral-500 text-pirates-gold"
+            border-neutral-500 text-yellow-100 disabled:border-transparent"
             ref={ref}
             {...props}
           />
