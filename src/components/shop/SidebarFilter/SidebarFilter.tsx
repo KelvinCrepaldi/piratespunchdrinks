@@ -17,7 +17,7 @@ export function SidebarFilter(): JSX.Element {
   }, []);
 
   return (
-    <div className="mr-1 my-1  py-5 px-5 md:px-0 p-2  md:w-64 h-full border border-black lg:border-transparent bg-pirates-black-transparent rounded relative lg:static z-10">
+    <div className="mr-1 my-1  py-5 px-5 md:px-0 p-2  md:w-64 h-full border border-black lg:border-transparent bg-pirates-shop-sidebar rounded relative lg:static z-10">
       <h1 className="text-xl m-2 p-1 border-b border-pirates-silver text-pirates-gold ">
         Product Categories
       </h1>
