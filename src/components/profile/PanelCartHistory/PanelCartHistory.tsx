@@ -23,7 +23,7 @@ export function PanelCartHistory(): JSX.Element {
     <>
       <div>
         <h1 className="border-b-2 font-inter border-pirates-red  flex justify-between ">
-          Purchases
+          Histórico de compras
         </h1>
         <div className=" bg-slate-500"></div>
 

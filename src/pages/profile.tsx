@@ -10,6 +10,7 @@ import { PanelCreditCards } from "@/components/profile/PanelCreditCards/PanelCre
 import { PanelCartHistory } from "@/components/profile/PanelCartHistory/PanelCartHistory";
 import { IUserPages } from "@/interfaces/userPage.interface";
 import { deleteAccount } from "@/store/reducers/userReducer";
+import { Button } from "@/components/_ui/Button/Button";
 
 export default function Profile(): JSX.Element {
   const router = useRouter();
@@ -53,40 +54,17 @@ export default function Profile(): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ProtectedRoute>
-        <main className="flex flex-col md:flex-row max-w-5xl m-auto min-h-screen font-inter ">
-          <div className="flex flex-row flex-wrap md:flex-col items-end  border-r-2 color p-2 md:min-w-max">
-            <button
-              className="m-1 p-1 md:px-1 rounded w-full  md:rounded border border-zinc-700 bg-pirates-black-transparent md:bg-zinc-900 text-xl md:text-xl font-inter whitespace-no-wrap hover:bg-zinc-800"
-              onClick={() => handleOptionPage("user")}
-            >
-              Perfil
-            </button>
-            <button
-              className="m-1 p-1 md:px-1 rounded w-full  md:rounded border border-zinc-700 bg-pirates-black-transparent md:bg-zinc-900 text-xl md:text-xl font-inter whitespace-no-wrap hover:bg-zinc-800"
-              onClick={() => handleOptionPage("addresses")}
-            >
+        <main className="flex flex-col md:flex-row max-w-5xl m-auto min-h-screen font-inter bg-neutral-950 rounded border border-zinc-700 p-1">
+          <div className="flex flex-row flex-wrap md:flex-col items-end md:min-w-max">
+            <Button onClick={() => handleOptionPage("user")}>Perfil</Button>
+            <Button onClick={() => handleOptionPage("addresses")}>
               Endereços
-            </button>
-            <button
-              className="m-1 p-1 md:px-1 rounded w-full  md:rounded border border-zinc-700 bg-pirates-black-transparent md:bg-zinc-900 text-xl md:text-xl font-inter whitespace-no-wrap hover:bg-zinc-800"
-              onClick={() => handleOptionPage("creditcards")}
-            >
+            </Button>
+            <Button onClick={() => handleOptionPage("creditcards")}>
               Cartões
-            </button>
-
-            <button
-              className="m-1 p-1 md:px-1 rounded w-full  md:rounded border border-zinc-700 bg-pirates-black-transparent md:bg-zinc-900 text-xl md:text-xl font-inter whitespace-no-wrap hover:bg-zinc-800"
-              onClick={() => handleOptionPage("orders")}
-            >
-              Compras
-            </button>
-
-            <button
-              className="m-1 p-1 md:px-1 rounded w-full  md:rounded border border-zinc-700 bg-pirates-black-transparent md:bg-zinc-900 text-xl md:text-xl font-inter whitespace-no-wrap hover:bg-zinc-800"
-              onClick={handleDeleteAccount}
-            >
-              Desativar conta
-            </button>
+            </Button>
+            <Button onClick={() => handleOptionPage("orders")}>Compras</Button>
+            <Button onClick={handleDeleteAccount}>Desativar conta</Button>
           </div>
 
           <div className=" w-full m-1 px-5 md:px-10   py-5 bg-neutral-900 rounded border border-zinc-700">
