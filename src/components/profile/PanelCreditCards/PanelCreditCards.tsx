@@ -42,12 +42,13 @@ export const PanelCreditCards = (): JSX.Element => {
       </div>
       <FormCreateCreditCard isOpen={isOpen} setIsOpen={setIsOpen} />
 
-      {creditCards.map((creditCard: ICreditCard) => (
-        <CardCreditCard
-          key={creditCard.reference}
-          card={creditCard}
-        ></CardCreditCard>
-      ))}
+      {creditCards &&
+        creditCards.map((creditCard: ICreditCard) => (
+          <CardCreditCard
+            key={creditCard.reference}
+            card={creditCard}
+          ></CardCreditCard>
+        ))}
 
       {creditCards.length == 0 ? (
         <div className="my-3">
