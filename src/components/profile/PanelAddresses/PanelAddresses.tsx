@@ -41,9 +41,10 @@ export const PanelAddresses = (): JSX.Element => {
       </div>
       <FormCreateAddress isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className=" ">
-        {addresses.map((address: IAddress) => (
-          <CardAddress key={address.id} address={address}></CardAddress>
-        ))}
+        {addresses &&
+          addresses.map((address: IAddress) => (
+            <CardAddress key={address.id} address={address}></CardAddress>
+          ))}
         {addresses.length == 0 ? (
           <div className="my-3">
             <span>
