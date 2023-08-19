@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { useEffect } from "react";
 import { resetErrorMessages } from "@/store/reducers/userReducer";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Signup(): JSX.Element {
   const dispatch = useDispatch();
