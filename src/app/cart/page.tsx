@@ -148,7 +148,7 @@ export default function Cart(): JSX.Element {
                   {error ?? <div>{error}</div>}
                   <Button onClick={handleCheckout}>Finalizar compra</Button>
 
-                  <Link href={"/profile?option=orders"}>
+                  <Link href={"/profile/purchases"}>
                     <Button>Ver histórico de compras</Button>
                   </Link>
                 </div>
@@ -160,7 +160,7 @@ export default function Cart(): JSX.Element {
             <span className="pb-4 font-bold text-lg">
               Carrinho vazio, deseja comprar algo?
             </span>
-            <Link href={"/profile/purchases"}>
+            <Link href={"/shop"}>
               <Button>Ver catálogo de produtos</Button>
             </Link>
           </div>
