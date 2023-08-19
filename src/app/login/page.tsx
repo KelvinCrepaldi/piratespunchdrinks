@@ -5,7 +5,7 @@ import { RootState } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { resetErrorMessages } from "@/store/reducers/userReducer";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Login(): JSX.Element {
   const dispatch = useDispatch();
