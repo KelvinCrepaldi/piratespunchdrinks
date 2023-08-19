@@ -1,3 +1,4 @@
+"use client";
 import { ActionBtn } from "@/components/_ui/ActionBtn";
 import { ProtectedRoute } from "@/components/layout/ProtectedRoute/ProtectedRoute";
 import { IAddress } from "@/interfaces/address.interface";
@@ -13,7 +14,7 @@ import { ProductCard } from "@/components/cart/ProductCard";
 import { AddressCheckbox } from "@/components/cart/AddressCheckbox";
 import { CreditCardCheckbox } from "@/components/cart/CreditCardCheckbox/CreditCardCheckbox";
 import { Button } from "@/components/_ui/Button/Button";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { RootState } from "@/store/store";
 
 export default function Cart(): JSX.Element {

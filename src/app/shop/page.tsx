@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import { SidebarFilter } from "@/components/shop/SidebarFilter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

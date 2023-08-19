@@ -25,10 +25,10 @@ module.exports = {
         "pirates-card-dark2": "#212121",
       },
       fontFamily: {
-        fredericka: ["Fredericka the Great", "sans-serif"],
-        pirata: ["Pirata One", "sans-serif"],
-        imfell: ["IM Fell DW Pica SC", "sans-serif"],
-        inter: ["Inter", "sans-serif"],
+        fredericka: ["var(--font-fredericka_the_Great)"],
+        pirata: ["var(--font-Pirata_One)"],
+        imfell: ["var(--font-im_fell_dw)"],
+        inter: ["var(--font-inter)"],
       },
       boxShadow: {
         "pirates-card": "1px 4px 15px 2px rgba(0, 0, 0, 0.3)",
