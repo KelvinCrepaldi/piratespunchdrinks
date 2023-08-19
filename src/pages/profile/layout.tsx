@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import { ProtectedRoute } from "@/components/layout/ProtectedRoute/ProtectedRoute";
@@ -11,8 +11,13 @@ import { PanelCartHistory } from "@/components/profile/PanelCartHistory/PanelCar
 import { IUserPages } from "@/interfaces/userPage.interface";
 import { deleteAccount } from "@/store/reducers/userReducer";
 import { Button } from "@/components/_ui/Button/Button";
+import Link from "next/link";
 
-export default function Profile(): JSX.Element {
+export default function ProfileLayout({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element {
   const router = useRouter();
   const [page, setPage] = useState<string>("user");
   const { isAuthenticated } = useSelector((state: any) => state.auth);
@@ -20,7 +25,6 @@ export default function Profile(): JSX.Element {
   const dispatch = useDispatch();
 
   const pages: IUserPages = {
-    user: <PanelUser />,
     orders: <PanelCartHistory />,
     creditcards: <PanelCreditCards></PanelCreditCards>,
     addresses: <PanelAddresses></PanelAddresses>,
@@ -49,14 +53,15 @@ export default function Profile(): JSX.Element {
   return (
     <>
       <Head>
-        <title>User - Pirates Punch Drinks</title>
+        <title>Profile - Pirates Punch Drinks</title>
         <meta name="description" content="Pirates Punch Drinks" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ProtectedRoute>
-        <main className="flex flex-col md:flex-row max-w-5xl m-auto min-h-screen font-inter bg-neutral-950 rounded border border-zinc-700 p-1">
-          <div className="flex flex-row flex-wrap md:flex-col items-end md:min-w-max">
-            <Button onClick={() => handleOptionPage("user")}>Perfil</Button>
+        <div className="flex flex-col md:flex-row max-w-5xl m-auto min-h-screen font-inter bg-pirates-shop-card rounded border border-zinc-700 p-1">
+          <aside className="flex flex-row flex-wrap md:flex-col items-end md:min-w-max">
+            <Link href={"profile/user"}>Perfil</Link>
+
             <Button onClick={() => handleOptionPage("addresses")}>
               Endereços
             </Button>
@@ -65,12 +70,12 @@ export default function Profile(): JSX.Element {
             </Button>
             <Button onClick={() => handleOptionPage("orders")}>Compras</Button>
             <Button onClick={handleDeleteAccount}>Desativar conta</Button>
-          </div>
+          </aside>
 
-          <div className=" w-full m-1 px-5 md:px-10   py-5 bg-neutral-900 rounded border border-zinc-700">
-            {pages[page]}
-          </div>
-        </main>
+          <main className=" w-full m-1 px-5 md:px-10   py-5  rounded">
+            {children}
+          </main>
+        </div>
       </ProtectedRoute>
     </>
   );

@@ -33,10 +33,10 @@ export default function Shop(): JSX.Element {
       </Head>
       <main className="">
         <div className="flex flex-col text-center items-center py-10">
-          <h1 className="px-4 text-5xl border-b-2 border-pirates-red">
+          <h1 className="inline-block border-b-2 px-5 border-pirates-red text-6xl font-fredericka">
             Drinks for You!
           </h1>
-          <p className="text-pirates-red">
+          <p className="text-pirates-red font-pirata">
             Sail the high seas for delightful drinks!
           </p>
         </div>

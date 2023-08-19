@@ -18,7 +18,7 @@ export function Layout({ children }: ILayoutProps): JSX.Element {
     <div>
       <SidebarCart handleShowCart={handleShowCart} showCart={showCart} />
       <Header handleShowCart={handleShowCart} />
-      <div className="bg-pirates-black-transparent min-h-[80vh]">
+      <div className="bg-pirates-black-transparent min-h-[80vh] p-5">
         {children}
       </div>
       <Footer />
