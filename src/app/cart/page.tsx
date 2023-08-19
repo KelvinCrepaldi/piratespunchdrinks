@@ -88,12 +88,12 @@ export default function Cart(): JSX.Element {
                     <span className="text-pirates-red p-1 rounded">
                       Nenhum endereço cadastrado!
                     </span>
-                    <Link className="" href={"/profile/addresse"}>
+                    <Link className="" href={"/profile/address"}>
                       <Button>Criar novo endereço</Button>
                     </Link>
                   </>
                 ) : (
-                  <Link href={"/profile/addresse"}>
+                  <Link href={"/profile/address"}>
                     <Button>Gerenciar endereços</Button>
                   </Link>
                 )}
