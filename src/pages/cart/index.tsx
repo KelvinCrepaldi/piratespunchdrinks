@@ -13,14 +13,20 @@ import { ProductCard } from "@/components/cart/ProductCard";
 import { AddressCheckbox } from "@/components/cart/AddressCheckbox";
 import { CreditCardCheckbox } from "@/components/cart/CreditCardCheckbox/CreditCardCheckbox";
 import { Button } from "@/components/_ui/Button/Button";
+import { useRouter } from "next/router";
+import { RootState } from "@/store/store";
 
 export default function Cart(): JSX.Element {
+  const router = useRouter();
   const dispatch = useDispatch();
   const token = useSelector((state: any) => state.auth.token);
   const cartList = useSelector((state: any) => state.cart.cartList);
   const getAdressList = useSelector((state: any) => state.addresses.addresses);
   const getcreditCardsList = useSelector(
     (state: any) => state.creditCards.creditCards
+  );
+  const { error, isCheckoutSuccessful } = useSelector(
+    (state: RootState) => state.orders
   );
   const [selectedAddress, setSelectAddress] = useState<IAddress | false>(false);
   const [selectedCreditCard, setSelectedCreditCard] = useState<
@@ -43,6 +49,11 @@ export default function Cart(): JSX.Element {
   const handleSelectCard = (e: ICreditCard) => {
     setSelectedCreditCard(e);
   };
+  useEffect(() => {
+    if (isCheckoutSuccessful) {
+      router.push("/cart/checkout");
+    }
+  }, [isCheckoutSuccessful, router]);
 
   useEffect(() => {
     dispatch(fetchAddresses());
@@ -61,9 +72,10 @@ export default function Cart(): JSX.Element {
         {cartList.length > 0 ? (
           <div className="flex flex-col md:flex-row m-3">
             <div className="w-full ">
-              {cartList.map((product: IProduct) => (
-                <ProductCard key={product.id} product={product}></ProductCard>
-              ))}
+              {cartList &&
+                cartList.map((product: IProduct) => (
+                  <ProductCard key={product.id} product={product}></ProductCard>
+                ))}
             </div>
 
             <div className="flex flex-col w-full md:w-1/3">
@@ -84,14 +96,15 @@ export default function Cart(): JSX.Element {
                     <Button>Gerenciar endereços</Button>
                   </Link>
                 )}
-                {getAdressList.map((address: IAddress) => (
-                  <AddressCheckbox
-                    handleSelectAddress={handleSelectAddress}
-                    selectedAddress={selectedAddress}
-                    address={address}
-                    key={address.id}
-                  ></AddressCheckbox>
-                ))}
+                {getAdressList &&
+                  getAdressList.map((address: IAddress) => (
+                    <AddressCheckbox
+                      handleSelectAddress={handleSelectAddress}
+                      selectedAddress={selectedAddress}
+                      address={address}
+                      key={address.id}
+                    ></AddressCheckbox>
+                  ))}
               </div>
 
               {/* //================================================================ METODO DE PAGAMENTO */}
@@ -114,14 +127,15 @@ export default function Cart(): JSX.Element {
                   </Link>
                 )}
 
-                {getcreditCardsList.map((creditCard: ICreditCard) => (
-                  <CreditCardCheckbox
-                    creditCard={creditCard}
-                    handleSelectCard={handleSelectCard}
-                    selectedCreditCard={selectedCreditCard}
-                    key={creditCard.id}
-                  />
-                ))}
+                {getcreditCardsList &&
+                  getcreditCardsList.map((creditCard: ICreditCard) => (
+                    <CreditCardCheckbox
+                      creditCard={creditCard}
+                      handleSelectCard={handleSelectCard}
+                      selectedCreditCard={selectedCreditCard}
+                      key={creditCard.id}
+                    />
+                  ))}
               </div>
 
               {/* //================================================================ CHECKOUT */}
@@ -130,6 +144,7 @@ export default function Cart(): JSX.Element {
                   <h3>TOTAL:</h3>
                   <p> R$: XXX.XX </p>
 
+                  {error ?? <div>{error}</div>}
                   <Button onClick={handleCheckout}>Finalizar compra</Button>
 
                   <Link href={"/profile?option=orders"}>

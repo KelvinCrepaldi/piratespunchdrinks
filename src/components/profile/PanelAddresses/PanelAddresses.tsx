@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { FormCreateAddress } from "./components/FormCreateAddress";
 import { useSelector } from "react-redux";
-import {
-  deleteAddress,
-  fetchAddresses,
-} from "@/store/reducers/addressesReducer";
+import { fetchAddresses } from "@/store/reducers/addressesReducer";
 import { RootState, useAppDispatch } from "@/store/store";
 import { CardAddress } from "./components/CardAddress";
 import { IAddress } from "@/interfaces/address.interface";
@@ -32,7 +29,7 @@ export const PanelAddresses = (): JSX.Element => {
   return (
     <div>
       <div className="border-b-2  border-pirates-red  flex justify-between">
-        <h1 className="font-inter">Endereços</h1>
+        <h1 className="font-inter">Meus endereços</h1>
         {!isOpen && (
           <button className="text-green-200" onClick={handleOpenForm}>
             + Adicionar novo endereço

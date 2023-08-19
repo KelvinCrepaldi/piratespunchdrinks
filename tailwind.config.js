@@ -22,6 +22,7 @@ module.exports = {
         "pirates-black-transparent-strong": "rgb(0,0,0,0.9)",
         "pirates-container-dark": "#111111",
         "pirates-card-dark": "#161616",
+        "pirates-card-dark2": "#212121",
       },
       fontFamily: {
         fredericka: ["Fredericka the Great", "sans-serif"],
