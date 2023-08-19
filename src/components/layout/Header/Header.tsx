@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import piratepunchlogo from "/public/images/piratepunch.png";
@@ -13,7 +14,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { logout } from "@/store/reducers/userReducer";
 import { RootState, useAppDispatch } from "@/store/store";
-import { useRouter } from "next/router";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 interface IHeaderProps {
   handleShowCart: () => void;
