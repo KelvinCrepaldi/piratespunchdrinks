@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-
 import { CardCreditCard } from "./components/CardCreditCard";
-import {
-  deleteCreditCard,
-  fetchCreditCards,
-} from "@/store/reducers/creditCardsReducer";
+import { fetchCreditCards } from "@/store/reducers/creditCardsReducer";
 import { FormCreateCreditCard } from "./components/FormCreateCreditCard";
-import { useAppDispatch } from "@/store/store";
+import { RootState, useAppDispatch } from "@/store/store";
 import { ICreditCard } from "@/interfaces/creditCards.interface";
 
 export const PanelCreditCards = (): JSX.Element => {
@@ -17,7 +13,7 @@ export const PanelCreditCards = (): JSX.Element => {
 
   const token = useSelector((state: any) => state.auth.token);
   const creditCards = useSelector(
-    (state: any) => state.creditCards.creditCards
+    (state: RootState) => state.creditCards.creditCards
   );
 
   useEffect(() => {
@@ -33,7 +29,7 @@ export const PanelCreditCards = (): JSX.Element => {
   return (
     <div>
       <div className="border-b-2 font-inter border-pirates-red  flex justify-between">
-        <h1 className="font-inter">Cartões de crédito</h1>
+        <h1 className="font-inter">Meus cartões de crédito</h1>
         {!isOpen && (
           <button className="text-green-200" onClick={handleOpenForm}>
             + Adicionar novo cartão

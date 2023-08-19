@@ -3,17 +3,20 @@ import { RootState } from "../store";
 import { IOrder } from "@/interfaces/order.interface";
 import { IProduct } from "@/interfaces/product.interface";
 import api from "@/services";
+import { useRouter } from "next/router";
 
 export interface IInitialStateOrdersSlice {
   loading: boolean;
   error: null | string;
   orders: IOrder[];
+  isCheckoutSuccessful: boolean;
 }
 
 const initialState: IInitialStateOrdersSlice = {
   loading: false,
   error: null,
   orders: [],
+  isCheckoutSuccessful: false,
 };
 
 export const fetchOrders = createAsyncThunk(
@@ -62,7 +65,12 @@ export const createOrder = createAsyncThunk(
 const ordersSlice = createSlice({
   name: "orders",
   initialState,
-  reducers: {},
+  reducers: {
+    resetCheckoutStates(state) {
+      state.error = null;
+      state.isCheckoutSuccessful = false;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchOrders.pending, (state, action) => {
       state.loading = true;
@@ -73,14 +81,31 @@ const ordersSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(fetchOrders.rejected, (state, action) => {
-      action.error &&
-        (state.error =
-          "Houve um erro ao tentar conectar com o servidor, tente novamente mais tarde!");
+      if (action.error.code === "400") {
+        state.error =
+          "É necessario um cartão de crédito e um endereço válido, por favor tente novamente";
+      } else {
+        state.error = "Erro ao tentar comunicar-se com o servidor.";
+      }
       state.loading = false;
+    });
+
+    builder.addCase(createOrder.fulfilled, (state, action) => {
+      state.error = "";
+      state.isCheckoutSuccessful = true;
+    });
+    builder.addCase(createOrder.rejected, (state, action) => {
+      if (action.error.code === "ERR_BAD_REQUEST") {
+        state.error =
+          "É necessario um cartão de crédito e um endereço válido, por favor tente novamente";
+      } else {
+        state.error = "Erro ao tentar comunicar-se com o servidor.";
+      }
+      console.log(action.error.code);
     });
   },
 });
 
-export const {} = ordersSlice.actions;
+export const { resetCheckoutStates } = ordersSlice.actions;
 
 export default ordersSlice.reducer;
