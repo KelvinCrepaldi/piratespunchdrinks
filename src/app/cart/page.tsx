@@ -88,12 +88,12 @@ export default function Cart(): JSX.Element {
                     <span className="text-pirates-red p-1 rounded">
                       Nenhum endereço cadastrado!
                     </span>
-                    <Link className="" href={"/profile?option=addresses"}>
+                    <Link className="" href={"/profile/addresse"}>
                       <Button>Criar novo endereço</Button>
                     </Link>
                   </>
                 ) : (
-                  <Link href={"/profile?option=addresses"}>
+                  <Link href={"/profile/addresse"}>
                     <Button>Gerenciar endereços</Button>
                   </Link>
                 )}
@@ -118,12 +118,12 @@ export default function Cart(): JSX.Element {
                     <span className="text-pirates-red p-1 rounded">
                       Nenhum cartão de crédito cadastrado!
                     </span>
-                    <Link href={"/profile?option=creditcards"}>
+                    <Link href={"/profile/creditCards"}>
                       <Button>Cadastrar cartão de crédito</Button>
                     </Link>
                   </>
                 ) : (
-                  <Link href={"/profile?option=creditcards"}>
+                  <Link href={"/profile/creditCards"}>
                     <Button>Gerenciar cartões de crédito</Button>
                   </Link>
                 )}
@@ -160,7 +160,7 @@ export default function Cart(): JSX.Element {
             <span className="pb-4 font-bold text-lg">
               Carrinho vazio, deseja comprar algo?
             </span>
-            <Link href={"/shop"}>
+            <Link href={"/profile/purchases"}>
               <Button>Ver catálogo de produtos</Button>
             </Link>
           </div>
