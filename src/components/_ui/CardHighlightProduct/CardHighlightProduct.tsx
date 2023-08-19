@@ -18,12 +18,17 @@ export function CardHighlightProduct({
   };
 
   return (
-    <div className="m-1 p-1 bg-pirates-shop-card rounded flex-grow border border-zinc-900  ">
+    <div className="m-1 p-1 bg-pirates-shop-card rounded flex-grow border border-zinc-900  max-w-[217px]">
       <div className="relative w-full aspect-square">
-        <Image fill className="" src={product.img_url} alt="product image" />
+        <Image
+          fill
+          className="rounded"
+          src={product.img_url}
+          alt="product image"
+        />
       </div>
 
-      <div className="flex flex-col items-center " key={product.id}>
+      <div className="flex flex-col items-center" key={product.id}>
         <div className="mt-2">
           <h1 className="text-pirates-white text-center font-pirata text-xl w-[190px] ">
             {product.name}

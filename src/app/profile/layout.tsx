@@ -1,15 +1,13 @@
+"use client";
 import Head from "next/head";
 import { useDispatch, useSelector } from "react-redux";
 import { ReactNode, useEffect, useState } from "react";
-import { useRouter } from "next/router";
-
+import { useRouter } from "next/navigation";
 import { ProtectedRoute } from "@/components/layout/ProtectedRoute/ProtectedRoute";
-import { PanelUser } from "@/components/profile/PanelUser/PanelUser";
 import { PanelAddresses } from "@/components/profile/PanelAddresses/PanelAddresses";
 import { PanelCreditCards } from "@/components/profile/PanelCreditCards/PanelCreditCards";
 import { PanelCartHistory } from "@/components/profile/PanelCartHistory/PanelCartHistory";
 import { IUserPages } from "@/interfaces/userPage.interface";
-import { deleteAccount } from "@/store/reducers/userReducer";
 import { Button } from "@/components/_ui/Button/Button";
 import Link from "next/link";
 
@@ -30,13 +28,7 @@ export default function ProfileLayout({
     addresses: <PanelAddresses></PanelAddresses>,
   };
 
-  useEffect(() => {
-    const { option } = router.query;
-
-    if (option) {
-      setPage(option.toString());
-    }
-  }, [router.query]);
+  useEffect(() => {}, []);
 
   useEffect(() => {
     setIsAuth(isAuthenticated);
@@ -44,10 +36,6 @@ export default function ProfileLayout({
 
   const handleOptionPage = (pageName: string): void => {
     setPage(pageName);
-  };
-
-  const handleDeleteAccount = () => {
-    dispatch(deleteAccount());
   };
 
   return (
@@ -60,16 +48,21 @@ export default function ProfileLayout({
       <ProtectedRoute>
         <div className="flex flex-col md:flex-row max-w-5xl m-auto min-h-screen font-inter bg-pirates-shop-card rounded border border-zinc-700 p-1">
           <aside className="flex flex-row flex-wrap md:flex-col items-end md:min-w-max">
-            <Link href={"profile/user"}>Perfil</Link>
-
-            <Button onClick={() => handleOptionPage("addresses")}>
-              Endereços
-            </Button>
-            <Button onClick={() => handleOptionPage("creditcards")}>
-              Cartões
-            </Button>
-            <Button onClick={() => handleOptionPage("orders")}>Compras</Button>
-            <Button onClick={handleDeleteAccount}>Desativar conta</Button>
+            <Link className="w-full" href={"profile"}>
+              <Button>Perfil</Button>
+            </Link>
+            <Link className="w-full" href={"profile/address"}>
+              <Button>Endereço</Button>
+            </Link>
+            <Link className="w-full" href={"profile/creditCards"}>
+              <Button>Cartões</Button>
+            </Link>
+            <Link className="w-full" href={"profile/purchases"}>
+              <Button>Compras</Button>
+            </Link>
+            <Link className="w-full" href={"profile/deleteAccount"}>
+              <Button>Desativar conta</Button>
+            </Link>
           </aside>
 
           <main className=" w-full m-1 px-5 md:px-10   py-5  rounded">

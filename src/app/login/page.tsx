@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { FormLogin } from "@/components/login/FormLogin";
 import { RootState } from "@/store/store";
