@@ -61,7 +61,9 @@ export default function ProfileLayout({
               <Button>Compras</Button>
             </Link>
             <Link className="w-full" href={"profile/deleteAccount"}>
-              <Button>Desativar conta</Button>
+              <Button>
+                <span className="text-red-500">Desativar conta</span>
+              </Button>
             </Link>
           </aside>
 
