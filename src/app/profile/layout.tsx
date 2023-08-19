@@ -46,24 +46,39 @@ export default function ProfileLayout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ProtectedRoute>
-        <div className="flex flex-col md:flex-row max-w-5xl m-auto min-h-screen font-inter bg-pirates-shop-card rounded border border-zinc-700 p-1">
-          <aside className="flex flex-row flex-wrap md:flex-col items-end md:min-w-max">
-            <Link className="w-full" href={"profile"}>
-              <Button>Perfil</Button>
+        <div className="flex flex-col md:flex-row max-w-5xl m-auto min-h-screen font-inter bg-pirates-shop-card rounded border-l border-r border-zinc-700 p-1">
+          <aside className="flex flex-row flex-wrap md:flex-col items-end md:min-w-max divide-y divide-zinc-900 m-3">
+            <Link
+              className="w-full p-3 hover:bg-pirates-card-dark text-center font-inter text-lg"
+              href={"profile"}
+            >
+              <>Perfil</>
             </Link>
-            <Link className="w-full" href={"profile/address"}>
-              <Button>Endereço</Button>
+            <Link
+              className="w-full p-3 hover:bg-pirates-card-dark text-center font-inter text-lg"
+              href={"profile/address"}
+            >
+              <>Endereço</>
             </Link>
-            <Link className="w-full" href={"profile/creditCards"}>
-              <Button>Cartões</Button>
+            <Link
+              className="w-full p-3 hover:bg-pirates-card-dark text-center font-inter text-lg"
+              href={"profile/creditCards"}
+            >
+              <>Cartões</>
             </Link>
-            <Link className="w-full" href={"profile/purchases"}>
-              <Button>Compras</Button>
+            <Link
+              className="w-full p-3 hover:bg-pirates-card-dark text-center font-inter text-lg"
+              href={"profile/purchases"}
+            >
+              <>Compras</>
             </Link>
-            <Link className="w-full" href={"profile/deleteAccount"}>
-              <Button>
+            <Link
+              className="w-full p-3 hover:bg-pirates-card-dark text-center font-inter text-lg"
+              href={"profile/deleteAccount"}
+            >
+              <>
                 <span className="text-red-500">Desativar conta</span>
-              </Button>
+              </>
             </Link>
           </aside>
 
