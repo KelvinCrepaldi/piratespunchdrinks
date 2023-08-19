@@ -18,7 +18,7 @@ export function CardHighlightProduct({
   };
 
   return (
-    <div className="m-1 p-1 bg-pirates-shop-card rounded flex-shrink flex-grow">
+    <div className="m-1 p-1 bg-pirates-shop-card rounded flex-grow border border-zinc-900  ">
       <div className="relative w-full aspect-square">
         <Image fill className="" src={product.img_url} alt="product image" />
       </div>
