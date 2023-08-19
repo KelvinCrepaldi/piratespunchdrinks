@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import FormSignup from "@/components/signup/FormSignup/FormSignup";
 import { useDispatch, useSelector } from "react-redux";

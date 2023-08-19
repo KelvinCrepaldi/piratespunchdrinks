@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/_ui/Button/Button";
 import { ProtectedRoute } from "@/components/layout/ProtectedRoute/ProtectedRoute";
 import { resetCheckoutStates } from "@/store/reducers/ordersReducer";
