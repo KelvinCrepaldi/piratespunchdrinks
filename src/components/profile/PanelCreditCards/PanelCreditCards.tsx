@@ -46,7 +46,7 @@ export const PanelCreditCards = (): JSX.Element => {
           ></CardCreditCard>
         ))}
 
-      {creditCards.length == 0 ? (
+      {creditCards && creditCards.length == 0 ? (
         <div className="my-3">
           <span>
             Nenhum cartão cadastrado.{" "}

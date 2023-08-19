@@ -42,7 +42,7 @@ export const PanelAddresses = (): JSX.Element => {
           addresses.map((address: IAddress) => (
             <CardAddress key={address.id} address={address}></CardAddress>
           ))}
-        {addresses.length == 0 ? (
+        {addresses && addresses.length == 0 ? (
           <div className="my-3">
             <span>
               Nenhum endereço cadastrado.{" "}

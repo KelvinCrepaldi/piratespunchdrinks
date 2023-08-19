@@ -70,7 +70,7 @@ export default function Cart(): JSX.Element {
           </h1>
         </div>
 
-        {cartList.length > 0 ? (
+        {cartList && cartList.length > 0 ? (
           <div className="flex flex-col md:flex-row m-3">
             <div className="w-full ">
               {cartList &&
@@ -113,7 +113,7 @@ export default function Cart(): JSX.Element {
                 <h3 className="border-b mb-1 font-bold">
                   Método de pagamento:
                 </h3>
-                {getAdressList.length === 0 ? (
+                {getAdressList && getAdressList.length === 0 ? (
                   <>
                     <span className="text-pirates-red p-1 rounded">
                       Nenhum cartão de crédito cadastrado!
