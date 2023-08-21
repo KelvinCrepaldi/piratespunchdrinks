@@ -83,7 +83,7 @@ export default function Cart(): JSX.Element {
               {/* //================================================================ ENDEREÇO */}
               <div className="w-full bg-pirates-container-dark p-3 mb-1 rounded">
                 <h3 className="border-b mb-1 font-bold">Endereço:</h3>
-                {getAdressList.length === 0 ? (
+                {getAdressList && getAdressList.length === 0 ? (
                   <>
                     <span className="text-pirates-red p-1 rounded">
                       Nenhum endereço cadastrado!
