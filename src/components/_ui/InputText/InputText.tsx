@@ -4,11 +4,10 @@ import ReactTextMask from "react-text-mask";
 interface IInputTextProps extends InputHTMLAttributes<HTMLInputElement> {
   labelText: string;
   error?: string | undefined;
-  mask: string;
 }
 
 export const InputText = forwardRef<HTMLInputElement, IInputTextProps>(
-  ({ labelText, error, className, mask = "", ...props }, ref): JSX.Element => {
+  ({ labelText, error, className, ...props }, ref): JSX.Element => {
     return (
       <>
         <div className="w-full">
