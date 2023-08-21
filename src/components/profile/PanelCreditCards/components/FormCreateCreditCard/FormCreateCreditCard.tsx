@@ -66,7 +66,6 @@ export const FormCreateCreditCard = ({ isOpen = false, setIsOpen }: any) => {
       <form className="" onSubmit={handleSubmit(handleCreateCreditCard)}>
         <div>
           <InputText
-            mask=""
             labelText="Nome:"
             error={errors.name?.message}
             {...register("name")}
@@ -74,13 +73,11 @@ export const FormCreateCreditCard = ({ isOpen = false, setIsOpen }: any) => {
         </div>
         <div className="flex space-x-2">
           <InputText
-            mask="9999 9999 9999 9999"
             labelText="Numero:"
             error={errors.number?.message}
             {...register("number")}
           />
           <InputText
-            mask="99/99"
             labelText="Expiração:"
             error={errors.expirationDate?.message}
             {...register("expirationDate")}
