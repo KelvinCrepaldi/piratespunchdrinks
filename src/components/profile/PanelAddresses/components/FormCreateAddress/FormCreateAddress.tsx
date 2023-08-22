@@ -1,15 +1,23 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { createAddress } from "@/store/reducers/addressesReducer";
 import { RootState, useAppDispatch } from "@/store/store";
 import { InputText } from "../../../../_ui/InputText";
+import { Input } from "@/components/_ui/Input";
+import { CustomSelect } from "@/components/_ui/Select";
 
 interface IFormCreateAddressProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
 }
+
+const options = [
+  { value: "1", label: "Apple" },
+  { value: "2", label: "Ball" },
+  { value: "3", label: "Cat" },
+];
 
 export const FormCreateAddress = ({
   isOpen = false,
@@ -41,14 +49,23 @@ export const FormCreateAddress = ({
     register,
     handleSubmit,
     formState: { errors },
+    control,
     reset,
   } = useForm<IAddresSchema>({
+    /* defaultValues: {
+      address: "",
+      cep: "",
+      number: 0,
+      complement: "",
+      city: "",
+      state: "",
+      country: "",
+    } */
     resolver: yupResolver(addressSchema),
   });
 
-  const handleCreateAddress = (e: any) => {
-    const body = e;
-    dispatch(createAddress(body));
+  const handleCreateAddress: SubmitHandler<IAddresSchema> = (data) => {
+    dispatch(createAddress({ data }));
 
     setIsOpen(!isOpen);
   };
@@ -65,57 +82,73 @@ export const FormCreateAddress = ({
         onSubmit={handleSubmit(handleCreateAddress)}
       >
         <div className="flex space-x-2">
-          <InputText
-            labelText="Endereço:"
+          <Input
+            name="address"
+            control={control}
+            label="Endereço:"
             error={errors.address?.message}
-            {...register("address")}
           />
           <div className="w-1/4">
-            <InputText
-              labelText="Número:"
+            <Input
+              name="number"
+              control={control}
+              label="Número:"
               error={errors.number?.message}
               type="number"
-              {...register("number")}
             />
           </div>
           <div className="w-1/4">
-            <InputText
-              labelText="Complemento:"
+            <Input
+              name="complement"
+              control={control}
+              label="Complemento:"
               error={errors.complement?.message}
-              {...register("complement")}
             />
           </div>
         </div>
         <div className="flex space-x-2">
           <div className="w-1/3">
-            <InputText
-              labelText="CEP:"
+            <Input
+              name="cep"
+              control={control}
+              label="CEP:"
               error={errors.cep?.message}
-              type="number"
-              {...register("cep")}
+              mask="99999-999"
             />
           </div>
           <div className="">
-            <InputText
-              labelText="Cidade:"
+            <Input
+              name="city"
+              control={control}
+              label="Cidade:"
               error={errors.city?.message}
-              {...register("city")}
             />
           </div>
-          <div className="w-1/12">
+
+          <CustomSelect
+            name="state"
+            control={control}
+            label="Estado:"
+            error={errors.state?.message}
+            options={options}
+          ></CustomSelect>
+
+          {/* <div className="w-1/12">
             {" "}
-            <InputText
-              labelText="Estado:"
+            <Input
+              name="state"
+              control={control}
+              label="Estado:"
               error={errors.state?.message}
-              {...register("state")}
             />
-          </div>
+          </div> */}
           <div className="w-1/4">
             {" "}
-            <InputText
-              labelText="País:"
+            <Input
+              name="country"
+              control={control}
+              label="País:"
               error={errors.country?.message}
-              {...register("country")}
             />
           </div>
         </div>

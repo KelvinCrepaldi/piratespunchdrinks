@@ -1,63 +1,69 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { useAppDispatch } from "@/store/store";
 import { createCreditCards } from "@/store/reducers/creditCardsReducer";
 import { InputText } from "../../../../_ui/InputText";
+import { Input } from "@/components/_ui/Input/Input";
 
 interface IFormCreateCreditCardProps {
   isOpen: boolean;
   setIsOpen: () => void;
 }
 
-export const FormCreateCreditCard = ({ isOpen = false, setIsOpen }: any) => {
-  const { token } = useSelector((state: any) => state.auth);
+export const FormCreateCreditCard = ({
+  isOpen = false,
+  setIsOpen,
+}: IFormCreateCreditCardProps) => {
   const dispatch = useAppDispatch();
 
   const creditCardSchema = yup.object().shape({
-    name: yup.string().required(),
+    name: yup.string().required("Escreva o nome do cartão."),
     number: yup
       .number()
-      .required()
-      .test("len", "Must be exactly 16 numbers", (val) => {
+      .required("Escreva o número.")
+      .test("len", "Precisa conter 16 números.", (val) => {
         return val.toString().length === 16;
       }),
     expirationDate: yup
       .string()
-      .matches(/^(0[1-9]|1[0-2])\/\d{2}$/, "Invalid date format (MM/YY)")
-      .required("Expiration date is required")
-      .test("len", "Date shape incorrect. (MM/YY)", (val: any) => {
+      .matches(/^(0[1-9]|1[0-2])\/\d{2}$/, "Escreva uma data valida (Mês/Ano).")
+      .required("Escreva a data de validade.")
+      .test("len", "Escreva uma data valida (Mês/Ano).", (val: any) => {
         return val.length === 5;
       }),
   });
 
-  interface ICreditCardSchema {
+  interface CreditCardSchema {
     name: string;
     number: number;
     expirationDate: string;
   }
 
   const {
-    register,
     handleSubmit,
+    control,
     formState: { errors },
     reset,
-  } = useForm<ICreditCardSchema>({
+  } = useForm<CreditCardSchema>({
+    defaultValues: {
+      name: "",
+      number: parseInt(""),
+      expirationDate: "",
+    },
     resolver: yupResolver(creditCardSchema),
   });
 
-  const handleCreateCreditCard = (e: any) => {
-    const { name, number, expirationDate } = e;
-    console.log(name);
+  const handleCreateCreditCard: SubmitHandler<CreditCardSchema> = (data) => {
+    const { name, number, expirationDate } = data;
     dispatch(createCreditCards({ name, number, expirationDate }));
-
-    setIsOpen(!isOpen);
+    setIsOpen();
+    reset();
   };
 
   const handleIsOpen = () => {
     reset();
-    setIsOpen(!isOpen);
+    setIsOpen();
   };
 
   return isOpen ? (
@@ -65,22 +71,27 @@ export const FormCreateCreditCard = ({ isOpen = false, setIsOpen }: any) => {
       <p className="text-xl">Novo cartão de crédito:</p>
       <form className="" onSubmit={handleSubmit(handleCreateCreditCard)}>
         <div>
-          <InputText
-            labelText="Nome:"
+          <Input
+            control={control}
+            label="Nome:"
             error={errors.name?.message}
-            {...register("name")}
+            name="name"
           />
         </div>
         <div className="flex space-x-2">
-          <InputText
-            labelText="Numero:"
+          <Input
+            mask="9999 9999 9999 9999"
+            control={control}
+            label="Numero:"
             error={errors.number?.message}
-            {...register("number")}
+            name="number"
           />
-          <InputText
-            labelText="Expiração:"
+          <Input
+            control={control}
             error={errors.expirationDate?.message}
-            {...register("expirationDate")}
+            label="Data de validade"
+            mask="99/99"
+            name="expirationDate"
           />
         </div>
 

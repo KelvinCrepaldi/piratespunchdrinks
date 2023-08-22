@@ -26,6 +26,10 @@ export const PanelCreditCards = (): JSX.Element => {
     setIsOpen(true);
   };
 
+  const handleSetIsOpen = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div>
       <div className="border-b-2 font-inter border-pirates-red  flex justify-between">
@@ -36,7 +40,7 @@ export const PanelCreditCards = (): JSX.Element => {
           </button>
         )}
       </div>
-      <FormCreateCreditCard isOpen={isOpen} setIsOpen={setIsOpen} />
+      <FormCreateCreditCard isOpen={isOpen} setIsOpen={handleSetIsOpen} />
 
       {creditCards &&
         creditCards.map((creditCard: ICreditCard) => (
