@@ -6,12 +6,14 @@ interface IInitialStateProductsSlice {
   loading: boolean;
   error: string | null;
   products: IProduct[];
+  searchWord: string;
 }
 
 const initialState: IInitialStateProductsSlice = {
   loading: false,
   error: null,
   products: [],
+  searchWord: "",
 };
 
 interface IFetchProducts {
@@ -28,13 +30,16 @@ interface IFetchProducts {
 export const fetchProducts = createAsyncThunk(
   "products/fetch",
   async (
-    { search = "", category = "", take = "12", page = "1" }: IFetchProducts,
+    { search = "", category = "", take = "20", page = "1" }: IFetchProducts,
     thunkAPI
   ) => {
     try {
       console.log(category);
       const response = await api.get(
-        `product/?&category=${category}` + `&search=${search}`
+        `product/?&category=${category}` +
+          `&search=${search}` +
+          `&take=${take}` +
+          `&page=${page}`
       );
       console.log(response.data);
       return response.data.data;
@@ -47,7 +52,14 @@ export const fetchProducts = createAsyncThunk(
 const productsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    setSearchWord(state, action) {
+      state.searchWord = action.payload;
+    },
+    clearSearchWord(state) {
+      state.searchWord = "";
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state, action) => {
       state.products = [];
@@ -70,4 +82,4 @@ const productsSlice = createSlice({
 
 export default productsSlice.reducer;
 
-export const {} = productsSlice.actions;
+export const { setSearchWord, clearSearchWord } = productsSlice.actions;

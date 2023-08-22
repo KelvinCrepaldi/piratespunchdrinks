@@ -18,7 +18,7 @@ export function CardHighlightProduct({
   };
 
   return (
-    <div className="m-1 p-1 bg-pirates-shop-card rounded flex-grow border border-zinc-900  max-w-[217px]">
+    <div className="m-1 p-1 bg-pirates-shop-card rounded basis-11 shrink-[10px] border border-zinc-900 ">
       <div className="relative w-full aspect-square">
         <Image
           fill
@@ -30,7 +30,7 @@ export function CardHighlightProduct({
 
       <div className="flex flex-col items-center" key={product.id}>
         <div className="mt-2">
-          <h1 className="text-pirates-white text-center font-pirata text-xl w-[190px] ">
+          <h1 className="text-pirates-white text-center font-pirata text-xl ">
             {product.name}
           </h1>
           <div className="flex justify-center w-full">
