@@ -1,6 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { IAddress } from "@/interfaces/address.interface";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
@@ -13,6 +13,7 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { InputText } from "@/components/_ui/InputText";
+import { Input } from "@/components/_ui/Input";
 
 interface ICardAddressProps {
   address: IAddress;
@@ -43,12 +44,22 @@ export const CardAddress = ({ address }: ICardAddressProps): JSX.Element => {
   });
 
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
     reset,
     clearErrors,
   } = useForm<IAddressSchema>({
+    defaultValues: {
+      address: address.address,
+      cep: address.cep,
+      number: address.number,
+      complement: address.complement,
+      city: address.city,
+      state: address.state,
+      country: address.country,
+    },
     resolver: yupResolver(addressSchema),
   });
 
@@ -65,8 +76,8 @@ export const CardAddress = ({ address }: ICardAddressProps): JSX.Element => {
     clearErrors();
   };
 
-  const handleUpdateCreditCard = (e: IAddressSchema) => {
-    const { address, cep, city, complement, country, number, state } = e;
+  const handleUpdateCreditCard: SubmitHandler<IAddressSchema> = (data) => {
+    const { address, cep, city, complement, country, number, state } = data;
     console.log({ address, cep, city, complement, country, number, state });
     setDisabled(true);
   };
@@ -113,74 +124,69 @@ export const CardAddress = ({ address }: ICardAddressProps): JSX.Element => {
       {/* Inputs ============================================ */}
 
       <div className="flex space-x-2">
-        <InputText
-          labelText="Endereço:"
-          defaultValue={address.address}
-          disabled={disabled}
-          {...register("address")}
-          error={errors.address?.message}
-        ></InputText>
-        <div className="w-1/4">
-          <InputText
-            labelText="Número:"
-            defaultValue={address.number}
-            disabled={disabled}
-            {...register("number")}
-            error={errors.number?.message}
-            type="number"
-          ></InputText>
-        </div>
-        <div className="w-1/4">
-          <InputText
-            labelText="Complemento:"
-            defaultValue={address.complement}
-            disabled={disabled}
-            {...register("complement")}
-            error={errors.complement?.message}
-            type="string"
-          ></InputText>
-        </div>
-      </div>
-      <div className="flex space-x-2">
-        <div className="w-1/3">
-          <InputText
-            labelText="CEP:"
-            defaultValue={address.cep}
-            disabled={disabled}
-            {...register("cep")}
-            error={errors.cep?.message}
-            type="string"
-          ></InputText>
-        </div>
-        <div className="">
-          <InputText
-            labelText="Cidade:"
-            defaultValue={address.city}
-            disabled={disabled}
-            {...register("city")}
-            error={errors.city?.message}
-            type="string"
-          ></InputText>
-        </div>
-        <div className="w-1/12">
-          <InputText
-            labelText="Estado:"
-            defaultValue={address.state}
-            disabled={disabled}
-            {...register("state")}
-            error={errors.state?.message}
-            type="string"
-          ></InputText>
-        </div>
-        <div className="w-1/4">
-          <InputText
-            labelText="País:"
-            defaultValue={address.country}
-            disabled={disabled}
-            {...register("country")}
-            error={errors.country?.message}
-            type="string"
-          ></InputText>
+        <div className="flex flex-wrap">
+          <div className="flex space-x-2">
+            <Input
+              name="address"
+              control={control}
+              label="Endereço:"
+              error={errors.address?.message}
+            />
+            <div className="w-1/4">
+              <Input
+                name="number"
+                control={control}
+                label="Número:"
+                error={errors.number?.message}
+                type="number"
+              />
+            </div>
+            <div className="w-1/4">
+              <Input
+                name="complement"
+                control={control}
+                label="Complemento:"
+                error={errors.complement?.message}
+              />
+            </div>
+          </div>
+          <div className="flex space-x-2">
+            <div className="w-1/3">
+              <Input
+                name="cep"
+                control={control}
+                label="CEP:"
+                error={errors.cep?.message}
+                mask="99999-999"
+              />
+            </div>
+            <div className="">
+              <Input
+                name="city"
+                control={control}
+                label="Cidade:"
+                error={errors.city?.message}
+              />
+            </div>
+            <div className="w-1/12">
+              {" "}
+              <Input
+                name="state"
+                control={control}
+                label="Estado:"
+                error={errors.state?.message}
+              />
+            </div>
+            <div className="w-1/4">
+              {" "}
+              <Input
+                name="country"
+                control={control}
+                label="País:"
+                error={errors.country?.message}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </form>

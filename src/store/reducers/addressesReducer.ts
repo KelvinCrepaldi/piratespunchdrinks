@@ -50,13 +50,13 @@ export const deleteAddress = createAsyncThunk(
 
 export const createAddress = createAsyncThunk(
   "address/create",
-  async (body: IAddress, { getState, dispatch }) => {
+  async ({ data }: any, { getState, dispatch }) => {
     try {
       const state = getState() as RootState;
 
       const response = await api.post(
         `address`,
-        JSON.parse(JSON.stringify(body)),
+        JSON.parse(JSON.stringify(data)),
         {
           headers: { Authorization: `Bearer ${state.auth.token}` },
         }

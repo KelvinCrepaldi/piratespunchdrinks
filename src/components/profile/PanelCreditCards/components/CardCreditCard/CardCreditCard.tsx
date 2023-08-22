@@ -9,10 +9,10 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { InputText } from "@/components/_ui/InputText";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { Input } from "@/components/_ui/Input";
 
 interface ICardCreditCard {
   card: ICreditCard;
@@ -22,37 +22,41 @@ export const CardCreditCard = ({ card }: ICardCreditCard): JSX.Element => {
   const [disabled, setDisabled] = useState<boolean>(true);
 
   const creditCardSchema = yup.object().shape({
-    name: yup.string().required().default(card.name),
+    name: yup.string().required(),
     number: yup
       .number()
       .required()
       .test("len", "Must be exactly 16 numbers", (val) => {
         return val.toString().length === 16;
-      })
-      .default(parseInt(card.number)),
+      }),
+
     expirationDate: yup
       .string()
-      .matches(/^(0[1-9]|1[0-2])\/\d{2}$/, "Invalid date format (MM/YY)")
-      .required("Expiration date is required")
-      .test("len", "Date shape incorrect. (MM/YY)", (val: any) => {
+      .matches(/^(0[1-9]|1[0-2])\/\d{2}$/, "Escreva uma data valida (Mês/Ano)")
+      .required("Escreva a data de validade.")
+      .test("len", "Escreva uma data valida (Mês/Ano)", (val: any) => {
         return val.length === 5;
-      })
-      .default(card.expiration_date),
+      }),
   });
 
-  interface ICreditCardSchema {
+  interface CreditCardSchema {
     name: string;
     number: number;
     expirationDate: string;
   }
 
   const {
-    register,
     handleSubmit,
     formState: { errors },
     reset,
+    control,
     clearErrors,
-  } = useForm<ICreditCardSchema>({
+  } = useForm<CreditCardSchema>({
+    defaultValues: {
+      name: card.name,
+      number: parseInt(card.number),
+      expirationDate: card.expiration_date,
+    },
     resolver: yupResolver(creditCardSchema),
   });
 
@@ -67,10 +71,12 @@ export const CardCreditCard = ({ card }: ICardCreditCard): JSX.Element => {
   const handleCancelEdit = (): void => {
     setDisabled(true);
     clearErrors();
+    reset();
   };
 
-  const handleUpdateCreditCard = (e: any) => {
-    const { name, number, expirationDate } = e;
+  const handleUpdateCreditCard: SubmitHandler<CreditCardSchema> = (data) => {
+    const { name, number, expirationDate } = data;
+    console.log(data);
 
     setDisabled(true);
   };
@@ -118,29 +124,31 @@ export const CardCreditCard = ({ card }: ICardCreditCard): JSX.Element => {
       {/* Inputs ============================================ */}
 
       <div>
-        <InputText
-          labelText="Nome:"
-          defaultValue={card.name}
-          disabled={disabled}
-          {...register("name")}
+        <Input
+          control={control}
+          label="Nome:"
           error={errors.name?.message}
-        ></InputText>
+          name="name"
+          disabled={disabled}
+        />
       </div>
       <div className="flex space-x-2">
-        <InputText
-          labelText="Numero:"
-          defaultValue={card.number}
-          disabled={disabled}
-          {...register("number")}
+        <Input
+          mask="9999 9999 9999 9999"
+          control={control}
+          label="Numero:"
           error={errors.number?.message}
-        ></InputText>
-        <InputText
-          labelText="Expiração:"
-          defaultValue={card.expiration_date}
+          name="number"
           disabled={disabled}
-          {...register("expirationDate")}
+        />
+        <Input
+          control={control}
           error={errors.expirationDate?.message}
-        ></InputText>
+          label="Data de validade"
+          mask="99/99"
+          name="expirationDate"
+          disabled={disabled}
+        />
       </div>
     </form>
   );
