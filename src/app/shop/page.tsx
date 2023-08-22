@@ -8,6 +8,7 @@ import { fetchProducts } from "@/store/reducers/productsReducer";
 import { CardHighlightProduct } from "@/components/_ui/CardHighlightProduct";
 import { RootState } from "@/store/store";
 import Head from "next/head";
+import { Pagination } from "@/components/_ui/Pagination";
 
 export default function Shop(): JSX.Element {
   const [showMenu, setShowMenu] = useState(false);
@@ -71,6 +72,7 @@ export default function Shop(): JSX.Element {
             {products?.map((product: any) => (
               <CardHighlightProduct key={product.id} product={product} />
             ))}
+            <Pagination />
           </main>
         </div>
       </main>
