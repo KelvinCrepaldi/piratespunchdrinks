@@ -13,13 +13,15 @@ export default function Shop(): JSX.Element {
   const [showMenu, setShowMenu] = useState(false);
 
   const dispatch = useDispatch();
-  const { products, error, loading } = useSelector(
+  const { products, error, loading, searchWord } = useSelector(
     (state: RootState) => state.products
   );
 
   useEffect(() => {
-    dispatch(fetchProducts({}));
-  }, [dispatch]);
+    searchWord
+      ? dispatch(fetchProducts({ search: searchWord }))
+      : dispatch(fetchProducts({}));
+  }, [dispatch, searchWord]);
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu);
@@ -51,7 +53,7 @@ export default function Shop(): JSX.Element {
             </button>
           </div>
         </div>
-        <div className="flex mx-9 ">
+        <div className="flex mx-9 md:justify-center">
           <section
             className={`absolute  ${
               showMenu === false ? "-left-full" : "left-0"
@@ -59,18 +61,17 @@ export default function Shop(): JSX.Element {
           >
             <SidebarFilter />
           </section>
-          <div className="flex justify-center ">
-            <main className="flex flex-wrap justify-center">
-              {loading && (
-                <div className="inline text-center w-full">Carregando....</div>
-              )}
-              {error && <h2>{error}</h2>}
 
-              {products?.map((product: any) => (
-                <CardHighlightProduct key={product.id} product={product} />
-              ))}
-            </main>
-          </div>
+          <main className="w-full grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-row md:flex-wrap content-start max-w-[1080px]">
+            {loading && (
+              <div className="text-center w-full">Carregando....</div>
+            )}
+            {error && <h2>{error}</h2>}
+
+            {products?.map((product: any) => (
+              <CardHighlightProduct key={product.id} product={product} />
+            ))}
+          </main>
         </div>
       </main>
     </>
