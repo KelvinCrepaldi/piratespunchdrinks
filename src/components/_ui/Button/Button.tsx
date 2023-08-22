@@ -6,7 +6,7 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button = ({ children, ...props }: IButtonProps) => {
   return (
     <button
-      className="w-full  rounded p-3 mt-1 border-l hover:to-pirates-card-dark2 bg-gradient-to-r from-pirates-card-dark to-pirates-card-dark"
+      className="w-full  rounded p-3 mt-1 border border-zinc-800 hover:to-pirates-card-dark2 bg-gradient-to-r from-pirates-card-dark to-pirates-card-dark"
       {...props}
     >
       {children}

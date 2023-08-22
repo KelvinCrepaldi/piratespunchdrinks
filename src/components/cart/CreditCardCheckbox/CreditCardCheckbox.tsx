@@ -18,7 +18,7 @@ export const CreditCardCheckbox = ({
         selectedCreditCard && selectedCreditCard.id === creditCard.id
           ? "border-green-500"
           : "border-transparent hover:border-yellow-700"
-      }`}
+      } hover:to-pirates-card-dark2 bg-gradient-to-r from-pirates-card-dark to-pirates-card-dark`}
     >
       <input
         className="mr-4 accent-green-600"

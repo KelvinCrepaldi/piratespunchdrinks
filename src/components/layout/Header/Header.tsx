@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
 import { logout } from "@/store/reducers/userReducer";
 import { RootState, useAppDispatch } from "@/store/store";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { fetchProducts } from "@/store/reducers/productsReducer";
 
 interface IHeaderProps {
   handleShowCart: () => void;
@@ -32,6 +33,8 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
   );
 
   const handleFilter = () => {
+    const search = filter;
+    dispatch(fetchProducts({ search, page: "1", take: "12" }));
     router.push("/shop");
   };
 

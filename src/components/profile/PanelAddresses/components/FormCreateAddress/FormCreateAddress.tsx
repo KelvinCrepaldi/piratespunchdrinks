@@ -1,23 +1,15 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
 import { createAddress } from "@/store/reducers/addressesReducer";
-import { RootState, useAppDispatch } from "@/store/store";
-import { InputText } from "../../../../_ui/InputText";
+import { useAppDispatch } from "@/store/store";
+
 import { Input } from "@/components/_ui/Input";
-import { CustomSelect } from "@/components/_ui/Select";
 
 interface IFormCreateAddressProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
 }
-
-const options = [
-  { value: "1", label: "Apple" },
-  { value: "2", label: "Ball" },
-  { value: "3", label: "Cat" },
-];
 
 export const FormCreateAddress = ({
   isOpen = false,
@@ -38,7 +30,7 @@ export const FormCreateAddress = ({
   interface IAddresSchema {
     address: string;
     cep: string;
-    number: number;
+    number: string;
     complement: string;
     city: string;
     state: string;
@@ -46,21 +38,20 @@ export const FormCreateAddress = ({
   }
 
   const {
-    register,
     handleSubmit,
     formState: { errors },
     control,
     reset,
   } = useForm<IAddresSchema>({
-    /* defaultValues: {
+    defaultValues: {
       address: "",
       cep: "",
-      number: 0,
+      number: "",
       complement: "",
       city: "",
       state: "",
       country: "",
-    } */
+    },
     resolver: yupResolver(addressSchema),
   });
 
@@ -124,26 +115,16 @@ export const FormCreateAddress = ({
               error={errors.city?.message}
             />
           </div>
-
-          <CustomSelect
-            name="state"
-            control={control}
-            label="Estado:"
-            error={errors.state?.message}
-            options={options}
-          ></CustomSelect>
-
-          {/* <div className="w-1/12">
-            {" "}
+          <div className="w-1/12">
             <Input
+              mask="aa"
               name="state"
               control={control}
               label="Estado:"
               error={errors.state?.message}
             />
-          </div> */}
+          </div>
           <div className="w-1/4">
-            {" "}
             <Input
               name="country"
               control={control}

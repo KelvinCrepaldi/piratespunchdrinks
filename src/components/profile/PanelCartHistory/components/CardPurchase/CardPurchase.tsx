@@ -7,7 +7,6 @@ interface ICardPurchaseProps {
 }
 
 export const CardPurchase = ({ order }: ICardPurchaseProps): JSX.Element => {
-  console.log(order);
   let showPaymetType = {
     Pending: "text-yellow-700",
     Authorized: "text-green-400",
