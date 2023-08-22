@@ -7,6 +7,13 @@ interface IInitialStateProductsSlice {
   error: string | null;
   products: IProduct[];
   searchWord: string;
+  pagination: {
+    count: number;
+    currentPage: number;
+    nextPage: number | null;
+    prevPage: number | null;
+    lastPage: number;
+  };
 }
 
 const initialState: IInitialStateProductsSlice = {
@@ -14,6 +21,13 @@ const initialState: IInitialStateProductsSlice = {
   error: null,
   products: [],
   searchWord: "",
+  pagination: {
+    count: 0,
+    currentPage: 1,
+    nextPage: 0,
+    prevPage: 0,
+    lastPage: 0,
+  },
 };
 
 interface IFetchProducts {
@@ -42,7 +56,7 @@ export const fetchProducts = createAsyncThunk(
           `&page=${page}`
       );
       console.log(response.data);
-      return response.data.data;
+      return response.data;
     } catch (error) {
       throw error;
     }
@@ -69,7 +83,12 @@ const productsSlice = createSlice({
 
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       state.loading = false;
-      state.products = action.payload;
+      state.products = action.payload.data;
+      state.pagination.count = action.payload.count;
+      state.pagination.currentPage = action.payload.currentPage;
+      state.pagination.lastPage = action.payload.lastPage;
+      state.pagination.nextPage = action.payload.nextPage;
+      state.pagination.prevPage = action.payload.prevPage;
     });
 
     builder.addCase(fetchProducts.rejected, (state, action) => {
