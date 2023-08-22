@@ -14,12 +14,30 @@ const initialState: IInitialStateProductsSlice = {
   products: [],
 };
 
+interface IFetchProducts {
+  search?: string;
+  category?: string;
+  page?: string;
+  take?: string;
+}
+
+/* ?${keyword ? "keyword=" + keyword : ""}&${
+  page ? "page=" + page : ""
+}&${take ? "take=" + take : ""}& */
+
 export const fetchProducts = createAsyncThunk(
   "products/fetch",
-  async (_, thunkAPI) => {
+  async (
+    { search = "", category = "", take = "12", page = "1" }: IFetchProducts,
+    thunkAPI
+  ) => {
     try {
-      const response = await api.get("product/");
-      return response.data;
+      console.log(category);
+      const response = await api.get(
+        `product/?&category=${category}` + `&search=${search}`
+      );
+      console.log(response.data);
+      return response.data.data;
     } catch (error) {
       throw error;
     }

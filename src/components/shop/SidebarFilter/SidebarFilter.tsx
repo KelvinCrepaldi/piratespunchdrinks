@@ -5,6 +5,7 @@ import { fetchCategories } from "@/store/reducers/categoriesReducer";
 
 import { ICategory } from "@/interfaces/category.interface";
 import type {} from "redux-thunk/extend-redux";
+import { fetchProducts } from "@/store/reducers/productsReducer";
 
 export function SidebarFilter(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -16,6 +17,10 @@ export function SidebarFilter(): JSX.Element {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const filterByCategory = (category?: string): void => {
+    dispatch(fetchProducts({ category: category }));
+  };
+
   return (
     <div className="mr-1 my-1  py-5 px-5 md:px-0 p-2  md:w-64 h-full border border-zinc-900  bg-pirates-shop-sidebar rounded relative lg:static z-10">
       <h1 className="text-xl m-2 p-1 border-b border-pirates-silver text-pirates-gold ">
@@ -26,6 +31,7 @@ export function SidebarFilter(): JSX.Element {
         <li
           key={"fetch-all"}
           className="flex mx-6 justify-between font-fredericka  cursor-pointer my-1 hover:text-pirates-gold "
+          onClick={() => filterByCategory()}
         >
           <span className="">All products</span>
           <div className="flex-grow border-b border-dashed border-pirates-silver"></div>
@@ -40,6 +46,7 @@ export function SidebarFilter(): JSX.Element {
           <li
             key={category.id}
             className="flex mx-6 justify-between font-fredericka  cursor-pointer my-1 hover:text-pirates-gold "
+            onClick={() => filterByCategory(category.name)}
           >
             <span className=" ">
               {category.name.charAt(0).toUpperCase() + category.name.slice(1)}

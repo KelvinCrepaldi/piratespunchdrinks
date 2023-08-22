@@ -14,8 +14,6 @@ export const ListPurchase = ({ products }: IListPurchaseProps): JSX.Element => {
     setIsOpen(!isOpen);
   };
 
-  console.log(products);
-
   return (
     <div className="">
       <div

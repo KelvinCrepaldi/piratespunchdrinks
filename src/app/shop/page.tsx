@@ -18,7 +18,7 @@ export default function Shop(): JSX.Element {
   );
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(fetchProducts({}));
   }, [dispatch]);
 
   const handleShowMenu = () => {

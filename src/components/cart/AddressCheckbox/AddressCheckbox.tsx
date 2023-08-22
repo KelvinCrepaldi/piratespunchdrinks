@@ -20,7 +20,7 @@ export const AddressCheckbox = ({
         selectedAddress && selectedAddress.id === address.id
           ? "border-green-400"
           : "border-transparent hover:border-yellow-700"
-      }`}
+      } hover:to-pirates-card-dark2 bg-gradient-to-r from-pirates-card-dark to-pirates-card-dark`}
     >
       <input
         className="mr-4 accent-green-600 bg-black text-red-500"
@@ -33,7 +33,7 @@ export const AddressCheckbox = ({
       <div>
         <div>
           <Info content={formatAddress} title="Endereço:" />
-          <Info content={address.number} title="CEP:" />
+          <Info content={address.cep} title="CEP:" />
         </div>
       </div>
     </label>
