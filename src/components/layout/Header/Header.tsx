@@ -76,7 +76,7 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
             <div className="flex items-center space-x-3 justify-end flex-grow">
               <div
                 className="rounded p-2 pl-3 
-              w-full hover:border-neutral-300 focus:border-pirates-red border 
+              w-full hover:border-neutral-300 hover:text-neutral-300 focus:border-pirates-red border 
             border-neutral-500 text-pirates-gold flex h-9  max-w-xs  items-center "
               >
                 <input
@@ -85,8 +85,11 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
                   value={filter}
                   onChange={(e) => setFilter(e.target.value)}
                 ></input>
-                <button className="text-xl mr-2" onClick={handleFilter}>
-                  <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
+                <button className="text-xl mr-2 " onClick={handleFilter}>
+                  <FontAwesomeIcon
+                    className="text-zinc-500"
+                    icon={faMagnifyingGlass}
+                  ></FontAwesomeIcon>
                 </button>
               </div>
 
