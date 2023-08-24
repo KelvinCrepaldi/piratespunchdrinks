@@ -13,22 +13,37 @@ export const Footer = (): JSX.Element => {
             </li>
             <li>
               <Link className="hover:text-blue-300" href={"/shop"}>
-                Shop
+                Loja
               </Link>
             </li>
             <li>
               <Link className="hover:text-blue-300" href={"/about"}>
-                About
+                Sobre
               </Link>
             </li>
             <li>
-              <Link className="hover:text-blue-300" href={"/user"}>
-                User Page
+              <Link className="hover:text-blue-300" href={"/profile"}>
+                Perfil
               </Link>
             </li>
             <li>
               <Link className="hover:text-blue-300" href={"/contact"}>
-                Contact
+                Contato
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:text-blue-300" href={"/contact"}>
+                Endereços
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:text-blue-300" href={"/contact"}>
+                Cartões de crédito
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:text-blue-300" href={"/contact"}>
+                Histórico de compras
               </Link>
             </li>
           </ul>

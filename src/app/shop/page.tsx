@@ -44,10 +44,10 @@ export default function Shop(): JSX.Element {
       <main className="">
         <div className="flex flex-col text-center items-center py-5">
           <h1 className="inline-block border-b-2 px-5 border-pirates-red text-6xl font-fredericka">
-            Drinks for You!
+            Bebidas para você!
           </h1>
           <p className="text-pirates-red font-pirata">
-            Sail the high seas for delightful drinks!
+            Navegue em alto mar para saborear bebidas deliciosas!
           </p>
         </div>
         <div className="flex flex-col items-center"></div>
