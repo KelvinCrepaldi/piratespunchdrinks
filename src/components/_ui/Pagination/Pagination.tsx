@@ -8,11 +8,10 @@ export const Pagination = (): JSX.Element => {
   const { lastPage, currentPage } = useSelector(
     (state: RootState) => state.products.pagination
   );
-  const { searchWord } = useSelector((state: RootState) => state.products);
 
   const handlePage = (page: number) => {
     scrollToTop();
-    dispatch(fetchProducts({ page: page.toString(), search: searchWord }));
+    dispatch(fetchProducts({ page: page.toString() }));
   };
 
   return (
