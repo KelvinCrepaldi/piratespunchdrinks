@@ -5,14 +5,14 @@ import barPhoto from "/public/images/barPhoto.webp";
 import drinkPhoto from "/public/images/drink.webp";
 export default function About() {
   return (
-    <main className="w-100 md:max-w-5xl m-auto p-5 md:p-16 space-y-16">
+    <main className="w-100 md:max-w-5xl m-auto p-5 md:p-16 space-y-16 font-imfell">
       <div className="flex flex-col md:flex-row justify-center items-center">
         <div className=" flex flex-col justify-center items-center  m-auto">
           <div className=" text-center">
             <h1 className="inline-block border-b-2 px-5 border-pirates-red text-6xl font-fredericka">
               About Us
             </h1>
-            <h2 className="mb-4 text-3xl">Pirate{"'"}s Punch</h2>
+            <h2 className="mb-4 text-3xl font-pirata">Pirate{"'"}s Punch</h2>
           </div>
 
           <p className="text-center text-pirates-gold">

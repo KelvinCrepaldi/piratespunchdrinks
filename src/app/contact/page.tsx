@@ -6,14 +6,14 @@ import tortuga from "/public/images/tortuga.jpg";
 
 export default function Contact(): JSX.Element {
   return (
-    <main className="md:max-w-5xl m-auto p-5 md:p-16 space-y-10">
+    <main className="md:max-w-5xl m-auto p-5 md:p-16 space-y-10 font-imfell">
       <div className="flex flex-col md:flex-row justify-center items-center">
         <div className=" flex flex-col justify-center items-center  m-auto">
           <div className=" text-center">
             <h1 className="inline-block border-b-2 px-5 border-pirates-red text-6xl font-fredericka">
               Contact
             </h1>
-            <h2 className="mb-4 text-3xl">Pirate{"'"}s Punch</h2>
+            <h2 className="mb-4 text-3xl font-pirata">Pirate{"'"}s Punch</h2>
           </div>
 
           <p className="text-center text-pirates-gold">
