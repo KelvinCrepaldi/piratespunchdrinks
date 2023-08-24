@@ -41,8 +41,8 @@ export function SidebarFilter({
         </button>
       </div>
 
-      <h1 className="text-xl m-2 p-1 border-b border-pirates-silver text-pirates-gold ">
-        Product Categories
+      <h1 className="text-3xl m-2 p-1 border-b border-pirates-silver text-pirates-gold font-fredericka">
+        Categorias
       </h1>
 
       <ul>
