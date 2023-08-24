@@ -1,12 +1,17 @@
 import { IProduct } from "@/interfaces/product.interface";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import api from "@/services";
+import { RootState } from "../store";
 
 interface IInitialStateProductsSlice {
   loading: boolean;
   error: string | null;
   products: IProduct[];
-  searchWord: string;
+
+  filter: {
+    searchWord: string;
+    category: string;
+  };
   pagination: {
     count: number;
     currentPage: number;
@@ -14,19 +19,34 @@ interface IInitialStateProductsSlice {
     prevPage: number | null;
     lastPage: number;
   };
+  control: {
+    date: string;
+    name: string;
+    take: number;
+    price: string;
+  };
 }
 
 const initialState: IInitialStateProductsSlice = {
   loading: false,
   error: null,
   products: [],
-  searchWord: "",
+  filter: {
+    searchWord: "",
+    category: "",
+  },
   pagination: {
     count: 0,
     currentPage: 1,
     nextPage: 0,
     prevPage: 0,
     lastPage: 0,
+  },
+  control: {
+    date: "",
+    name: "ASC",
+    price: "",
+    take: 15,
   },
 };
 
@@ -43,19 +63,20 @@ interface IFetchProducts {
 
 export const fetchProducts = createAsyncThunk(
   "products/fetch",
-  async (
-    { search = "", category = "", take = "20", page = "1" }: IFetchProducts,
-    thunkAPI
-  ) => {
+  async ({ page = "1" }: IFetchProducts, { getState }) => {
+    const state = getState() as RootState;
     try {
-      console.log(category);
       const response = await api.get(
-        `product/?&category=${category}` +
-          `&search=${search}` +
-          `&take=${take}` +
-          `&page=${page}`
+        `product/?` +
+          `&page=${page}` +
+          `&category=${state.products.filter.category}` +
+          `&search=${state.products.filter.searchWord}` +
+          `&take=${state.products.control.take}` +
+          `&date=${state.products.control.date}` +
+          `&name=${state.products.control.name}` +
+          `&price=${state.products.control.price}`
       );
-      console.log(response.data);
+
       return response.data;
     } catch (error) {
       throw error;
@@ -68,10 +89,52 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     setSearchWord(state, action) {
-      state.searchWord = action.payload;
+      state.filter.searchWord = action.payload;
+      state.filter.category = "";
     },
     clearSearchWord(state) {
-      state.searchWord = "";
+      state.filter.searchWord = "";
+    },
+    setCategoryWord(state, action) {
+      state.filter.category = action.payload;
+      state.filter.searchWord = "";
+    },
+    clearCategoryWord(state) {
+      state.filter.category = "";
+    },
+    setNameAsc(state) {
+      state.control.name = "ASC";
+      state.control.date = "";
+      state.control.price = "";
+    },
+    setNameDesc(state) {
+      state.control.name = "DESC";
+      state.control.date = "";
+      state.control.price = "";
+    },
+    setDateAsc(state) {
+      state.control.date = "ASC";
+      state.control.name = "";
+      state.control.price = "";
+    },
+    setDateDesc(state) {
+      state.control.date = "DESC";
+      state.control.name = "";
+      state.control.price = "";
+    },
+    setPriceAsc(state) {
+      state.control.price = "ASC";
+      state.control.name = "";
+      state.control.date = "";
+    },
+    setPriceDesc(state) {
+      state.control.price = "DESC";
+      state.control.name = "";
+      state.control.date = "";
+    },
+    setTakeQuantity(state) {
+      state.control.take += 5;
+      if (state.control.take > 35) state.control.take = 15;
     },
   },
   extraReducers: (builder) => {
@@ -101,4 +164,16 @@ const productsSlice = createSlice({
 
 export default productsSlice.reducer;
 
-export const { setSearchWord, clearSearchWord } = productsSlice.actions;
+export const {
+  setSearchWord,
+  clearSearchWord,
+  setCategoryWord,
+  clearCategoryWord,
+  setNameAsc,
+  setNameDesc,
+  setDateAsc,
+  setDateDesc,
+  setPriceAsc,
+  setPriceDesc,
+  setTakeQuantity,
+} = productsSlice.actions;
