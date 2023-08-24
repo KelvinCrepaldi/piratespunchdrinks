@@ -47,7 +47,7 @@ export default function Home(): JSX.Element {
               </p>
               <div className=" m-5 ">
                 <Link
-                  className="bg-pirates-gold text-pirates-black font-pirata text-3xl px-2 py-1 rounded cursor-pointer hover:bg-yellow-600"
+                  className="bg-pirates-gold text-pirates-card-dark font-pirata text-3xl px-2 py-1 rounded cursor-pointer hover:bg-yellow-600"
                   href={"/shop"}
                 >
                   Compre agora!
