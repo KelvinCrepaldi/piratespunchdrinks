@@ -113,14 +113,14 @@ export const Control = () => {
           className={`bg-pirates-black-transparent-strong w-9 h-9 rounded border border-zinc-800 mx-1 ${buttonColors[price]}`}
           onClick={() => dispatch(setPriceDesc())}
         >
-          <FontAwesomeIcon icon={faFilterCircleDollar}></FontAwesomeIcon> +
+          <FontAwesomeIcon icon={faFilterCircleDollar}></FontAwesomeIcon>
         </button>
       ) : (
         <button
           className={`bg-pirates-black-transparent-strong w-9 h-9 rounded border border-zinc-800 mx-1 ${buttonColors[price]}`}
           onClick={() => dispatch(setPriceAsc())}
         >
-          <FontAwesomeIcon icon={faFilterCircleDollar}></FontAwesomeIcon> -
+          <FontAwesomeIcon icon={faFilterCircleDollar}></FontAwesomeIcon>
         </button>
       )}
     </div>
