@@ -31,7 +31,7 @@ export function QuantityControlButton({
   return (
     <div className="flex  items-center">
       <button
-        className=" p-2  bg-pirates-red hover:bg-pirates-gold hover:text-black border-l px-3 border-pirates-black "
+        className=" p-2  bg-pirates-red hover:bg-pirates-gold hover:text-black border-l px-3 border-pirates-black rounded-l-lg"
         onClick={handleRemoveItemToCart}
       >
         <FontAwesomeIcon className="" icon={faMinus} />
@@ -41,7 +41,7 @@ export function QuantityControlButton({
       </div>
 
       <button
-        className=" p-2  bg-pirates-red hover:bg-pirates-gold hover:text-black border-r border-pirates-black px-3 rounded-l-lg"
+        className=" p-2  bg-pirates-red hover:bg-pirates-gold hover:text-black border-r border-pirates-black px-3 "
         onClick={handleAddToCart}
       >
         <FontAwesomeIcon icon={faPlus} />
