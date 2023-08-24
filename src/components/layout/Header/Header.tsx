@@ -80,7 +80,7 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
             border-neutral-500 text-pirates-gold flex h-9  max-w-xs  items-center "
               >
                 <input
-                  placeholder="Find..."
+                  placeholder="Buscar..."
                   className="w-full bg-transparent pl-4 focus:outline-none"
                   value={filter}
                   onChange={(e) => setFilter(e.target.value)}
@@ -153,7 +153,7 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
                           icon={faUser}
                           className={`text-xl mr-1 `}
                         ></FontAwesomeIcon>
-                        User page
+                        Profile
                       </Link>
                     </li>
                     <li className="font-imfell px-3 hover:text-pirates-gold">

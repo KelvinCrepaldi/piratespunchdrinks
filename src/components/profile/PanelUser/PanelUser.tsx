@@ -21,10 +21,13 @@ export function PanelUser(): JSX.Element {
     <div className="font-inter ">
       <div className="">
         <h1 className="border-b-2 font-inter border-pirates-red">Meu perfil</h1>
-        <InputText labelText="Name:" defaultValue={user?.name}></InputText>
-        <InputText labelText="Email:" defaultValue={user?.email}></InputText>
         <InputText
-          labelText="Creation date of account:"
+          labelText="Nome de usuário:"
+          defaultValue={user?.name}
+        ></InputText>
+        <InputText labelText="E-mail:" defaultValue={user?.email}></InputText>
+        <InputText
+          labelText="Data da criação da conta:"
           defaultValue={user?.createdAt.toString()}
         ></InputText>
       </div>
