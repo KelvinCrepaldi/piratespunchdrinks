@@ -31,20 +31,22 @@ export function QuantityControlButton({
   return (
     <div className="flex  items-center">
       <button
-        className=" p-2  bg-pirates-red hover:bg-pirates-gold hover:text-black border-r border-pirates-black px-3 rounded-l-lg"
-        onClick={handleAddToCart}
-      >
-        <FontAwesomeIcon icon={faPlus} />
-      </button>
-      <div className="bg-pirates-white w-12 p-2 px-3 text-center font-pirata text-pirates-black">
-        {findProduct?.qtd ? findProduct?.qtd : "0"}
-      </div>
-      <button
         className=" p-2  bg-pirates-red hover:bg-pirates-gold hover:text-black border-l px-3 border-pirates-black "
         onClick={handleRemoveItemToCart}
       >
         <FontAwesomeIcon className="" icon={faMinus} />
       </button>
+      <div className="bg-pirates-white w-12 p-2 px-3 text-center font-pirata text-pirates-black">
+        {findProduct?.qtd ? findProduct?.qtd : "0"}
+      </div>
+
+      <button
+        className=" p-2  bg-pirates-red hover:bg-pirates-gold hover:text-black border-r border-pirates-black px-3 rounded-l-lg"
+        onClick={handleAddToCart}
+      >
+        <FontAwesomeIcon icon={faPlus} />
+      </button>
+
       <button
         className="p-2  bg-pirates-red hover:bg-pirates-gold hover:text-black border-l px-3 border-pirates-black rounded-r-lg"
         onClick={handleClearItemToCard}
