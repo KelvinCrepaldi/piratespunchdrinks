@@ -1,10 +1,11 @@
 import { IProductDetailModalProps } from "@/interfaces/ProductDetailModal.interface";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import Image from "next/image";
 import { QuantityControlButton } from "../../_ui/QuantityControlButton";
 import { ActionBtn } from "../../_ui/ActionBtn";
 import Link from "next/link";
 import { IProduct } from "@/interfaces/product.interface";
+import { scrollToTop } from "@/utils/scrollToTop";
 
 interface IProductsDetailModal {
   product: IProduct;
@@ -16,6 +17,10 @@ export function ProductsDetailModal({
   children,
 }: IProductsDetailModal): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    scrollToTop();
+  }, [isOpen]);
 
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
