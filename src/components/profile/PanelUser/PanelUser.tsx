@@ -20,12 +20,19 @@ export function PanelUser(): JSX.Element {
   return (
     <div className="font-inter ">
       <div className="">
-        <h1 className="border-b-2 font-inter border-pirates-red">Meu perfil</h1>
+        <h1 className="border-b-2 font-inter border-pirates-red">Meu perfil</h1>{" "}
         <InputText
           labelText="Nome de usuário:"
           defaultValue={user?.name}
         ></InputText>
         <InputText labelText="E-mail:" defaultValue={user?.email}></InputText>
+        <InputText
+          labelText="Nome completo:"
+          defaultValue={user?.name}
+        ></InputText>
+        <InputText labelText="Aniversário:"></InputText>
+        <InputText labelText="CPF"></InputText>
+        <InputText labelText="Contato:"></InputText>
         <InputText
           labelText="Data da criação da conta:"
           defaultValue={user?.createdAt.toString()}

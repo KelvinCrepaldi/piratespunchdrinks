@@ -9,14 +9,12 @@ export interface IInitialStateOrdersSlice {
   loading: boolean;
   error: null | string;
   orders: IOrder[];
-  isCheckoutSuccessful: boolean;
 }
 
 const initialState: IInitialStateOrdersSlice = {
   loading: false,
   error: null,
   orders: [],
-  isCheckoutSuccessful: false,
 };
 
 export const fetchOrders = createAsyncThunk(
@@ -56,6 +54,8 @@ export const createOrder = createAsyncThunk(
       const response = await api.post(`/order/`, bodyRequest, {
         headers: { Authorization: `Bearer ${token}` },
       });
+
+      return response;
     } catch (error) {
       throw error;
     }
@@ -65,12 +65,7 @@ export const createOrder = createAsyncThunk(
 const ordersSlice = createSlice({
   name: "orders",
   initialState,
-  reducers: {
-    resetCheckoutStates(state) {
-      state.error = null;
-      state.isCheckoutSuccessful = false;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchOrders.pending, (state, action) => {
       state.loading = true;
@@ -92,7 +87,6 @@ const ordersSlice = createSlice({
 
     builder.addCase(createOrder.fulfilled, (state, action) => {
       state.error = "";
-      state.isCheckoutSuccessful = true;
     });
     builder.addCase(createOrder.rejected, (state, action) => {
       if (action.error.code === "ERR_BAD_REQUEST") {
@@ -101,11 +95,10 @@ const ordersSlice = createSlice({
       } else {
         state.error = "Erro ao tentar comunicar-se com o servidor.";
       }
-      console.log(action.error.code);
     });
   },
 });
 
-export const { resetCheckoutStates } = ordersSlice.actions;
+export const {} = ordersSlice.actions;
 
 export default ordersSlice.reducer;

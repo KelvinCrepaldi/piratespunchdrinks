@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const Footer = (): JSX.Element => {
   return (
-    <footer className="w-full flex flex-col items-center bg-black  py-10 mt-10">
+    <footer className="w-full flex flex-col items-center bg-black  py-10">
       <div className=" max-w-5xl flex flex-col md:flex-row">
         <nav className="md:w-1/3 space-y-4 flex flex-col text-center  border-t md:border-r md:border-t-0 p-4 m-5">
           <ul>

@@ -1,23 +1,31 @@
 "use client";
 import { Button } from "@/components/_ui/Button/Button";
 import { ProtectedRoute } from "@/components/layout/ProtectedRoute/ProtectedRoute";
-import { resetCheckoutStates } from "@/store/reducers/ordersReducer";
 import Link from "next/link";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 
 export default function Cart(): JSX.Element {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(resetCheckoutStates());
-  }, [dispatch]);
-
   return (
     <ProtectedRoute>
-      <main className="flex flex-col max-w-5xl m-auto min-h-screen">
-        Obrigado por comprar
-        <Link href={"/"}>
+      <main className="flex flex-col max-w-5xl m-auto min-h-screen items-center space-y-8 font-imfell text-center">
+        <h1 className="font-fredericka pt-5 border-b-2 border-pirates-red">
+          Obrigado por comprar na Pirate{"'"}s Punch!
+        </h1>
+        <p className="text-lg md:text-xl">
+          Agradecemos por escolher nossos produtos. Sua compra foi recebida com
+          sucesso.
+        </p>
+        <p className="text-lg md:text-xl">
+          Seu pedido está sendo processado e será enviado em breve.
+        </p>
+        <p className="text-lg md:text-xl">
+          Caso precise de assistência adicional, entre em contato conosco.
+        </p>
+
+        <Link className="w-[200px] text-xl" href={"/shop"}>
+          <Button>Continuar comprando</Button>
+        </Link>
+
+        <Link className="w-[200px] text-xl" href={"/"}>
           <Button>Voltar</Button>
         </Link>
       </main>

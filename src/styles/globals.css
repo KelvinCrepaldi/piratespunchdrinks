@@ -44,11 +44,11 @@
   background: transparent;
 }
 body {
-  background: rgb(29, 31, 68);
-  background: linear-gradient(
-    0deg,
-    rgba(29, 31, 68, 1) 0%,
-    rgba(117, 82, 0, 1) 100%
+  background: rgb(16, 17, 40);
+  background: radial-gradient(
+    circle,
+    rgba(16, 17, 40, 1) 0%,
+    rgb(29, 29, 34) 100%
   );
   background: url("/background.webp");
   background-size: cover;

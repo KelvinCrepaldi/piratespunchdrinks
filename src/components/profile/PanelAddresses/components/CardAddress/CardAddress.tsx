@@ -2,9 +2,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IAddress } from "@/interfaces/address.interface";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { deleteAddress } from "@/store/reducers/addressesReducer";
+import {
+  deleteAddress,
+  updateAddress,
+} from "@/store/reducers/addressesReducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheck,
@@ -14,24 +17,19 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { InputText } from "@/components/_ui/InputText";
 import { Input } from "@/components/_ui/Input";
+import { RootState } from "@/store/store";
+import { LoadingSpinner } from "@/components/_ui/LoadingSpinner";
 
 interface ICardAddressProps {
   address: IAddress;
 }
 
-interface IAddressSchema {
-  address: string;
-  cep: string;
-  number: string;
-  complement: string;
-  city: string;
-  state: string;
-  country: string;
-}
-
 export const CardAddress = ({ address }: ICardAddressProps): JSX.Element => {
   const dispatch = useDispatch();
   const [disabled, setDisabled] = useState<boolean>(true);
+  const { addresID, error, loading } = useSelector(
+    (state: RootState) => state.addresses.updateAddress
+  );
 
   const addressSchema = yup.object().shape({
     address: yup.string().required(),
@@ -45,7 +43,6 @@ export const CardAddress = ({ address }: ICardAddressProps): JSX.Element => {
 
   const {
     control,
-    register,
     handleSubmit,
     formState: { errors },
     reset,
@@ -67,29 +64,44 @@ export const CardAddress = ({ address }: ICardAddressProps): JSX.Element => {
     dispatch(deleteAddress(id));
   };
 
-  const handleEdit = (): void => {
+  const handleEdit = (e: any): void => {
     setDisabled(false);
   };
 
   const handleCancelEdit = (): void => {
     setDisabled(true);
     clearErrors();
+    reset();
   };
 
-  const handleUpdateCreditCard: SubmitHandler<IAddressSchema> = (data) => {
-    const { address, cep, city, complement, country, number, state } = data;
-    console.log({ address, cep, city, complement, country, number, state });
+  interface IAddressSchema {
+    address: string;
+    cep: string;
+    number: string;
+    complement: string;
+    city: string;
+    state: string;
+    country: string;
+  }
+
+  const handleUpdateAddress: SubmitHandler<IAddressSchema> = (data) => {
+    dispatch(
+      updateAddress({
+        addressParams: data,
+        addressId: address.id,
+      })
+    );
     setDisabled(true);
   };
 
   return (
     <form
       className="flex flex-col m-2 p-3 bg-neutral-900 rounded border border-zinc-700 shadow-pirates-card"
-      onSubmit={handleSubmit(handleUpdateCreditCard)}
+      onSubmit={handleSubmit(handleUpdateAddress)}
     >
       <div className="flex justify-between border-b border-zinc-700 text-sm mb-4">
-        <span className="w-full font-bold">ID: {address.id}</span>
-
+        <span className="w-full font-bold">ID: {address.reference}</span>
+        {addresID === address.id && loading && <LoadingSpinner />}
         <div className={`flex ${disabled && "hidden"}`}>
           <button className={`hover:text-green-300 mx-4 text-lg`} type="submit">
             <FontAwesomeIcon icon={faCheck} />
@@ -131,6 +143,7 @@ export const CardAddress = ({ address }: ICardAddressProps): JSX.Element => {
               control={control}
               label="Endereço:"
               error={errors.address?.message}
+              disabled={disabled}
             />
             <div className="w-1/4">
               <Input
@@ -139,6 +152,7 @@ export const CardAddress = ({ address }: ICardAddressProps): JSX.Element => {
                 label="Número:"
                 error={errors.number?.message}
                 type="number"
+                disabled={disabled}
               />
             </div>
             <div className="w-1/4">
@@ -147,6 +161,7 @@ export const CardAddress = ({ address }: ICardAddressProps): JSX.Element => {
                 control={control}
                 label="Complemento:"
                 error={errors.complement?.message}
+                disabled={disabled}
               />
             </div>
           </div>
@@ -158,6 +173,7 @@ export const CardAddress = ({ address }: ICardAddressProps): JSX.Element => {
                 label="CEP:"
                 error={errors.cep?.message}
                 mask="99999-999"
+                disabled={disabled}
               />
             </div>
             <div className="">
@@ -166,6 +182,7 @@ export const CardAddress = ({ address }: ICardAddressProps): JSX.Element => {
                 control={control}
                 label="Cidade:"
                 error={errors.city?.message}
+                disabled={disabled}
               />
             </div>
             <div className="w-1/12">
@@ -175,6 +192,7 @@ export const CardAddress = ({ address }: ICardAddressProps): JSX.Element => {
                 control={control}
                 label="Estado:"
                 error={errors.state?.message}
+                disabled={disabled}
               />
             </div>
             <div className="w-1/4">
@@ -184,6 +202,7 @@ export const CardAddress = ({ address }: ICardAddressProps): JSX.Element => {
                 control={control}
                 label="País:"
                 error={errors.country?.message}
+                disabled={disabled}
               />
             </div>
           </div>

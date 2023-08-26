@@ -1,5 +1,4 @@
 "use client";
-import { ActionBtn } from "@/components/_ui/ActionBtn";
 import { ProtectedRoute } from "@/components/layout/ProtectedRoute/ProtectedRoute";
 import { IAddress } from "@/interfaces/address.interface";
 import { ICreditCard } from "@/interfaces/creditCards.interface";
@@ -26,21 +25,28 @@ export default function Cart(): JSX.Element {
   const getcreditCardsList = useSelector(
     (state: any) => state.creditCards.creditCards
   );
-  const { error, isCheckoutSuccessful } = useSelector(
-    (state: RootState) => state.orders
-  );
+  const { error } = useSelector((state: RootState) => state.orders);
   const [selectedAddress, setSelectAddress] = useState<IAddress | false>(false);
   const [selectedCreditCard, setSelectedCreditCard] = useState<
     ICreditCard | false
   >(false);
 
-  const handleCheckout = () => {
-    const data = {
-      products: cartList,
-      address: selectedAddress,
-      creditCard: selectedCreditCard,
-    };
-    dispatch(createOrder({ ...data }));
+  const handleCheckout = async () => {
+    try {
+      const action = await dispatch(
+        createOrder({
+          products: cartList,
+          address: selectedAddress,
+          creditCard: selectedCreditCard,
+        })
+      );
+
+      if (createOrder.fulfilled.match(action)) {
+        router.push("/cart/checkout");
+      }
+    } catch (err) {
+      throw err;
+    }
   };
 
   const handleSelectAddress = (e: IAddress) => {
@@ -50,11 +56,6 @@ export default function Cart(): JSX.Element {
   const handleSelectCard = (e: ICreditCard) => {
     setSelectedCreditCard(e);
   };
-  useEffect(() => {
-    if (isCheckoutSuccessful) {
-      router.push("/cart/checkout");
-    }
-  }, [isCheckoutSuccessful, router]);
 
   useEffect(() => {
     dispatch(fetchAddresses());
@@ -145,7 +146,7 @@ export default function Cart(): JSX.Element {
                   <h3>TOTAL:</h3>
                   <p> R$: XXX.XX </p>
 
-                  {error ?? <div>{error}</div>}
+                  {<span className="text-pirates-red">{error}</span>}
                   <Button onClick={handleCheckout}>Finalizar compra</Button>
 
                   <Link href={"/profile/purchases"}>

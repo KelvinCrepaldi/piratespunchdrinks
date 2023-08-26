@@ -1,5 +1,8 @@
 import { ICreditCard } from "@/interfaces/creditCards.interface";
-import { deleteCreditCard } from "@/store/reducers/creditCardsReducer";
+import {
+  deleteCreditCard,
+  updateCreditCards,
+} from "@/store/reducers/creditCardsReducer";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,16 +16,19 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "@/components/_ui/Input";
+import { useRouter } from "next/navigation";
 
-interface ICardCreditCard {
+interface ICardCreditCardProps {
   card: ICreditCard;
 }
-export const CardCreditCard = ({ card }: ICardCreditCard): JSX.Element => {
+
+export const CardCreditCard = ({ card }: ICardCreditCardProps): JSX.Element => {
   const dispatch = useDispatch();
+  const route = useRouter();
   const [disabled, setDisabled] = useState<boolean>(true);
 
   const creditCardSchema = yup.object().shape({
-    name: yup.string().required(),
+    name: yup.string().required().min(3, "Minimo 3 letras."),
     number: yup
       .number()
       .required()
@@ -39,7 +45,7 @@ export const CardCreditCard = ({ card }: ICardCreditCard): JSX.Element => {
       }),
   });
 
-  interface CreditCardSchema {
+  interface ICreditCardSchema {
     name: string;
     number: number;
     expirationDate: string;
@@ -51,7 +57,7 @@ export const CardCreditCard = ({ card }: ICardCreditCard): JSX.Element => {
     reset,
     control,
     clearErrors,
-  } = useForm<CreditCardSchema>({
+  } = useForm<ICreditCardSchema>({
     defaultValues: {
       name: card.name,
       number: parseInt(card.number),
@@ -74,16 +80,31 @@ export const CardCreditCard = ({ card }: ICardCreditCard): JSX.Element => {
     reset();
   };
 
-  const handleUpdateCreditCard: SubmitHandler<CreditCardSchema> = (data) => {
+  const handleUpdateCreditCard: SubmitHandler<ICreditCardSchema> = (data) => {
     const { name, number, expirationDate } = data;
+
     console.log(data);
+
+    const creditCardParams = {
+      name,
+      number: number.toString(),
+      expiration_date: expirationDate,
+    };
+
+    console.log(creditCardParams);
+
+    dispatch(
+      updateCreditCards({
+        creditCardId: card.id,
+        creditCardParams,
+      })
+    );
 
     setDisabled(true);
   };
 
   return (
     <form
-      key={card.id}
       className="flex flex-col m-2 p-3 bg-neutral-900 rounded border border-zinc-700 shadow-pirates-card"
       onSubmit={handleSubmit(handleUpdateCreditCard)}
     >

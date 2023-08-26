@@ -10,6 +10,7 @@ import { RootState } from "@/store/store";
 import Head from "next/head";
 import { Pagination } from "@/components/_ui/Pagination";
 import { Control } from "@/components/shop/Control/Control";
+import { LoadingSpinner } from "@/components/_ui/LoadingSpinner";
 
 export default function Shop(): JSX.Element {
   const [showMenu, setShowMenu] = useState(false);
@@ -75,7 +76,9 @@ export default function Shop(): JSX.Element {
 
             <main className="w-full grid grid-cols-2 sm:grid-cols-3 xl:flex md:flex-row md:flex-wrap content-between max-w-[1080px]">
               {loading && (
-                <div className="text-center w-full">Carregando....</div>
+                <div className="text-center w-full">
+                  <LoadingSpinner />
+                </div>
               )}
               {error && <h2>{error}</h2>}
 
