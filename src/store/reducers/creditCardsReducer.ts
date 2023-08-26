@@ -36,6 +36,40 @@ export const fetchCreditCards = createAsyncThunk(
   }
 );
 
+interface IUpdateCreditCards {
+  creditCardId: string;
+  creditCardParams: {
+    name?: string;
+    expiration_date?: string;
+    number?: string;
+  };
+}
+
+export const updateCreditCards = createAsyncThunk(
+  "creditCard/update",
+  async (data: IUpdateCreditCards, { getState, dispatch }) => {
+    try {
+      const state = getState() as RootState;
+
+      console.log(data);
+
+      const response = await api.patch(
+        `/creditcard/${data.creditCardId}`,
+        JSON.parse(JSON.stringify(data.creditCardParams)),
+        {
+          headers: { Authorization: `Bearer ${state.auth.token}` },
+        }
+      );
+
+      dispatch(fetchCreditCards());
+
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
 interface ICreateCreditCardsBody {
   name: string;
   number: number;

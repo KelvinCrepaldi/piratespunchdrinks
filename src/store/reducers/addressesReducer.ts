@@ -8,6 +8,11 @@ interface IInitialStateAddressesSlice {
   loading: boolean;
   error: null | string;
   addresses: IAddress[];
+  updateAddress: {
+    addresID: string | null;
+    loading: boolean;
+    error: null | string;
+  };
 }
 
 export const fetchAddresses = createAsyncThunk(
@@ -73,10 +78,55 @@ export const createAddress = createAsyncThunk(
   }
 );
 
+export interface IUpdateAddress {
+  addressParams: {
+    address?: string;
+    cep?: string;
+    number?: string;
+    complement?: string;
+    city?: string;
+    state?: string;
+    country?: string;
+  };
+
+  addressId: string;
+}
+
+export const updateAddress = createAsyncThunk(
+  "address/update",
+  async (data: IUpdateAddress, { getState, dispatch }) => {
+    try {
+      dispatch(setUpdateAddressId(data.addressId));
+      const state = getState() as RootState;
+
+      const response = await api.patch(
+        `address/${data.addressId}`,
+        JSON.parse(JSON.stringify(data.addressParams)),
+        {
+          headers: { Authorization: `Bearer ${state.auth.token}` },
+        }
+      );
+
+      const address = response.data;
+
+      dispatch(fetchAddresses());
+
+      return address;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 const initialState: IInitialStateAddressesSlice = {
   loading: false,
   error: null,
   addresses: [],
+  updateAddress: {
+    addresID: "",
+    loading: false,
+    error: "",
+  },
 };
 
 const addressesSlice = createSlice({
@@ -94,6 +144,9 @@ const addressesSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    setUpdateAddressId(state, action) {
+      state.updateAddress.addresID = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchAddresses.pending, (state, action) => {
@@ -109,6 +162,19 @@ const addressesSlice = createSlice({
       state.error =
         "Houve um erro ao tentar conectar com o servidor, tente novamente mais tarde!";
     });
+    builder.addCase(updateAddress.pending, (state, action) => {
+      state.updateAddress.loading = true;
+    });
+    builder.addCase(updateAddress.fulfilled, (state, action) => {
+      state.updateAddress.loading = false;
+      state.updateAddress.addresID = "";
+    });
+    builder.addCase(updateAddress.rejected, (state, action) => {
+      state.updateAddress.loading = false;
+      state.updateAddress.error =
+        "Houve um problema ao tentar atualizar o endereço";
+      state.updateAddress.addresID = "";
+    });
   },
 });
 
@@ -116,6 +182,7 @@ export const {
   fetchAddressesStart,
   fetchAddressesSuccess,
   fetchAddressesFailure,
+  setUpdateAddressId,
 } = addressesSlice.actions;
 
 export default addressesSlice.reducer;

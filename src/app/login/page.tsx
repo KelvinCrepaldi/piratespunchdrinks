@@ -26,7 +26,7 @@ export default function Login(): JSX.Element {
 
   return (
     <>
-      <main className="w-100 md:max-w-5xl m-auto p-5 md:p-16 flex flex-col items-center">
+      <main className="w-100 md:max-w-5xl m-auto p-5 md:p-16 flex flex-col items-center ">
         <FormLogin />
         <div className="text-center">
           {loginStatus.error && (
