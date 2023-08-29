@@ -8,7 +8,7 @@ interface ICardHighlightProductProps {
   product: IProduct;
 }
 
-export function CardHighlightProduct({
+export function CardProduct({
   product,
 }: ICardHighlightProductProps): JSX.Element {
   return (

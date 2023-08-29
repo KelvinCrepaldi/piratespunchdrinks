@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 import piratespunch from "/public/images/piratepunch.png";
-import { CardHighlightProduct } from "@/components/_ui/CardHighlightProduct";
+import { CardProduct } from "@/components/_ui/CardProduct";
 import { useSelector } from "react-redux";
 import { IProduct } from "@/interfaces/product.interface";
 import { useEffect } from "react";
@@ -76,10 +76,7 @@ export default function Home(): JSX.Element {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 w-full">
               {promotions[0]?.products.slice(0, 8).map((product: IProduct) => (
-                <CardHighlightProduct
-                  key={product.id}
-                  product={product}
-                ></CardHighlightProduct>
+                <CardProduct key={product.id} product={product}></CardProduct>
               ))}
             </div>
           </div>
@@ -105,10 +102,7 @@ export default function Home(): JSX.Element {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 w-full">
               {promotions[0]?.products.slice(0, 8).map((product: IProduct) => (
-                <CardHighlightProduct
-                  key={product.id}
-                  product={product}
-                ></CardHighlightProduct>
+                <CardProduct key={product.id} product={product}></CardProduct>
               ))}
             </div>
           </div>

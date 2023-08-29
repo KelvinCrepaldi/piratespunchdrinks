@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSliders } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "@/store/reducers/productsReducer";
-import { CardHighlightProduct } from "@/components/_ui/CardHighlightProduct";
+import { CardProduct } from "@/components/_ui/CardProduct";
 import { RootState } from "@/store/store";
 import Head from "next/head";
 import { Pagination } from "@/components/_ui/Pagination";
@@ -83,7 +83,7 @@ export default function Shop(): JSX.Element {
               {error && <h2>{error}</h2>}
 
               {products?.map((product: any) => (
-                <CardHighlightProduct key={product.id} product={product} />
+                <CardProduct key={product.id} product={product} />
               ))}
             </main>
             <Pagination />
