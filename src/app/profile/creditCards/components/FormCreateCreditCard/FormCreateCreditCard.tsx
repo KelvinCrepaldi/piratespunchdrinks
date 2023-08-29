@@ -3,7 +3,6 @@ import * as yup from "yup";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useAppDispatch } from "@/store/store";
 import { createCreditCards } from "@/store/reducers/creditCardsReducer";
-import { InputText } from "../../../../_ui/InputText";
 import { Input } from "@/components/_ui/Input/Input";
 
 interface IFormCreateCreditCardProps {
