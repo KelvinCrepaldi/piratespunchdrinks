@@ -1,22 +1,42 @@
 "use client";
-import { ActionBtn } from "@/components/_ui/ActionBtn";
+
 import { Button } from "@/components/_ui/Button/Button";
 import { QuantityControlButton } from "@/components/_ui/QuantityControlButton";
 import { IProduct } from "@/interfaces/product.interface";
 import api from "@/services";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 
-export default async function Page() {
-  const params = useParams();
-  const data = await api.get(`/product/detail/${params.code}`);
-  const product: IProduct = data.data;
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const response = await api.get(`/product/list`);
+  return response.data.map((product: IProduct) => {
+    return {
+      code: product.code,
+    };
+  });
+}
+
+async function getProduct(code: string) {
+  const data = await api.get(`/product/detail/${code}`);
+  return data.data;
+}
+
+export default async function Page({ params }: { params: { code: string } }) {
+  const product: IProduct = await getProduct(params.code);
 
   return (
     <div className="m-auto max-w-[1080px] p-5">
-      <div className="flex flex-col  md:flex-row justify-center mb-10">
-        <div className="relative border-4 border-pirates-black-transparent rounded h-full md:w-1/2 aspect-square mt- 5">
+      <div className="border-b-2 border-pirates-red w-full mb-3">
+        <h1 className="font-fredericka">{product.name}</h1>
+        <span className="">
+          Código de referência:{" "}
+          <span className="font-bold">{product.code}</span>
+        </span>
+      </div>
+      <div className="flex flex-col  lg:flex-row mb-10">
+        <div className="relative border-4 border-pirates-black-transparent rounded lg:w-1/2 aspect-square mt-5 max-h-[500px] max-w-[500px]">
           <Image
             fill
             className="rounded "
@@ -25,21 +45,22 @@ export default async function Page() {
           />
         </div>
 
-        <div className="m-2 md:m-4 md:w-1/2">
-          <h1 className="border-b-2 border-pirates-red">{product.name}</h1>
-          <div className="flex justify-between text-pirates-red font-pirata text-xl">
-            <p>{product.amount} - Unidade</p>
-            <p>{product.category?.name}</p>
-          </div>
+        <div className="mx-2 md:m-4 lg:w-1/2">
+          <p className="font-pirata text-pirates-red">
+            {product.amount} - Unidade
+          </p>
+          <p className="font-pirata text-pirates-red">
+            {product.category?.name}
+          </p>
           <p className="text-3xl font-fredericka text-pirates-gold">
             R$: {product.price}
           </p>
-          <p>{product.apresentation}</p>
-          <span className="text-3xl font-fredericka text-pirates-silver h-full">
+          <p className="my-5">{product.apresentation}</p>
+          <span className="text-3xl font-fredericka text-pirates-silver h-full ">
             Adicionar ao carrinho:
           </span>
-          <div className="flex flex-col justify-center">
-            <QuantityControlButton product={product}></QuantityControlButton>
+          <QuantityControlButton product={product}></QuantityControlButton>
+          <div className="flex flex-col justify-center mt-5">
             <Link href="/shop">
               <Button>Continuar comprando</Button>
             </Link>

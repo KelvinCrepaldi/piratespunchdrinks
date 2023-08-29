@@ -40,7 +40,6 @@ export function CardHighlightProduct({
             {formatReal(parseFloat(product.price))}
           </p>
         </div>
-
         <Link
           className=" px-10 m-2 h-7 bg-pirates-gold hover:bg-pirates-red hover:text-white transition-all text-pirates-black rounded-xl text-center text-xl font-pirata"
           href={`shop/product/${product.code}`}
