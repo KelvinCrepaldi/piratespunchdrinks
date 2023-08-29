@@ -67,7 +67,11 @@ export const fetchProducts = createAsyncThunk(
     const state = getState() as RootState;
     try {
       const response = await api.get(
+<<<<<<< HEAD
         `/product/list/?` +
+=======
+        `product/?` +
+>>>>>>> 3882a1549e9ecb030632a4a0c8b34e2abe0d3df9
           `&page=${page}` +
           `&category=${state.products.filter.category}` +
           `&search=${state.products.filter.searchWord}` +
