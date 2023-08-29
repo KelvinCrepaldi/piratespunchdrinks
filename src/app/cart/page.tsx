@@ -9,12 +9,13 @@ import { createOrder } from "@/store/reducers/ordersReducer";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ProductCard } from "@/components/cart/ProductCard";
-import { AddressCheckbox } from "@/components/cart/AddressCheckbox";
-import { CreditCardCheckbox } from "@/components/cart/CreditCardCheckbox/CreditCardCheckbox";
+import { AddressCheckbox } from "@/app/cart/components/AddressCheckbox";
 import { Button } from "@/components/_ui/Button/Button";
 import { useRouter } from "next/navigation";
 import { RootState } from "@/store/store";
+import { CreditCardCheckbox } from "./components/CreditCardCheckbox/CreditCardCheckbox";
+import { ProductCard } from "./components/ProductCard";
+import formatReal from "@/utils/formatReal";
 
 export default function Cart(): JSX.Element {
   const router = useRouter();
@@ -30,6 +31,10 @@ export default function Cart(): JSX.Element {
   const [selectedCreditCard, setSelectedCreditCard] = useState<
     ICreditCard | false
   >(false);
+
+  const totalValue = cartList.reduce((acc: number, obj: IProduct) => {
+    return acc + parseFloat(obj.price) * obj.qtd;
+  }, 0);
 
   const handleCheckout = async () => {
     try {
@@ -144,7 +149,7 @@ export default function Cart(): JSX.Element {
               <div className="">
                 <div className="bg-pirates-container-dark p-4 rounded">
                   <h3>TOTAL:</h3>
-                  <p> R$: XXX.XX </p>
+                  <p> {formatReal(totalValue)} </p>
 
                   {<span className="text-pirates-red">{error}</span>}
                   <Button onClick={handleCheckout}>Finalizar compra</Button>

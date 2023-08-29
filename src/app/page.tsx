@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { RootState } from "@/store/store";
 import { fetchPromotions } from "@/store/reducers/highlightsReducer";
 import { IPromotion } from "@/interfaces/highlights.interface";
-import { ContainerEventPromo } from "@/components/home/ContainerEventPromo";
+import { ContainerEventPromo } from "@/components/_ui/ContainerEventPromo";
 import { Countdown } from "@/components/_ui/Countdown";
 
 export default function Home(): JSX.Element {

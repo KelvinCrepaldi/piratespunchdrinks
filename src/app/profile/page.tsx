@@ -1,6 +1,38 @@
 "use client";
-import { PanelUser } from "@/components/profile/PanelUser";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-export default function Profile(): JSX.Element {
-  return <PanelUser />;
+import { IUser } from "@/interfaces/user.interface";
+import { InputText } from "@/components/_ui/InputText";
+
+export default function PanelUser(): JSX.Element {
+  const [user, setUser] = useState<IUser | null>(null);
+
+  const getUser = useSelector((state: any) => state.auth.user);
+  const getAdressList = useSelector((state: any) => state.addresses.addresses);
+  const getcreditCardsList = useSelector(
+    (state: any) => state.creditCards.creditCards
+  );
+
+  useEffect(() => {
+    setUser(getUser);
+  }, [getUser, getAdressList, getcreditCardsList]);
+
+  return (
+    <div className="font-inter ">
+      <div className="">
+        <h1 className="border-b-2 font-inter border-pirates-red">Meu perfil</h1>{" "}
+        <InputText
+          labelText="Nome de usuário:"
+          defaultValue={user?.name}
+          disabled
+        ></InputText>
+        <InputText
+          labelText="E-mail:"
+          defaultValue={user?.email}
+          disabled
+        ></InputText>
+      </div>
+    </div>
+  );
 }

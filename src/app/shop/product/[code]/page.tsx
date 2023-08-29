@@ -23,7 +23,11 @@ async function getProduct(code: string) {
   return data.data;
 }
 
-export default async function Page({ params }: { params: { code: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: { code: string };
+}): Promise<JSX.Element> {
   const product: IProduct = await getProduct(params.code);
 
   return (

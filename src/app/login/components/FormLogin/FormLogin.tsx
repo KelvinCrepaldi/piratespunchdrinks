@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { ActionBtn } from "@/components/_ui/ActionBtn";
 import { LoadingSpinner } from "@/components/_ui/LoadingSpinner";
-import { InputText } from "../../_ui/InputText";
+import { InputText } from "../../../../components/_ui/InputText";
 
 export const FormLogin = (): JSX.Element => {
   const dispatch = useAppDispatch();

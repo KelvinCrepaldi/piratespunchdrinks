@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import FormSignup from "@/components/signup/FormSignup/FormSignup";
+
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { useEffect } from "react";
 import { resetErrorMessages } from "@/store/reducers/userReducer";
 import { useRouter } from "next/navigation";
+import FormSignup from "./components/FormSignup/FormSignup";
 
 export default function Signup(): JSX.Element {
   const dispatch = useDispatch();

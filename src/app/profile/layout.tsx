@@ -4,9 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { ReactNode, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ProtectedRoute } from "@/components/layout/ProtectedRoute/ProtectedRoute";
-import { PanelAddresses } from "@/components/profile/PanelAddresses/PanelAddresses";
-import { PanelCreditCards } from "@/components/profile/PanelCreditCards/PanelCreditCards";
-import { PanelCartHistory } from "@/components/profile/PanelCartHistory/PanelCartHistory";
 import { IUserPages } from "@/interfaces/userPage.interface";
 import { Button } from "@/components/_ui/Button/Button";
 import Link from "next/link";
@@ -21,12 +18,6 @@ export default function ProfileLayout({
   const { isAuthenticated } = useSelector((state: any) => state.auth);
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const dispatch = useDispatch();
-
-  const pages: IUserPages = {
-    orders: <PanelCartHistory />,
-    creditcards: <PanelCreditCards></PanelCreditCards>,
-    addresses: <PanelAddresses></PanelAddresses>,
-  };
 
   useEffect(() => {}, []);
 

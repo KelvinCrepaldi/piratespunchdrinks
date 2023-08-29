@@ -36,8 +36,6 @@ export const Control = () => {
   const { date, name, take, price } = useSelector(
     (state: RootState) => state.products.control
   );
-
-  console.log(buttonColors[date]);
   return (
     <div className="flex justify-end w-full  text-2xl max-w-[1080px]">
       {category && (
