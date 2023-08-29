@@ -1,6 +1,4 @@
 import { IProduct } from "@/interfaces/product.interface";
-import { ProductsDetailModal } from "@/components/shop/ProductsDetailModal";
-import { useState } from "react";
 import Image from "next/image";
 import formatReal from "@/utils/formatReal";
 import Link from "next/link";
