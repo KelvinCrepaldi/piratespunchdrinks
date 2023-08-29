@@ -3,6 +3,7 @@ import { ProductsDetailModal } from "@/components/shop/ProductsDetailModal";
 import { useState } from "react";
 import Image from "next/image";
 import formatReal from "@/utils/formatReal";
+import Link from "next/link";
 
 interface ICardHighlightProductProps {
   product: IProduct;
@@ -11,12 +12,6 @@ interface ICardHighlightProductProps {
 export function CardHighlightProduct({
   product,
 }: ICardHighlightProductProps): JSX.Element {
-  const [openModal, setOpenModal] = useState<boolean>(false);
-
-  const handleOpenModal = () => {
-    setOpenModal(!openModal);
-  };
-
   return (
     <div className="m-1 p-1 bg-pirates-shop-card rounded flex-grow shrink-[10px] border border-zinc-900 ">
       <div className="relative w-full aspect-square">
@@ -45,11 +40,12 @@ export function CardHighlightProduct({
             {formatReal(parseFloat(product.price))}
           </p>
         </div>
-        <ProductsDetailModal product={product}>
-          <button className=" px-10 m-2 h-7 bg-pirates-gold hover:bg-pirates-red hover:text-white transition-all text-pirates-black rounded-xl text-center text-xl font-pirata">
-            Comprar
-          </button>
-        </ProductsDetailModal>
+        <Link
+          className=" px-10 m-2 h-7 bg-pirates-gold hover:bg-pirates-red hover:text-white transition-all text-pirates-black rounded-xl text-center text-xl font-pirata"
+          href={`shop/product/${product.code}`}
+        >
+          Comprar
+        </Link>
       </div>
     </div>
   );
