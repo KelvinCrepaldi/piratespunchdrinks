@@ -85,7 +85,11 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
                   value={filter}
                   onChange={(e) => setFilter(e.target.value)}
                 ></input>
-                <button className="text-xl mr-2 " onClick={handleFilter}>
+                <button
+                  className="text-xl mr-2 "
+                  aria-label="Buscar"
+                  onClick={handleFilter}
+                >
                   <FontAwesomeIcon
                     className="text-zinc-500"
                     icon={faMagnifyingGlass}
@@ -97,12 +101,14 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
                 <FontAwesomeIcon
                   icon={faCartShopping}
                   className="w-10 text-3xl"
+                  aria-label="Carrinho"
                 ></FontAwesomeIcon>
               </button>
               <button className=" md:hidden" onClick={handleShowNavbar}>
                 <FontAwesomeIcon
                   icon={faBars}
                   className="w-10 mr-3 text-3xl"
+                  aria-label="Menu"
                 ></FontAwesomeIcon>
               </button>
               <div className="hidden md:flex pr-4">
@@ -121,6 +127,7 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
                   <button
                     className="mx-1 cursor-pointer text-white hover:text-red-400"
                     onClick={handleLogOut}
+                    aria-label="Logout"
                   >
                     <FontAwesomeIcon
                       className="text-3xl mx-3"
