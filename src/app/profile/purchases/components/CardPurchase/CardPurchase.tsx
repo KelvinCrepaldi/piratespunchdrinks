@@ -1,6 +1,7 @@
 import { ListPurchase } from "../ListPurchase";
 import { IOrder } from "@/interfaces/order.interface";
 import formatReal from "@/utils/formatReal";
+import formatDate from "@/utils/formatDate";
 
 interface ICardPurchaseProps {
   order: IOrder;
@@ -17,7 +18,7 @@ export const CardPurchase = ({ order }: ICardPurchaseProps): JSX.Element => {
     <div className="flex flex-col m-2 p-3 bg-neutral-900 rounded border border-zinc-700 shadow-pirates-card">
       <div className="flex flex-col  pb-3">
         <div className="flex justify-between mb-3 border-b border-zinc-700">
-          <span className="">Data: {order.createdAt.toString()}</span>
+          <span className="">Data: {formatDate(order.createdAt)} </span>
           <span className="font-bold">id: {order?.id}</span>
         </div>
 

@@ -1,5 +1,4 @@
-"use Client";
-
+"use client";
 import { CardProduct } from "@/components/_ui/CardProduct";
 import { LoadingSpinner } from "@/components/_ui/LoadingSpinner";
 import { fetchProducts } from "@/store/reducers/productsReducer";

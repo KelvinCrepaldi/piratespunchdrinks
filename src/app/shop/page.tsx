@@ -1,8 +1,4 @@
-"use client";
-import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSliders } from "@fortawesome/free-solid-svg-icons";
-import { Pagination } from "@/components/_ui/Pagination";
+import { Pagination } from "@/app/shop/components/Pagination";
 import { SidebarFilter } from "./components/SidebarFilter";
 import { Control } from "./components/Control/Control";
 import { ListProducts } from "./components/ListProducts/ListProducts";

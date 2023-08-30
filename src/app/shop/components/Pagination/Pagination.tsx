@@ -1,3 +1,4 @@
+"use client";
 import { fetchProducts } from "@/store/reducers/productsReducer";
 import { RootState } from "@/store/store";
 import { scrollToTop } from "@/utils/scrollToTop";
