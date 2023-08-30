@@ -55,7 +55,7 @@ export default function Home(): JSX.Element {
           width={260}
           alt="pirates punch logo"
           className="inline-block"
-          loading={"lazy"}
+          priority
         />
       </div>
       <div className="max-w-5xl flex flex-col items-center m-auto">

@@ -19,6 +19,8 @@ export function CardProduct({
           className="rounded"
           src={product.img_url}
           alt="product image"
+          sizes="(max-width: 768px) 200px, (max-width: 1200px) 250px"
+          priority
         />
       </div>
 
