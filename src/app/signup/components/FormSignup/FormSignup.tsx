@@ -7,7 +7,6 @@ import { createAccount } from "@/store/reducers/userReducer";
 import { RootState } from "@/store/store";
 import { LoadingSpinner } from "@/components/_ui/LoadingSpinner";
 import { InputText } from "../../../../components/_ui/InputText";
-import { CardHighlightProduct } from "@/components/_ui/CardProduct";
 
 const FormSignup = () => {
   const dispatch = useDispatch();
@@ -36,7 +35,6 @@ const FormSignup = () => {
     register,
     handleSubmit,
     formState: { errors },
-    resetField,
   } = useForm<ISignupForm>({ resolver: yupResolver(formSchema) });
 
   const handleSignup = (e: any) => {
