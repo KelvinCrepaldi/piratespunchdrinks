@@ -1,22 +1,9 @@
-"use client";
-
 import { Button } from "@/components/_ui/Button/Button";
 import { QuantityControlButton } from "@/components/_ui/QuantityControlButton";
 import { IProduct } from "@/interfaces/product.interface";
 import api from "@/services";
 import Image from "next/image";
 import Link from "next/link";
-
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-  const response = await api.get(`/product/list`);
-  return response.data.map((product: IProduct) => {
-    return {
-      code: product.code,
-    };
-  });
-}
 
 async function getProduct(code: string) {
   const data = await api.get(`/product/detail/${code}`);
@@ -41,12 +28,7 @@ export default async function Page({
       </div>
       <div className="flex flex-col  lg:flex-row mb-10">
         <div className="relative border-4 border-pirates-black-transparent rounded lg:w-1/2 aspect-square mt-5 max-h-[500px] max-w-[500px]">
-          <Image
-            fill
-            className="rounded "
-            src={product.img_url}
-            alt="product image"
-          />
+          <Image fill src={product.img_url} alt="product image" />
         </div>
 
         <div className="mx-2 md:m-4 lg:w-1/2">

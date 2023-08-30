@@ -1,1 +1,1 @@
-export { CardProduct } from "./CardHighlightProduct";
+export { CardProduct } from "./CardProduct";

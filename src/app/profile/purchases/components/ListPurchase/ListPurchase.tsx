@@ -37,13 +37,13 @@ export const ListPurchase = ({ products }: IListPurchaseProps): JSX.Element => {
                   {item.product.name}
                 </span>
                 <span className="text-pirates-gold">
-                  Price by unity:{" "}
+                  Preço por unidade:{" "}
                   <span className="text-pirates-silver">
                     {formatReal(parseFloat(item.product.price))}
                   </span>
                 </span>
                 <span className="text-pirates-gold">
-                  Quantity:{" "}
+                  Quantidade:{" "}
                   <span className="text-pirates-silver">{item.quantity}</span>
                 </span>
                 <span className="text-pirates-gold">
@@ -59,7 +59,7 @@ export const ListPurchase = ({ products }: IListPurchaseProps): JSX.Element => {
       </div>
 
       <button className="text-pirates-gold" onClick={handleIsOpen}>
-        {!isOpen ? "view all products ▾" : "hidden products ▴"}
+        {!isOpen ? "Ver todos os produtos ▾" : "Esconder produtos ▴"}
       </button>
     </div>
   );

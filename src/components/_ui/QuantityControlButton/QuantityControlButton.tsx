@@ -1,3 +1,4 @@
+"use client";
 import { QuantityControlButtonProps } from "@/interfaces/QuantityControlButton";
 import { IProduct } from "@/interfaces/product.interface";
 import { useSelector } from "react-redux";
