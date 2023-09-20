@@ -1,10 +1,4 @@
-const addZero = (a: number) => {
-  if (a.toString().length <= 1) {
-    return `0${a}`;
-  }
-  return a;
-};
-
+import addZero from "./addZero";
 const formatDate = (date: Date) => {
   const newDate = new Date(date);
 

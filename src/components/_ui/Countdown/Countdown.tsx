@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import addZero from "@/utils/addZero";
 
 interface ICountdownProps {
   endDate: string;
@@ -51,10 +52,10 @@ export const Countdown = ({
 
   return (
     <span className="text-pirates-gold font-fredericka text-2xl pr-2">
-      {timeLeft.days > 0 && <span className="mx-2">{timeLeft.days} dias</span>}
-      {timeLeft.hours > 0 && <span>{timeLeft.hours}:</span>}
-      {timeLeft.minutes > 0 && <span>{timeLeft.minutes}:</span>}
-      {timeLeft.seconds > 0 && <span>{timeLeft.seconds}</span>}
+      {<span className="mx-2">{addZero(timeLeft.days)} dias</span>}
+      {<span>{addZero(timeLeft.hours)}:</span>}
+      {<span>{addZero(timeLeft.minutes)}:</span>}
+      {<span>{addZero(timeLeft.seconds)}</span>}
 
       {timeLeft.days === 0 &&
         timeLeft.hours === 0 &&

@@ -15,17 +15,10 @@ export default function Shop(): JSX.Element {
             Navegue em alto mar para saborear bebidas deliciosas!
           </p>
         </div>
-        <div className="flex flex-col items-center"></div>
-
         <div className="flex mx-9 md:justify-center">
           <SidebarFilter />
           <div className="w-full max-w-[1080px]">
-            <div>
-              <div className="flex ">
-                <Control></Control>
-              </div>
-            </div>
-
+            <Control></Control>
             <main className="w-full grid grid-cols-2 sm:grid-cols-3 xl:flex md:flex-row md:flex-wrap content-between max-w-[1080px]">
               <ListProducts />
             </main>

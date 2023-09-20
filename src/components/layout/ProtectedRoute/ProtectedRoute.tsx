@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "@/store/store";
 import { logout } from "@/store/reducers/userReducer";
 import { ReactNode } from "react";
+import { LoadingSpinner } from "@/components/_ui/LoadingSpinner";
 
 interface IProtectedRouteProps {
   children: ReactNode;
@@ -23,5 +24,13 @@ export function ProtectedRoute({
     }
   }, [dispatch, isAuthenticated, router]);
 
-  return <>{children}</>;
+  if (!isAuthenticated) {
+    return (
+      <div className="w-full min-h-[50vh] flex justify-center items-center">
+        <LoadingSpinner />{" "}
+      </div>
+    );
+  } else {
+    return <>{children}</>;
+  }
 }

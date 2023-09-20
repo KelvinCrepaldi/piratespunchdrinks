@@ -14,7 +14,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
     <>
       <SidebarCart handleShowCart={handleShowCart} showCart={showCart} />
       <Header handleShowCart={handleShowCart} />
-      <div className="bg-black bg-opacity-60 pb-10">{children}</div>
+      <div className="bg-black bg-opacity-60 pb-10 px-5">{children}</div>
 
       <Footer></Footer>
     </>

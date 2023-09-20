@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import piratespunch from "/public/images/piratepunch.png";
 import { CardProduct } from "@/components/_ui/CardProduct";
 import { useSelector } from "react-redux";
@@ -11,7 +10,7 @@ import { RootState } from "@/store/store";
 import { fetchPromotions } from "@/store/reducers/highlightsReducer";
 import { IPromotion } from "@/interfaces/highlights.interface";
 import { ContainerEventPromo } from "@/components/_ui/ContainerEventPromo";
-import { Countdown } from "@/components/_ui/Countdown";
+import LinkButton from "@/components/_ui/LinkButton/LinkButton";
 
 export default function Home(): JSX.Element {
   const dispatch = useDispatch();
@@ -40,12 +39,7 @@ export default function Home(): JSX.Element {
               piratas irresistíveis.
             </p>
             <div className=" m-5 ">
-              <Link
-                className="bg-pirates-gold text-pirates-card-dark font-pirata text-3xl px-2 py-1 rounded cursor-pointer hover:bg-yellow-600"
-                href={"/shop"}
-              >
-                Compre agora!
-              </Link>
+              <LinkButton href={"/shop"}>Compre agora!</LinkButton>
             </div>
           </div>
         </div>
@@ -60,14 +54,6 @@ export default function Home(): JSX.Element {
       </div>
       <div className="max-w-5xl flex flex-col items-center m-auto">
         <div className="w-full">
-          <div className="flex justify-between border-b-2 border-pirates-red mb-1 ">
-            <h1 className="text-pirates-gold font-fredericka">Promoção!</h1>
-            <h1 className="text-pirates-gold font-fredericka">
-              Termina em{" "}
-              <Countdown endDate={promotions[0]?.finalDate.toString()} />
-            </h1>
-          </div>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 w-full">
             {promotions[0]?.products.slice(0, 8).map((product: IProduct) => (
               <CardProduct key={product.id} product={product}></CardProduct>
