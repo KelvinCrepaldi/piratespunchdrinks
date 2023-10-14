@@ -34,6 +34,12 @@ module.exports = {
       boxShadow: {
         "pirates-card": "1px 4px 15px 2px rgba(0, 0, 0, 0.3)",
       },
+      backgroundImage: {
+        Ship: "url('/images/event/cardShip.jpg')",
+        Person: "url('/images/event/man.webp')",
+        Bar: "url('/images/event/barPhoto.webp')",
+        hero: "url('/background.webp')",
+      },
     },
   },
   plugins: [],

@@ -2,6 +2,7 @@ import { Pagination } from "@/app/shop/components/Pagination";
 import { SidebarFilter } from "./components/SidebarFilter";
 import { Control } from "./components/Control/Control";
 import { ListProducts } from "./components/ListProducts/ListProducts";
+import Newsletter from "@/components/sections/Newsletter/Newsletter";
 
 export default function Shop(): JSX.Element {
   return (
@@ -15,16 +16,17 @@ export default function Shop(): JSX.Element {
             Navegue em alto mar para saborear bebidas deliciosas!
           </p>
         </div>
-        <div className="flex mx-9 md:justify-center">
+        <div className="flex mx-9 md:justify-center mb-20">
           <SidebarFilter />
           <div className="w-full max-w-[1080px]">
             <Control></Control>
-            <main className="w-full grid grid-cols-2 sm:grid-cols-3 xl:flex md:flex-row md:flex-wrap content-between max-w-[1080px]">
+            <main className="">
               <ListProducts />
             </main>
             <Pagination />
           </div>
         </div>
+        <Newsletter />
       </main>
     </>
   );

@@ -23,7 +23,7 @@ export const Pagination = (): JSX.Element => {
             return (
               <li
                 className={`border border-zinc-800 m-1 px-5 py-4 cursor-pointer leading-none rounded-full
-                 bg-pirates-black-transparent-strong hover:bg-zinc-900
+                 bg-zinc-300 hover:bg-zinc-500 hover:text-white
                     ${currentPage - 1 === i && "bg-slate-800"}
                  `}
                 key={i}

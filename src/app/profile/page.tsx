@@ -21,7 +21,7 @@ export default function PanelUser(): JSX.Element {
   return (
     <div className="font-inter ">
       <div className="">
-        <h1 className="border-b-2 font-inter border-pirates-red">Meu perfil</h1>{" "}
+        <h4 className="border-b-2 font-inter border-pirates-red">Meu perfil</h4>{" "}
         <InputText
           labelText="Nome de usuário:"
           defaultValue={user?.name}

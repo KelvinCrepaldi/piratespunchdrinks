@@ -20,9 +20,9 @@ export default function Purchases(): JSX.Element {
   return (
     <>
       <div>
-        <h1 className="border-b-2 font-inter border-pirates-red  flex justify-between ">
+        <h4 className="border-b-2 font-inter border-pirates-red  flex justify-between ">
           Meu histórico de compras
-        </h1>
+        </h4>
         <div className=" bg-slate-500"></div>
 
         {orders.map((order: IOrder) => (

@@ -34,7 +34,7 @@ export default function CreditCards(): JSX.Element {
   return (
     <div>
       <div className="border-b-2 font-inter border-pirates-red  flex justify-between">
-        <h1 className="font-inter">Meus cartões de crédito</h1>
+        <h4 className="font-inter">Meus cartões de crédito</h4>
         {!isOpen && (
           <button className="text-green-200" onClick={handleOpenForm}>
             + Adicionar novo cartão
