@@ -33,7 +33,7 @@ export const Input = ({
         render={({ field: { ref, ...field } }) => (
           <InputMask
             mask={mask}
-            className="bg-pirates-black rounded px-2 py-1 pl-2 focus:outline-none
+            className="bg-zinc-300 rounded px-2 py-1 pl-2 focus:outline-none
               w-full hover:border-neutral-300 focus:border-pirates-red border 
             border-neutral-500 text-yellow-100 disabled:border-transparent"
             {...field}
