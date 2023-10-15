@@ -57,10 +57,12 @@ export const CardPurchase = ({ order }: ICardPurchaseProps): JSX.Element => {
 
         <div className=" p-1 mb-1 font-inter text-base border-b border-pirates-black ">
           <h3 className="font-inter text-lg">Cartão de crédito: </h3>
-          <span className="text-pirates-gold">Número: </span>
-          {order.creditCard?.number}
-          <span className="text-pirates-gold"> Nome: </span>
-          {order.creditCard?.name}
+          <p>
+            <span className="text-pirates-gold">Número: </span>
+            {order.creditCard?.number}
+            <span className="text-pirates-gold"> Nome: </span>
+            {order.creditCard?.name}
+          </p>
         </div>
 
         <span>Total: {formatReal(parseFloat(order?.total))}</span>

@@ -11,7 +11,7 @@ export default function Contact(): JSX.Element {
         <div className=" flex flex-col justify-center items-center  m-auto">
           <div className=" text-center">
             <h1 className="inline-block border-b-2 px-5 border-pirates-red text-6xl font-fredericka">
-              Contact
+              Contato
             </h1>
             <h2 className="mb-4 text-3xl font-pirata">Pirate{"'"}s Punch</h2>
           </div>
@@ -28,26 +28,26 @@ export default function Contact(): JSX.Element {
 
       <ul className="space-y-3">
         <li>
-          <h3>Endereço da Loja: </h3>
+          <h5>Endereço da Loja: </h5>
           <p>
             Pirate{"'"}s Punch - Sede dos Piratas Sedentos! Ilha Tortuga, Mar do
             Caribe
           </p>
         </li>
         <li>
-          <h3>Horário de Funcionamento:</h3>
+          <h5>Horário de Funcionamento:</h5>
           <p>
             Segunda a sexta-feira: das 10h00 às 23h00 Sábado e domingo: das
             12h00 à 01h00
           </p>
         </li>
         <li>
-          <h3>Informações de Contato:</h3>
+          <h5>Informações de Contato:</h5>
           <p>Telefone: +1-555-PUNCHY</p>
           <p>E-mail: info@piratespunch.com</p>
         </li>
         <li>
-          <h3>Como nos Encontrar:</h3>
+          <h5>Como nos Encontrar:</h5>
           <p>
             A Ilha Tortuga é um paraíso pirata lendário, mas não se preocupe,
             nós o ajudaremos a encontrar o caminho! Ao chegar na ilha, pergunte
@@ -60,7 +60,7 @@ export default function Contact(): JSX.Element {
           </p>
         </li>
       </ul>
-      <div className="relative w-full aspect-video max-w-lg mx-auto">
+      <div className="relative w-full aspect-video max-w-[1000px] mx-auto">
         <Image
           className=" rounded xl border-4 border-pirates-black-transparent "
           src={tortuga}

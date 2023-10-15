@@ -30,7 +30,7 @@ const Address = (): JSX.Element => {
   return (
     <div>
       <div className="border-b-2  border-pirates-red  flex justify-between">
-        <h1 className="font-inter">Meus endereços</h1>
+        <h4>Meus endereços</h4>
         {!isOpen && (
           <button className="text-green-200" onClick={handleOpenForm}>
             + Adicionar novo endereço

@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
-import piratespunch from "/public/images/piratepunch.png";
-import { CardProduct } from "@/components/_ui/CardProduct";
+
 import { useSelector } from "react-redux";
 import { IProduct } from "@/interfaces/product.interface";
 import { useEffect } from "react";
@@ -10,7 +9,12 @@ import { RootState } from "@/store/store";
 import { fetchPromotions } from "@/store/reducers/highlightsReducer";
 import { IPromotion } from "@/interfaces/highlights.interface";
 import { ContainerEventPromo } from "@/components/_ui/ContainerEventPromo";
-import LinkButton from "@/components/_ui/LinkButton/LinkButton";
+import Hero from "./components/Hero/Hero";
+import PromotionProducts from "./components/PromotionProducts/PromotionProducts";
+import HighlightedBenefits from "./components/HighlightedBenefits/HighlightedBenefits";
+import JoinSignup from "./components/JoinSignup/JoinSignup";
+import PiratesPromoEvents from "./components/PiratesPromoEvents/PiratesPromoEvents";
+import Newsletter from "@/components/sections/Newsletter/Newsletter";
 
 export default function Home(): JSX.Element {
   const dispatch = useDispatch();
@@ -24,80 +28,20 @@ export default function Home(): JSX.Element {
 
   return (
     <main className=" m-auto">
-      <div className="mb-5  flex flex-col-reverse md:flex-row md:items-start items-center justify-center py-10  ">
-        <div className="max-w-3xl flex items-center">
-          <div className="text-center">
-            <h1 className="inline-block border-b-2 px-5 border-pirates-red text-5xl md:text-6xl font-fredericka ">
-              Pirate{"'"}s Punch
-            </h1>
-            <h2 className="mb-4 text-2xl md:text-3xl font-pirata">
-              Se prepare para o {"'"}soco{"'"} mais intenso dos sete mares!
-            </h2>
-            <p className="text-lg md:text-xl md:px-3 font-fredericka">
-              No Pirate{"'"}s Punch, nossas bebidas vão te deixar {"'"}
-              atordoado de sabor{"'"}, navegando por uma tempestade de sabores
-              piratas irresistíveis.
-            </p>
-            <div className=" m-5 ">
-              <LinkButton href={"/shop"}>Compre agora!</LinkButton>
-            </div>
-          </div>
-        </div>
+      <Hero />
+      <HighlightedBenefits />
 
-        <Image
-          src={piratespunch}
-          width={260}
-          alt="pirates punch logo"
-          className="inline-block"
-          priority
-        />
-      </div>
-      <div className="max-w-5xl flex flex-col items-center m-auto">
-        <div className="w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 w-full">
-            {promotions[0]?.products.slice(0, 8).map((product: IProduct) => (
-              <CardProduct key={product.id} product={product}></CardProduct>
-            ))}
-          </div>
-        </div>
-
-        <ContainerEventPromo>
-          <h1 className="font-fredericka">AHOY, MARUJO!</h1>
-          <h2 className="font-pirata">
-            Beba como um Corsário no Pirate{"'"}s Punch!
-          </h2>
-          <p className="font-imfell">
-            Descobrimos o tesouro da diversão na Pirate{"'"}s Punch! De 20h às
-            22h, aproveite 20% de desconto em todas as cervejas! Venha curtir a
-            festa com os melhores sabores piratas!
-          </p>
-        </ContainerEventPromo>
-
-        <div className="w-full">
-          <div className="flex justify-between border-b-2 border-pirates-red mb-1">
-            <h1 className="text-pirates-gold font-fredericka">
-              Novos Produtos!
-            </h1>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 w-full">
-            {promotions[0]?.products.slice(0, 8).map((product: IProduct) => (
-              <CardProduct key={product.id} product={product}></CardProduct>
-            ))}
-          </div>
-        </div>
-        <ContainerEventPromo>
-          <h1 className="font-fredericka">Evento Pirate{"'"}s Punch!</h1>
-          <h2 className="font-pirata">
-            Beba como um Corsário no Pirate{"'"}s Punch!
-          </h2>
-          <p className="font-imfell">
-            Desconto exclusivo para piratas! Aventure-se no Bar do Capitão e
-            ganhe desconto nas bebidas ao comparecer vestido de pirata. Não
-            perca essa chance! Aproveite agora!
-          </p>
-        </ContainerEventPromo>
-      </div>
+      <PromotionProducts
+        promotion={promotions[0]}
+        title="Tesouros do Convés Principal!"
+      />
+      <JoinSignup />
+      <PromotionProducts
+        promotion={promotions[0]}
+        title="Descobertas Recentes nas Ondas do Mar!"
+      />
+      <PiratesPromoEvents />
+      <Newsletter />
     </main>
   );
 }

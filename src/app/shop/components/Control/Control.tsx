@@ -72,7 +72,7 @@ export const Control = () => {
         className="bg-pirates-black-transparent-strong w-9 h-9 rounded border border-zinc-800 mx-1"
         onClick={() => dispatch(setTakeQuantity())}
       >
-        {take}
+        <p>{take}</p>
       </button>
 
       {name === "ASC" ? (
