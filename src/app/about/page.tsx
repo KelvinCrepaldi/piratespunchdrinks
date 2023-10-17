@@ -9,10 +9,12 @@ export default function About() {
       <div className="flex flex-col md:flex-row justify-center items-center">
         <div className=" flex flex-col justify-center items-center  m-auto">
           <div className=" text-center">
-            <h1 className="inline-block border-b-2 px-5 border-pirates-red text-6xl font-fredericka">
+            <h1 className="text-pirates-red-strong border-b-4 border-pirates-red-strong font-imfell">
               About Us
             </h1>
-            <h2 className="mb-4 text-3xl font-pirata">Pirate{"'"}s Punch</h2>
+            <h2 className="mb-4 text-3xl font-pirata text-pirates-red-strong">
+              Pirate{"'"}s Punch
+            </h2>
           </div>
 
           <p className="text-center text-pirates-gold">
@@ -25,7 +27,7 @@ export default function About() {
         <Image src={piratepunchlogo} alt="pirate punch logo" width={200} />
       </div>
       <div className="flex flex-col md:flex-row items-center">
-        <p>
+        <p className="text-black">
           Na Pirate{"'"}s Punch, reunimos uma tripulação de especialistas em
           licores que já enfrentaram os mais perigosos tesouros líquidos de
           todas as sete marés. Nossa equipe é formada por autênticos piratas,
@@ -42,7 +44,7 @@ export default function About() {
         />
       </div>
       <div className="flex flex-col md:flex-row-reverse items-center">
-        <p>
+        <p className="text-black">
           Nossa loja é decorada com um toque divertido e cheio de tesouros
           piratas. Penduradas nas paredes, você encontrará mapas do tesouro,
           âncoras enferrujadas, barris de rum autênticos (não se preocupe, eles
@@ -58,7 +60,7 @@ export default function About() {
         />
       </div>
       <div className="flex flex-col md:flex-row items-center">
-        <p>
+        <p className="text-black">
           Ahoy, marinheiros! Estamos aqui para satisfazer todas as suas
           necessidades etílicas, não importa se você é um capitão experiente em
           busca de um rum envelhecido ou um jovem pirata ansioso para
@@ -76,14 +78,14 @@ export default function About() {
         />
       </div>
       <div className="flex flex-col space-y-3">
-        <p className="text-center text-pirates-gold">
+        <p className="text-center text-pirates-red-strong">
           E não se esqueça dos eventos especiais que organizamos! Toda semana,
           realizamos competições de bebedeira de arrepiar a espinha, onde os
           mais intrépidos piratas podem mostrar suas habilidades de beber e
           ganhar prêmios exclusivos. Se você sobreviver à competição, pode até
           ser coroado como o Rei dos Bêbados!
         </p>
-        <p className="text-center text-pirates-gold">
+        <p className="text-center text-pirates-red-strong">
           Então, prepare-se para zarpar em uma jornada épica de sabor e diversão
           na Pirate{"'"}s Punch. Estamos abertos todos os dias, das primeiras
           horas da manhã até a última baderna da noite. Lembre-se, marujos, em

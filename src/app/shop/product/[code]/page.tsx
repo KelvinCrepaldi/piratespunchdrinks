@@ -20,11 +20,13 @@ export default async function Page({
   return (
     <div className="m-auto max-w-[1080px] p-5">
       <div className="border-b-2 border-pirates-red w-full mb-3">
-        <h1 className="font-fredericka">{product.name}</h1>
-        <span className="">
+        <h1 className="font-fredericka text-pirates-red-strong">
+          {product.name}
+        </h1>
+        <p className="">
           Código de referência:{" "}
           <span className="font-bold">{product.code}</span>
-        </span>
+        </p>
       </div>
       <div className="flex flex-col  lg:flex-row mb-10">
         <div className="relative border-4 border-pirates-black-transparent rounded lg:w-1/2 aspect-square mt-5 max-h-[500px] max-w-[500px]">

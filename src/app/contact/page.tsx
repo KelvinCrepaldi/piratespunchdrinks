@@ -9,11 +9,13 @@ export default function Contact(): JSX.Element {
     <main className="md:max-w-5xl m-auto p-5 md:p-16 space-y-10 font-imfell">
       <div className="flex flex-col md:flex-row justify-center items-center">
         <div className=" flex flex-col justify-center items-center  m-auto">
-          <div className=" text-center">
-            <h1 className="inline-block border-b-2 px-5 border-pirates-red text-6xl font-fredericka">
+          <div className="text-center">
+            <h1 className="text-pirates-red-strong border-b-4 border-pirates-red-strong font-imfell">
               Contato
             </h1>
-            <h2 className="mb-4 text-3xl font-pirata">Pirate{"'"}s Punch</h2>
+            <h2 className="mb-4 text-3xl font-pirata text-pirates-red-strong">
+              Pirate{"'"}s Punch
+            </h2>
           </div>
 
           <p className="text-center text-pirates-gold">
@@ -29,26 +31,26 @@ export default function Contact(): JSX.Element {
       <ul className="space-y-3">
         <li>
           <h5>Endereço da Loja: </h5>
-          <p>
+          <p className="text-black">
             Pirate{"'"}s Punch - Sede dos Piratas Sedentos! Ilha Tortuga, Mar do
             Caribe
           </p>
         </li>
         <li>
           <h5>Horário de Funcionamento:</h5>
-          <p>
+          <p className="text-black">
             Segunda a sexta-feira: das 10h00 às 23h00 Sábado e domingo: das
             12h00 à 01h00
           </p>
         </li>
         <li>
           <h5>Informações de Contato:</h5>
-          <p>Telefone: +1-555-PUNCHY</p>
-          <p>E-mail: info@piratespunch.com</p>
+          <p className="text-black">Telefone: +1-555-PUNCHY</p>
+          <p className="text-black">E-mail: info@piratespunch.com</p>
         </li>
         <li>
           <h5>Como nos Encontrar:</h5>
-          <p>
+          <p className="text-black">
             A Ilha Tortuga é um paraíso pirata lendário, mas não se preocupe,
             nós o ajudaremos a encontrar o caminho! Ao chegar na ilha, pergunte
             a qualquer marujo local ou siga o aroma de rum que paira no ar.
@@ -70,7 +72,7 @@ export default function Contact(): JSX.Element {
         />
       </div>
 
-      <p className="text-center text-pirates-gold">
+      <p className="text-center text-pirates-red-strong">
         Para qualquer pergunta, sugestão ou histórias de aventuras piratas,
         sinta-se à vontade para nos contatar por telefone ou e-mail. Nossa
         tripulação de piratas experientes está sempre pronta para ajudá-lo a
@@ -78,7 +80,7 @@ export default function Contact(): JSX.Element {
         uma mensagem em uma garrafa, certifique-se de que ela esteja bem vedada
         e à prova d{"'"}água - não queremos que suas palavras se percam no mar!
       </p>
-      <p className="text-center text-pirates-gold">
+      <p className="text-center text-pirates-red-strong">
         Então, marujos, enviem-nos uma mensagem ou planejem sua viagem ao Pirate
         {"'"}s Punch em Tortuga. Estaremos esperando com um caneco de grogue e
         uma calorosa recepção pirata!
