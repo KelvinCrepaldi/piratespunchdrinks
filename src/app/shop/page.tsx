@@ -3,18 +3,34 @@ import { SidebarFilter } from "./components/SidebarFilter";
 import { Control } from "./components/Control/Control";
 import { ListProducts } from "./components/ListProducts/ListProducts";
 import Newsletter from "@/components/sections/Newsletter/Newsletter";
+import Image from "next/image";
 
 export default function Shop(): JSX.Element {
   return (
     <>
       <main className="">
-        <div className="flex flex-col text-center items-center py-5">
-          <h1 className="inline-block border-b-2 px-5 border-pirates-red text-6xl font-fredericka">
+        <div className="relative flex flex-col text-center items-center py-5 bg-zinc-300">
+          <h1 className="text-pirates-red-strong border-b-4 border-pirates-red-strong font-imfell">
             Bebidas para você!
           </h1>
-          <p className="text-pirates-red font-pirata">
+          <p className="text-pirates-red-strong font-pirata">
             Navegue em alto mar para saborear bebidas deliciosas!
           </p>
+
+          <Image
+            src={"/backgroundTexture/piratemaptexture.svg"}
+            width={600}
+            height={300}
+            alt="background pirate map texture"
+            className="absolute top-0 left-0 w-1/3 opacity-30"
+          ></Image>
+          <Image
+            src={"/backgroundTexture/piratemaptexture.svg"}
+            width={600}
+            height={300}
+            alt="background pirate map texture"
+            className="absolute top-0 right-0 rotate-180 w-1/3 opacity-30"
+          ></Image>
         </div>
         <div className="flex mx-9 md:justify-center mb-20">
           <SidebarFilter />

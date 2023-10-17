@@ -16,7 +16,7 @@ export const AddressCheckbox = ({
 
   return (
     <label
-      className={`flex cursor-pointer bg-pirates-card-dark rounded p-3 mt-1 border-l ${
+      className={`flex cursor-pointer rounded bg-zinc-300 shadow p-3 mt-1 border-l ${
         selectedAddress && selectedAddress.id === address.id
           ? "border-green-400"
           : "border-transparent hover:border-yellow-700"

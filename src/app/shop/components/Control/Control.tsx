@@ -24,9 +24,9 @@ import { useAppDispatch } from "@/store/store";
 import { useSelector } from "react-redux";
 
 const buttonColors: any = {
-  "": "text-zinc-700",
-  ASC: "text-green-300",
-  DESC: "text-red-300",
+  "": "text-zinc-700 hover:text-zinc-500",
+  ASC: "text-green-600 hover:text-green-500",
+  DESC: "text-red-600 hover:text-red-500",
 };
 
 export const Control = () => {
@@ -38,15 +38,15 @@ export const Control = () => {
     (state: RootState) => state.products.control
   );
   return (
-    <div className="flex justify-end w-full  text-2xl max-w-[1080px]">
+    <div className="flex justify-end w-full  text-2xl max-w-[1080px] mt-1">
       {category && (
         <div
-          className={`bg-pirates-black-transparent-strong text-lg rounded border border-zinc-800 mx-1 px-2`}
+          className={`relative text-lg rounded bg-zinc-300 shadow mx-1 px-2`}
         >
           Buscando por categoria:{" "}
-          <span className="text-pirates-gold">{category}</span>
+          <span className="text-pirates-red-strong">{category}</span>
           <button
-            className="px-1 mt-1 ml-2 hover:text-red-400"
+            className="px-1 mt-1 ml-2 hover:text-pirates-red-strong"
             onClick={() => dispatch(clearCategoryWord())}
           >
             <FontAwesomeIcon icon={faClose}></FontAwesomeIcon>
@@ -54,9 +54,7 @@ export const Control = () => {
         </div>
       )}
       {searchWord && (
-        <div
-          className={`bg-pirates-black-transparent-strong text-lg rounded border border-zinc-800 mx-1 px-2`}
-        >
+        <div className={`text-lg rounded border bg-zinc-300 shadow mx-1 px-2`}>
           Buscando por palavra:{" "}
           <span className="text-pirates-gold">{searchWord}</span>
           <button
@@ -69,22 +67,22 @@ export const Control = () => {
       )}
 
       <button
-        className="bg-pirates-black-transparent-strong w-9 h-9 rounded border border-zinc-800 mx-1"
+        className="relative w-9 h-9 rounded bg-zinc-300 shadow mx-1 "
         onClick={() => dispatch(setTakeQuantity())}
       >
-        <p>{take}</p>
+        <p className="text-green-600 font-bold hover:text-green-500">{take}</p>
       </button>
 
       {name === "ASC" ? (
         <button
-          className={`bg-pirates-black-transparent-strong w-9 h-9 rounded border border-zinc-800 mx-1 ${buttonColors[name]}`}
+          className={`relative w-9 h-9 rounded bg-zinc-300 shadow mx-1 ${buttonColors[name]}`}
           onClick={() => dispatch(setNameDesc())}
         >
           <FontAwesomeIcon icon={faArrowDownAZ}></FontAwesomeIcon>
         </button>
       ) : (
         <button
-          className={`bg-pirates-black-transparent-strong w-9 h-9 rounded border border-zinc-800 mx-1 ${buttonColors[name]}`}
+          className={`relative w-9 h-9 rounded bg-zinc-300 shadow mx-1 ${buttonColors[name]}`}
           onClick={() => dispatch(setNameAsc())}
         >
           <FontAwesomeIcon icon={faArrowDownZA}></FontAwesomeIcon>
@@ -93,14 +91,14 @@ export const Control = () => {
 
       {date === "ASC" ? (
         <button
-          className={`bg-pirates-black-transparent-strong w-9 h-9 rounded border border-zinc-800 mx-1 ${buttonColors[date]}`}
+          className={`relative w-9 h-9 rounded bg-zinc-300 shadow mx-1 ${buttonColors[date]}`}
           onClick={() => dispatch(setDateDesc())}
         >
           <FontAwesomeIcon icon={faCalendarPlus}></FontAwesomeIcon>
         </button>
       ) : (
         <button
-          className={`bg-pirates-black-transparent-strong w-9 h-9 rounded border border-zinc-800 mx-1 ${buttonColors[date]}`}
+          className={`relative w-9 h-9 rounded bg-zinc-300 shadow mx-1 ${buttonColors[date]}`}
           onClick={() => dispatch(setDateAsc())}
         >
           <FontAwesomeIcon icon={faCalendarMinus}></FontAwesomeIcon>
@@ -109,14 +107,14 @@ export const Control = () => {
 
       {price === "ASC" ? (
         <button
-          className={`bg-pirates-black-transparent-strong w-9 h-9 rounded border border-zinc-800 mx-1 ${buttonColors[price]}`}
+          className={`relative w-9 h-9 rounded bg-zinc-300 shadow mx-1 ${buttonColors[price]}`}
           onClick={() => dispatch(setPriceDesc())}
         >
           <FontAwesomeIcon icon={faFilterCircleDollar}></FontAwesomeIcon>
         </button>
       ) : (
         <button
-          className={`bg-pirates-black-transparent-strong w-9 h-9 rounded border border-zinc-800 mx-1 ${buttonColors[price]}`}
+          className={`relative w-9 h-9 rounded bg-zinc-300 shadow mx-1 ${buttonColors[price]}`}
           onClick={() => dispatch(setPriceAsc())}
         >
           <FontAwesomeIcon icon={faFilterCircleDollar}></FontAwesomeIcon>

@@ -67,7 +67,7 @@ export const FormCreateAddress = ({
 
   return isOpen ? (
     <div className="border-b-2 p-2 m-1">
-      <p className="text-xl">Novo endereço:</p>
+      <p className="text-xl text-black">Novo endereço:</p>
       <form
         className="flex flex-wrap "
         onSubmit={handleSubmit(handleCreateAddress)}

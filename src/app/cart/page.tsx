@@ -88,7 +88,7 @@ export default function Cart(): JSX.Element {
             <div className="flex flex-col w-full md:w-1/3">
               {/* //================================================================ ENDEREÇO */}
               <div className="w-full bg-pirates-container-dark p-3 mb-1 rounded">
-                <h3 className="border-b mb-1 font-bold">Endereço:</h3>
+                <h6 className="border-b mb-1 font-bold">Endereço:</h6>
                 {getAdressList && getAdressList.length === 0 ? (
                   <>
                     <span className="text-pirates-red p-1 rounded">
@@ -116,9 +116,9 @@ export default function Cart(): JSX.Element {
 
               {/* //================================================================ METODO DE PAGAMENTO */}
               <div className="w-full bg-pirates-container-dark p-3 mb-1 rounded">
-                <h3 className="border-b mb-1 font-bold">
+                <h6 className="border-b mb-1 font-bold">
                   Método de pagamento:
-                </h3>
+                </h6>
                 {getAdressList && getAdressList.length === 0 ? (
                   <>
                     <span className="text-pirates-red p-1 rounded">
@@ -148,8 +148,8 @@ export default function Cart(): JSX.Element {
               {/* //================================================================ CHECKOUT */}
               <div className="">
                 <div className="bg-pirates-container-dark p-4 rounded">
-                  <h3>TOTAL:</h3>
-                  <p> {formatReal(totalValue)} </p>
+                  <h6>TOTAL:</h6>
+                  <p className="text-black"> {formatReal(totalValue)} </p>
 
                   {<span className="text-pirates-red">{error}</span>}
                   <Button onClick={handleCheckout}>Finalizar compra</Button>

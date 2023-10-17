@@ -23,7 +23,7 @@ export const Input = ({
   return (
     <div className="w-full">
       <label
-        className={`font-bold  px-1 text-sm w-full pointer-events-none text-gray-300 top-0 left-0`}
+        className={`font-bold  px-1 text-sm w-full pointer-events-none text-gray-700 top-0 left-0`}
       >
         {label}
       </label>
@@ -33,9 +33,9 @@ export const Input = ({
         render={({ field: { ref, ...field } }) => (
           <InputMask
             mask={mask}
-            className="bg-pirates-black rounded px-2 py-1 pl-2 focus:outline-none
-              w-full hover:border-neutral-300 focus:border-pirates-red border 
-            border-neutral-500 text-yellow-100 disabled:border-transparent"
+            className="bg-zinc-100 rounded px-2 py-1 pl-2 focus:outline-none
+              w-full hover:border-neutral-500 focus:border-pirates-red border 
+            border-neutral-400 text-black disabled:border-transparent"
             {...field}
             disabled={disabled}
             inputRef={ref}

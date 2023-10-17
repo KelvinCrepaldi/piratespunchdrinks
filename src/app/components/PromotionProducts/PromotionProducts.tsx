@@ -17,7 +17,7 @@ const PromotionProducts = ({
     <section className="w-full  mx-auto   bg-zinc-200 pb-20">
       {title && (
         <div className="relative px-5 text-center flex flex-col items-center pt-20 w-full bg-zinc-300 mb-20 border-b-4 border-zinc-100">
-          <h2 className="mb-5 text-red-900 border-b-4 border-red-900 font-imfell">
+          <h2 className="mb-5 text-pirates-red-strong border-b-4 border-pirates-red-strong font-imfell">
             {title}
           </h2>
           <div className="relative -bottom-5">
