@@ -47,7 +47,7 @@ const FormSignup = () => {
       className="flex flex-col items-center m-auto max-w-[350px] w-full"
       onSubmit={handleSubmit(handleSignup)}
     >
-      <h1>Criar nova conta</h1>
+      <h4>Criar nova conta</h4>
       <InputText
         labelText="Nome"
         error={errors.name?.message}

@@ -60,7 +60,7 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
   return (
     <>
       <header className="bg-zinc-900 relative z-10 backdrop-blur border-b-2 border-pirates-black pb-2">
-        <div className="w-100 md:max-w-5xl m-auto">
+        <div className="w-100 md:max-w-[1300px] m-auto">
           <div className="flex justify-between ">
             <Link href="/" className="flex items-center mx-1 mr-3">
               <Image
@@ -147,7 +147,7 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
             className={` ${!showNavbar && "hidden"} md:flex md:justify-start`}
           >
             <ul
-              className={`  flex flex-col transition-all rounded-bl-md md:border-transparent bg-pirates-black-transparent md:bg-transparent md:flex-row p-10 md:p-0 justify-center md:justify-end text-2xl absolute md:static md:right-auto text-center right-0`}
+              className={`  flex flex-col transition-all rounded-bl-md md:border-transparent bg-zinc-900 md:bg-transparent md:flex-row p-10 md:p-0 justify-center md:justify-end text-2xl absolute md:static md:right-auto text-center right-0`}
               onClick={handleCloseNavbar}
             >
               <div
@@ -156,30 +156,39 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
                 {isAuth ? (
                   <div className="z-10">
                     <li className="text-green-400 mb-5">
-                      <span>{user?.name.toUpperCase()}</span>
+                      <p>{user?.name.toUpperCase()}</p>
                     </li>
                     <li className="font-imfell px-3 hover:text-pirates-gold">
-                      <Link href={"/profile"}>
+                      <Link href={"/profile"} className="flex items-center">
                         <FontAwesomeIcon
                           icon={faUser}
                           className={`text-xl mr-1 `}
                         ></FontAwesomeIcon>
-                        Profile
+                        <p className="font-imfell text-2xl px-3 hover:text-pirates-gold">
+                          Profile
+                        </p>
                       </Link>
                     </li>
                     <li className="font-imfell px-3 hover:text-pirates-gold">
-                      <button onClick={handleLogOut}>
+                      <button
+                        onClick={handleLogOut}
+                        className="flex items-center"
+                      >
                         <FontAwesomeIcon
                           icon={faRightFromBracket}
-                          className={`text-xl mr-1`}
+                          className={`text-xl mr-1 text-white`}
                         ></FontAwesomeIcon>{" "}
-                        Logout
+                        <p className="font-imfell text-2xl px-3 hover:text-pirates-gold">
+                          Logout
+                        </p>
                       </button>
                     </li>
                   </div>
                 ) : (
-                  <Link className="hover:text-pirates-gold" href={"/login"}>
-                    Login
+                  <Link className="" href={"/login"}>
+                    <p className="font-imfell text-2xl px-3 hover:text-pirates-gold">
+                      Login
+                    </p>
                   </Link>
                 )}
                 <div></div>

@@ -25,7 +25,7 @@ export default function Signup(): JSX.Element {
     dispatch(resetErrorMessages());
   }, [dispatch, router]);
   return (
-    <main className="w-100 md:max-w-5xl m-auto p-5 md:p-16 flex flex-col items-center">
+    <main className="w-full m-auto p-5 md:p-16 flex flex-col items-center bg-zinc-900">
       <FormSignup />
       <div className="text-center">
         {signupStatus.error && (
@@ -36,7 +36,7 @@ export default function Signup(): JSX.Element {
         className="text-center mt-5 hover:text-pirates-gold"
         href={"/login"}
       >
-        <p>já possui uma conta?</p>
+        <p className="hover:text-pirates-gold">Já possui uma conta?</p>
       </Link>
     </main>
   );
