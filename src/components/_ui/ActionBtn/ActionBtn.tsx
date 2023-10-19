@@ -13,7 +13,7 @@ export const ActionBtn = ({
         colorStyle === "primary"
           ? "bg-pirates-gold hover:bg-pirates-red text-pirates-black  hover:text-pirates-white"
           : "bg-pirates-red hover:bg-pirates-gold text-pirates-white hover:text-pirates-black"
-      } font-pirata text-1xl rounded-lg`}
+      } font-pirata text-2xl rounded-lg`}
     >
       {children}
     </button>
