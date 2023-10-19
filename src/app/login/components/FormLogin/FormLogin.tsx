@@ -42,7 +42,7 @@ export const FormLogin = (): JSX.Element => {
       className="flex flex-col items-center m-auto max-w-[350px] w-full"
       onSubmit={handleSubmit(handleLogin)}
     >
-      <h1>Fazer login</h1>
+      <h4>Fazer login</h4>
       <InputText
         labelText="Email"
         error={errors.email?.message}
