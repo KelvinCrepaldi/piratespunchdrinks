@@ -32,7 +32,7 @@ export default function Shop(): JSX.Element {
             className="absolute top-0 right-0 rotate-180 w-1/3 opacity-30"
           ></Image>
         </div>
-        <div className="flex mx-9 md:justify-center mb-20">
+        <div className="relative flex mx-9 md:justify-center mb-20 max-w-[1300px] lg:mx-auto">
           <SidebarFilter />
           <div className="w-full max-w-[1080px]">
             <Control></Control>

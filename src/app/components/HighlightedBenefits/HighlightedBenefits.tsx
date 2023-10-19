@@ -38,22 +38,24 @@ const highlights = [
 
 const HighlightedBenefits = (): JSX.Element => {
   return (
-    <section className="w-full bg-zinc-950 p-3 lg:flex lg:justify-center">
-      {highlights.map((highlight: highlightType, index: number) => (
-        <div
-          key={index}
-          className="py-3 px-5 m-3 bg-zinc-900 rounded flex items-center"
-        >
-          <span className="text-3xl text-pirates-gold pr-5">
-            <FontAwesomeIcon icon={highlight.icon} />
-          </span>
+    <section className="w-full bg-zinc-950 p-3 ">
+      <div className="max-w-[1300px] mx-auto lg:flex lg:justify-center">
+        {highlights.map((highlight: highlightType, index: number) => (
+          <div
+            key={index}
+            className="py-3 px-5 m-3 bg-zinc-900 rounded flex items-center"
+          >
+            <span className="text-3xl text-pirates-gold pr-5">
+              <FontAwesomeIcon icon={highlight.icon} />
+            </span>
 
-          <div className="">
-            <h6>{highlight.title}</h6>
-            <p>{highlight.text}</p>
+            <div className="">
+              <h6>{highlight.title}</h6>
+              <p>{highlight.text}</p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </section>
   );
 };

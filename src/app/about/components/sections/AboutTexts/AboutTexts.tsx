@@ -4,7 +4,7 @@ const AboutTexts = (): JSX.Element => {
   return (
     <section>
       <div className=" w-full  bg-zinc-900">
-        <div className="relative  max-w-[1200px] mx-auto flex flex-col lg:flex-row items-center py-5">
+        <div className="relative  max-w-[1300px] mx-auto flex flex-col lg:flex-row items-center py-5">
           <Image
             className="m-5 rounded  border-pirates-black-transparent
           lg:relative -bottom-16"

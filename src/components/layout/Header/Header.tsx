@@ -60,7 +60,7 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
   return (
     <>
       <header className="bg-zinc-900 relative z-10 backdrop-blur border-b-2 border-pirates-black pb-2">
-        <div className="w-100 md:max-w-5xl m-auto">
+        <div className="w-100 md:max-w-[1300px] m-auto">
           <div className="flex justify-between ">
             <Link href="/" className="flex items-center mx-1 mr-3">
               <Image

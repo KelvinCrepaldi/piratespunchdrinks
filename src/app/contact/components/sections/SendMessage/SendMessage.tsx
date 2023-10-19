@@ -42,11 +42,11 @@ const SendMessage = (): JSX.Element => {
           </button>
 
           <Image
-            src={"/images/piratepunch.png"}
+            src={"/images/pirateShipTexture.svg"}
             alt="pirate punch logo"
-            width={500}
-            height={500}
-            className="absolute -left-[200px] lg:-left-[20vw] lg:top-0 top-10 -z-10 opacity-20"
+            width={1000}
+            height={1000}
+            className="absolute -left-[50px] lg:-left-[100%] lg:top-0 top-10 -z-10 opacity-20 lg:scale-150"
           />
         </form>
       </div>
