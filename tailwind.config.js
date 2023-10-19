@@ -31,6 +31,7 @@ module.exports = {
         Person: "url('/images/event/man.webp')",
         Bar: "url('/images/event/barPhoto.webp')",
         hero: "url('/background.webp')",
+        adventure: "url('/images/adventure.jpeg')",
       },
     },
   },
