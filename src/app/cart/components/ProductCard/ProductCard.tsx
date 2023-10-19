@@ -12,7 +12,7 @@ export const ProductCard = ({ product }: IProductCardProps): JSX.Element => {
 
   return (
     <div
-      className="flex p-4 mb-1 mr-2 bg-zinc-300 shadow justify-between rounded"
+      className="flex p-4 mb-1 mr-2 bg-zinc-100 border-zinc-300 shadow justify-between rounded"
       key={product.id}
     >
       <div className="flex">

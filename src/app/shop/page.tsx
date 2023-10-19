@@ -9,7 +9,7 @@ export default function Shop(): JSX.Element {
   return (
     <>
       <main className="">
-        <div className="relative flex flex-col text-center items-center py-5 bg-zinc-300">
+        <div className="relative flex flex-col text-center items-center py-5">
           <h1 className="text-pirates-red-strong border-b-4 border-pirates-red-strong font-imfell">
             Bebidas para você!
           </h1>

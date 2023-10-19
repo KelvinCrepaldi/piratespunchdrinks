@@ -34,7 +34,7 @@ export function SidebarFilter(): JSX.Element {
         showMenu === false ? "-left-full" : "left-0"
       } lg:relative lg:left-0 transition-all`}
     >
-      <div className="mr-1 my-1  py-5 px-5 md:px-0 p-2  md:w-64 h-full bg-zinc-300 rounded relative lg:static z-10">
+      <div className="mr-1 my-1  py-5 px-5 md:px-0 p-2  md:w-64 h-full bg-zinc-100 rounded relative lg:static z-10">
         <div className="flex justify-end lg:hidden">
           <button
             className="text-xl hover:text-pirates-gold p-1 mx-5"

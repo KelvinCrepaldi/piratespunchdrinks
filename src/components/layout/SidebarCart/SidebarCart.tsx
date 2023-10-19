@@ -32,7 +32,7 @@ export const SidebarCart = ({
     <div
       className={`${
         !showCart && "hidden"
-      } w-full h-screen fixed top-0 right-0 bg-pirates-black-transparent z-20`}
+      } w-full h-screen fixed top-0 right-0 bg-[rgb(0,0,0,0.8)] z-20`}
     >
       <div
         className={` fixed w-80 bg-zinc-900 top-0 right-0 z-20 h-screen pr-2 pl-2 backdrop-blur`}
