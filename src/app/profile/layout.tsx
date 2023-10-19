@@ -32,11 +32,11 @@ export default function ProfileLayout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ProtectedRoute>
-        <div className="flex flex-col md:flex-row max-w-5xl m-auto min-h-screen font-inter bg-pirates-shop-card rounded border-l border-r border-zinc-700 p-1">
-          <aside className="flex flex-row flex-wrap md:flex-col items-end md:min-w-max divide-y divide-zinc-900 m-3">
+        <div className="flex flex-col md:flex-row w-full max-w-[1200px] m-auto min-h-screen font-inter p-1 shadow bg-zinc-300">
+          <aside className="flex flex-row flex-wrap md:flex-col items-end divide-y divide-zinc-400 m-3">
             {paths.map((pathx: any, index) => (
               <Link
-                className="w-full p-3 hover:bg-pirates-card-dark text-center font-inter text-lg"
+                className="w-full p-3 hover:bg-zinc-300 text-center font-inter text-lg text-pirates-black rounded"
                 href={pathx.href}
                 key={index}
               >
@@ -45,7 +45,7 @@ export default function ProfileLayout({
             ))}
           </aside>
 
-          <main className=" w-full m-1 px-5 md:px-10   py-5  rounded">
+          <main className=" w-full m-1 px-5 md:px-10  py-5  rounded">
             {children}
           </main>
         </div>

@@ -59,7 +59,7 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
 
   return (
     <>
-      <header className="bg-pirates-black-transparent-strong relative z-10 backdrop-blur border-b-2 border-pirates-black pb-2">
+      <header className="bg-zinc-900 relative z-10 backdrop-blur border-b-2 border-pirates-black pb-2">
         <div className="w-100 md:max-w-5xl m-auto">
           <div className="flex justify-between ">
             <Link href="/" className="flex items-center mx-1 mr-3">
@@ -69,7 +69,7 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
                 width={50}
                 alt="piratepunch logo"
               />
-              <h1 className="hidden md:inline font-fredericka">
+              <h1 className="hidden md:inline font-fredericka text-4xl">
                 Pirate{"'"}s Punch
               </h1>
             </Link>
@@ -98,18 +98,22 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
               </div>
 
               <button onClick={handleShowCart}>
-                <FontAwesomeIcon
-                  icon={faCartShopping}
-                  className="w-10 text-3xl"
-                  aria-label="Carrinho"
-                ></FontAwesomeIcon>
+                <p>
+                  <FontAwesomeIcon
+                    icon={faCartShopping}
+                    className="w-10 text-3xl"
+                    aria-label="Carrinho"
+                  ></FontAwesomeIcon>
+                </p>
               </button>
               <button className=" md:hidden" onClick={handleShowNavbar}>
-                <FontAwesomeIcon
-                  icon={faBars}
-                  className="w-10 mr-3 text-3xl"
-                  aria-label="Menu"
-                ></FontAwesomeIcon>
+                <p>
+                  <FontAwesomeIcon
+                    icon={faBars}
+                    className="w-10 mr-3 text-3xl"
+                    aria-label="Menu"
+                  ></FontAwesomeIcon>
+                </p>
               </button>
               <div className="hidden md:flex pr-4">
                 <Link href={isAuth ? "/profile" : "/login"}>
@@ -183,7 +187,7 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
               <li>
                 <Link
                   href="/"
-                  className="font-imfell px-3 hover:text-pirates-gold"
+                  className="font-imfell text-2xl px-3 hover:text-pirates-gold"
                 >
                   Home
                 </Link>
@@ -191,7 +195,7 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
               <li>
                 <Link
                   href="/shop"
-                  className="font-imfell px-3 hover:text-pirates-gold"
+                  className="font-imfell text-2xl px-3 hover:text-pirates-gold"
                 >
                   Bebidas
                 </Link>
@@ -199,7 +203,7 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
               <li>
                 <Link
                   href="/about"
-                  className="font-imfell px-3 hover:text-pirates-gold"
+                  className="font-imfell text-2xl px-3 hover:text-pirates-gold"
                 >
                   Sobre
                 </Link>
@@ -207,7 +211,7 @@ export const Header = ({ handleShowCart }: IHeaderProps): JSX.Element => {
               <li>
                 <Link
                   href="/contact"
-                  className="font-imfell px-3 hover:text-pirates-gold"
+                  className="font-imfell text-2xl px-3 hover:text-pirates-gold"
                 >
                   Contato
                 </Link>

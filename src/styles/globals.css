@@ -43,40 +43,50 @@
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
+
+@layer base {
+  h1 {
+    @apply text-4xl lg:text-7xl text-pirates-gold font-fredericka;
+  }
+  h2 {
+    @apply text-3xl lg:text-6xl font-bold text-pirates-red;
+  }
+
+  h3 {
+    @apply text-3xl lg:text-5xl font-bold text-pirates-red;
+  }
+
+  h4 {
+    @apply text-2xl lg:text-4xl font-bold text-pirates-red;
+  }
+
+  h5 {
+    @apply text-xl lg:text-3xl font-bold text-pirates-red;
+  }
+
+  h6 {
+    @apply text-base lg:text-lg font-bold text-pirates-red;
+  }
+
+  p {
+    @apply text-base lg:text-lg text-white;
+  }
+
+  span {
+    @apply text-base lg:text-lg text-white;
+  }
+
+  a {
+    @apply text-base lg:text-lg text-white;
+  }
+}
+
 body {
-  background: rgb(16, 17, 40);
-  background: radial-gradient(
-    circle,
-    rgba(16, 17, 40, 1) 0%,
-    rgb(29, 29, 34) 100%
-  );
-  background: url("/background.webp");
+  background: #e4e4e7;
+
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-
-  color: rgb(228, 219, 219);
-  text-shadow: 1px 1px 1px black;
-}
-
-div {
-  border-color: var(--pirates-red);
-}
-h1 {
-  color: var(--pirates-gold);
-  font-size: 2rem;
-}
-h2 {
-  color: var(--pirates-red);
-  font-size: 1.8rem;
-}
-h3 {
-  color: var(--pirates-red);
-  font-size: 1.5rem;
-}
-p {
-  color: var(--pirates-siver);
-  font-size: 1.3rem;
 }
 
 li.pagenoactive {
@@ -89,6 +99,7 @@ li.pageactive {
 .modal-height {
   height: calc(100% - 60px);
 }
+
 @layer base {
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {

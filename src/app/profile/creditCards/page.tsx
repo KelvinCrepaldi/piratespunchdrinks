@@ -33,10 +33,13 @@ export default function CreditCards(): JSX.Element {
 
   return (
     <div>
-      <div className="border-b-2 font-inter border-pirates-red  flex justify-between">
-        <h1 className="font-inter">Meus cartões de crédito</h1>
+      <div className="border-b-2 font-inter border-pirates-red-strong  flex justify-between">
+        <h4 className="text-pirates-red-strong">Meus cartões de crédito</h4>
         {!isOpen && (
-          <button className="text-green-200" onClick={handleOpenForm}>
+          <button
+            className="text-green-800 rounded py-1 px-4 hover:text-green-600"
+            onClick={handleOpenForm}
+          >
             + Adicionar novo cartão
           </button>
         )}
@@ -53,9 +56,9 @@ export default function CreditCards(): JSX.Element {
 
       {creditCards && creditCards.length == 0 ? (
         <div className="my-3">
-          <span>
+          <span className="text-black">
             Nenhum cartão cadastrado.{" "}
-            <button className="text-green-200" onClick={handleOpenForm}>
+            <button className="text-green-800" onClick={handleOpenForm}>
               Adicione
             </button>{" "}
             um novo cartão!

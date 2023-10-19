@@ -18,13 +18,13 @@ export default async function Page({
   const product: IProduct = await getProduct(params.code);
 
   return (
-    <div className="m-auto max-w-[1080px] p-5">
+    <section className="m-auto max-w-[1080px] p-5 ">
       <div className="border-b-2 border-pirates-red w-full mb-3">
-        <h1 className="font-fredericka">{product.name}</h1>
-        <span className="">
+        <h1 className="font-imfell text-pirates-red-strong">{product.name}</h1>
+        <p className="text-black">
           Código de referência:{" "}
-          <span className="font-bold">{product.code}</span>
-        </span>
+          <span className="font-bold text-black">{product.code}</span>
+        </p>
       </div>
       <div className="flex flex-col  lg:flex-row mb-10">
         <div className="relative border-4 border-pirates-black-transparent rounded lg:w-1/2 aspect-square mt-5 max-h-[500px] max-w-[500px]">
@@ -32,17 +32,17 @@ export default async function Page({
         </div>
 
         <div className="mx-2 md:m-4 lg:w-1/2">
-          <p className="font-pirata text-pirates-red">
+          <p className="text-2xl font-pirata text-pirates-red-strong">
             {product.amount} - Unidade
           </p>
-          <p className="font-pirata text-pirates-red">
+          <p className="text-2xl font-pirata text-pirates-red-strong">
             {product.category?.name}
           </p>
-          <p className="text-3xl font-fredericka text-pirates-gold">
+          <p className="text-3xl font-inter text-pirates-red-strong font-bold">
             R$: {product.price}
           </p>
-          <p className="my-5">{product.apresentation}</p>
-          <span className="text-3xl font-fredericka text-pirates-silver h-full ">
+          <p className="my-5 text-black font-bold">{product.apresentation}</p>
+          <span className="text-3xl font-imfell text-pirates-silver h-full text-black">
             Adicionar ao carrinho:
           </span>
           <QuantityControlButton product={product}></QuantityControlButton>
@@ -57,28 +57,28 @@ export default async function Page({
         </div>
       </div>
 
-      <div className="w-full">
-        <h1 className="border-b-2 border-pirates-red font-imfell text-pirates-silver w-full">
+      <div className="w-full my-20">
+        <h1 className="border-b-2 border-pirates-red-strong text-pirates-red-strong font-imfell text-pirates-silver w-full">
           Caracteristicas
         </h1>
         <ul className="list-disc list-inside">
           {product.characteristic?.map((char) => (
             <li key={char.id} className="my-1">
-              <span>{char.text}</span>
+              <span className="text-black font-bold">{char.text}</span>
             </li>
           ))}
         </ul>
-        <h1 className="border-b-2 border-pirates-red font-imfell text-pirates-silver">
+        <h1 className="border-b-2 border-pirates-red-strong text-pirates-red-strong font-imfell text-pirates-silver">
           Informações adicionais
         </h1>
         <ul className="list-disc list-inside">
           {product.aditional_info?.map((char: any) => (
             <li key={char.id} className="my-1">
-              <span>{char.text}</span>
+              <span className="text-black font-bold">{char.text}</span>
             </li>
           ))}
         </ul>
       </div>
-    </div>
+    </section>
   );
 }

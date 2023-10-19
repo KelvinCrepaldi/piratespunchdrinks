@@ -34,7 +34,7 @@ export function SidebarFilter(): JSX.Element {
         showMenu === false ? "-left-full" : "left-0"
       } lg:relative lg:left-0 transition-all`}
     >
-      <div className="mr-1 my-1  py-5 px-5 md:px-0 p-2  md:w-64 h-full border border-zinc-900  bg-pirates-shop-sidebar rounded relative lg:static z-10">
+      <div className="mr-1 my-1  py-5 px-5 md:px-0 p-2  md:w-64 h-full bg-zinc-100 rounded relative lg:static z-10">
         <div className="flex justify-end lg:hidden">
           <button
             className="text-xl hover:text-pirates-gold p-1 mx-5"
@@ -44,26 +44,26 @@ export function SidebarFilter(): JSX.Element {
           </button>
         </div>
 
-        <h1 className="text-3xl m-2 p-1 border-b border-pirates-silver text-pirates-gold font-fredericka">
+        <h4 className="m-2 p-1 border-b border-pirates-red-strong text-pirates-red-strong font-pirata">
           Categorias
-        </h1>
+        </h4>
 
         <ul>
           {categories.map((category: ICategory) => (
             <li
               key={category.id}
-              className="flex mx-6 justify-between font-fredericka  cursor-pointer my-1 hover:text-pirates-gold "
+              className="flex px-5 justify-between cursor-pointer hover:bg-zinc-200 p-1"
               onClick={() => filterByCategory(category.name)}
             >
-              <span className=" ">
+              <p className="text-black">
                 {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
-              </span>
-              <div className="w-full border-b border-dashed border-pirates-silver"></div>
-              <span>
+              </p>
+
+              <p className="text-black">
                 {"("}
                 {category.productCount}
                 {")"}
-              </span>
+              </p>
             </li>
           ))}
         </ul>

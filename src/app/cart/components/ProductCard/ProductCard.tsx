@@ -12,7 +12,7 @@ export const ProductCard = ({ product }: IProductCardProps): JSX.Element => {
 
   return (
     <div
-      className="flex p-4 mb-1 mr-2 bg-pirates-card-dark justify-between rounded"
+      className="flex p-4 mb-1 mr-2 bg-zinc-100 border-zinc-300 shadow justify-between rounded"
       key={product.id}
     >
       <div className="flex">
@@ -39,7 +39,7 @@ export const ProductCard = ({ product }: IProductCardProps): JSX.Element => {
       </div>
 
       <div>
-        <h3 className="text-center ">Quantidade</h3>
+        <h6 className="text-center ">Quantidade</h6>
         <QuantityControlButton product={product}></QuantityControlButton>
         <div className="text-center w-full font-bold mt-3">
           Total: {formatReal(totalValue)}

@@ -67,7 +67,7 @@ export const FormCreateCreditCard = ({
 
   return isOpen ? (
     <div className="border-b-2 p-2 m-1">
-      <p className="text-xl">Novo cartão de crédito:</p>
+      <p className="text-xl text-black">Novo cartão de crédito:</p>
       <form className="" onSubmit={handleSubmit(handleCreateCreditCard)}>
         <div>
           <Input

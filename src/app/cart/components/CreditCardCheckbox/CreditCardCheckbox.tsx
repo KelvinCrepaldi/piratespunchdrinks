@@ -14,10 +14,10 @@ export const CreditCardCheckbox = ({
 }: ICreditCardCheckboxProps): JSX.Element => {
   return (
     <label
-      className={`flex bg-pirates-card-dark rounded p-3 mt-1 border-l cursor-pointer  ${
+      className={`flex bg-zinc-100 border-zinc-400 shadow rounded p-3 mt-1 border-l cursor-pointer  ${
         selectedCreditCard && selectedCreditCard.id === creditCard.id
           ? "border-green-500"
-          : "border-transparent hover:border-yellow-700"
+          : "border-transparent hover:border-yellow-400"
       } hover:to-pirates-card-dark2 bg-gradient-to-r from-pirates-card-dark to-pirates-card-dark`}
     >
       <input

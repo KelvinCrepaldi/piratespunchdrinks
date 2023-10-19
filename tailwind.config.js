@@ -11,19 +11,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "pirates-red": "#c51c1c",
         "pirates-gold": "#ffb700",
-        "pirates-silver": "#fffff",
         "pirates-black": "#111111",
         "pirates-white": "#FFFFFF",
-        "pirates-black-hover": "#070707",
-        "pirates-shop-card": "rgb(0,0,0,0.9)",
-        "pirates-shop-sidebar": "rgb(0,0,0,0.9)",
-        "pirates-black-transparent": "rgb(0,0,0,0.6)",
-        "pirates-black-transparent-strong": "rgb(0,0,0,0.9)",
-        "pirates-container-dark": "#111111",
-        "pirates-card-dark": "#161616",
-        "pirates-card-dark2": "#212121",
+        "pirates-red": "#c51c1c",
+        "pirates-red-strong": "#751000",
       },
       fontFamily: {
         fredericka: ["var(--font-fredericka_the_Great)"],
@@ -33,6 +25,13 @@ module.exports = {
       },
       boxShadow: {
         "pirates-card": "1px 4px 15px 2px rgba(0, 0, 0, 0.3)",
+      },
+      backgroundImage: {
+        Ship: "url('/images/event/cardShip.jpg')",
+        Person: "url('/images/event/man.webp')",
+        Bar: "url('/images/event/barPhoto.webp')",
+        hero: "url('/background.webp')",
+        adventure: "url('/images/adventure.jpeg')",
       },
     },
   },

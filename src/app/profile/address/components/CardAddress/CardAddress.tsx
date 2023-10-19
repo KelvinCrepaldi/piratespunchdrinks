@@ -96,11 +96,10 @@ export const CardAddress = ({ address }: ICardAddressProps): JSX.Element => {
 
   return (
     <form
-      className="flex flex-col m-2 p-3 bg-neutral-900 rounded border border-zinc-700 shadow-pirates-card"
+      className="flex flex-col m-2 p-3 rounded bg-zinc-200 shadow"
       onSubmit={handleSubmit(handleUpdateAddress)}
     >
-      <div className="flex justify-between border-b border-zinc-700 text-sm mb-4">
-        <span className="w-full font-bold">ID: {address.reference}</span>
+      <div className="flex justify-end text-sm text-blue-800">
         {addresID === address.id && loading && <LoadingSpinner />}
         <div className={`flex ${disabled && "hidden"}`}>
           <button className={`hover:text-green-300 mx-4 text-lg`} type="submit">
