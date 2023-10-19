@@ -2,10 +2,10 @@ import Image from "next/image";
 
 const Localization = (): JSX.Element => {
   return (
-    <section className="w-full flex flex-col lg:flex-row items-center justify-center max-w-[1200px] mx-auto my-20">
-      <div className="relative aspect-video  w-full lg:w-1/2 ">
+    <section className="relative w-full flex flex-col lg:flex-row items-center justify-center max-w-[1300px] mx-auto my-20 px-5">
+      <div className="relative aspect-video  w-full max-w-[50%]">
         <Image
-          className=" rounded xl border-4 border-pirates-black-transparent"
+          className=" rounded  border-4 border-pirates-black-transparent"
           src={"/images/tortuga.jpg"}
           alt="pirate punch logo"
           fill

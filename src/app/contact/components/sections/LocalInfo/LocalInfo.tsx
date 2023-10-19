@@ -1,7 +1,7 @@
 const LocalInfo = (): JSX.Element => {
   return (
-    <section className=" w-full lg:flex lg:gap-2 lg:justify-center lg:px-5">
-      <div className="bg-zinc-100 shadow-md p-10 my-2 lg:max-w-[400px] flex flex-col justify-between">
+    <section className="max-w-[1300px] w-full mx-auto lg:flex lg:gap-2 lg:justify-center lg:px-5">
+      <div className="bg-zinc-100 shadow-md p-10 my-2 lg:w-1/3 flex flex-col justify-between">
         <h4 className="text-black font-inter mb-10">Localização</h4>
         <div>
           <p className="text-black font-inter font-extrabold">
@@ -13,7 +13,7 @@ const LocalInfo = (): JSX.Element => {
         </div>
       </div>
 
-      <div className="bg-zinc-100 shadow-md p-10 my-2 lg:max-w-[400px] flex flex-col justify-between">
+      <div className="bg-zinc-100 shadow-md p-10 my-2 lg:w-1/3 flex flex-col justify-between">
         <h4 className="text-black font-inter mb-10 ">
           Horário de funcionamento{" "}
         </h4>
@@ -33,7 +33,7 @@ const LocalInfo = (): JSX.Element => {
         </div>
       </div>
 
-      <div className="bg-zinc-100 shadow-md p-10 my-2 lg:max-w-[400px] flex flex-col justify-between">
+      <div className="bg-zinc-100 shadow-md p-10 my-2 lg:w-1/3 flex flex-col justify-between">
         <h4 className="text-black font-inter mb-10">Contato</h4>
         <div>
           <p className="text-black  font-inter ">

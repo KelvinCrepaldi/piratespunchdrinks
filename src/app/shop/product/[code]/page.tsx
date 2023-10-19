@@ -18,7 +18,7 @@ export default async function Page({
   const product: IProduct = await getProduct(params.code);
 
   return (
-    <section className="m-auto max-w-[1080px] p-5 ">
+    <section className="m-auto max-w-[1300px] p-5 ">
       <div className="border-b-2 border-pirates-red w-full mb-3">
         <h1 className="font-imfell text-pirates-red-strong">{product.name}</h1>
         <p className="text-black">
