@@ -7,17 +7,17 @@ export default function Cart(): JSX.Element {
   return (
     <ProtectedRoute>
       <main className="flex flex-col max-w-5xl m-auto min-h-screen items-center space-y-5 font-imfell text-center">
-        <h1 className="font-fredericka pt-5 border-b-2 border-pirates-red">
+        <h1 className="font-imfell pt-5 border-b-2 border-pirates-red-strong text-pirates-red-strong">
           Obrigado por comprar na Pirate{"'"}s Punch!
         </h1>
-        <p className="text-lg md:text-xl">
+        <p className="text-xl md:text-2xl text-black">
           Agradecemos por escolher nossos produtos. Sua compra foi recebida com
           sucesso.
         </p>
-        <p className="text-lg md:text-xl">
+        <p className="text-xl md:text-2xl text-black">
           Seu pedido está sendo processado e será enviado em breve.
         </p>
-        <p className="text-lg md:text-xl">
+        <p className="text-xl md:text-2xl text-black">
           Caso precise de assistência adicional, entre em contato conosco.
         </p>
 
@@ -31,7 +31,7 @@ export default function Cart(): JSX.Element {
           </Link>
 
           <Link className=" text-xl" href={"/"}>
-            <Button>Voltar</Button>
+            <Button>Home page</Button>
           </Link>
         </div>
       </main>

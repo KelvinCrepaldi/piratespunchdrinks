@@ -16,10 +16,10 @@ export const AddressCheckbox = ({
 
   return (
     <label
-      className={`flex cursor-pointer rounded bg-zinc-300 shadow p-3 mt-1 border-l ${
+      className={`flex cursor-pointer rounded bg-zinc-100 border-zinc-400 shadow p-3 mt-1 border-l ${
         selectedAddress && selectedAddress.id === address.id
           ? "border-green-400"
-          : "border-transparent hover:border-yellow-700"
+          : "border-transparent hover:border-yellow-400"
       } hover:to-pirates-card-dark2 bg-gradient-to-r from-pirates-card-dark to-pirates-card-dark`}
     >
       <input

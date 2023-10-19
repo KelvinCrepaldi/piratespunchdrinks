@@ -41,7 +41,7 @@ export const Control = () => {
     <div className="flex justify-end w-full  text-2xl max-w-[1080px] mt-1">
       {category && (
         <div
-          className={`relative text-lg rounded bg-zinc-300 shadow mx-1 px-2`}
+          className={`relative text-lg rounded bg-zinc-100 shadow mx-1 px-2`}
         >
           Buscando por categoria:{" "}
           <span className="text-pirates-red-strong">{category}</span>
@@ -54,7 +54,9 @@ export const Control = () => {
         </div>
       )}
       {searchWord && (
-        <div className={`text-lg rounded border bg-zinc-300 shadow mx-1 px-2`}>
+        <div
+          className={`relative text-lg rounded border bg-zinc-100 shadow mx-1 px-2`}
+        >
           Buscando por palavra:{" "}
           <span className="text-pirates-gold">{searchWord}</span>
           <button
@@ -67,7 +69,7 @@ export const Control = () => {
       )}
 
       <button
-        className="relative w-9 h-9 rounded bg-zinc-300 shadow mx-1 "
+        className="relative w-9 h-9 rounded bg-zinc-100 shadow mx-1 "
         onClick={() => dispatch(setTakeQuantity())}
       >
         <p className="text-green-600 font-bold hover:text-green-500">{take}</p>
@@ -75,14 +77,14 @@ export const Control = () => {
 
       {name === "ASC" ? (
         <button
-          className={`relative w-9 h-9 rounded bg-zinc-300 shadow mx-1 ${buttonColors[name]}`}
+          className={`relative w-9 h-9 rounded bg-zinc-100 shadow mx-1 ${buttonColors[name]}`}
           onClick={() => dispatch(setNameDesc())}
         >
           <FontAwesomeIcon icon={faArrowDownAZ}></FontAwesomeIcon>
         </button>
       ) : (
         <button
-          className={`relative w-9 h-9 rounded bg-zinc-300 shadow mx-1 ${buttonColors[name]}`}
+          className={`relative w-9 h-9 rounded bg-zinc-100 shadow mx-1 ${buttonColors[name]}`}
           onClick={() => dispatch(setNameAsc())}
         >
           <FontAwesomeIcon icon={faArrowDownZA}></FontAwesomeIcon>
@@ -91,14 +93,14 @@ export const Control = () => {
 
       {date === "ASC" ? (
         <button
-          className={`relative w-9 h-9 rounded bg-zinc-300 shadow mx-1 ${buttonColors[date]}`}
+          className={`relative w-9 h-9 rounded bg-zinc-100 shadow mx-1 ${buttonColors[date]}`}
           onClick={() => dispatch(setDateDesc())}
         >
           <FontAwesomeIcon icon={faCalendarPlus}></FontAwesomeIcon>
         </button>
       ) : (
         <button
-          className={`relative w-9 h-9 rounded bg-zinc-300 shadow mx-1 ${buttonColors[date]}`}
+          className={`relative w-9 h-9 rounded bg-zinc-100 shadow mx-1 ${buttonColors[date]}`}
           onClick={() => dispatch(setDateAsc())}
         >
           <FontAwesomeIcon icon={faCalendarMinus}></FontAwesomeIcon>
@@ -107,14 +109,14 @@ export const Control = () => {
 
       {price === "ASC" ? (
         <button
-          className={`relative w-9 h-9 rounded bg-zinc-300 shadow mx-1 ${buttonColors[price]}`}
+          className={`relative w-9 h-9 rounded bg-zinc-100 shadow mx-1 ${buttonColors[price]}`}
           onClick={() => dispatch(setPriceDesc())}
         >
           <FontAwesomeIcon icon={faFilterCircleDollar}></FontAwesomeIcon>
         </button>
       ) : (
         <button
-          className={`relative w-9 h-9 rounded bg-zinc-300 shadow mx-1 ${buttonColors[price]}`}
+          className={`relative w-9 h-9 rounded bg-zinc-100 shadow mx-1 ${buttonColors[price]}`}
           onClick={() => dispatch(setPriceAsc())}
         >
           <FontAwesomeIcon icon={faFilterCircleDollar}></FontAwesomeIcon>
