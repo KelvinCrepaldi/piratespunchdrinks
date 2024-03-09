@@ -12,6 +12,7 @@ import {
   Inter,
   IM_Fell_DW_Pica_SC,
 } from "next/font/google";
+import { Metadata } from "next";
 
 const inter = Inter({
   display: "swap",
@@ -40,11 +41,13 @@ const im_fell_dw = IM_Fell_DW_Pica_SC({
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Pirate's Punch",
   description: "Se prepare para o 'soco' mais intenso dos sete mares!",
+  other:{
+    'google-site-verification' : "DmBgV8bvCy3fAvRZz6amgmcgm4D0WYS4s1lquERDyGQ"
+  }
 };
-
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <>
